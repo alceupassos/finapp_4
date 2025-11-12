@@ -246,6 +246,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                 </div>
               </div>
             ) : (
+              <div className="space-y-6">
               <div className="rounded-2xl border border-border overflow-hidden">
                 <table className="w-full text-xs">
                   <thead className="bg-graphite-900">

@@ -10,7 +10,8 @@ import {
   BarChart3,
   Users,
   Bell,
-  Sigma
+  Sigma,
+  Newspaper
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -28,6 +29,7 @@ const menuItems = [
   { icon: TrendingUp, label: 'Fluxo de Caixa', active: false },
   { icon: Wallet, label: 'Conciliação', active: false },
   { icon: FileText, label: 'Relatórios', active: false },
+  { icon: Newspaper, label: 'Notícias', active: false },
   { icon: Users, label: 'Clientes', active: false },
 ];
 
@@ -81,6 +83,10 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
               }
               if (item.label === 'Relatórios') {
                 const e = new CustomEvent('navigate', { detail: 'Relatórios' })
+                window.dispatchEvent(e)
+              }
+              if (item.label === 'Notícias') {
+                const e = new CustomEvent('navigate', { detail: 'Notícias' })
                 window.dispatchEvent(e)
               }
               if (item.label === 'Clientes') {

@@ -11,6 +11,7 @@ import { ReportsPage } from './components/ReportsPage';
 import { CustomersPage } from './components/CustomersPage';
 import { AnalisesPage } from './components/AnalisesPage';
 import { ConciliacaoPage } from './components/ConciliacaoPage';
+import { NewsPage } from './components/NewsPage';
 import { Users, FileText, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { scaleOnHover, item } from './lib/motion';
@@ -28,7 +29,7 @@ export function App(){
   const [logsOpen, setLogsOpen] = useState(false);
   const [oracleContext, setOracleContext] = useState<string>('');
   const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
-  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'>('Dashboard')
+  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'|'Notícias'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
 
   useState(() => {
@@ -194,6 +195,9 @@ export function App(){
           )}
           {currentView === 'Clientes' && (
             <CustomersPage />
+          )}
+          {currentView === 'Notícias' && (
+            <NewsPage />
           )}
         </main>
         <AnaliticosModal open={analiticosOpen} onClose={() => setAnaliticosOpen(false)} />
