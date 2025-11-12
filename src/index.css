@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5.5%; /* #0e0e0e */
+    --foreground: 0 0% 98%;
+    
+    --card: 0 0% 11%; /* #1c1c1c */
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 24 100% 50%; /* #ff7a00 */
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 0 0% 23%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 0 0% 23%;
+    --muted-foreground: 0 0% 63.5%;
+    
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 24 100% 50%;
+    
+    --radius: 0.75rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 24 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .card-premium {
+    @apply bg-card border border-border rounded-3xl shadow-card transition-all duration-300;
+  }
+  
+  .card-premium:hover {
+    @apply shadow-card-hover scale-[1.02];
+  }
+  
+  .glass-effect {
+    @apply bg-opacity-10 backdrop-blur-xl border border-white/10;
+  }
+  
+  .gradient-gold {
+    @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 to-gold-600;
+  }
+
+  /* Neuromorfismo */
+  .neomorphic {
+    background: linear-gradient(145deg, #1a1a1a, #0e0e0e);
+    box-shadow: 
+      8px 8px 16px rgba(0, 0, 0, 0.4),
+      -8px -8px 16px rgba(40, 40, 40, 0.1),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+  }
+
+  .neomorphic-hover:hover {
+    box-shadow: 
+      12px 12px 24px rgba(0, 0, 0, 0.5),
+      -12px -12px 24px rgba(40, 40, 40, 0.15),
+      inset 1px 1px 2px rgba(255, 255, 255, 0.08);
+  }
+
+  .neomorphic-inset {
+    background: linear-gradient(145deg, #0e0e0e, #1a1a1a);
+    box-shadow: 
+      inset 6px 6px 12px rgba(0, 0, 0, 0.5),
+      inset -6px -6px 12px rgba(40, 40, 40, 0.1);
+  }
+}
+
+:root { color-scheme: dark; }
+body { @apply text-gray-100; font-feature-settings: "cv02", "cv03", "cv04", "cv11"; }
+.card { @apply bg-card border border-border rounded-2xl; }

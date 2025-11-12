@@ -1,0 +1,44 @@
+[
+  {
+    "data": "2025-01-01",
+    "descricao": "Saldo inicial",
+    "entrada": 0,
+    "saida": 0,
+    "saldo": 265000
+  },
+  {
+    "data": "2025-02-10",
+    "descricao": "Vendas",
+    "entrada": 50000,
+    "saida": 0,
+    "saldo": 315000
+  },
+  {
+    "data": "2025-03-17",
+    "descricao": "Despesas",
+    "entrada": 0,
+    "saida": 39029,
+    "saldo": 275971
+  },
+  {
+    "data": "2025-04-28",
+    "descricao": "Assinaturas",
+    "entrada": 12000,
+    "saida": 0,
+    "saldo": 287971
+  },
+  {
+    "data": "2025-05-05",
+    "descricao": "Folha",
+    "entrada": 0,
+    "saida": 42000,
+    "saldo": 245971
+  },
+  {
+    "data": "2025-06-15",
+    "descricao": "Projetos",
+    "entrada": 38000,
+    "saida": 0,
+    "saldo": 283971
+  }
+]

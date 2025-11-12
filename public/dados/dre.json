@@ -1,0 +1,22 @@
+[
+  {
+    "grupo": "Receita Operacional",
+    "conta": "Vendas de serviços",
+    "valor": 125000.0
+  },
+  {
+    "grupo": "Custos",
+    "conta": "Folha operacional",
+    "valor": -42000.0
+  },
+  {
+    "grupo": "Despesas",
+    "conta": "Marketing",
+    "valor": -12000.0
+  },
+  {
+    "grupo": "Financeiro",
+    "conta": "Juros",
+    "valor": -2500.0
+  }
+]
