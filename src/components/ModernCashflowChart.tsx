@@ -55,7 +55,7 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
   return null;
 };
 
-export function ModernCashflowChart() {
+export function ModernCashflowChart({ period = 'Ano' }: { period?: 'Dia'|'Semana'|'Mês'|'Ano' }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ export function ModernCashflowChart() {
       >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
-            data={mockData}
+            data={period === 'Ano' ? mockData : period === 'Mês' ? mockData.slice(-4) : period === 'Semana' ? mockData.slice(-2) : mockData.slice(-1)}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
             <defs>

@@ -22,6 +22,18 @@ export default {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -91,10 +103,12 @@ export default {
         display: ['Satoshi', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(255, 122, 0, 0.3)',
-        'glow-sm': '0 0 10px rgba(255, 122, 0, 0.2)',
-        'card': '0 4px 20px rgba(0, 0, 0, 0.15)',
-        'card-hover': '0 8px 30px rgba(0, 0, 0, 0.25)',
+        'glow': '0 0 20px rgba(255, 122, 0, 0.28)',
+        'glow-sm': '0 0 10px rgba(255, 122, 0, 0.18)',
+        'card': '0 6px 18px rgba(0, 0, 0, 0.18)',
+        'card-hover': '0 10px 28px rgba(0, 0, 0, 0.26)',
+        'soft-lg': '0 20px 40px rgba(0,0,0,0.25)',
+        'focus-ring': '0 0 0 4px rgba(255, 122, 0, 0.25)'
       },
       animation: {
         'fadeIn': 'fadeIn 0.5s ease-in',

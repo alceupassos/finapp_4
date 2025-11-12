@@ -1,16 +1,22 @@
 import { motion } from 'framer-motion';
-import { Search, Bell, Sun, Moon, Menu } from 'lucide-react';
+import { Search, Bell, Sun, Moon, Menu, Bot } from 'lucide-react';
 import { useState } from 'react';
+import { OracleModal } from './OracleModal';
 
 interface ModernTopbarProps {
   onThemeToggle?: () => void;
   isDark?: boolean;
+  oracleContext?: string;
+  currentPeriod?: 'Dia' | 'Semana' | 'Mês' | 'Ano'
+  onPeriodChange?: (p: 'Dia' | 'Semana' | 'Mês' | 'Ano') => void
 }
 
-export function ModernTopbar({ onThemeToggle, isDark = true }: ModernTopbarProps) {
+export function ModernTopbar({ onThemeToggle, isDark = true, oracleContext = '', currentPeriod = 'Ano', onPeriodChange }: ModernTopbarProps) {
   const [notifications, setNotifications] = useState(3);
+  const [oracleOpen, setOracleOpen] = useState(false);
 
   return (
+    <>
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -39,6 +45,17 @@ export function ModernTopbar({ onThemeToggle, isDark = true }: ModernTopbarProps
 
         {/* Actions */}
         <div className="flex items-center gap-3 ml-6">
+          {/* Oráculo de IA */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setOracleOpen(true)}
+            className="p-3 rounded-xl bg-graphite-900 hover:bg-graphite-800 text-graphite-400 hover:text-white transition-all group"
+            aria-label="Abrir Oráculo de IA"
+          >
+            <Bot className="w-5 h-5" />
+          </motion.button>
+
           {/* Notifications */}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -137,16 +154,11 @@ export function ModernTopbar({ onThemeToggle, isDark = true }: ModernTopbarProps
             transition={{ delay: 0.2 }}
             className="flex items-center gap-2 bg-graphite-900 rounded-xl p-1"
           >
-            {['Dia', 'Semana', 'Mês', 'Ano'].map((period, index) => (
+            {(['Dia','Semana','Mês','Ano'] as const).map((period) => (
               <button
                 key={period}
-                className={`
-                  px-4 py-2 rounded-lg text-sm font-medium transition-all
-                  ${index === 3 
-                    ? 'bg-gold-500 text-white shadow-glow-sm' 
-                    : 'text-graphite-400 hover:text-white hover:bg-graphite-800'
-                  }
-                `}
+                onClick={() => onPeriodChange && onPeriodChange(period)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${currentPeriod === period ? 'bg-gold-500 text-white shadow-glow-sm' : 'text-graphite-400 hover:text-white hover:bg-graphite-800'}`}
               >
                 {period}
               </button>
@@ -155,5 +167,7 @@ export function ModernTopbar({ onThemeToggle, isDark = true }: ModernTopbarProps
         </div>
       </div>
     </motion.header>
+    <OracleModal open={oracleOpen} onClose={() => setOracleOpen(false)} contextRules={oracleContext} />
+    </>
   );
 }

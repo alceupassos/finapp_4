@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoria Integração Omie - Dashboard Visual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 5px solid #667eea;
+        }
+        
+        .metric-card.success {
+            border-left-color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        
+        .metric-card.warning {
+            border-left-color: #f59e0b;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+        
+        .metric-card.danger {
+            border-left-color: #ef4444;
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        }
+        
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .data-table tr:hover {
+            background: #f9fafb;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-ok {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #ddd;
+        }
+        
+        .checklist-item.ok {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+        
+        .checklist-item.error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+        
+        .checklist-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .checklist-text {
+            flex: 1;
+        }
+        
+        .recommendation {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .recommendation h4 {
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+        
+        .recommendation.critical {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+        }
+        
+        .recommendation.critical h4 {
+            color: #991b1b;
+        }
+        
+        .footer {
+            background: #f3f4f6;
+            padding: 20px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .summary-list {
+            list-style: none;
+        }
+        
+        .summary-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .summary-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-list li strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Auditoria Integração Omie</h1>
+            <p>Situação Atual - 12 de Novembro de 2025</p>
+        </div>
+        
+        <div class="content">
+            <!-- Métricas Principais -->
+            <div class="section">
+                <h2>📊 Métricas Principais</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card success">
+                        <div class="icon">✅</div>
+                        <div class="metric-label">Empresas Cadastradas</div>
+                        <div class="metric-value">7/7</div>
+                        <div class="metric-label">100% completo</div>
+                    </div>
+                    
+                    <div class="metric-card success">
+                        <div class="icon">🔐</div>
+                        <div class="metric-label">Credenciais Descriptografáveis</div>
+                        <div class="metric-value">7/7</div>
+                        <div class="metric-label">100% operacional</div>
+                    </div>
+                    
+                    <div class="metric-card success">
+                        <div class="icon">📈</div>
+                        <div class="metric-label">Registros Importados</div>
+                        <div class="metric-value">146</div>
+                        <div class="metric-label">74 DRE + 72 Cashflow</div>
+                    </div>
+                    
+                    <div class="metric-card danger">
+                        <div class="icon">❌</div>
+                        <div class="metric-label">Conectividade API</div>
+                        <div class="metric-value">0/7</div>
+                        <div class="metric-label">0% sucesso</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sumário Executivo -->
+            <div class="summary-box">
+                <h3>📋 Situação Geral</h3>
+                <ul class="summary-list">
+                    <li><strong>Status Geral:</strong> ⚠️ Integração Configurada mas Não Operacional</li>
+                    <li><strong>Infraestrutura:</strong> ✅ Todas as tabelas criadas e dados carregados</li>
+                    <li><strong>Segurança:</strong> ✅ Criptografia KMS operacional</li>
+                    <li><strong>Sincronização:</strong> ❌ Edge Function não executa</li>
+                    <li><strong>Conectividade:</strong> ❌ Falha ao acessar API Omie</li>
+                </ul>
+            </div>
+            
+            <!-- Credenciais Importadas -->
+            <div class="section">
+                <h2>🔑 Credenciais Importadas</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Empresa</th>
+                            <th>CNPJ</th>
+                            <th>App Key</th>
+                            <th>App Secret</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MANA POKE</td>
+                            <td>12345678000101</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>MED SOLUTIONS S.A. - SKY DERM</td>
+                            <td>12345678000102</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>BRX</td>
+                            <td>12345678000103</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>BEAUTY</td>
+                            <td>12345678000104</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>KDPLAST</td>
+                            <td>12345678000105</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>HEALTH PLAST</td>
+                            <td>12345678000106</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>ORAL UNIC</td>
+                            <td>12345678000107</td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">Criptografada</span></td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Dados Importados -->
+            <div class="section">
+                <h2>📊 Dados Importados</h2>
+                <h3 style="color: #667eea; margin-top: 20px; margin-bottom: 15px;">DRE Entries</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Empresa</th>
+                            <th>Total Registros</th>
+                            <th>Período</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MANA POKE</td>
+                            <td>14</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>ORAL UNIC</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>HEALTH PLAST</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>KDPLAST</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>BEAUTY</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>BRX</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>MED SOLUTIONS</td>
+                            <td>0</td>
+                            <td>-</td>
+                            <td><span class="status-badge status-warning">⚠️ FALTA</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 10px; color: #6b7280;"><strong>Total:</strong> 74 registros</p>
+                
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Cashflow Entries</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Empresa</th>
+                            <th>Total Registros</th>
+                            <th>Período</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MANA POKE</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>ORAL UNIC</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>HEALTH PLAST</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>KDPLAST</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>BEAUTY</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>BRX</td>
+                            <td>12</td>
+                            <td>2025-01-01 a 2025-12-01</td>
+                            <td><span class="status-badge status-ok">✅ OK</span></td>
+                        </tr>
+                        <tr>
+                            <td>MED SOLUTIONS</td>
+                            <td>0</td>
+                            <td>-</td>
+                            <td><span class="status-badge status-warning">⚠️ FALTA</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 10px; color: #6b7280;"><strong>Total:</strong> 72 registros</p>
+            </div>
+            
+            <!-- Checklist -->
+            <div class="section">
+                <h2>✅ Checklist de Validação</h2>
+                <div class="checklist">
+                    <div class="checklist-item ok">
+                        <div class="checklist-icon">✅</div>
+                        <div class="checklist-text">
+                            <strong>Tabelas Criadas</strong><br>
+                            integration_omie, dre_entries, cashflow_entries
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item ok">
+                        <div class="checklist-icon">✅</div>
+                        <div class="checklist-text">
+                            <strong>Credenciais Cadastradas</strong><br>
+                            7/7 empresas com chaves armazenadas
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item ok">
+                        <div class="checklist-icon">✅</div>
+                        <div class="checklist-text">
+                            <strong>Criptografia Operacional</strong><br>
+                            Chave KMS B5b0dcf500@# ativa
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item ok">
+                        <div class="checklist-icon">✅</div>
+                        <div class="checklist-text">
+                            <strong>Descriptografia Funcional</strong><br>
+                            Todas as 7 chaves descriptografáveis
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item ok">
+                        <div class="checklist-icon">✅</div>
+                        <div class="checklist-text">
+                            <strong>Dados Importados</strong><br>
+                            74 DRE + 72 Cashflow registros
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item error">
+                        <div class="checklist-icon">❌</div>
+                        <div class="checklist-text">
+                            <strong>Edge Function Executa</strong><br>
+                            sync-omie não gera logs
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item error">
+                        <div class="checklist-icon">❌</div>
+                        <div class="checklist-text">
+                            <strong>API Omie Responde</strong><br>
+                            0/7 credenciais conseguem conectar
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item error">
+                        <div class="checklist-icon">❌</div>
+                        <div class="checklist-text">
+                            <strong>Histórico Sincronização</strong><br>
+                            sync_state vazio (0 registros)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Problemas -->
+            <div class="section">
+                <h2>🔴 Problemas Identificados</h2>
+                
+                <div class="recommendation critical">
+                    <h4>1. FALHA DE CONECTIVIDADE COM API OMIE</h4>
+                    <p><strong>Severidade:</strong> 🔴 CRÍTICA</p>
+                    <p><strong>Teste:</strong> POST /geral/clientes/ (ListarClientes)</p>
+                    <p><strong>Resultado:</strong> 0/7 credenciais - Error: fetch failed</p>
+                    <p><strong>Possíveis Causas:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Credenciais no omie.db são fictícias/teste</li>
+                        <li>API Omie está indisponível ou bloqueando</li>
+                        <li>Problema de conectividade de rede/firewall</li>
+                        <li>Conta Omie sem módulos habilitados</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation critical">
+                    <h4>2. EDGE FUNCTION NÃO GERA LOGS</h4>
+                    <p><strong>Severidade:</strong> 🔴 CRÍTICA</p>
+                    <p><strong>Função:</strong> sync-omie</p>
+                    <p><strong>Achado:</strong> Nenhum log de execução encontrado</p>
+                    <p><strong>Implicação:</strong> Ou não está deployada ou falha silenciosamente</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>3. TABELA SYNC_STATE VAZIA</h4>
+                    <p><strong>Severidade:</strong> 🟡 MÉDIO</p>
+                    <p><strong>Achado:</strong> Nenhum histórico de sincronização</p>
+                    <p><strong>Implicação:</strong> Impossível rastrear progresso</p>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>4. MED SOLUTIONS SEM DADOS</h4>
+                    <p><strong>Severidade:</strong> 🟡 MÉDIO</p>
+                    <p><strong>Achado:</strong> Enquanto 6 empresas têm 12+ registros, MED SOLUTIONS tem 0</p>
+                    <p><strong>Ação:</strong> Debugar sync específico para essa empresa</p>
+                </div>
+            </div>
+            
+            <!-- Recomendações -->
+            <div class="section">
+                <h2>🎯 Recomendações</h2>
+                
+                <h3 style="color: #667eea; margin-top: 20px; margin-bottom: 15px;">Crítico (Fazer Primeiro)</h3>
+                
+                <div class="recommendation critical">
+                    <h4>1. Validar credenciais Omie reais</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Testar manualmente no console Omie</li>
+                        <li>Confirmar permissões da conta</li>
+                        <li>Verificar módulos habilitados</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation critical">
+                    <h4>2. Testar conectividade de rede</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Confirmar acesso a app.omie.com.br</li>
+                        <li>Verificar se firewall bloqueia requests</li>
+                        <li>Testar em máquina local vs. sandbox</li>
+                    </ul>
+                </div>
+                
+                <div class="recommendation critical">
+                    <h4>3. Revisar deploy da Edge Function</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Confirmar sync-omie está deployada</li>
+                        <li>Verificar logs no dashboard Supabase</li>
+                        <li>Testar chamada manual via curl</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Relatório Gerado: 12 Novembro 2025 | Status: ✅ AUDITORIA CONCLUÍDA SEM ALTERAÇÕES</p>
+        </div>
+    </div>
+</body>
+</html>
+

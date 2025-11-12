@@ -6,22 +6,43 @@ import { ModernCashflowChart } from './components/ModernCashflowChart';
 import { VirtualCard3D } from './components/VirtualCard3D';
 import { ModernTransactionsTable } from './components/ModernTransactionsTable';
 import { RevenueDistributionGauge } from './components/RevenueDistributionGauge';
+import { DashboardOverview } from './components/DashboardOverview';
+import { ReportsPage } from './components/ReportsPage';
+import { CustomersPage } from './components/CustomersPage';
 import { Users, FileText, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { scaleOnHover, item } from './lib/motion';
+import { AnaliticosModal } from './components/AnaliticosModal';
+import { SettingsModal } from './components/SettingsModal';
+import { LogsModal } from './components/LogsModal';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
 
 export function App(){
   const [isDark, setIsDark] = useState(true);
+  const [analiticosOpen, setAnaliticosOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [logsOpen, setLogsOpen] = useState(false);
+  const [oracleContext, setOracleContext] = useState<string>('');
+  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'>('Dashboard')
+  const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
+
+  useState(() => {
+    const handler = (e: any) => setCurrentView(e.detail)
+    window.addEventListener('navigate', handler as any)
+    return () => window.removeEventListener('navigate', handler as any)
+  })
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar />
+      <ModernSidebar onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
-        <ModernTopbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} />
+        <ModernTopbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} oracleContext={oracleContext} currentPeriod={period} onPeriodChange={(p)=>setPeriod(p)} />
         
         <main className="flex-1 p-8">
+          {currentView === 'Dashboard' && (
+          <>
           {/* KPI Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
             <AnimatedKPICard
@@ -64,10 +85,15 @@ export function App(){
             />
           </div>
 
+          {/* Tremor Overview */}
+          <section className="mb-8">
+            <DashboardOverview />
+          </section>
+
           {/* Cashflow + Virtual Card */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
             <div className="xl:col-span-2">
-              <ModernCashflowChart />
+              <ModernCashflowChart period={period} />
             </div>
             <div>
               <VirtualCard3D />
@@ -88,56 +114,92 @@ export function App(){
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <motion.div
               className="neomorphic neomorphic-hover rounded-2xl p-6 border border-graphite-800/30"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
+              whileHover={scaleOnHover.whileHover}
+              transition={scaleOnHover.transition}
+              variants={item}
+              initial="hidden"
+              animate="show"
             >
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/20">
                   <Users className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-graphite-400 font-medium">Clientes Ativos</p>
-                  <p className="text-2xl font-bold text-white mt-1">1.248</p>
-                  <p className="text-xs text-green-400 mt-1">+8% este mês</p>
+                  <p className="text-sm text-muted-foreground font-medium">Clientes Ativos</p>
+                  <p className="text-2xl font-bold text-foreground mt-1">1.248</p>
+                  <p className="text-xs text-success mt-1">+8% este mês</p>
                 </div>
               </div>
             </motion.div>
             
             <motion.div
               className="neomorphic neomorphic-hover rounded-2xl p-6 border border-graphite-800/30"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
+              whileHover={scaleOnHover.whileHover}
+              transition={scaleOnHover.transition}
+              variants={item}
+              initial="hidden"
+              animate="show"
             >
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-500/20">
                   <FileText className="w-6 h-6 text-purple-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-graphite-400 font-medium">Documentos Processados</p>
-                  <p className="text-2xl font-bold text-white mt-1">8.542</p>
-                  <p className="text-xs text-green-400 mt-1">+15% este mês</p>
+                  <p className="text-sm text-muted-foreground font-medium">Documentos Processados</p>
+                  <p className="text-2xl font-bold text-foreground mt-1">8.542</p>
+                  <p className="text-xs text-success mt-1">+15% este mês</p>
                 </div>
               </div>
             </motion.div>
             
             <motion.div
               className="neomorphic neomorphic-hover rounded-2xl p-6 border border-graphite-800/30"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
+              whileHover={scaleOnHover.whileHover}
+              transition={scaleOnHover.transition}
+              variants={item}
+              initial="hidden"
+              animate="show"
             >
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 border border-gold-500/20">
                   <Zap className="w-6 h-6 text-gold-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-graphite-400 font-medium">Automação</p>
-                  <p className="text-2xl font-bold text-white mt-1">94.8%</p>
-                  <p className="text-xs text-green-400 mt-1">+2.3% este mês</p>
+                  <p className="text-sm text-muted-foreground font-medium">Automação</p>
+                  <p className="text-2xl font-bold text-foreground mt-1">94.8%</p>
+                  <p className="text-xs text-success mt-1">+2.3% este mês</p>
                 </div>
               </div>
             </motion.div>
           </div>
+          </>
+          )}
+
+          {currentView === 'Análises' && (
+            <div className="grid grid-cols-1 gap-6">
+              <DashboardOverview />
+            </div>
+          )}
+          {currentView === 'Fluxo de Caixa' && (
+            <div className="grid grid-cols-1 gap-6">
+              <ModernCashflowChart period={period} />
+            </div>
+          )}
+          {currentView === 'Conciliação' && (
+            <div className="grid grid-cols-1 gap-6">
+              <ModernTransactionsTable />
+            </div>
+          )}
+          {currentView === 'Relatórios' && (
+            <ReportsPage />
+          )}
+          {currentView === 'Clientes' && (
+            <CustomersPage />
+          )}
         </main>
+        <AnaliticosModal open={analiticosOpen} onClose={() => setAnaliticosOpen(false)} />
+        <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
+        <LogsModal open={logsOpen} onClose={() => setLogsOpen(false)} />
       </div>
     </div>
   );

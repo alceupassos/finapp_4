@@ -9,13 +9,21 @@ import {
   ChevronRight,
   BarChart3,
   Users,
-  Bell
+  Bell,
+  Sigma
 } from 'lucide-react';
 import { useState } from 'react';
+
+interface ModernSidebarProps {
+  onOpenAnaliticos?: () => void
+  onOpenSettings?: () => void
+  onOpenLogs?: () => void
+}
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', active: true },
   { icon: BarChart3, label: 'Análises', active: false },
+  { icon: Sigma, label: 'Analíticos Dashboard', active: false },
   { icon: TrendingUp, label: 'Fluxo de Caixa', active: false },
   { icon: Wallet, label: 'Conciliação', active: false },
   { icon: FileText, label: 'Relatórios', active: false },
@@ -25,10 +33,11 @@ const menuItems = [
 const bottomItems = [
   { icon: Bell, label: 'Notificações' },
   { icon: Settings, label: 'Configurações' },
+  { icon: FileText, label: 'Gerenciamento • Logs' },
   { icon: LogOut, label: 'Sair' },
 ];
 
-export function ModernSidebar() {
+export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs }: ModernSidebarProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -36,7 +45,7 @@ export function ModernSidebar() {
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed left-0 top-0 h-screen w-72 bg-charcoal-950 border-r border-graphite-900 flex flex-col z-50"
+      className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-charcoal-950 via-graphite-950 to-charcoal-900 border-r border-graphite-900 flex flex-col z-50 pattern-soft"
     >
       {/* Logo */}
       <div className="p-6 border-b border-graphite-900 flex justify-center">
@@ -63,6 +72,23 @@ export function ModernSidebar() {
             transition={{ delay: 0.1 * index }}
             onHoverStart={() => setHoveredIndex(index)}
             onHoverEnd={() => setHoveredIndex(null)}
+            onClick={() => {
+              if (item.label === 'Analíticos Dashboard') {
+                onOpenAnaliticos && onOpenAnaliticos()
+              }
+              if (item.label === 'Relatórios') {
+                const e = new CustomEvent('navigate', { detail: 'Relatórios' })
+                window.dispatchEvent(e)
+              }
+              if (item.label === 'Clientes') {
+                const e = new CustomEvent('navigate', { detail: 'Clientes' })
+                window.dispatchEvent(e)
+              }
+              if (item.label === 'Dashboard' || item.label === 'Análises' || item.label === 'Fluxo de Caixa' || item.label === 'Conciliação') {
+                const e = new CustomEvent('navigate', { detail: item.label })
+                window.dispatchEvent(e)
+              }
+            }}
             className={`
               w-full flex items-center gap-3 px-4 py-2.5 rounded-xl
               transition-all duration-200 group relative
@@ -80,7 +106,9 @@ export function ModernSidebar() {
               />
             )}
             
-            <item.icon className={`w-4 h-4 relative z-10 ${item.active ? 'text-white' : ''}`} />
+            <motion.span whileHover={{ scale: 1.08, rotate: 1 }} className="relative z-10">
+              <item.icon className={`w-4 h-4 ${item.active ? 'text-white' : ''}`} />
+            </motion.span>
             <span className="text-sm font-medium relative z-10">{item.label}</span>
             
             {hoveredIndex === index && !item.active && (
@@ -103,6 +131,10 @@ export function ModernSidebar() {
             key={item.label}
             whileHover={{ x: 5 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              if (item.label === 'Configurações') onOpenSettings && onOpenSettings()
+              if (item.label === 'Gerenciamento • Logs') onOpenLogs && onOpenLogs()
+            }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
           >
             <item.icon className="w-5 h-5" />

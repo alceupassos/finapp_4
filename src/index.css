@@ -27,10 +27,16 @@
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    
+
     --border: 0 0% 18%;
     --input: 0 0% 18%;
     --ring: 24 100% 50%;
+    --success: 142 76% 36%; /* emerald-600 */
+    --success-foreground: 144 100% 97%;
+    --warning: 38 92% 50%; /* amber-500 */
+    --warning-foreground: 60 100% 97%;
+    --info: 199 89% 48%; /* sky-500 */
+    --info-foreground: 210 100% 97%;
     
     --radius: 0.75rem;
   }
@@ -63,6 +69,12 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 24 100% 50%;
+    --success: 142 76% 36%;
+    --success-foreground: 144 100% 10%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 100% 12%;
+    --info: 199 89% 48%;
+    --info-foreground: 199 100% 10%;
   }
 }
 
@@ -71,7 +83,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-foreground;
   }
 }
 
@@ -94,6 +106,17 @@
   
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 to-gold-600;
+  }
+
+  .focus-visible-ring {
+    @apply outline-none ring-2 ring-primary/40 ring-offset-2 ring-offset-background;
+  }
+
+  .pattern-soft {
+    background-image:
+      radial-gradient(ellipse at top left, rgba(255,122,0,0.06), transparent 40%),
+      radial-gradient(ellipse at bottom right, rgba(255,122,0,0.04), transparent 50%);
+    background-blend-mode: soft-light;
   }
 
   /* Neuromorfismo */
