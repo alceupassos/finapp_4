@@ -86,8 +86,8 @@ export function App(){
           </div>
 
           {/* Tremor Overview */}
-          <section className="mb-8">
-            <DashboardOverview />
+          <section className="mb-6">
+            <DashboardOverview period={period} />
           </section>
 
           {/* Cashflow + Virtual Card */}
