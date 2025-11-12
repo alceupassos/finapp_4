@@ -1,4 +1,5 @@
-import { Card, Metric, Text, Flex, Grid, Title, BarChart, BadgeDelta } from "@tremor/react"
+import { Card, Metric, Text, Flex, Grid, Title, BadgeDelta } from "@tremor/react"
+import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
 
 type Period = 'Dia' | 'Semana' | 'Mês' | 'Ano'
 
@@ -41,16 +42,32 @@ export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
       <Card className="rounded-3xl col-span-1 md:col-span-2 bg-card border border-border shadow-card">
         <Title>Evolução Mensal</Title>
         <Text className="text-sm text-muted-foreground">Receita vs Despesas</Text>
-        <BarChart
-          className="mt-4 h-56"
-          data={chartData}
-          index="month"
-          categories={["receita", "despesas"]}
-          colors={["orange", "sky"]}
-          valueFormatter={(n) => `R$ ${Number(n).toLocaleString('pt-BR')}`}
-          yAxisWidth={56}
-          showLegend
-        />
+        <div className="mt-4 h-56">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={chartData}>
+              <defs>
+                <linearGradient id="barReceita" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="10%" stopColor="#ff7a00" stopOpacity={0.9} />
+                  <stop offset="100%" stopColor="#ff7a00" stopOpacity={0.4} />
+                </linearGradient>
+                <linearGradient id="barDespesas" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="10%" stopColor="#38bdf8" stopOpacity={0.9} />
+                  <stop offset="100%" stopColor="#38bdf8" stopOpacity={0.4} />
+                </linearGradient>
+                <filter id="barShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.35" />
+                </filter>
+              </defs>
+              <CartesianGrid stroke="rgba(200,200,200,0.12)" vertical={false} />
+              <XAxis dataKey="month" stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
+              <YAxis stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} tickFormatter={(n)=>`R$ ${Number(n).toLocaleString('pt-BR')}`} />
+              <Tooltip contentStyle={{ background: '#11161C', border: '1px solid #1B232C' }} formatter={(v:any)=>`R$ ${Number(v).toLocaleString('pt-BR')}`} />
+              <Legend />
+              <Bar dataKey="receita" name="Receita" fill="url(#barReceita)" radius={[8,8,0,0]} filter="url(#barShadow)" />
+              <Bar dataKey="despesas" name="Despesas" fill="url(#barDespesas)" radius={[8,8,0,0]} filter="url(#barShadow)" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </Card>
     </Grid>
   )

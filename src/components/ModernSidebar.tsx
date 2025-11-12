@@ -18,6 +18,7 @@ interface ModernSidebarProps {
   onOpenAnaliticos?: () => void
   onOpenSettings?: () => void
   onOpenLogs?: () => void
+  role?: 'admin' | 'cliente' | 'franqueado' | 'personalizado'
 }
 
 const menuItems = [
@@ -30,14 +31,17 @@ const menuItems = [
   { icon: Users, label: 'Clientes', active: false },
 ];
 
-const bottomItems = [
-  { icon: Bell, label: 'Notificações' },
-  { icon: Settings, label: 'Configurações' },
-  { icon: FileText, label: 'Gerenciamento • Logs' },
-  { icon: LogOut, label: 'Sair' },
-];
+function getBottomItems(role: ModernSidebarProps['role']) {
+  const items = [
+    { icon: Bell, label: 'Notificações' },
+    { icon: Settings, label: 'Configurações' },
+    { icon: FileText, label: 'Gerenciamento • Logs', adminOnly: true },
+    { icon: LogOut, label: 'Sair' },
+  ] as const
+  return items.filter(i => !i.adminOnly || role === 'admin')
+}
 
-export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs }: ModernSidebarProps) {
+export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, role = 'cliente' }: ModernSidebarProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -126,7 +130,7 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs }: 
 
       {/* Menu Inferior */}
       <div className="p-4 border-t border-graphite-900 space-y-1">
-        {bottomItems.map((item, index) => (
+        {getBottomItems(role).map((item, index) => (
           <motion.button
             key={item.label}
             whileHover={{ x: 5 }}

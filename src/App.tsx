@@ -9,6 +9,8 @@ import { RevenueDistributionGauge } from './components/RevenueDistributionGauge'
 import { DashboardOverview } from './components/DashboardOverview';
 import { ReportsPage } from './components/ReportsPage';
 import { CustomersPage } from './components/CustomersPage';
+import { AnalisesPage } from './components/AnalisesPage';
+import { ConciliacaoPage } from './components/ConciliacaoPage';
 import { Users, FileText, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { scaleOnHover, item } from './lib/motion';
@@ -25,6 +27,7 @@ export function App(){
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [logsOpen, setLogsOpen] = useState(false);
   const [oracleContext, setOracleContext] = useState<string>('');
+  const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
 
@@ -36,7 +39,7 @@ export function App(){
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
+      <ModernSidebar role={role} onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} oracleContext={oracleContext} currentPeriod={period} onPeriodChange={(p)=>setPeriod(p)} />
         
@@ -176,9 +179,7 @@ export function App(){
           )}
 
           {currentView === 'Análises' && (
-            <div className="grid grid-cols-1 gap-6">
-              <DashboardOverview />
-            </div>
+            <AnalisesPage />
           )}
           {currentView === 'Fluxo de Caixa' && (
             <div className="grid grid-cols-1 gap-6">
@@ -186,9 +187,7 @@ export function App(){
             </div>
           )}
           {currentView === 'Conciliação' && (
-            <div className="grid grid-cols-1 gap-6">
-              <ModernTransactionsTable />
-            </div>
+            <ConciliacaoPage />
           )}
           {currentView === 'Relatórios' && (
             <ReportsPage />
