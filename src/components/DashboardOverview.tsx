@@ -1,4 +1,4 @@
-import { Card, Metric, Text, Flex, Grid, Title, BadgeDelta } from "@tremor/react"
+import { Card, Metric, Text, Flex, Title, BadgeDelta } from "@tremor/react"
 import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
 
 type Period = 'Dia' | 'Semana' | 'Mês' | 'Ano'
@@ -27,19 +27,14 @@ function dataByPeriod(period: Period) {
 
 export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
   const chartData = dataByPeriod(period)
+  const tone = [
+    { ring: 'ring-orange-500/15', glow: 'shadow-glow-sm' },
+    { ring: 'ring-sky-500/15', glow: 'shadow-glow-sm' },
+    { ring: 'ring-emerald-500/15', glow: 'shadow-glow-sm' },
+  ]
   return (
-    <Grid numItemsSm={1} numItemsMd={2} numItemsLg={3} className="gap-6">
-      {kpis.map((k) => (
-        <Card key={k.name} decoration="top" decorationColor="orange" className="rounded-3xl bg-card border border-border shadow-card">
-          <Flex justify="between" align="center">
-            <Title>{k.name}</Title>
-            <BadgeDelta deltaType={k.delta >= 0 ? "moderateIncrease" : "moderateDecrease"}>{k.delta}%</BadgeDelta>
-          </Flex>
-          <Metric>R$ {k.value.toLocaleString('pt-BR')}</Metric>
-          <Text className="mt-2 text-sm text-muted-foreground">Comparado ao mês anterior</Text>
-        </Card>
-      ))}
-      <Card className="rounded-3xl col-span-1 md:col-span-2 bg-card border border-border shadow-card">
+    <div className="space-y-6">
+      <Card className="rounded-3xl bg-card border border-border shadow-card">
         <Title>Evolução Mensal</Title>
         <Text className="text-sm text-muted-foreground">Receita vs Despesas</Text>
         <div className="mt-4 h-56">
@@ -69,6 +64,19 @@ export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
           </ResponsiveContainer>
         </div>
       </Card>
-    </Grid>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {kpis.map((k, idx) => (
+          <Card key={k.name} className={`rounded-3xl bg-card border border-border shadow-card ring-1 ${tone[idx].ring} ${tone[idx].glow}`}>
+            <Flex justify="between" align="center">
+              <Title>{k.name}</Title>
+              <BadgeDelta deltaType={k.delta >= 0 ? "moderateIncrease" : "moderateDecrease"}>{k.delta}%</BadgeDelta>
+            </Flex>
+            <Metric>R$ {k.value.toLocaleString('pt-BR')}</Metric>
+            <Text className="mt-2 text-sm text-muted-foreground">Comparado ao mês anterior</Text>
+          </Card>
+        ))}
+      </div>
+    </div>
   )
 }

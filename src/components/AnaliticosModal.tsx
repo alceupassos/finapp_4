@@ -26,6 +26,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
   const [dfcRows, setDfcRows] = useState<Row[]>(initialDfc)
   const rows = tab === 'DRE' ? dreRows : dfcRows
   const [series, setSeries] = useState(sampleSeries)
+  const [modalPeriod, setModalPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
 
   useEffect(() => {
     if (!open) return
@@ -74,7 +75,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mx-auto mt-16 max-w-[1200px] bg-card border border-border rounded-3xl shadow-soft-lg overflow-hidden"
+        className="mx-auto mt-16 max-w-[1200px] max-h-[85vh] bg-card border border-border rounded-3xl shadow-soft-lg overflow-y-auto"
       >
         <div className="flex items-center justify-between p-5 border-b border-border">
           <div className="flex items-center gap-3">
@@ -101,6 +102,12 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                 <button key={c} onClick={() => toggleCompany(c)} className={`px-3 py-1.5 rounded-lg text-xs ${selected.includes(c) ? 'bg-success text-success-foreground' : 'bg-secondary text-secondary-foreground'}`}>{c}</button>
               ))}
             </div>
+            <div className="h-8 w-px bg-graphite-800" />
+            <div className="flex items-center gap-2 bg-graphite-900 rounded-xl p-1">
+              {(['Dia','Semana','Mês','Ano'] as const).map((p) => (
+                <button key={p} onClick={()=>setModalPeriod(p)} className={`px-3 py-1.5 rounded-lg text-xs ${modalPeriod===p ? 'bg-gold-500 text-white' : 'text-muted-foreground hover:text-foreground hover:bg-graphite-800'}`}>{p}</button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -113,7 +120,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
               </div>
               <div className="p-4 pt-0 h-[320px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={series}>
+                  <AreaChart data={modalPeriod==='Ano' ? series : modalPeriod==='Mês' ? series.slice(-4) : modalPeriod==='Semana' ? series.slice(-2) : series.slice(-1)}>
                     <defs>
                       <linearGradient id="receita" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#ff7a00" stopOpacity={0.4}/>
@@ -141,7 +148,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
               </div>
               <div className="p-4 pt-0 h-[320px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={series}>
+                  <LineChart data={modalPeriod==='Ano' ? series : modalPeriod==='Mês' ? series.slice(-4) : modalPeriod==='Semana' ? series.slice(-2) : series.slice(-1)}>
                     <CartesianGrid stroke="rgba(200,200,200,0.15)" vertical={false} />
                     <XAxis dataKey="month" stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
                     <YAxis stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
@@ -177,7 +184,19 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                   <div className="p-4"><p className="text-sm text-muted-foreground">Treemap DRE por categorias</p></div>
                   <div className="p-4 pt-0 h-[320px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <Treemap data={[{name:'Serviços',size:650},{name:'Produtos',size:330},{name:'Deduções',size:120}]} dataKey="size" stroke="#1B232C" fill="#10b981" />
+                      <Treemap 
+                        data={[{name:'Serviços',size:650,fill:'#ff7a00'},{name:'Produtos',size:330,fill:'#38bdf8'},{name:'Deduções',size:120,fill:'#10b981'}]}
+                        dataKey="size" 
+                        stroke="#1B232C" 
+                        isAnimationActive={false}
+                        content={({ x, y, width, height, name, value, fill }: any) => (
+                          <g>
+                            <rect x={x} y={y} width={width} height={height} fill={fill} opacity={0.85} />
+                            <text x={x+8} y={y+22} fill="#0e0e0e" fontSize={12} fontWeight={600}>{name}</text>
+                            <text x={x+8} y={y+40} fill="#0e0e0e" fontSize={11}>{`R$ ${Number(value*1000).toLocaleString('pt-BR')}`}</text>
+                          </g>
+                        )}
+                      />
                     </ResponsiveContainer>
                   </div>
                 </div>
