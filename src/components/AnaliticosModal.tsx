@@ -307,6 +307,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                   </tbody>
                 </table>
               </div>
+              </div>
             )}
           </div>
         )}
