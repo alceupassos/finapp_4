@@ -61,7 +61,8 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
         byMonth[m].despesas += d.saida
         byMonth[m].saldo = d.saldo
       })
-      setSeries(months.map(m=>({ month:m, receita: byMonth[m]?.receita||0, despesas: byMonth[m]?.despesas||0, saldo: byMonth[m]?.saldo||0 })))
+      const anoSeries = months.map(m=>({ month:m, receita: byMonth[m]?.receita||0, despesas: byMonth[m]?.despesas||0, saldo: byMonth[m]?.saldo||0 }))
+      setSeries(anoSeries.length ? anoSeries : sampleSeries)
     })()
   }, [open])
 
@@ -134,7 +135,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                     <CartesianGrid stroke="rgba(200,200,200,0.15)" vertical={false} />
                     <XAxis dataKey="month" stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
                     <YAxis stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
-                    <Tooltip contentStyle={{ background: '#11161C', border: '1px solid #1B232C' }} />
+                    <Tooltip content={<ChartTooltip />} />
                     <Legend />
                     <Area type="monotone" dataKey="receita" stroke="#ff7a00" fill="url(#receita)" />
                     <Area type="monotone" dataKey="despesas" stroke="#38bdf8" fill="url(#despesas)" />
@@ -152,7 +153,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                     <CartesianGrid stroke="rgba(200,200,200,0.15)" vertical={false} />
                     <XAxis dataKey="month" stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
                     <YAxis stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
-                    <Tooltip contentStyle={{ background: '#11161C', border: '1px solid #1B232C' }} />
+                    <Tooltip content={<ChartTooltip />} />
                     <Legend />
                     <Line type="monotone" dataKey="saldo" stroke="#10b981" strokeWidth={2} dot={false} />
                   </LineChart>
@@ -204,7 +205,25 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                   <div className="p-4"><p className="text-sm text-muted-foreground">Sankey DFC</p></div>
                   <div className="p-4 pt-0 h-[320px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <Sankey width={600} height={320} data={{nodes:[{name:'Clientes'},{name:'Receitas'},{name:'Fornecedores'},{name:'Saídas'}],links:[{source:0,target:1,value:540},{source:2,target:3,value:360}]}} nodePadding={20} link={{ stroke: '#38bdf8' }} node={{ fill: '#ff7a00' }} />
+                      {
+                        (() => {
+                          const entradasTotal = dreRows.find(r=>r.id==='rec')?.value || 0
+                          const saidasTotal = dfcRows.find(r=>r.id==='saida')?.value || 0
+                          const folha = dfcRows.find(r=>r.id==='saida')?.children?.find(c=>c.label.includes('Folha'))?.value || Math.round(saidasTotal*0.3)
+                          const fornecedores = dfcRows.find(r=>r.id==='saida')?.children?.find(c=>c.label.includes('forne'))?.value || Math.round(saidasTotal*0.6)
+                          const tributos = Math.max(saidasTotal - (fornecedores+folha), 0)
+                          const nodes = [{name:'Clientes'},{name:'Receitas'},{name:'Caixa'},{name:'Saídas'},{name:'Fornecedores'},{name:'Folha'},{name:'Tributos'}]
+                          const links = [
+                            {source:0,target:1,value:entradasTotal/1000},
+                            {source:1,target:2,value:entradasTotal/1000},
+                            {source:2,target:3,value:saidasTotal/1000},
+                            {source:3,target:4,value:fornecedores/1000},
+                            {source:3,target:5,value:folha/1000},
+                            {source:3,target:6,value:tributos/1000},
+                          ]
+                          return <Sankey width={600} height={320} data={{nodes,links}} nodePadding={20} link={{ stroke: '#38bdf8' }} node={{ fill: '#ff7a00' }} />
+                        })()
+                      }
                     </ResponsiveContainer>
                   </div>
                 </div>
@@ -266,4 +285,29 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
       </motion.div>
     </motion.div>
   )
+}
+const ChartTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    const r = payload.find((p:any)=>p.dataKey==='receita')?.value || 0
+    const d = payload.find((p:any)=>p.dataKey==='despesas')?.value || 0
+    const s = payload.find((p:any)=>p.dataKey==='saldo')?.value
+    let msg = 'Sem dados suficientes'
+    if (typeof s === 'number') msg = s > 0 ? 'Positivo: saldo crescente.' : s < 0 ? 'Alerta: saldo negativo.' : 'Neutro: saldo estável.'
+    else if (r || d) msg = r > d ? 'Positivo: receita acima das despesas.' : r < d ? 'Alerta: despesas acima da receita.' : 'Neutro: equilíbrio.'
+    return (
+      <div className="bg-charcoal-900/95 backdrop-blur-xl border border-graphite-800 rounded-2xl p-3 shadow-xl">
+        <p className="text-xs text-muted-foreground">{label}</p>
+        <div className="mt-2 space-y-1">
+          {payload.map((entry:any, idx:number)=> (
+            <div key={idx} className="flex items-center justify-between">
+              <span className="text-xs text-muted-foreground">{entry.name}</span>
+              <span className="text-xs font-bold">{`R$ ${Number(entry.value).toLocaleString('pt-BR')}`}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs mt-2">{msg}</p>
+      </div>
+    )
+  }
+  return null
 }

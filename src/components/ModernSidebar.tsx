@@ -35,7 +35,6 @@ function getBottomItems(role: ModernSidebarProps['role']) {
   const items = [
     { icon: Bell, label: 'Notificações' },
     { icon: Settings, label: 'Configurações' },
-    { icon: FileText, label: 'Gerenciamento • Logs', adminOnly: true },
     { icon: LogOut, label: 'Sair' },
   ] as const
   return items.filter(i => !i.adminOnly || role === 'admin')
@@ -137,7 +136,6 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
             whileTap={{ scale: 0.98 }}
             onClick={() => {
               if (item.label === 'Configurações') onOpenSettings && onOpenSettings()
-              if (item.label === 'Gerenciamento • Logs') onOpenLogs && onOpenLogs()
             }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
           >

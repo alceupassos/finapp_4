@@ -198,7 +198,7 @@ export function App(){
         </main>
         <AnaliticosModal open={analiticosOpen} onClose={() => setAnaliticosOpen(false)} />
         <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
-        <LogsModal open={logsOpen} onClose={() => setLogsOpen(false)} />
+        <LogsModal open={settingsOpen && logsOpen} onClose={() => setLogsOpen(false)} />
       </div>
     </div>
   );

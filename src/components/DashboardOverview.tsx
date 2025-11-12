@@ -20,9 +20,19 @@ const baseData = [
 
 function dataByPeriod(period: Period) {
   if (period === 'Ano') return baseData
-  if (period === 'Mês') return baseData.slice(-1)
-  if (period === 'Semana') return baseData.slice(-1).map(d => ({ ...d, month: 'Semana' }))
-  return baseData.slice(-1).map(d => ({ ...d, month: 'Hoje' }))
+  if (period === 'Mês') return [
+    { month: 'Sem 1', receita: 210000, despesas: 128000 },
+    { month: 'Sem 2', receita: 230000, despesas: 135000 },
+    { month: 'Sem 3', receita: 190000, despesas: 120000 },
+    { month: 'Sem 4', receita: 210000, despesas: 137000 },
+  ]
+  if (period === 'Semana') return [
+    { month: 'Seg', receita: 42000, despesas: 25800 },
+    { month: 'Ter', receita: 36000, despesas: 24000 },
+  ]
+  return [
+    { month: 'Hoje', receita: 8500, despesas: 5200 },
+  ]
 }
 
 export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
@@ -56,7 +66,7 @@ export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
               <CartesianGrid stroke="rgba(200,200,200,0.12)" vertical={false} />
               <XAxis dataKey="month" stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} />
               <YAxis stroke="#bbb" tick={{ fill: '#bbb', fontSize: 12 }} tickFormatter={(n)=>`R$ ${Number(n).toLocaleString('pt-BR')}`} />
-              <Tooltip contentStyle={{ background: '#11161C', border: '1px solid #1B232C' }} formatter={(v:any)=>`R$ ${Number(v).toLocaleString('pt-BR')}`} />
+              <Tooltip content={<OverviewTooltip />} />
               <Legend />
               <Bar dataKey="receita" name="Receita" fill="url(#barReceita)" radius={[8,8,0,0]} filter="url(#barShadow)" />
               <Bar dataKey="despesas" name="Despesas" fill="url(#barDespesas)" radius={[8,8,0,0]} filter="url(#barShadow)" />
@@ -79,4 +89,33 @@ export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
       </div>
     </div>
   )
+}
+function overviewInsight(payload: any[]): string {
+  if (!payload || !payload.length) return 'Sem dados suficientes'
+  const r = payload.find((p:any)=>p.dataKey==='receita')?.value || 0
+  const d = payload.find((p:any)=>p.dataKey==='despesas')?.value || 0
+  const diff = r - d
+  if (diff > 0) return 'Positivo: receita supera despesas neste período.'
+  if (diff < 0) return 'Alerta: despesas acima da receita neste período.'
+  return 'Neutro: equilíbrio entre receita e despesas.'
+}
+
+const OverviewTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-charcoal-900/95 backdrop-blur-xl border border-graphite-800 rounded-2xl p-3 shadow-xl">
+        <p className="text-xs text-muted-foreground">{label}</p>
+        <div className="mt-2 space-y-1">
+          {payload.map((entry:any, idx:number)=> (
+            <div key={idx} className="flex items-center justify-between">
+              <span className="text-xs text-muted-foreground">{entry.name}</span>
+              <span className="text-xs font-bold">{`R$ ${Number(entry.value).toLocaleString('pt-BR')}`}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs mt-2">{overviewInsight(payload)}</p>
+      </div>
+    )
+  }
+  return null
 }
