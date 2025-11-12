@@ -27,6 +27,26 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
   const rows = tab === 'DRE' ? dreRows : dfcRows
   const [series, setSeries] = useState(sampleSeries)
   const [modalPeriod, setModalPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
+  const tbl = modalPeriod==='Ano' ? series : modalPeriod==='Mês' ? series.slice(-4) : modalPeriod==='Semana' ? series.slice(-2) : series.slice(-1)
+  const cols = tbl.map((s)=>s.month)
+
+  function buildSankey() {
+    const entradasTotal = dreRows.find(r=>r.id==='rec')?.value || 0
+    const saidasTotal = dfcRows.find(r=>r.id==='saida')?.value || 0
+    const folha = dfcRows.find(r=>r.id==='saida')?.children?.find(c=>c.label.toLowerCase().includes('folha'))?.value || Math.round(saidasTotal*0.3)
+    const fornecedores = dfcRows.find(r=>r.id==='saida')?.children?.find(c=>c.label.toLowerCase().includes('forn'))?.value || Math.round(saidasTotal*0.6)
+    const tributos = Math.max(saidasTotal - (fornecedores+folha), 0)
+    const nodes = [{name:'Clientes'},{name:'Receitas'},{name:'Caixa'},{name:'Saídas'},{name:'Fornecedores'},{name:'Folha'},{name:'Tributos'}]
+    const links = [
+      {source:0,target:1,value:entradasTotal/1000},
+      {source:1,target:2,value:entradasTotal/1000},
+      {source:2,target:3,value:saidasTotal/1000},
+      {source:3,target:4,value:fornecedores/1000},
+      {source:3,target:5,value:folha/1000},
+      {source:3,target:6,value:tributos/1000},
+    ]
+    return { nodes, links }
+  }
 
   useEffect(() => {
     if (!open) return
@@ -205,25 +225,7 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                   <div className="p-4"><p className="text-sm text-muted-foreground">Sankey DFC</p></div>
                   <div className="p-4 pt-0 h-[320px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      {
-                        (() => {
-                          const entradasTotal = dreRows.find(r=>r.id==='rec')?.value || 0
-                          const saidasTotal = dfcRows.find(r=>r.id==='saida')?.value || 0
-                          const folha = dfcRows.find(r=>r.id==='saida')?.children?.find(c=>c.label.includes('Folha'))?.value || Math.round(saidasTotal*0.3)
-                          const fornecedores = dfcRows.find(r=>r.id==='saida')?.children?.find(c=>c.label.includes('forne'))?.value || Math.round(saidasTotal*0.6)
-                          const tributos = Math.max(saidasTotal - (fornecedores+folha), 0)
-                          const nodes = [{name:'Clientes'},{name:'Receitas'},{name:'Caixa'},{name:'Saídas'},{name:'Fornecedores'},{name:'Folha'},{name:'Tributos'}]
-                          const links = [
-                            {source:0,target:1,value:entradasTotal/1000},
-                            {source:1,target:2,value:entradasTotal/1000},
-                            {source:2,target:3,value:saidasTotal/1000},
-                            {source:3,target:4,value:fornecedores/1000},
-                            {source:3,target:5,value:folha/1000},
-                            {source:3,target:6,value:tributos/1000},
-                          ]
-                          return <Sankey width={600} height={320} data={{nodes,links}} nodePadding={20} link={{ stroke: '#38bdf8' }} node={{ fill: '#ff7a00' }} />
-                        })()
-                      }
+                      <Sankey width={600} height={320} data={buildSankey()} nodePadding={24} nodeWidth={16} margin={{ left: 20, right: 20 }} link={{ stroke: '#38bdf8' }} node={{ fill: '#ff7a00' }} />
                     </ResponsiveContainer>
                   </div>
                 </div>
@@ -245,18 +247,18 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
               </div>
             ) : (
               <div className="rounded-2xl border border-border overflow-hidden">
-                <table className="w-full text-sm">
+                <table className="w-full text-xs">
                   <thead className="bg-graphite-900">
                     <tr>
-                      <th className="text-left p-3">{tab}</th>
-                      <th className="text-right p-3">Valor</th>
+                      <th className="text-left p-2">{tab}</th>
+                      <th className="text-right p-2">Valor</th>
                     </tr>
                   </thead>
                   <tbody>
                     {rows.map((r) => (
                       <>
                         <tr key={r.id} className="border-t border-border">
-                          <td className="p-3">
+                          <td className="p-2">
                             {r.children ? (
                               <button onClick={() => toggle(r.id)} className="inline-flex items-center gap-2 text-foreground">
                                 {expanded[r.id] ? <ChevronDown className="w-4 h-4"/> : <ChevronRight className="w-4 h-4"/>}
@@ -266,16 +268,41 @@ export function AnaliticosModal({ open, onClose }: AnaliticosModalProps) {
                               <span>{r.label}</span>
                             )}
                           </td>
-                          <td className="p-3 text-right">R$ {r.value.toLocaleString('pt-BR')}</td>
+                          <td className="p-2 text-right">R$ {r.value.toLocaleString('pt-BR')}</td>
                         </tr>
                         {expanded[r.id] && r.children?.map((c) => (
                           <tr key={c.id} className="border-t border-border bg-graphite-900/40">
-                            <td className="p-3 pl-8 text-muted-foreground">{c.label}</td>
-                            <td className="p-3 text-right">R$ {c.value.toLocaleString('pt-BR')}</td>
+                            <td className="p-2 pl-8 text-muted-foreground">{c.label}</td>
+                            <td className="p-2 text-right">R$ {c.value.toLocaleString('pt-BR')}</td>
                           </tr>
                         ))}
                       </>
                     ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-border overflow-x-auto">
+                <table className="min-w-[900px] w-full text-xs">
+                  <thead className="bg-graphite-900">
+                    <tr>
+                      <th className="text-left p-2">Linha</th>
+                      {cols.map((m,i)=>(<th key={i} className="text-right p-2">{m}</th>))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-t border-border">
+                      <td className="p-2">Receita Bruta</td>
+                      {tbl.map((s,i)=>(<td key={i} className="text-right p-2">R$ {Number(s.receita).toLocaleString('pt-BR')}</td>))}
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2">Deduções/Custos</td>
+                      {tbl.map((s,i)=>(<td key={i} className="text-right p-2">R$ {Number(s.despesas).toLocaleString('pt-BR')}</td>))}
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2">Resultado/Saldo</td>
+                      {tbl.map((s,i)=>(<td key={i} className="text-right p-2">R$ {Number(s.saldo ?? (s.receita - s.despesas)).toLocaleString('pt-BR')}</td>))}
+                    </tr>
                   </tbody>
                 </table>
               </div>
