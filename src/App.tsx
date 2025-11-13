@@ -18,6 +18,8 @@ import { scaleOnHover, item } from './lib/motion';
 import { AnaliticosModal } from './components/AnaliticosModal';
 import { SettingsModal } from './components/SettingsModal';
 import { LogsModal } from './components/LogsModal';
+import { LoginModal } from './components/LoginModal';
+import { getSession } from './services/auth';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
@@ -29,6 +31,7 @@ export function App(){
   const [logsOpen, setLogsOpen] = useState(false);
   const [oracleContext, setOracleContext] = useState<string>('');
   const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
+  const [session, setSession] = useState<any>(()=>getSession())
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'|'Notícias'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
 
@@ -38,9 +41,15 @@ export function App(){
     return () => window.removeEventListener('navigate', handler as any)
   })
 
+  useState(() => {
+    const handler = () => setSession(null)
+    window.addEventListener('logout', handler as any)
+    return () => window.removeEventListener('logout', handler as any)
+  })
+
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'light bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar role={role} onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
+      <ModernSidebar role={(session?.role as any) || role} onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} oracleContext={oracleContext} currentPeriod={period} onPeriodChange={(p)=>setPeriod(p)} />
         
@@ -203,6 +212,7 @@ export function App(){
         <AnaliticosModal open={analiticosOpen} onClose={() => setAnaliticosOpen(false)} />
         <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
         <LogsModal open={settingsOpen && logsOpen} onClose={() => setLogsOpen(false)} />
+        <LoginModal open={!session} onClose={()=>{}} onLogged={(s)=>setSession(s)} />
       </div>
     </div>
   );

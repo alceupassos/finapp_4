@@ -78,10 +78,10 @@ export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {kpis.map((k, idx) => (
           <Card key={k.name} className={`rounded-3xl bg-card border border-border shadow-card ring-1 ${tone[idx].ring} ${tone[idx].glow}`}>
-            <Flex justify="between" align="center">
+            <div className="flex items-center justify-between">
               <Title>{k.name}</Title>
               <BadgeDelta deltaType={k.delta >= 0 ? "moderateIncrease" : "moderateDecrease"}>{k.delta}%</BadgeDelta>
-            </Flex>
+            </div>
             <Metric>R$ {k.value.toLocaleString('pt-BR')}</Metric>
             <Text className="mt-2 text-sm text-muted-foreground">Comparado ao mês anterior</Text>
           </Card>

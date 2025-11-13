@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { Search, RefreshCw, ArrowUpRight, ArrowDownRight, Minus } from 'lucide-react'
+import { pushNews } from '../services/newsSync'
+import type { NewsItemRecord, IndicatorsRecord } from '../types/news'
 type NewsItem = { date: string; title: string; summary: string; sentiment: 'positivo'|'negativo'|'neutro'; source: string; url: string }
 
 const grupo: NewsItem[] = [
@@ -66,6 +68,15 @@ export function NewsPage() {
       selic: { value: selic2, dir: dir(ind.selic.value, selic2) },
       ibov: { value: ibov2, dir: dir(ind.ibov.value, ibov2) },
     })
+    const items: NewsItemRecord[] = list.map(n => ({ ...n, tab: tab, period }))
+    const indicators: IndicatorsRecord[] = [
+      { metric: 'clima', value: ind.weather.temp, direction: ind.weather.dir },
+      { metric: 'usd_brl', value: ind.usd.value, direction: ind.usd.dir },
+      { metric: 'btc_usd', value: ind.btc.value, direction: ind.btc.dir },
+      { metric: 'selic', value: ind.selic.value, direction: ind.selic.dir },
+      { metric: 'ibov', value: ind.ibov.value, direction: ind.ibov.dir },
+    ]
+    pushNews(items, indicators).catch(()=>{})
   }
 
   return (
@@ -89,15 +100,14 @@ export function NewsPage() {
             {k.dir==='up' ? <ArrowUpRight className="w-5 h-5 text-emerald-500"/> : k.dir==='down' ? <ArrowDownRight className="w-5 h-5 text-red-500"/> : <Minus className="w-5 h-5 text-graphite-400"/>}
           </div>
         ))}
-        <button onClick={mutate} className="rounded-2xl bg-secondary text-secondary-foreground border border-border shadow-card p-4 flex items-center justify-center gap-2"><RefreshCw className="w-4 h-4"/>Atualizar</button>
       </div>
-      <div className="flex items-center gap-2 bg-graphite-900 rounded-xl p-1 w-fit">
-        {tabs.map(t => (
-          <button key={t} onClick={()=>setTab(t)} className={`px-3 py-1.5 rounded-lg text-sm ${tab===t ? 'bg-gold-500 text-white' : 'text-muted-foreground hover:text-foreground hover:bg-graphite-800'}`}>{t}</button>
-        ))}
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 bg-graphite-900 rounded-xl p-1 w-fit">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-2 bg-graphite-900 rounded-xl p-1">
+          {tabs.map(t => (
+            <button key={t} onClick={()=>setTab(t)} className={`px-3 py-1.5 rounded-lg text-sm ${tab===t ? 'bg-gold-500 text-white' : 'text-muted-foreground hover:text-foreground hover:bg-graphite-800'}`}>{t}</button>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 bg-graphite-900 rounded-xl p-1">
           {periods.map(p => (
             <button key={p} onClick={()=>setPeriod(p)} className={`px-3 py-1.5 rounded-lg text-sm ${period===p ? 'bg-gold-500 text-white' : 'text-muted-foreground hover:text-foreground hover:bg-graphite-800'}`}>{p}</button>
           ))}
@@ -106,6 +116,7 @@ export function NewsPage() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground"/>
           <input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="Buscar por título, resumo ou fonte" className="pl-10 pr-3 py-2 rounded-xl bg-graphite-900 border border-graphite-800 text-sm"/>
         </div>
+        <button onClick={mutate} className="rounded-xl bg-secondary text-secondary-foreground border border-border px-3 py-2 text-sm flex items-center gap-2"><RefreshCw className="w-4 h-4"/>Atualizar</button>
       </div>
       <div className="rounded-3xl bg-card border border-border shadow-card">
         <div className="p-4">

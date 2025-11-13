@@ -1,0 +1,4 @@
+ssh key ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDiDa7OVjef/3RaKPmxecbPwvmXHruyVCEAIOf4V4V9eRJx0cBRSTSmOzqdvSN4+o30+pbHlWqAcxn5yvtzd/R+KvzHrVA4weHALRgtSZYd4pv0QTnttV/5aW6nAF9A8MTx3zj$
+
+root@147.93.183.55 senha B5b0dcf500@# 
+

@@ -15,8 +15,10 @@ async function restGet(path: string, opts: { query?: Record<string, string> } = 
   return res.json()
 }
 
-async function restPost(path: string, body: unknown) {
-  const url = `${BASE_URL}/rest/v1/${path}`
+async function restPost(path: string, body: unknown, query?: Record<string,string>) {
+  const urlObj = new URL(`${BASE_URL}/rest/v1/${path}`)
+  Object.entries(query || {}).forEach(([k,v])=> urlObj.searchParams.set(k,v))
+  const url = urlObj.toString()
   const res = await fetch(url, {
     method: 'POST',
     headers: {

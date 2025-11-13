@@ -10,10 +10,10 @@ import {
   BarChart3,
   Users,
   Bell,
-  Sigma,
   Newspaper
 } from 'lucide-react';
 import { useState } from 'react';
+import { getSession, logout } from '../services/auth';
 
 interface ModernSidebarProps {
   onOpenAnaliticos?: () => void
@@ -25,7 +25,6 @@ interface ModernSidebarProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', active: true },
   { icon: BarChart3, label: 'Análises', active: false },
-  { icon: Sigma, label: 'Analíticos Dashboard', active: false },
   { icon: TrendingUp, label: 'Fluxo de Caixa', active: false },
   { icon: Wallet, label: 'Conciliação', active: false },
   { icon: FileText, label: 'Relatórios', active: false },
@@ -39,11 +38,12 @@ function getBottomItems(role: ModernSidebarProps['role']) {
     { icon: Settings, label: 'Configurações' },
     { icon: LogOut, label: 'Sair' },
   ] as const
-  return items.filter(i => !i.adminOnly || role === 'admin')
+  return items
 }
 
 export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, role = 'cliente' }: ModernSidebarProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const session = getSession()
 
   return (
     <motion.aside
@@ -78,8 +78,9 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
             onHoverStart={() => setHoveredIndex(index)}
             onHoverEnd={() => setHoveredIndex(null)}
             onClick={() => {
-              if (item.label === 'Analíticos Dashboard') {
+              if (item.label === 'Análises') {
                 onOpenAnaliticos && onOpenAnaliticos()
+                return
               }
               if (item.label === 'Relatórios') {
                 const e = new CustomEvent('navigate', { detail: 'Relatórios' })
@@ -93,7 +94,7 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
                 const e = new CustomEvent('navigate', { detail: 'Clientes' })
                 window.dispatchEvent(e)
               }
-              if (item.label === 'Dashboard' || item.label === 'Análises' || item.label === 'Fluxo de Caixa' || item.label === 'Conciliação') {
+              if (item.label === 'Dashboard' || item.label === 'Fluxo de Caixa' || item.label === 'Conciliação') {
                 const e = new CustomEvent('navigate', { detail: item.label })
                 window.dispatchEvent(e)
               }
@@ -142,6 +143,11 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
             whileTap={{ scale: 0.98 }}
             onClick={() => {
               if (item.label === 'Configurações') onOpenSettings && onOpenSettings()
+              if (item.label === 'Sair') {
+                logout()
+                const e = new CustomEvent('logout')
+                window.dispatchEvent(e)
+              }
             }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
           >
@@ -166,6 +172,9 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
             <p className="text-sm font-semibold text-white truncate">Admin BPO</p>
             <p className="text-xs text-graphite-400 truncate">admin@bpo.com</p>
           </div>
+          {session?.mode && (
+            <span className={`ml-auto text-[6px] leading-none px-1 py-[1px] rounded-sm ${session.mode==='demo' ? 'bg-warning text-warning-foreground' : 'bg-success text-success-foreground'}`}>{session.mode==='demo' ? 'fin-demo' : 'Privado'}</span>
+          )}
         </div>
       </motion.div>
     </motion.aside>

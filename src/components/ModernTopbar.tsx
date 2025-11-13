@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Search, Bell, Sun, Moon, Menu, Bot } from 'lucide-react';
+import { getSession } from '../services/auth';
 import { useState } from 'react';
 import { OracleModal } from './OracleModal';
 
@@ -14,6 +15,7 @@ interface ModernTopbarProps {
 export function ModernTopbar({ onThemeToggle, isDark = true, oracleContext = '', currentPeriod = 'Ano', onPeriodChange }: ModernTopbarProps) {
   const [notifications, setNotifications] = useState(3);
   const [oracleOpen, setOracleOpen] = useState(false);
+  const session = getSession()
 
   return (
     <>
@@ -55,6 +57,7 @@ export function ModernTopbar({ onThemeToggle, isDark = true, oracleContext = '',
           >
             <Bot className="w-5 h-5" />
           </motion.button>
+          
 
           {/* Notifications */}
           <motion.button
