@@ -190,44 +190,77 @@ async function main() {
     .sort()
   if (!files.length) throw new Error('Nenhum arquivo válido encontrado em avant/exportado')
   console.log(`Importando ${files.length} arquivos exportados (${planMap.size} contas mapeadas)`)  
-  const dreEntries = []
-  const dfcEntries = []
-  const completedDre = new Set()
+  const companies = new Map()
+
+  const pickCompany = cnpj => {
+    if (!companies.has(cnpj)) {
+      companies.set(cnpj, { dre: [], dfc: [], dreFromDfc: [] })
+    }
+    return companies.get(cnpj)
+  }
+
   for (const file of files) {
     const absolute = path.join(folder, file)
     if (/^DRE/i.test(file)) {
       const { rows, company_cnpj } = parseMatrixDre(absolute, planMap)
       if (rows.length) {
-        completedDre.add(company_cnpj)
-        dreEntries.push(...rows)
+        const company = pickCompany(company_cnpj)
+        company.dre.push(...rows)
         console.log(`  · DRE ${company_cnpj}: ${rows.length} linhas agregadas`)
       }
       continue
     }
     const { dfcRows, dreMap, company_cnpj } = parseDfcFile(absolute, planMap)
     if (!dfcRows.length) continue
-    dfcEntries.push(...dfcRows)
-    if (!completedDre.has(company_cnpj)) {
-      dreEntries.push(...Array.from(dreMap.values()))
+    const company = pickCompany(company_cnpj)
+    company.dfc.push(...dfcRows)
+    if (dreMap.size) {
+      company.dreFromDfc.push(...Array.from(dreMap.values()))
     }
     console.log(`  · DFC ${company_cnpj}: ${dfcRows.length} lançamentos`)
   }
-  const snapshot = {
-    timestamp: new Date().toISOString(),
-    dreRecords: dreEntries.length,
-    dfcRecords: dfcEntries.length,
-    companies: Array.from(new Set([...dreEntries, ...dfcEntries].map(entry => entry.company_cnpj)))
+
+  if (!companies.size) throw new Error('Nenhuma empresa processada em avant/exportado')
+
+  const snapshotCompanies = []
+  let totalDre = 0
+  let totalDfc = 0
+  for (const [company_cnpj, company] of companies.entries()) {
+    if (!company.dre.length && company.dreFromDfc.length) {
+      company.dre.push(...company.dreFromDfc)
+    }
+    if (!company.dre.length && !company.dfc.length) {
+      continue
+    }
+    console.log(`Processando ${company_cnpj}: ${company.dre.length} DRE e ${company.dfc.length} DFC`)
+    if (env.supabaseUrl && env.supabaseAnon) {
+      if (company.dre.length) {
+        await chunkedPost(env.supabaseUrl, env.supabaseAnon, env.supabaseService, 'dre_entries', company.dre, 'company_cnpj,date,account')
+      }
+      if (company.dfc.length) {
+        await chunkedPost(env.supabaseUrl, env.supabaseAnon, env.supabaseService, 'cashflow_entries', company.dfc, 'company_cnpj,date,kind,category,amount')
+      }
+    }
+    totalDre += company.dre.length
+    totalDfc += company.dfc.length
+    snapshotCompanies.push({ company_cnpj, dreRecords: company.dre.length, dfcRecords: company.dfc.length })
   }
+
   if (env.supabaseUrl && env.supabaseAnon) {
-    console.log(`Enviando ${dreEntries.length} DRE e ${dfcEntries.length} DFC para Supabase`)
-    await chunkedPost(env.supabaseUrl, env.supabaseAnon, env.supabaseService, 'dre_entries', dreEntries, 'company_cnpj,date,account')
-    await chunkedPost(env.supabaseUrl, env.supabaseAnon, env.supabaseService, 'cashflow_entries', dfcEntries, 'company_cnpj,date,kind,category,amount')
+    console.log(`Enviamos ${totalDre} DRE e ${totalDfc} DFC em ${snapshotCompanies.length} empresas`)
   } else {
-    console.log('Supabase não configurada — pulei o upload dos dados')
+    console.log('Supabase não configurada — pulei os uploads dos dados')
   }
+
   const snapshotsDir = path.join(process.cwd(), 'var', 'snapshots')
   fs.mkdirSync(snapshotsDir, { recursive: true })
   const fileName = `volpe_exportado_${Date.now()}.json`
+  const snapshot = {
+    timestamp: new Date().toISOString(),
+    dreRecords: totalDre,
+    dfcRecords: totalDfc,
+    companies: snapshotCompanies
+  }
   fs.writeFileSync(path.join(snapshotsDir, fileName), JSON.stringify(snapshot, null, 2))
   console.log(`Snapshot gravado em var/snapshots/${fileName}`)
 }
