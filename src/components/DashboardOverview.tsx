@@ -1,9 +1,11 @@
 import { Card, Metric, Text, Flex, Title, BadgeDelta } from "@tremor/react"
 import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
+import { useEffect, useState } from 'react'
+import { loadCompaniesFallback, loadDFCFallback } from '../services/dataLoader'
 
 type Period = 'Dia' | 'Semana' | 'Mês' | 'Ano'
 
-const kpis = [
+const defaultKpis = [
   { name: "Receita", value: 847250, delta: 12.5 },
   { name: "Despesas", value: 523180, delta: -8.2 },
   { name: "Lucro", value: 324070, delta: 6.1 },
@@ -36,7 +38,41 @@ function dataByPeriod(period: Period) {
 }
 
 export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
-  const chartData = dataByPeriod(period)
+  const [chartData, setChartData] = useState(dataByPeriod(period))
+  const [kpis, setKpis] = useState(defaultKpis)
+  useEffect(() => {
+    ;(async () => {
+      try {
+        const companies = await loadCompaniesFallback()
+        const def = companies[0]?.cnpj || undefined
+        const dfc = await loadDFCFallback(def)
+        if (Array.isArray(dfc) && dfc.length) {
+          const byMonth: Record<string,{ receita:number; despesas:number; saldo:number }> = {}
+          dfc.forEach((d:any)=>{
+            const m = new Date(d.data).toLocaleString('pt-BR',{ month:'short' })
+            byMonth[m] ||= { receita:0, despesas:0, saldo:d.saldo }
+            byMonth[m].receita += d.entrada || 0
+            byMonth[m].despesas += d.saida || 0
+            byMonth[m].saldo = typeof d.saldo === 'number' ? d.saldo : (byMonth[m].receita - byMonth[m].despesas)
+          })
+          const months = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"]
+          const full = months.map(m=>({ month:m, receita: byMonth[m]?.receita||0, despesas: byMonth[m]?.despesas||0 }))
+          setChartData(period==='Ano' ? full : period==='Mês' ? full.slice(-4) : period==='Semana' ? full.slice(-2) : full.slice(-1))
+          const receitaTotal = dfc.reduce((a:number,b:any)=> a + (b.entrada||0), 0)
+          const despesasTotal = dfc.reduce((a:number,b:any)=> a + (b.saida||0), 0)
+          const lucro = receitaTotal - despesasTotal
+          setKpis([
+            { name: "Receita", value: receitaTotal, delta: 0 },
+            { name: "Despesas", value: despesasTotal, delta: 0 },
+            { name: "Lucro", value: lucro, delta: 0 },
+          ])
+          return
+        }
+      } catch {}
+      setChartData(dataByPeriod(period))
+      setKpis(defaultKpis)
+    })()
+  }, [period])
   const tone = [
     { ring: 'ring-orange-500/15', glow: 'shadow-glow-sm' },
     { ring: 'ring-sky-500/15', glow: 'shadow-glow-sm' },

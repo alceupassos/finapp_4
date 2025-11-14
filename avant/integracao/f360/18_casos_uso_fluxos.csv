@@ -1,0 +1,6 @@
+﻿Caso_Uso,Fluxo,Resultado,Tempo_Ganho
+Restaurante multicanal (física + iFood + Rappi),PDV → F360 + iFood API → F360 + Rappi API → F360,"Consolidação de vendas, conciliação automática de pagamentos",10+ horas/mês
+Franquia com múltiplas lojas,Loja 1 PDV → F360 + Loja 2 PDV → F360 + Loja 3 PDV → F360,"Dashboard centralizado, DRE consolidado",15+ horas/mês
+Gestão automática de contas a pagar,SEFAZ → F360 (automático) → Contas a Pagar criadas,Eliminação de lançamentos manuais de fornecedores,8+ horas/mês
+Conciliação bancária inteligente,Bancos (Open Finance) → F360 (automático) → Conciliação pronta,"Conciliação 0-click, previsibilidade financeira",12+ horas/mês
+Integração de sistema legado,ERP Legado → Webhook F360 → Títulos criados,Integração sem refazer sistema existente,Personalizado

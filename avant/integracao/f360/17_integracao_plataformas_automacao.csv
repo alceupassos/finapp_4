@@ -1,0 +1,5 @@
+﻿Plataforma,Tipo,Conectores,Custo,Ideal_Para
+n8n,Automação NoCode,300+ conectores + API customizadas,Baixo (self-hosted ou cloud),"Empresas técnicas, escalabilidade, flexibilidade"
+Zapier,Automação NoCode,5000+ integrações pré-prontas,Médio-alto (cloud apenas),"Simplicidade, muitas integrações prontas"
+Make,Automação NoCode,Muitas integrações + flexibilidade,Médio (popular no Brasil),"Marketing, empreendedores, equipes de T.I"
+Power Automate,Automação NoCode,Focado em ecossistema Microsoft,Incluído em Office 365,Empresas com Microsoft 365

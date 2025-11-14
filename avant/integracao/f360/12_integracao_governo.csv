@@ -1,0 +1,3 @@
+﻿Orgao,Tipo,Funcionalidade,Processo,Beneficio,Dados
+SEFAZ,Integração Automática,Importação automática de Notas Fiscais Eletrônicas (NF-e),SEFAZ → F360 Finanças → Contas a Pagar,Eliminação de lançamentos manuais,NF-e emitidas por fornecedores
+SEFAZ (NFS-e),Integração Automática,Importação de Notas Fiscais de Serviço Eletrônicas,Busca automática de NFS-e emitidas,"Conferência automática, prevenção de fraudes",Notas de serviço emitidas

@@ -7,7 +7,17 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "bash scripts/deploy.sh"
+    "deploy": "bash scripts/deploy.sh",
+    "snapshot": "node scripts/snapshot.mjs",
+    "snapshot:watch": "node scripts/snapshot.mjs --watch",
+    "key:provision": "bash scripts/provision-ssh.sh",
+    "starter:secrets": "bash scripts/starter/setup_github_secrets.sh",
+    "import:excel": "node scripts/import_from_excel.mjs",
+    "import:f360": "node scripts/import_from_f360.mjs",
+    "discover:db": "node scripts/discover_erp_db.mjs",
+    "import:db": "node scripts/import_from_db.mjs",
+    "publish:f360": "node scripts/f360_publish_events.mjs",
+    "publish:f360:batch": "node scripts/f360_publish_batch.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -29,7 +39,10 @@
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
     "xlsx": "^0.18.5",
-    "zod": "^3.25.76"
+    "zod": "^3.25.76",
+    "tesseract.js": "^4.1.3",
+    "pg": "^8.11.3",
+    "mysql2": "^3.10.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
