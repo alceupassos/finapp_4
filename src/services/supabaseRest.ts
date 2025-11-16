@@ -40,8 +40,8 @@ async function restPost(path: string, body: unknown, query?: Record<string,strin
 export const SupabaseRest = {
   restGet,
   restPost,
-  getCompanies: () => restGet('integration_f360', { query: { select: 'grupo_empresarial,cliente_nome,cnpj' } }),
-  getDRE: (cnpj: string) => restGet('dre_entries', { query: { cnpj: `eq.${cnpj}`, select: '*' } }),
-  getDFC: (cnpj: string) => restGet('cashflow_entries', { query: { cnpj: `eq.${cnpj}`, select: '*' } }),
+  getCompanies: () => restGet('integration_f360', { query: { select: 'cliente_nome,cnpj' } }),
+  getDRE: (cnpj: string) => restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj}`, select: '*' } }),
+  getDFC: (cnpj: string) => restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj}`, select: '*' } }),
   log: (item: { level: 'info'|'warn'|'error'; service: 'UI'|'API'|'Edge'; endpoint?: string; companyCnpj?: string; userId?: string; message: string; latencyMs?: number }) => restPost('app_logs', { ...item, ts: new Date().toISOString() })
 }

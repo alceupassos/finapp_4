@@ -23,6 +23,14 @@ function onlyDigits(value) {
   return String(value || '').replace(/\D/g, '')
 }
 
+function getRequestedCnpj() {
+  const arg = process.argv.slice(2).find(value => value.startsWith('--company=') || value.startsWith('--cnpj='))
+  const fromArg = arg ? arg.split('=', 2)[1] : ''
+  const fromEnv = process.env.VOLPE_IMPORT_COMPANY_CNPJ || process.env.VOLPE_IMPORT_CNPJ || ''
+  const requested = fromArg || fromEnv
+  return onlyDigits(requested)
+}
+
 function toNumberBR(value) {
   if (value == null) return 0
   if (typeof value === 'number') return value
@@ -80,35 +88,49 @@ function inferNatureFromAccount(account, planMap) {
   return 'receita'
 }
 
-function chunkedPost(base, anon, serviceKey, table, rows, conflict) {
-  if (!rows.length || !base || !anon) return Promise.resolve([])
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function postChunkWithRetry({ url, headers, body, table, attempt = 1, maxAttempts = 5 }) {
+  try {
+    const response = await fetch(url, { method: 'POST', headers, body })
+    if (!response.ok) {
+      const text = await response.text()
+      throw new Error(`Supabase ${table} ${response.status}: ${text}`)
+    }
+    return response.json()
+  } catch (error) {
+    if (attempt >= maxAttempts) {
+      throw new Error(`Supabase ${table} falhou após ${attempt} tentativas: ${error.message}`)
+    }
+    const backoff = 500 * Math.pow(2, attempt - 1)
+    await delay(backoff + Math.floor(Math.random() * 200))
+    return postChunkWithRetry({ url, headers, body, table, attempt: attempt + 1, maxAttempts })
+  }
+}
+
+async function chunkedPost(base, anon, serviceKey, table, rows, conflict) {
+  if (!rows.length || !base || !anon) return []
   const chunkSize = 500
-  const promises = []
+  const results = []
+  const baseUrl = base.replace(/\/$/, '')
+  const targetUrl = conflict
+    ? `${baseUrl}/rest/v1/${table}?on_conflict=${encodeURIComponent(conflict)}`
+    : `${baseUrl}/rest/v1/${table}`
+  const headers = {
+    apikey: anon,
+    Authorization: `Bearer ${serviceKey || anon}`,
+    'Content-Type': 'application/json',
+    Prefer: 'return=representation, resolution=ignore-duplicates'
+  }
   for (let i = 0; i < rows.length; i += chunkSize) {
     const chunk = rows.slice(i, i + chunkSize)
-    const url = conflict
-      ? `${base.replace(/\/$/, '')}/rest/v1/${table}?on_conflict=${encodeURIComponent(conflict)}`
-      : `${base.replace(/\/$/, '')}/rest/v1/${table}`
-    promises.push(
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          apikey: anon,
-          Authorization: `Bearer ${serviceKey || anon}`,
-          'Content-Type': 'application/json',
-          Prefer: 'return=representation, resolution=ignore-duplicates'
-        },
-        body: JSON.stringify(chunk)
-      }).then(async res => {
-        if (!res.ok) {
-          const text = await res.text()
-          throw new Error(`Supabase ${table} ${res.status}: ${text}`)
-        }
-        return res.json()
-      })
-    )
+    console.log(`    → Enviando chunk ${i / chunkSize + 1} (${chunk.length} registros) para ${table}`)
+    const chunkResult = await postChunkWithRetry({ url: targetUrl, headers, body: JSON.stringify(chunk), table })
+    results.push(chunkResult)
   }
-  return Promise.all(promises)
+  return results
 }
 
 function parseMatrixDre(filePath, planMap) {
@@ -189,7 +211,8 @@ async function main() {
     .filter(file => file.match(/\.(xlsx|csv|json)$/i) && !file.startsWith('~$'))
     .sort()
   if (!files.length) throw new Error('Nenhum arquivo válido encontrado em avant/exportado')
-  console.log(`Importando ${files.length} arquivos exportados (${planMap.size} contas mapeadas)`)  
+  const targetCnpj = getRequestedCnpj()
+  console.log(`Importando ${files.length} arquivos exportados (${planMap.size} contas mapeadas)${targetCnpj ? ` — filtro CNPJ ${targetCnpj}` : ''}`)
   const companies = new Map()
 
   const pickCompany = cnpj => {
@@ -221,11 +244,15 @@ async function main() {
   }
 
   if (!companies.size) throw new Error('Nenhuma empresa processada em avant/exportado')
+  if (targetCnpj && !companies.has(targetCnpj)) {
+    throw new Error(`Nenhum lançamento encontrado para o CNPJ ${targetCnpj}`)
+  }
 
   const snapshotCompanies = []
   let totalDre = 0
   let totalDfc = 0
   for (const [company_cnpj, company] of companies.entries()) {
+    if (targetCnpj && company_cnpj !== targetCnpj) continue
     if (!company.dre.length && company.dreFromDfc.length) {
       company.dre.push(...company.dreFromDfc)
     }

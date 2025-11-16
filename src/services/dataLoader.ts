@@ -11,7 +11,7 @@ export async function loadCompaniesFallback() {
     console.warn('[dataLoader] Failed to load companies from Supabase:', err)
   }
   console.log('[dataLoader] Using mock company fallback')
-  return [{ grupo_empresarial: 'Grupo Volpe', cliente_nome: 'Volpe Tech', cnpj: '11.111.111/0100-11' }]
+  return [{ cliente_nome: 'Volpe Tech', cnpj: '26888098000159' }]
 }
 
 export async function loadDREFallback(cnpj?: string) {
@@ -20,7 +20,14 @@ export async function loadDREFallback(cnpj?: string) {
       const data = await SupabaseRest.getDRE(cnpj)
       if (Array.isArray(data) && data.length) {
         console.log('[dataLoader] Supabase DRE loaded for', cnpj, ':', data.length, 'entries')
-        return data
+        // Transformar { date, account, nature, amount } -> { data, conta, natureza, valor }
+        const transformed = data.map((d: any) => ({
+          data: d.date,
+          conta: d.account,
+          natureza: d.nature,
+          valor: Number(d.amount)
+        }))
+        return transformed
       }
     }
   } catch (err) {
@@ -37,7 +44,21 @@ export async function loadDFCFallback(cnpj?: string) {
       const data = await SupabaseRest.getDFC(cnpj)
       if (Array.isArray(data) && data.length) {
         console.log('[dataLoader] Supabase DFC loaded for', cnpj, ':', data.length, 'entries')
-        return data
+        // Transformar { date, kind, amount } -> { data, entrada, saida, saldo }
+        let saldo = 0
+        const transformed = data.map((d: any) => {
+          const entrada = d.kind === 'in' ? Number(d.amount) : 0
+          const saida = d.kind === 'out' ? Number(d.amount) : 0
+          saldo += entrada - saida
+          return {
+            data: d.date,
+            descricao: d.category || '',
+            entrada,
+            saida,
+            saldo
+          }
+        })
+        return transformed
       }
     }
   } catch (err) {

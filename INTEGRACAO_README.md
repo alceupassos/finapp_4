@@ -107,6 +107,81 @@ npx tsx src/scripts/omie-import.ts
 - Sincroniza todos os clientes do Omie para a tabela `omie_clients`
 - Usa upsert, então pode ser executado múltiplas vezes sem duplicação
 
+### 5. Integração AES / F360 (titulos)
+```bash
+pnpm run import:aes
+```
+- Lê `avant/integracao/f360/primeirocliente.csv`, trata campos opcionais (`categoria`, `centro de custo`) e agrega lançamentos por `Plano de Contas`.
+- Insere os resultados em `dre_entries` e `cashflow_entries` usando as variáveis `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` e `SUPABASE_SERVICE_ROLE_KEY`.
+- Opcionalmente publica cada título no webhook F360 informado por `F360_WEBHOOK_TITULOS`, `F360_TOKEN` e `F360_CNPJ`.
+  - O script infere centros/categoria mesmo que o CSV venha com campos vazios (ex.: `Observações`, palavras-chave pessoais ou `Plano de Contas`).
+  - Cada parcela gera um rateio com competência em `MM-01`, centro de custo `'AES Geral'` ou derivado e plano de contas preenchido automaticamente.
+
+Configure seu `.env.local` antes de rodar:
+```env
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+F360_TOKEN=65864535-8a5c-4a4c-ab8e-4f1f4196bfa6
+F360_CNPJ=02723552000153
+F360_WEBHOOK_TITULOS=https://api.f360.one/webhook/titulos
+```
+
+Ao final, o script grava um snapshot em `var/snapshots/aes_integration_<timestamp>.json` com totais de registros, valores e quantidade de payloads enviados.
+
+### 6. Volpe Agent — dados 2025 (F360)
+```bash
+pnpm run volpe:agent
+```
+- Usa o token `F360_LOGIN_TOKEN` + `F360_BASE_URL` para acessar a API pública (`PublicLoginAPI/DoLogin`).
+- Lê os CNPJs listados em `avant/integracao/f360/volpe.csv`/`.xls` e solicita DRE/DFC para todo o ano de `2025` (período configurável via `F360_QUERY_PARAMS`).
+- Valida os lançamentos recebidos, insere os registros em `dre_entries`/`cashflow_entries` e gera `var/snapshots/volpe_agent_<timestamp>.json` contendo totais por empresa e alertas.
+
+Variáveis esperadas:
+```env
+VITE_SUPABASE_URL=
+VITE_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+F360_LOGIN_TOKEN=
+F360_BASE_URL=https://api.f360.one
+F360_DRE_PATH=PublicAPI/ConsultarDRE
+F360_DFC_PATH=PublicAPI/ConsultarDFC
+F360_GROUP=Grupo Volpe
+F360_QUERY_PARAMS={"periodoInicio":"2025-01-01","periodoFim":"2025-12-31","ano":"2025"}
+VOLPE_LANCAMENTOS_PATH=
+VOLPE_TOKEN_LOGIN=
+VOLPE_TOKEN_SENHA=
+VOLPE_TOKEN_TOKEN=
+```
+
+Opcionalmente, use:
+```env
+F360_TOKEN=223b065a-1873-4cfe-a36b-f092c602a03e
+F360_TITULOS_PATH=f360-titulos
+F360_DRY_RUN=true
+```
+#### Montagem local dos lançamentos Volpe
+
+- Coloque o arquivo de lançamentos (XLSX/CSV/JSON) em `avant/integracao/f360/volpe_lancamentos.xlsx|csv|json` ou aponte `VOLPE_LANCAMENTOS_PATH` para qualquer caminho. O script identifica automaticamente o primeiro arquivo existente.
+- Cada linha deve conter pelo menos `CNPJ`, `Valor` (ou `amount`), `Data` (ou `date`) e um identificador de conta (`Plano de Contas`, `Conta`, `Categoria`). O campo `Tipo`/`natureza` indica se é receita (in) ou despesa (out); valores negativos também são tratados como despesas.
+- O agente agrupa os lançamentos por CNPJ/conta/data e publica os resultados em `dre_entries` (natureza receita/despesa) e `cashflow_entries` (`kind` in/out). Enquanto houver lançamentos locais válidos para cada CNPJ, ele pula as chamadas à API pública F360.
+ - Para agilizar a configuração, o `VOLPE_TOKEN.txt` em `avant/integracao/f360` já traz o login e o token compartilhado. Atualize `VOLPE_TOKEN_LOGIN`, `VOLPE_TOKEN_SENHA` (para referência) e preencha `VOLPE_TOKEN_TOKEN` com o valor `223b065a-1873-4cfe-a36b-f092c602a03e` (ou outro token gerado pelo F360). O script também aceita `F360_LOGIN_TOKEN` quando ele for exposto diretamente.
+ 
+O Grupo Volpe compartilha **um único login F360** capaz de abrir todos os 13 CNPJs listados; configure `F360_LOGIN_TOKEN`, `F360_DRE_PATH` e `F360_DFC_PATH` uma vez para que o agente aplique os dados para cada empresa.
+O Grupo Volpe compartilha **um único login F360** capaz de abrir todos os 13 CNPJs listados; configure `F360_LOGIN_TOKEN`, `F360_DRE_PATH` e `F360_DFC_PATH` uma vez para que o agente aplique os dados para cada empresa.
+
+### 7. Importar planilhas exportadas do `avant/exportado`
+
+Uma alternativa aos endpoints públicos é usar os arquivos que você exportou manualmente para `avant/exportado/`. Cada planilha nomeada com o CNPJ traz os lançamentos do DFC, enquanto `DRE<cnpj>.xlsx` contém o demonstrativo consolidado da matriz.
+
+- Execute:
+```bash
+pnpm run import:volpe-exportado
+```
+- O script percorre `avant/exportado/`, agrega os lançamentos por conta, centro e categoria, infere naturezas e envia os registros para `dre_entries` e `cashflow_entries`.
+- O snapshot resultante é salvo em `var/snapshots/volpe_exportado_<timestamp>.json`.
+- Use `manualf360.txt` dentro de `avant/exportado/` como referência das URLs e endpoints públicos utilizados pela F360, caso queira migrar para chamadas via API no futuro.
+
 ## Uso do Cliente Supabase no Código
 
 ### Cliente Básico (Browser)

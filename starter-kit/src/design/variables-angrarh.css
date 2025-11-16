@@ -1,0 +1,13 @@
+:root{
+  --color-brand-primary:#0C6FF9;
+  --color-brand-accent:#0FD3A6;
+  --color-brand-dark:#0B1220;
+  --color-ui-bg:#0B1220;
+  --color-ui-surface:#121826;
+  --color-ui-border:#1E293B;
+  --color-ui-muted:#64748B;
+  --color-semantic-success:#10B981;
+  --color-semantic-warning:#F59E0B;
+  --color-semantic-danger:#EF4444;
+  --color-semantic-info:#3B82F6;
+}
