@@ -37,7 +37,7 @@ function dataByPeriod(period: Period) {
   ]
 }
 
-export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
+export function DashboardOverview({ period = 'Ano', session }: { period?: Period; session?: any }) {
   const [chartData, setChartData] = useState(dataByPeriod(period))
   const [kpis, setKpis] = useState(defaultKpis)
   useEffect(() => {
@@ -72,7 +72,7 @@ export function DashboardOverview({ period = 'Ano' }: { period?: Period }) {
       setChartData(dataByPeriod(period))
       setKpis(defaultKpis)
     })()
-  }, [period])
+  }, [period, session?.accessToken])
   const tone = [
     { ring: 'ring-orange-500/15', glow: 'shadow-glow-sm' },
     { ring: 'ring-sky-500/15', glow: 'shadow-glow-sm' },

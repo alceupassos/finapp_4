@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ModernSidebar } from './components/ModernSidebar';
 import { ModernTopbar } from './components/ModernTopbar';
 import { AnimatedKPICard } from './components/AnimatedKPICard';
@@ -35,17 +35,17 @@ export function App(){
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'|'Notícias'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
 
-  useState(() => {
+  useEffect(() => {
     const handler = (e: any) => setCurrentView(e.detail)
     window.addEventListener('navigate', handler as any)
     return () => window.removeEventListener('navigate', handler as any)
-  })
+  }, [])
 
-  useState(() => {
+  useEffect(() => {
     const handler = () => setSession(null)
     window.addEventListener('logout', handler as any)
     return () => window.removeEventListener('logout', handler as any)
-  })
+  }, [])
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'light bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
@@ -100,7 +100,7 @@ export function App(){
 
           {/* Tremor Overview */}
           <section className="mb-6">
-            <DashboardOverview period={period} />
+            <DashboardOverview period={period} session={session} key={`overview-${session? 'auth':'anon'}`} />
           </section>
 
           {/* Cashflow + Virtual Card */}
