@@ -1,13 +1,16 @@
+import { getSupabaseAccessToken } from './auth'
+
 const BASE_URL = import.meta.env.VITE_SUPABASE_URL as string
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
 async function restGet(path: string, opts: { query?: Record<string, string> } = {}) {
   const url = new URL(`${BASE_URL}/rest/v1/${path}`)
   Object.entries(opts.query || {}).forEach(([k, v]) => url.searchParams.set(k, v))
+  const token = getSupabaseAccessToken()
   const res = await fetch(url.toString(), {
     headers: {
       apikey: ANON_KEY,
-      Authorization: `Bearer ${ANON_KEY}`,
+      Authorization: `Bearer ${token || ANON_KEY}`,
       Accept: 'application/json',
     },
   })
@@ -19,11 +22,12 @@ async function restPost(path: string, body: unknown, query?: Record<string,strin
   const urlObj = new URL(`${BASE_URL}/rest/v1/${path}`)
   Object.entries(query || {}).forEach(([k,v])=> urlObj.searchParams.set(k,v))
   const url = urlObj.toString()
+  const token = getSupabaseAccessToken()
   const res = await fetch(url, {
     method: 'POST',
     headers: {
       apikey: ANON_KEY,
-      Authorization: `Bearer ${ANON_KEY}`,
+      Authorization: `Bearer ${token || ANON_KEY}`,
       'Content-Type': 'application/json',
       Prefer: 'return=representation',
     },

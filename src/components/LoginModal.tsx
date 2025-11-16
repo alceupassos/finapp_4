@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { validateMockLogin } from '../services/auth'
+import { validateMockLogin, loginSupabase } from '../services/auth'
 import { fadeIn, slideUp, scaleOnHover } from '../lib/motion'
 
 interface LoginModalProps {
@@ -17,7 +17,9 @@ export function LoginModal({ open, onClose, onLogged }: LoginModalProps) {
   if (!open) return null
   const submit = async () => {
     setError('')
-    const s = await validateMockLogin(email, password)
+    // tenta login Supabase primeiro; se falhar, cai para mock (modo demo)
+    let s = await loginSupabase(email, password)
+    if (!s) s = await validateMockLogin(email, password)
     if (!s) { setError('Credenciais inválidas'); return }
     onLogged(s)
     onClose()
@@ -40,8 +42,9 @@ export function LoginModal({ open, onClose, onLogged }: LoginModalProps) {
             <motion.button whileHover={scaleOnHover.whileHover} whileTap={{ scale: 0.98 }} onClick={submit} className="px-3 py-1 rounded-sm bg-emerald-400 text-white hover:bg-emerald-500">Entrar</motion.button>
           </div>
           {forgot && (
-            <div className="rounded-md border border-graphite-800 p-3 text-xs text-muted-foreground">
-              Use sua senha ativa para modo privado. Para modo demo, digite <span className="font-semibold text-foreground">fin-demo</span>. Em produção, este fluxo aponta para recuperação via e‑mail/WhatsApp.
+            <div className="rounded-md border border-graphite-800 p-3 text-xs text-muted-foreground space-y-1">
+              <p>Login padrão usa Supabase (usuário real). Se quiser modo demo, use senha <span className="font-semibold text-foreground">fin-demo</span>.</p>
+              <p>Recuperação de senha real será integrada depois.</p>
             </div>
           )}
         </div>
