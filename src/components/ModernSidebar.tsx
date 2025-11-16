@@ -1,182 +1,315 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  LayoutDashboard, 
-  TrendingUp, 
-  Wallet, 
-  FileText, 
+  BarChart3, 
+  Users, 
   Settings, 
-  LogOut,
+  LogOut, 
+  ChevronLeft, 
   ChevronRight,
-  BarChart3,
-  Users,
-  Bell,
-  Newspaper
-} from 'lucide-react';
-import { useState } from 'react';
-import { getSession, logout } from '../services/auth';
+  Sparkles,
+  Activity,
+  Zap,
+  Brain,
+  Home,
+  FileText,
+  Monitor,
+  TrendingUp
+} from 'lucide-react'
+import { useAuth } from '../hooks/useAuth'
+import { usePermissions } from '../hooks/usePermissions'
+import { cn } from '../lib/utils'
 
-interface ModernSidebarProps {
-  onOpenAnaliticos?: () => void
-  onOpenSettings?: () => void
-  onOpenLogs?: () => void
-  role?: 'admin' | 'cliente' | 'franqueado' | 'personalizado'
+interface SidebarProps {
+  isCollapsed: boolean
+  onToggle: () => void
 }
 
-const menuItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', active: true },
-  { icon: BarChart3, label: 'Análises', active: false },
-  { icon: TrendingUp, label: 'Fluxo de Caixa', active: false },
-  { icon: Wallet, label: 'Conciliação', active: false },
-  { icon: FileText, label: 'Relatórios', active: false },
-  { icon: Newspaper, label: 'Notícias', active: false },
-  { icon: Users, label: 'Clientes', active: false },
-];
+export const ModernSidebar = ({ isCollapsed, onToggle }: SidebarProps) => {
+  const { user, logout } = useAuth()
+  const { canView } = usePermissions()
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 
-function getBottomItems(role: ModernSidebarProps['role']) {
-  const items = [
-    { icon: Bell, label: 'Notificações' },
-    { icon: Settings, label: 'Configurações' },
-    { icon: LogOut, label: 'Sair' },
-  ] as const
-  return items
-}
+  const menuItems = [
+    {
+      id: 'dashboard',
+      label: 'Dashboard',
+      icon: Home,
+      path: '/dashboard',
+      permission: 'view_dashboard'
+    },
+    {
+      id: 'extrato-lancamentos',
+      label: 'Extrato de Lançamentos',
+      icon: FileText,
+      path: '/extrato-lancamentos',
+      permission: 'view_reports'
+    },
+    {
+      id: 'analises',
+      label: 'Análises',
+      icon: TrendingUp,
+      path: '/analises',
+      permission: 'view_analysis'
+    },
+    {
+      id: 'clients',
+      label: 'Clientes',
+      icon: Users,
+      path: '/clients',
+      permission: 'view_clients'
+    },
+    {
+      id: 'noc',
+      label: 'NOC',
+      icon: Monitor,
+      path: '/noc',
+      permission: 'view_noc'
+    },
+    {
+      id: 'settings',
+      label: 'Configurações',
+      icon: Settings,
+      path: '/settings',
+      permission: 'view_settings'
+    }
+  ]
 
-export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, role = 'cliente' }: ModernSidebarProps) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const session = getSession()
+  const filteredMenuItems = menuItems.filter(item => canView(item.permission))
 
   return (
-    <motion.aside
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-charcoal-950 via-graphite-950 to-charcoal-900 border-r border-graphite-900 flex flex-col z-50 pattern-soft"
+    <motion.div
+      initial={{ x: -300 }}
+      animate={{ x: 0 }}
+      transition={{ type: "spring", damping: 25, stiffness: 200 }}
+      className={cn(
+        "relative h-screen bg-gradient-to-b from-white via-purple-50 to-blue-50",
+        "dark:from-gray-900 dark:via-purple-900/10 dark:to-blue-900/10",
+        "border-r border-gray-200 dark:border-gray-800",
+        "shadow-2xl shadow-purple-500/10",
+        isCollapsed ? "w-20" : "w-72"
+      )}
     >
-      {/* Logo */}
-      <div className="p-6 border-b border-graphite-900 flex justify-center">
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.2 }}
+      {/* Header */}
+      <div className={cn(
+        "flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800",
+        isCollapsed && "justify-center"
+      )}>
+        {!isCollapsed && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-3"
+          >
+            <motion.div
+              animate={{ 
+                rotate: [0, 360],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-lg opacity-30"></div>
+              <Brain className="w-8 h-8 text-purple-600 relative z-10" />
+            </motion.div>
+            <div>
+              <h2 className="text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                iFin App
+              </h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400">BPO Financeiro</p>
+            </div>
+          </motion.div>
+        )}
+        
+        <motion.button
+          whileHover={{ scale: 1.1, rotate: 180 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={onToggle}
+          className={cn(
+            "p-2 rounded-lg hover:bg-white/50 dark:hover:bg-gray-800/50 transition-colors",
+            "bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-800/20 dark:to-blue-800/20"
+          )}
         >
-          <img 
-            src="/finapp-logo.png" 
-            alt="FinApp Logo" 
-            className="h-16 w-auto object-contain"
-          />
+          {isCollapsed ? 
+            <ChevronRight className="w-5 h-5 text-purple-600" /> : 
+            <ChevronLeft className="w-5 h-5 text-purple-600" />
+          }
+        </motion.button>
+      </div>
+
+      {/* User Info */}
+      <div className={cn(
+        "p-6 border-b border-gray-200 dark:border-gray-800",
+        isCollapsed && "px-3"
+      )}>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="flex items-center gap-3"
+        >
+          <motion.div
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="relative"
+          >
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+              <User className="w-5 h-5 text-white" />
+            </div>
+            <motion.div
+              className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"
+              animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </motion.div>
+          
+          {!isCollapsed && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex-1"
+            >
+              <p className="font-medium text-sm text-gray-900 dark:text-white truncate">
+                {user?.name}
+              </p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 capitalize">
+                {user?.role}
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
-      {/* Menu Principal */}
-      <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
-        {menuItems.map((item, index) => (
-          <motion.button
-            key={item.label}
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.1 * index }}
-            onHoverStart={() => setHoveredIndex(index)}
-            onHoverEnd={() => setHoveredIndex(null)}
-            onClick={() => {
-              if (item.label === 'Análises') {
-                onOpenAnaliticos && onOpenAnaliticos()
-                return
-              }
-              if (item.label === 'Relatórios') {
-                const e = new CustomEvent('navigate', { detail: 'Relatórios' })
-                window.dispatchEvent(e)
-              }
-              if (item.label === 'Notícias') {
-                const e = new CustomEvent('navigate', { detail: 'Notícias' })
-                window.dispatchEvent(e)
-              }
-              if (item.label === 'Clientes') {
-                const e = new CustomEvent('navigate', { detail: 'Clientes' })
-                window.dispatchEvent(e)
-              }
-              if (item.label === 'Dashboard' || item.label === 'Fluxo de Caixa' || item.label === 'Conciliação') {
-                const e = new CustomEvent('navigate', { detail: item.label })
-                window.dispatchEvent(e)
-              }
-            }}
-            className={`
-              w-full flex items-center gap-3 px-4 py-2.5 rounded-xl
-              transition-all duration-200 group relative
-              ${item.active 
-                ? 'bg-gold-500 text-white shadow-glow-sm' 
-                : 'text-graphite-400 hover:text-white hover:bg-graphite-900'
-              }
-            `}
+      {/* Navigation */}
+      <nav className="flex-1 p-4 space-y-2">
+        {filteredMenuItems.map((item, index) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: index * 0.1 }}
+            onHoverStart={() => setHoveredItem(item.id)}
+            onHoverEnd={() => setHoveredItem(null)}
           >
-            {item.active && (
+            <motion.button
+              whileHover={{ scale: 1.02, x: 5 }}
+              whileTap={{ scale: 0.98 }}
+              className={cn(
+                "w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all duration-200",
+                "hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100",
+                "dark:hover:from-purple-800/20 dark:hover:to-blue-800/20",
+                "hover:shadow-lg hover:shadow-purple-500/10",
+                hoveredItem === item.id && "bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-xl"
+              )}
+            >
               <motion.div
-                layoutId="activeTab"
-                className="absolute inset-0 bg-gold-500 rounded-xl"
-                transition={{ type: 'spring', duration: 0.6 }}
-              />
-            )}
-            
-            <motion.span whileHover={{ scale: 1.08, rotate: 1 }} className="relative z-10">
-              <item.icon className={`w-4 h-4 ${item.active ? 'text-white' : ''}`} />
-            </motion.span>
-            <span className="text-sm font-medium relative z-10">{item.label}</span>
-            
-            {hoveredIndex === index && !item.active && (
-              <motion.div
-                initial={{ x: -10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                className="ml-auto"
+                animate={{ 
+                  rotate: hoveredItem === item.id ? [0, 10, -10, 0] : 0,
+                  scale: hoveredItem === item.id ? [1, 1.1, 1] : 1
+                }}
+                transition={{ duration: 0.5 }}
               >
-                <ChevronRight className="w-4 h-4" />
+                <item.icon className={cn(
+                  "w-5 h-5",
+                  hoveredItem === item.id ? "text-white" : "text-purple-600 dark:text-purple-400"
+                )} />
               </motion.div>
-            )}
-          </motion.button>
+              
+              {!isCollapsed && (
+                <motion.span
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  transition={{ delay: 0.2 }}
+                  className={cn(
+                    "font-medium text-sm",
+                    hoveredItem === item.id ? "text-white" : "text-gray-700 dark:text-gray-300"
+                  )}
+                >
+                  {item.label}
+                </motion.span>
+              )}
+              
+              {/* Animated indicator */}
+              <AnimatePresence>
+                {hoveredItem === item.id && !isCollapsed && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    className="ml-auto"
+                  >
+                    <Sparkles className="w-4 h-4 text-white animate-pulse" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </motion.div>
         ))}
       </nav>
 
-      {/* Menu Inferior */}
-      <div className="p-4 border-t border-graphite-900 space-y-1">
-        {getBottomItems(role).map((item, index) => (
-          <motion.button
-            key={item.label}
-            whileHover={{ x: 5 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              if (item.label === 'Configurações') onOpenSettings && onOpenSettings()
-              if (item.label === 'Sair') {
-                logout()
-                const e = new CustomEvent('logout')
-                window.dispatchEvent(e)
-              }
-            }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
+      {/* Footer */}
+      <div className={cn(
+        "p-6 border-t border-gray-200 dark:border-gray-800",
+        isCollapsed && "px-3"
+      )}>
+        <motion.button
+          whileHover={{ scale: 1.02, x: -5 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={logout}
+          className={cn(
+            "w-full flex items-center gap-3 p-3 rounded-xl text-left",
+            "bg-gradient-to-r from-red-50 to-pink-50",
+            "dark:from-red-900/20 dark:to-pink-900/20",
+            "hover:from-red-100 hover:to-pink-100",
+            "dark:hover:from-red-800/30 dark:hover:to-pink-800/30",
+            "transition-all duration-200"
+          )}
+        >
+          <motion.div
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
           >
-            <item.icon className="w-5 h-5" />
-            <span className="font-medium">{item.label}</span>
-          </motion.button>
-        ))}
+            <LogOut className="w-5 h-5 text-red-600 dark:text-red-400" />
+          </motion.div>
+          
+          {!isCollapsed && (
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="font-medium text-sm text-red-700 dark:text-red-300"
+            >
+              Sair
+            </motion.span>
+          )}
+        </motion.button>
       </div>
 
-      {/* User Profile */}
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4 }}
-        className="p-4 border-t border-graphite-900"
-      >
-        <div className="flex items-center gap-3 p-3 rounded-xl bg-graphite-900 hover:bg-graphite-800 transition-all cursor-pointer">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-white font-bold">
-            AC
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white truncate">Admin BPO</p>
-            <p className="text-xs text-graphite-400 truncate">admin@bpo.com</p>
-          </div>
-          {session?.mode && (
-            <span className={`ml-auto text-[6px] leading-none px-1 py-[1px] rounded-sm ${session.mode==='demo' ? 'bg-warning text-warning-foreground' : 'bg-success text-success-foreground'}`}>{session.mode==='demo' ? 'fin-demo' : 'Privado'}</span>
-          )}
-        </div>
-      </motion.div>
-    </motion.aside>
-  );
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-purple-400/20 dark:bg-purple-600/20 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.7, 0.3],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  )
 }

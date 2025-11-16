@@ -12,11 +12,15 @@ import { CustomersPage } from './components/CustomersPage';
 import { AnalisesPage } from './components/AnalisesPage';
 import { ConciliacaoPage } from './components/ConciliacaoPage';
 import { NewsPage } from './components/NewsPage';
+import NOCDashboard from './components/NOCDashboard';
+import AdvancedFinancialAnalysis from './components/AdvancedFinancialAnalysis';
+import { AdminMasterDashboard } from './components/AdminMasterDashboard';
+import { ModernAIAdvancedButton } from './components/ModernAIAdvancedButton';
+import { ModernSettingsModal } from './components/ModernSettingsModal';
 import { Users, FileText, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { scaleOnHover, item } from './lib/motion';
 import { AnaliticosModal } from './components/AnaliticosModal';
-import { SettingsModal } from './components/SettingsModal';
 import { LogsModal } from './components/LogsModal';
 import { LoginModal } from './components/LoginModal';
 import { getSession } from './services/auth';
@@ -32,7 +36,7 @@ export function App(){
   const [oracleContext, setOracleContext] = useState<string>('');
   const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
   const [session, setSession] = useState<any>(()=>getSession())
-  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'|'Notícias'>('Dashboard')
+  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'|'Notícias'|'NOC Dashboard'|'Análise BPO'|'Análises Avançadas'|'IA Avançada'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
 
   useEffect(() => {
@@ -49,7 +53,7 @@ export function App(){
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'light bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar role={(session?.role as any) || role} onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
+      <ModernSidebar isCollapsed={false} onToggle={() => {}} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} oracleContext={oracleContext} currentPeriod={period} onPeriodChange={(p)=>setPeriod(p)} />
         
@@ -208,12 +212,25 @@ export function App(){
           {currentView === 'Notícias' && (
             <NewsPage />
           )}
+          {currentView === 'NOC Dashboard' && (
+            <NOCDashboard />
+          )}
+          {currentView === 'Análise BPO' && (
+            <AdvancedFinancialAnalysis />
+          )}
+          {currentView === 'Análises Avançadas' && (
+            <AnalisesPage />
+          )}
+          {currentView === 'IA Avançada' && (
+            <AdminMasterDashboard />
+          )}
         </main>
         <AnaliticosModal open={analiticosOpen} onClose={() => setAnaliticosOpen(false)} />
-        <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
+        <ModernSettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
         <LogsModal open={settingsOpen && logsOpen} onClose={() => setLogsOpen(false)} />
         <LoginModal open={!session} onClose={()=>{}} onLogged={(s)=>setSession(s)} />
       </div>
+      <ModernAIAdvancedButton />
     </div>
   );
 }

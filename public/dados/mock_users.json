@@ -28,6 +28,18 @@
       { "cnpj": "33.333.333/0001-33", "name": "Cliente Demo Ltda", "group": "Demo" }
     ],
     "defaultCompany": "33.333.333/0001-33"
+  },
+  {
+    "email": "dev@angrax.com.br",
+    "password": "B5b0dcf500@#",
+    "name": "Dev Angrax",
+    "role": "admin",
+    "companies": [
+      { "cnpj": "44.444.444/0001-44", "name": "Angrax Tecnologia", "group": "Angrax" },
+      { "cnpj": "55.555.555/0001-55", "name": "Empresa Teste 1", "group": "Testes" },
+      { "cnpj": "66.666.666/0001-66", "name": "Empresa Teste 2", "group": "Testes" }
+    ],
+    "defaultCompany": "44.444.444/0001-44"
   }
 ]
 

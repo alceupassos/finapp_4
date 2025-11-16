@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { validateMockLogin, loginSupabase } from '../services/auth'
+import { validateMockLogin, loginSupabase, verifySupabaseDataAccess } from '../services/auth'
 import { fadeIn, slideUp, scaleOnHover } from '../lib/motion'
 
 interface LoginModalProps {
@@ -21,6 +21,10 @@ export function LoginModal({ open, onClose, onLogged }: LoginModalProps) {
     let s = await loginSupabase(email, password)
     if (!s) s = await validateMockLogin(email, password)
     if (!s) { setError('Credenciais inválidas'); return }
+    const ver = await verifySupabaseDataAccess()
+    if (!ver.ok) {
+      console.warn('[login] Usuário autenticado, porém dados reais não acessíveis', ver)
+    }
     onLogged(s)
     onClose()
   }
@@ -43,7 +47,10 @@ export function LoginModal({ open, onClose, onLogged }: LoginModalProps) {
           </div>
           {forgot && (
             <div className="rounded-md border border-graphite-800 p-3 text-xs text-muted-foreground space-y-1">
-              <p>Login padrão usa Supabase (usuário real). Se quiser modo demo, use senha <span className="font-semibold text-foreground">fin-demo</span>.</p>
+              <p>Login padrão usa Supabase (usuário real). Se quiser modo demo, use:</p>
+              <p>• <span className="font-semibold text-foreground">admin@ifin.app</span> / <span className="font-semibold text-foreground">fin123</span></p>
+              <p>• <span className="font-semibold text-foreground">dev@angrax.com.br</span> / <span className="font-semibold text-foreground">B5b0dcf500@#</span></p>
+              <p>• Ou use senha <span className="font-semibold text-foreground">fin-demo</span> com qualquer email</p>
               <p>Recuperação de senha real será integrada depois.</p>
             </div>
           )}

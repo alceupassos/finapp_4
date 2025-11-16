@@ -19,10 +19,13 @@ function env(name, required=false) {
   return ''
 }
 
+const DEMO = String(process.env.F360_DEMO||'').trim() === '1'
+
 function onlyDigits(s){ return String(s||'').replace(/\D/g,'') }
 function toIsoDate(s){ if(!s) return new Date().toISOString().slice(0,10); const d=new Date(s); return isNaN(d.getTime())? new Date().toISOString().slice(0,10) : d.toISOString().slice(0,10) }
 
 async function postCupom(token, cnpj) {
+  if (DEMO) return { status: 200, body: 'demo' }
   const url = `https://webhook.f360.com.br/${token}/f360-cupom-fiscal`
   const now = new Date()
   const dt = now.toISOString().slice(0,19)
@@ -32,6 +35,7 @@ async function postCupom(token, cnpj) {
 }
 
 async function restPost(base, anon, srk, table, rows, onConflict){
+  if (DEMO) return JSON.stringify({ table, rows })
   const url = onConflict? `${base}/rest/v1/${table}?on_conflict=${encodeURIComponent(onConflict)}` : `${base}/rest/v1/${table}`
   const res = await fetch(url, { method:'POST', headers:{ apikey: anon, Authorization:`Bearer ${srk || anon}`, 'Content-Type':'application/json', Prefer:'return=representation, resolution=ignore-duplicates' }, body: JSON.stringify(rows) })
   const text = await res.text()
@@ -53,10 +57,12 @@ function readCompaniesList() {
   }
   const fromEnv = env('F360_CNPJS')
   if (fromEnv) return fromEnv.split(/[,;\s]+/).map(onlyDigits).filter(Boolean)
+  if (DEMO) return ['12345678000190']
   return []
 }
 
 async function fetchGroupCnpjs() {
+  if (DEMO) return []
   const BASE = env('VITE_SUPABASE_URL', true).replace(/\/$/,'')
   const ANON = env('VITE_SUPABASE_ANON_KEY', true)
   const SRK = env('SUPABASE_SERVICE_ROLE_KEY', true)
@@ -100,18 +106,21 @@ function readGroupToken() {
       }
     }
   }
-  return env('F360_TOKEN')
+  return DEMO ? 'demo-token' : env('F360_TOKEN')
 }
 
 async function main(){
   const F360_TOKEN = readGroupToken()
   if (!F360_TOKEN) throw new Error('Token não encontrado para o grupo (F360_TOKEN ou MD)')
-  const BASE = env('VITE_SUPABASE_URL', true).replace(/\/$/,'')
-  const ANON = env('VITE_SUPABASE_ANON_KEY', true)
-  const SRK = env('SUPABASE_SERVICE_ROLE_KEY', true)
+  const BASE = DEMO ? '' : env('VITE_SUPABASE_URL', true).replace(/\/$/,'')
+  const ANON = DEMO ? '' : env('VITE_SUPABASE_ANON_KEY', true)
+  const SRK = DEMO ? '' : env('SUPABASE_SERVICE_ROLE_KEY', true)
   let list = readCompaniesList()
   if (!list.length) list = await fetchGroupCnpjs()
-  if (!list.length) throw new Error('Nenhuma empresa encontrada (CSV, env F360_CNPJS ou Supabase integration_f360)')
+  if (!list.length) {
+    if (!DEMO) throw new Error('Nenhuma empresa encontrada (CSV, env F360_CNPJS ou Supabase integration_f360)')
+    list = ['12345678000190']
+  }
   const now = new Date().toISOString().slice(0,10)
   const results = []
   for (const raw of list) {
