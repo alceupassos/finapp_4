@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Search, Bell, Sun, Moon, Menu, Bot } from 'lucide-react';
-import { getSession } from '../services/auth';
+import { Search, Bell, Sun, Moon, Menu, Bot, LogOut } from 'lucide-react';
+ import { getSession, logout } from '../services/auth';
 import { useState } from 'react';
 import { OracleModal } from './OracleModal';
 
@@ -113,6 +113,21 @@ export function ModernTopbar({ onThemeToggle, isDark = true, oracleContext = '',
 
           {/* Divider */}
           <div className="h-8 w-px bg-graphite-800" />
+           {/* Usuário Logado */}
+           {session && (
+             <div className="flex items-center gap-3 pl-2 pr-3 py-2 rounded-xl bg-graphite-900 border border-graphite-800">
+               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-[11px] font-bold text-white">
+                 {session.email?.[0]?.toUpperCase() || 'U'}
+               </div>
+               <div className="min-w-0 max-w-[140px]">
+                 <p className="text-xs font-semibold text-white truncate">{session.email}</p>
+                 <p className="text-[10px] text-graphite-400 truncate">{session.mode==='supabase' ? 'Conta Supabase' : session.mode==='demo' ? 'Modo Demo' : 'Sessão'}</p>
+               </div>
+               <motion.button whileHover={{ scale:1.1}} whileTap={{scale:0.92}} onClick={()=>{ logout(); window.dispatchEvent(new CustomEvent('logout')) }} className="p-1 rounded-md bg-graphite-800 hover:bg-graphite-700 text-graphite-300 hover:text-white" aria-label="Sair">
+                 <LogOut className="w-4 h-4" />
+               </motion.button>
+             </div>
+           )}
 
           {/* Quick Stats */}
           <div className="hidden lg:flex items-center gap-6 pl-4">
