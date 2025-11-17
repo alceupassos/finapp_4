@@ -430,11 +430,16 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
                         <tr className="bg-muted">
                           <th className="border p-2 text-left sticky left-0 bg-muted z-10">Conta</th>
                           <th className="border p-2 text-left">Natureza</th>
-                          {(selectedMonth === 'all' ? dreMonths : [selectedMonth]).map(month => (
-                            <th key={month} className="border p-2 text-right whitespace-nowrap">
-                              {selectedMonth === 'all' ? month.slice(5) : new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })}
-                            </th>
-                          ))}
+                          {(selectedMonth === 'all' ? dreMonths : [selectedMonth]).map(month => {
+                            const monthNum = month.slice(5, 7);
+                            const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+                            const monthName = monthNames[parseInt(monthNum) - 1] || monthNum;
+                            return (
+                              <th key={month} className="border p-2 text-right whitespace-nowrap">
+                                {selectedMonth === 'all' ? monthName : new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })}
+                              </th>
+                            );
+                          })}
                           {selectedMonth === 'all' && <th className="border p-2 text-right font-bold bg-blue-50">Total</th>}
                         </tr>
                       </thead>
@@ -530,11 +535,16 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
                       <thead>
                         <tr className="bg-muted">
                           <th className="border p-2 text-left sticky left-0 bg-muted z-10">Categoria</th>
-                          {(selectedMonth === 'all' ? dfcMonths : [selectedMonth]).map(month => (
-                            <th key={month} className="border p-2 text-center" colSpan={2}>
-                              {selectedMonth === 'all' ? month.slice(5) : new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })}
-                            </th>
-                          ))}
+                          {(selectedMonth === 'all' ? dfcMonths : [selectedMonth]).map(month => {
+                            const monthNum = month.slice(5, 7);
+                            const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+                            const monthName = monthNames[parseInt(monthNum) - 1] || monthNum;
+                            return (
+                              <th key={month} className="border p-2 text-center" colSpan={2}>
+                                {selectedMonth === 'all' ? monthName : new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })}
+                              </th>
+                            );
+                          })}
                           {selectedMonth === 'all' && <th className="border p-2 text-center bg-blue-50" colSpan={3}>Totais</th>}
                         </tr>
                         <tr className="bg-muted/50 text-xs">

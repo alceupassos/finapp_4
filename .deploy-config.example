@@ -1,0 +1,8 @@
+# Configurações do VPS para Deploy
+# Copie este arquivo para .deploy-config e preencha com suas informações
+
+VPS_USER="root"
+VPS_HOST="SEU_IP_AQUI"
+VPS_PORT="22"
+VPS_PATH="/var/www/finapp"
+APP_DOMAIN="finapp.seudominio.com"
