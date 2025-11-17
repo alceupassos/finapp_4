@@ -276,7 +276,7 @@ Sempre que relevante, fornecer:
           )}
 
           {currentView === 'Análises' && (
-            <AnaliticoDashboard />
+            <AnaliticoDashboard selectedMonth={selectedMonth} selectedCompany={selectedCompany} />
           )}
           {currentView === 'Fluxo de Caixa' && (
             <div className="grid grid-cols-1 gap-6">
@@ -291,9 +291,6 @@ Sempre que relevante, fornecer:
           )}
           {currentView === 'Clientes' && (
             <CustomersPage />
-          )}
-          {currentView === 'Análises' && (
-            <AnaliticoDashboard />
           )}
           {currentView === 'Notícias' && (
             <NoticiasPage 

@@ -7,6 +7,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 
 interface AnaliticoDashboardProps {
   className?: string;
+  selectedMonth?: string;
+  selectedCompany?: string;
 }
 
 const padMonth = (month: number) => String(month).padStart(2, '0');
@@ -36,13 +38,26 @@ const buildFullMonthList = (dates: Array<string | null | undefined>) => {
   return fullMonths;
 };
 
-export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
+export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth, selectedCompany: propSelectedCompany }: AnaliticoDashboardProps) {
   const [companies, setCompanies] = useState<any[]>([]);
-  const [selectedCompany, setSelectedCompany] = useState<string>('26888098000159'); // Matriz VOLPE 0159
-  const [selectedMonth, setSelectedMonth] = useState<string>('all'); // 'all' ou 'YYYY-MM'
+  const [selectedCompany, setSelectedCompany] = useState<string>(propSelectedCompany || '26888098000159'); // Matriz VOLPE 0159
+  const [selectedMonth, setSelectedMonth] = useState<string>(propSelectedMonth || 'all'); // 'all' ou 'YYYY-MM'
   const [dreData, setDreData] = useState<any[]>([]);
   const [dfcData, setDfcData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+
+  // Sincronizar com props quando mudarem
+  useEffect(() => {
+    if (propSelectedMonth && propSelectedMonth !== selectedMonth) {
+      setSelectedMonth(propSelectedMonth);
+    }
+  }, [propSelectedMonth]);
+
+  useEffect(() => {
+    if (propSelectedCompany && propSelectedCompany !== selectedCompany) {
+      setSelectedCompany(propSelectedCompany);
+    }
+  }, [propSelectedCompany]);
 
   useEffect(() => {
     loadCompanies();
