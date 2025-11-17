@@ -339,12 +339,52 @@ ORDER BY total DESC;
 
 ## 🚨 Validações e Regras de Qualidade
 
+### Filtros de Status
+
+**Status a Desconsiderar:**
+- ❌ Registros com status contendo "baixado" ou "baixados"
+- ❌ Registros com status contendo "renegociado" ou "renegociados"
+
+**Aplicação:**
+- Esses registros devem ser **excluídos** do processamento
+- Validação case-insensitive (maiúsculas/minúsculas)
+
+### DFC - Filtro de Conciliação
+
+**Regra Específica para DFC:**
+- ✅ Processar **APENAS** registros com status = "conciliado"
+- ❌ Ignorar todos os demais status no DFC
+
+**Nota:** Esta regra é exclusiva do DFC. O DRE não possui este filtro.
+
+### Normalização de Valores
+
+**Valor Bruto:**
+- ✅ Todos os valores devem ser convertidos para **positivos**
+- ✅ Independente de ser entrada ou saída
+- ✅ O tipo (entrada/saída) é determinado pela natureza/kind, não pelo sinal
+
+**Exemplos:**
+```javascript
+// Antes
+valor_bruto: -1500.00  // Saída
+valor_bruto: 2000.00   // Entrada
+
+// Depois
+amount: 1500.00, kind: 'out'   // DFC
+amount: 2000.00, kind: 'in'    // DFC
+amount: 1500.00, nature: 'despesa' // DRE
+amount: 2000.00, nature: 'receita' // DRE
+```
+
 ### Registros Válidos
 
 **Obrigatório:**
 - ✅ Valor Líquido > 0
 - ✅ Código da conta presente
 - ✅ Competência (DRE) ou Liquidação (DFC) preenchida
+- ✅ Status não contém "baixado", "baixados", "renegociado" ou "renegociados"
+- ✅ Para DFC: Status = "conciliado"
 
 **Opcional:**
 - Cliente/Fornecedor
@@ -357,11 +397,15 @@ ORDER BY total DESC;
 - Valor = 0
 - Sem código de conta
 - Sem data de competência (DRE) ou liquidação (DFC)
+- Status contém: "baixado", "baixados", "renegociado", "renegociados"
+- Para DFC: Status diferente de "conciliado"
 
 **Normalização:**
 - Remover espaços extras
 - Converter para lowercase em comparações
 - Extrair código numérico do plano de contas
+- **Converter todos os valores para positivos (Math.abs)**
+- Determinar tipo (entrada/saída) pela natureza da conta, não pelo sinal
 
 ---
 
@@ -441,13 +485,17 @@ node scripts/processar_grupo_volpe.mjs --cnpj=[CNPJ] --upload=true
 
 ## 📝 Notas Importantes
 
-1. **Valores Absolutos:** Todos os valores em `amount` são positivos. O sinal é determinado por `nature` (DRE) ou `kind` (DFC).
+1. **Valores Absolutos:** Todos os valores em `amount` são **obrigatoriamente positivos** (usar `Math.abs()` na conversão). O sinal é determinado por `nature` (DRE) ou `kind` (DFC), nunca pelo valor numérico.
 
-2. **Categorização Automática:** O sistema categoriza automaticamente com base no código da conta. Regras podem ser ajustadas em `categorizarConta()`.
+2. **Filtros de Status:**
+   - **Desconsiderar:** Status contendo "baixado", "baixados", "renegociado" ou "renegociados"
+   - **DFC Específico:** Processar APENAS registros com status = "conciliado"
 
-3. **Múltiplas Contas 102-1:** Vendas podem ter diferentes formas de recebimento (PIX, Boleto, Cartão) - cada uma é uma linha separada.
+3. **Categorização Automática:** O sistema categoriza automaticamente com base no código da conta. Regras podem ser ajustadas em `categorizarConta()`.
 
-4. **Competência vs Caixa:** Mesma transação aparece em meses diferentes no DRE e DFC se a competência e liquidação forem diferentes.
+4. **Múltiplas Contas 102-1:** Vendas podem ter diferentes formas de recebimento (PIX, Boleto, Cartão) - cada uma é uma linha separada.
+
+5. **Competência vs Caixa:** Mesma transação aparece em meses diferentes no DRE e DFC se a competência e liquidação forem diferentes.
 
 ---
 

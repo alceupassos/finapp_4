@@ -156,24 +156,34 @@ function loadTransactions(inputDir, cnpj) {
     const tipo = String(row['__EMPTY'] || '').trim()
     const competencia = parseCompetencia(row['__EMPTY_11'])
     const liquidacao = parseDate(row['__EMPTY_5'] || row['__EMPTY_4'] || row['__EMPTY_3'])
-    const value = parseNumber(row['__EMPTY_8'])
+    const rawValue = parseNumber(row['__EMPTY_8'])
     const code = extractCode(row['__EMPTY_12'])
     const planName = String(row['__EMPTY_12'] || '').trim()
     const fornecedor = String(row['__EMPTY_13'] || '').trim()
     const centroCusto = String(row['__EMPTY_7'] || '').trim()
     const categoria = String(row['__EMPTY_9'] || '').trim()
     const observation = String(row['__EMPTY_10'] || '').trim()
+    const status = String(row['__EMPTY_14'] || row['Status'] || '').trim()
 
-    if (!value || !code) return null
+    // Validações básicas
+    if (!rawValue || !code) return null
 
-    const sign = /receber/i.test(tipo) ? 1 : -1
-    const signedValue = value * sign
+    // NOVO: Filtro de status - desconsiderar baixado/renegociado
+    const statusLower = status.toLowerCase()
+    const statusInvalidos = ['baixado', 'baixados', 'renegociado', 'renegociados']
+    if (statusInvalidos.some(s => statusLower.includes(s))) {
+      return null
+    }
+
+    // NOVO: Converter valor para positivo (Math.abs)
+    const value = Math.abs(rawValue)
 
     return {
       tipo,
       competencia,
       liquidacao,
-      value: signedValue,
+      value, // SEMPRE POSITIVO
+      status,
       accountCode: code,
       planName,
       fornecedor,
@@ -272,18 +282,22 @@ function aggregateDRE(transactions, cnpj, companyName, planNames) {
         date: monthDate,
         account: accountLabel,
         group: dreGroup,
-        total: 0
+        total: 0,
+        tipo: tx.tipo
       })
     }
 
     const entry = buckets.get(key)
-    entry.total += tx.value
+    entry.total += tx.value // tx.value já é positivo
   }
 
   const result = Array.from(buckets.values()).map(entry => {
-    const amount = Math.round(Math.abs(entry.total) * 100) / 100
-    // Supabase aceita apenas 'receita' ou 'despesa' no campo nature
-    const nature = entry.total >= 0 ? 'receita' : 'despesa'
+    const amount = Math.round(entry.total * 100) / 100
+    if (amount <= 0) return null
+    
+    // Determinar nature baseado no tipo original (A Receber = receita, A Pagar = despesa)
+    const nature = /receber/i.test(entry.tipo) ? 'receita' : 'despesa'
+    
     return {
       company_cnpj: entry.company_cnpj,
       company_nome: entry.company_nome,
@@ -295,7 +309,7 @@ function aggregateDRE(transactions, cnpj, companyName, planNames) {
     }
   })
 
-  return result.filter(item => item.amount !== 0)
+  return result.filter(Boolean)
 }
 
 function aggregateDFC(transactions, cnpj, companyName) {
@@ -303,6 +317,9 @@ function aggregateDFC(transactions, cnpj, companyName) {
 
   for (const tx of transactions) {
     if (!tx.liquidacao) continue
+    
+    // NOVO: Filtro específico DFC - APENAS conciliados
+    if (tx.status.toLowerCase() !== 'conciliado') continue
     
     const date = new Date(tx.liquidacao)
     const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
@@ -314,13 +331,18 @@ function aggregateDFC(transactions, cnpj, companyName) {
         month: monthKey,
         group: dfcGroup,
         entradas: 0,
-        saidas: 0
+        saidas: 0,
+        tipo: tx.tipo
       })
     }
     
     const bucket = buckets.get(key)
-    if (tx.value >= 0) bucket.entradas += tx.value
-    else bucket.saidas += Math.abs(tx.value)
+    // tx.value já é positivo, determinar direção pelo tipo
+    if (/receber/i.test(tx.tipo)) {
+      bucket.entradas += tx.value
+    } else {
+      bucket.saidas += tx.value
+    }
   }
 
   const entries = []
@@ -347,6 +369,7 @@ function aggregateDFC(transactions, cnpj, companyName) {
       })
     }
   }
+
   return entries
 }
 
