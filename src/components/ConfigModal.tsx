@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { X, Settings, Activity, Info } from 'lucide-react'
+import { X, Settings, Activity, Info, Users, Monitor } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { AreaChart, Area, CartesianGrid, Tooltip, XAxis, YAxis, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts'
 import { SupabaseRest } from '../services/supabaseRest'
+import { UserManagementTab } from './UserManagementTab'
+import { NOCTab } from './NOCTab'
 
 type LogItem = { ts: string; level: 'info'|'warn'|'error'; service: 'UI'|'API'|'Edge'; endpoint?: string; companyCnpj?: string; userId?: string; message: string; latencyMs?: number }
 
@@ -69,10 +71,18 @@ export function ConfigModal({ open, onClose, onUpdateOracleContext }: ConfigModa
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="w-full grid grid-cols-3 p-1 mx-5 mt-5">
+          <TabsList className="w-full grid grid-cols-5 p-1 mx-5 mt-5">
             <TabsTrigger value="settings" className="flex items-center gap-2">
               <Settings className="w-4 h-4"/>
               Configurações
+            </TabsTrigger>
+            <TabsTrigger value="users" className="flex items-center gap-2">
+              <Users className="w-4 h-4"/>
+              Usuários
+            </TabsTrigger>
+            <TabsTrigger value="noc" className="flex items-center gap-2">
+              <Monitor className="w-4 h-4"/>
+              NOC
             </TabsTrigger>
             <TabsTrigger value="logs" className="flex items-center gap-2">
               <Activity className="w-4 h-4"/>
@@ -116,6 +126,16 @@ export function ConfigModal({ open, onClose, onUpdateOracleContext }: ConfigModa
                 </button>
               </div>
             </div>
+          </TabsContent>
+
+          {/* Tab: Usuários */}
+          <TabsContent value="users" className="p-5">
+            <UserManagementTab />
+          </TabsContent>
+
+          {/* Tab: NOC */}
+          <TabsContent value="noc" className="p-5">
+            <NOCTab />
           </TabsContent>
 
           {/* Tab: Logs */}
