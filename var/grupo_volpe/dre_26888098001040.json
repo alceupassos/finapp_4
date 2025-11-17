@@ -6,7 +6,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 559.48,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -15,7 +15,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 43705.43,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -24,7 +24,7 @@
     "account": "303-4 - Descontos Obtidos",
     "nature": "despesa",
     "amount": 87507.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -33,7 +33,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 632.09,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -42,7 +42,7 @@
     "account": "409-7 - Serviços Terceiros PF",
     "nature": "despesa",
     "amount": 620,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -51,7 +51,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 493357.97,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -60,7 +60,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 6.3,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -69,7 +69,7 @@
     "account": "421-8 - OP Correios e fretes",
     "nature": "despesa",
     "amount": 1471.35,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -78,7 +78,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 630.61,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -87,7 +87,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 132.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -96,7 +96,7 @@
     "account": "422-1 - Combustivel",
     "nature": "despesa",
     "amount": 300,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -105,7 +105,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 457.45,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -114,7 +114,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5278.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -123,7 +123,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 1672.95,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -132,7 +132,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 956.97,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -141,7 +141,7 @@
     "account": "422-0 - Uber e Taxi",
     "nature": "despesa",
     "amount": 8.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -150,7 +150,7 @@
     "account": "202-0 - Rescisoes",
     "nature": "despesa",
     "amount": 479.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -159,7 +159,7 @@
     "account": "203-1 - FGTS",
     "nature": "despesa",
     "amount": 33.2,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -168,7 +168,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 5491.15,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -177,7 +177,7 @@
     "account": "421-4 - OP Manutencao de veículos",
     "nature": "despesa",
     "amount": 450,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -186,7 +186,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 207,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -195,7 +195,7 @@
     "account": "421-2 - Manutencao e Reparos",
     "nature": "despesa",
     "amount": 150,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -204,7 +204,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -213,7 +213,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 540.22,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -222,7 +222,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 410,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -231,7 +231,7 @@
     "account": "420-6 - Manut e Conservacao Predial",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -240,7 +240,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -249,7 +249,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 2101.2,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -258,7 +258,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 623862.2,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -267,7 +267,7 @@
     "account": "430-7 - IOF",
     "nature": "despesa",
     "amount": 0.35,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -276,7 +276,7 @@
     "account": "422-1 - Combustivel",
     "nature": "despesa",
     "amount": 130,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -285,7 +285,7 @@
     "account": "421-8 - OP Correios e fretes",
     "nature": "despesa",
     "amount": 175,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -294,7 +294,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -303,7 +303,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 568.19,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -312,7 +312,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 941.08,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -321,7 +321,7 @@
     "account": "422-0 - Uber e Taxi",
     "nature": "despesa",
     "amount": 19.25,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -330,7 +330,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 260,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -339,7 +339,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -348,7 +348,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 109.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -357,7 +357,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 2145.27,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -366,7 +366,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 571.13,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -375,7 +375,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 9108.34,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -384,7 +384,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 3426,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -393,7 +393,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 359.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -402,7 +402,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -411,7 +411,7 @@
     "account": "422-9 - Material de Escritorio",
     "nature": "despesa",
     "amount": 87.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -420,7 +420,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 611.49,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -429,7 +429,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 856.44,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -438,7 +438,7 @@
     "account": "409-7 - Serviços Terceiros PF",
     "nature": "despesa",
     "amount": 60,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -447,7 +447,7 @@
     "account": "421-2 - Manutencao e Reparos",
     "nature": "despesa",
     "amount": 200,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -456,7 +456,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 2140,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -465,7 +465,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 760465,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -474,7 +474,7 @@
     "account": "430-7 - IOF",
     "nature": "despesa",
     "amount": 0.18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -483,7 +483,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -492,7 +492,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 630.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -501,7 +501,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -510,7 +510,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 472.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -519,7 +519,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -528,7 +528,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 109.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -537,7 +537,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 1953.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -546,7 +546,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 71.16,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -555,7 +555,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 656,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -564,7 +564,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 10667.98,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -573,7 +573,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 147,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -582,7 +582,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 5873.77,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -591,7 +591,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 383.8,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -600,7 +600,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 392,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -609,7 +609,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 28,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -618,7 +618,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 611.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -627,7 +627,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 848.19,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -636,7 +636,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -645,7 +645,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 2080.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -654,7 +654,7 @@
     "account": "420-6 - Manut e Conservacao Predial",
     "nature": "despesa",
     "amount": 10,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -663,7 +663,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 693.02,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -672,7 +672,7 @@
     "account": "430-7 - IOF",
     "nature": "despesa",
     "amount": 0.11,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -681,7 +681,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 157.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -690,7 +690,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -699,7 +699,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 780.11,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -708,7 +708,7 @@
     "account": "422-9 - Material de Escritorio",
     "nature": "despesa",
     "amount": 53,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -717,7 +717,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -726,7 +726,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 699759,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -735,7 +735,7 @@
     "account": "409-7 - Serviços Terceiros PF",
     "nature": "despesa",
     "amount": 80,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -744,7 +744,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 20,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -753,7 +753,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -762,7 +762,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -771,7 +771,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 2002.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -780,7 +780,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 71.16,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -789,7 +789,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 645.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -798,7 +798,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 10192.61,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -807,7 +807,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 177,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -816,7 +816,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 28,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -825,7 +825,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -834,7 +834,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 611.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -843,7 +843,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 1129.38,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -852,7 +852,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 1942.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -861,7 +861,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 5661.36,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -870,7 +870,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 1272.7,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -879,7 +879,7 @@
     "account": "421-8 - OP Correios e fretes",
     "nature": "despesa",
     "amount": 172.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -888,7 +888,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -897,7 +897,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 638665.7,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -906,7 +906,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 391.18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -915,7 +915,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 332.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -924,7 +924,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -933,7 +933,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 310.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -942,7 +942,7 @@
     "account": "201-8 - Ferias",
     "nature": "despesa",
     "amount": 3121.58,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -951,7 +951,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -960,7 +960,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 71.16,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -969,7 +969,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -978,7 +978,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 488.36,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -987,7 +987,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 2050.85,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -996,7 +996,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 230.75,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1005,7 +1005,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 4231.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1014,7 +1014,7 @@
     "account": "409-7 - Serviços Terceiros PF",
     "nature": "despesa",
     "amount": 240,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1023,7 +1023,7 @@
     "account": "303-4 - Descontos Obtidos",
     "nature": "despesa",
     "amount": 46755,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1032,7 +1032,7 @@
     "account": "422-4 - Pedágio",
     "nature": "despesa",
     "amount": 20,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1041,7 +1041,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1050,7 +1050,7 @@
     "account": "422-9 - Material de Escritorio",
     "nature": "despesa",
     "amount": 39.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1059,7 +1059,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 611.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1068,7 +1068,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 1098,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1077,7 +1077,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 1961.8,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1086,7 +1086,7 @@
     "account": "202-0 - Rescisoes",
     "nature": "despesa",
     "amount": 6786.74,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1095,7 +1095,7 @@
     "account": "203-1 - FGTS",
     "nature": "despesa",
     "amount": 1270.68,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1104,7 +1104,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 12659.02,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1113,7 +1113,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 9642.22,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1122,7 +1122,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 1642.63,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1131,7 +1131,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 313.01,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1140,7 +1140,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 692.29,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1149,7 +1149,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 525944.75,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1158,7 +1158,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1167,7 +1167,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 79.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1176,7 +1176,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1185,7 +1185,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1194,7 +1194,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 2109.89,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1203,7 +1203,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 93.21,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1212,7 +1212,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 421.3,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1221,7 +1221,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 310.74,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1230,7 +1230,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 374.7,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1239,7 +1239,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1248,7 +1248,7 @@
     "account": "422-0 - Uber e Taxi",
     "nature": "despesa",
     "amount": 17.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1257,7 +1257,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 1141.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1266,7 +1266,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 611.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1275,7 +1275,7 @@
     "account": "421-4 - Manutencao de veiculos",
     "nature": "despesa",
     "amount": 40,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1284,7 +1284,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 620.94,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1293,7 +1293,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 2082.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1302,7 +1302,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 1525.25,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1311,7 +1311,7 @@
     "account": "422-9 - Material de Escritorio",
     "nature": "despesa",
     "amount": 21.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1320,7 +1320,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1329,7 +1329,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 586.55,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1338,7 +1338,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1347,7 +1347,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 590580.68,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1356,7 +1356,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1365,7 +1365,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1374,7 +1374,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 1902.57,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1383,7 +1383,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 75.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1392,7 +1392,7 @@
     "account": "425-7 - Informatica e Software",
     "nature": "despesa",
     "amount": 896,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1401,7 +1401,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 7882.13,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1410,7 +1410,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 306.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1419,7 +1419,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 310.96,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1428,7 +1428,7 @@
     "account": "421-2 - Manutencao e Reparos",
     "nature": "despesa",
     "amount": 18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1437,7 +1437,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 147,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1446,7 +1446,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1455,7 +1455,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 35,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1464,7 +1464,7 @@
     "account": "205-0 - ICMS",
     "nature": "despesa",
     "amount": 562.41,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1473,7 +1473,7 @@
     "account": "432-0 - Juros Passivos",
     "nature": "despesa",
     "amount": 562.41,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1482,7 +1482,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 611.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1491,7 +1491,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 267.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1500,7 +1500,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 1123.01,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1509,7 +1509,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 2082.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1518,7 +1518,7 @@
     "account": "201-6 - Horas Extras – Dobras",
     "nature": "despesa",
     "amount": 4843.33,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1527,7 +1527,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 2685.2,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1536,7 +1536,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 1436.3,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1545,7 +1545,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1554,7 +1554,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 671.39,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1563,7 +1563,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1572,7 +1572,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 487681.51,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1581,7 +1581,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 620.94,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1590,7 +1590,7 @@
     "account": "421-2 - Manutencao e Reparos",
     "nature": "despesa",
     "amount": 221.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1599,7 +1599,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1608,7 +1608,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1617,7 +1617,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 1927.04,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1626,7 +1626,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 75.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1635,7 +1635,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 359.33,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1644,7 +1644,7 @@
     "account": "422-9 - Material de Escritorio",
     "nature": "despesa",
     "amount": 228.8,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1653,7 +1653,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 253.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1662,7 +1662,7 @@
     "account": "303-4 - Descontos Obtidos",
     "nature": "despesa",
     "amount": 23776.34,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1671,7 +1671,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 7597.53,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1680,7 +1680,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 147,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1689,7 +1689,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1698,7 +1698,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 1155.28,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1707,7 +1707,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 233.1,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1716,7 +1716,7 @@
     "account": "422-0 - Uber e Taxi",
     "nature": "despesa",
     "amount": 15.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1725,7 +1725,7 @@
     "account": "421-9 - Seguros",
     "nature": "despesa",
     "amount": 51.37,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1734,7 +1734,7 @@
     "account": "102-1 - Vendas Canceladas",
     "nature": "despesa",
     "amount": 704,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1743,7 +1743,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 2162.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1752,7 +1752,7 @@
     "account": "201-6 - Horas Extras – Dobras",
     "nature": "despesa",
     "amount": 6246.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1761,7 +1761,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 4969.29,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1770,7 +1770,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "despesa",
     "amount": 141291.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1779,7 +1779,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 1712.85,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1788,7 +1788,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1797,7 +1797,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 312.62,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1806,7 +1806,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 496317.7,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1815,7 +1815,7 @@
     "account": "422-9 - Material de Escritorio",
     "nature": "despesa",
     "amount": 94.95,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.840Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1824,7 +1824,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1833,7 +1833,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1842,7 +1842,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1851,7 +1851,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 2004.48,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1860,7 +1860,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 75.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1869,7 +1869,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 7224.98,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1878,7 +1878,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 471.35,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1887,7 +1887,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 147,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1896,7 +1896,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 101.37,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1905,7 +1905,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 818.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1914,7 +1914,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 41.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1923,7 +1923,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 71.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1932,7 +1932,7 @@
     "account": "428-3 - Producao de Material",
     "nature": "despesa",
     "amount": 145,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1941,7 +1941,7 @@
     "account": "416-8 - Vale Transporte",
     "nature": "despesa",
     "amount": 1443.93,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1950,7 +1950,7 @@
     "account": "417-0 - Vale Refeicao",
     "nature": "despesa",
     "amount": 1682.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1959,7 +1959,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 2286.67,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1968,7 +1968,7 @@
     "account": "201-6 - Horas Extras – Dobras",
     "nature": "despesa",
     "amount": 2099.75,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1977,7 +1977,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 1320.54,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1986,7 +1986,7 @@
     "account": "422-3 - Cartorios",
     "nature": "despesa",
     "amount": 18.38,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -1995,7 +1995,7 @@
     "account": "431-5 - Despesas Bancarias",
     "nature": "despesa",
     "amount": 323.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2004,7 +2004,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2013,7 +2013,7 @@
     "account": "422-3 - Cartorios",
     "nature": "despesa",
     "amount": 13,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2022,7 +2022,7 @@
     "account": "201-6 - Salarios e Ordenados",
     "nature": "despesa",
     "amount": 9183.01,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2031,7 +2031,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "despesa",
     "amount": 136358.12,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2040,7 +2040,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2049,7 +2049,7 @@
     "account": "102-1 - Vendas Canceladas",
     "nature": "despesa",
     "amount": 210,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2058,7 +2058,7 @@
     "account": "400-0 - Custo de Mercadorias Vendidas",
     "nature": "despesa",
     "amount": 499185.36,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2067,7 +2067,7 @@
     "account": "422-2 - Copa e Cozinha",
     "nature": "despesa",
     "amount": 17.75,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2076,7 +2076,7 @@
     "account": "423-6 - Material de Limpeza",
     "nature": "despesa",
     "amount": 98.25,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2085,7 +2085,7 @@
     "account": "409-7 - Serviços Terceiros PF",
     "nature": "despesa",
     "amount": 385.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2094,7 +2094,7 @@
     "account": "420-5 - Aluguel",
     "nature": "despesa",
     "amount": 5685.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2103,7 +2103,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2112,7 +2112,7 @@
     "account": "426-2 - Segurança e Vigilância",
     "nature": "despesa",
     "amount": 1833.74,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2121,7 +2121,7 @@
     "account": "431-3 - Taxas e Emolumentos",
     "nature": "despesa",
     "amount": 75.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2130,7 +2130,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 618.89,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2139,7 +2139,7 @@
     "account": "421-2 - Manutencao e Reparos",
     "nature": "despesa",
     "amount": 18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2148,7 +2148,7 @@
     "account": "417-4 - Assistencia medica",
     "nature": "despesa",
     "amount": 147,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2157,7 +2157,7 @@
     "account": "202-0 - Rescisoes",
     "nature": "despesa",
     "amount": 1774.32,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2166,7 +2166,7 @@
     "account": "415-8 - Outras Despesas Com Funcionarios",
     "nature": "despesa",
     "amount": 2007.15,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2175,7 +2175,7 @@
     "account": "203-1 - FGTS",
     "nature": "despesa",
     "amount": 1186.7,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2184,7 +2184,7 @@
     "account": "400-0 - Custo de Embalagens",
     "nature": "despesa",
     "amount": 115.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2193,7 +2193,7 @@
     "account": "417-8 - Seguro de Vida",
     "nature": "despesa",
     "amount": 51.37,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2202,7 +2202,7 @@
     "account": "202-6 - Gratificacoes",
     "nature": "despesa",
     "amount": 5625.51,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2211,7 +2211,7 @@
     "account": "201-6 - Horas Extras – Dobras",
     "nature": "despesa",
     "amount": 3444.01,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2220,7 +2220,7 @@
     "account": "420-3 - Agua e Esgoto",
     "nature": "despesa",
     "amount": 307.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2229,7 +2229,7 @@
     "account": "425-5 - Consultoria",
     "nature": "despesa",
     "amount": 1129,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2238,7 +2238,7 @@
     "account": "427-0 - Sistema de Gestao",
     "nature": "despesa",
     "amount": 310.47,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2247,7 +2247,7 @@
     "account": "423-4 - Internet",
     "nature": "despesa",
     "amount": 119.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2256,7 +2256,7 @@
     "account": "420-2 - Energia Eletrica",
     "nature": "despesa",
     "amount": 557.66,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2265,7 +2265,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 266578.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2274,7 +2274,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 240983,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2283,7 +2283,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 3787.52,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2292,7 +2292,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 19094.69,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2301,7 +2301,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 38503.99,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2310,7 +2310,7 @@
     "account": "303-2 - Rendimento de Aplic Financeira",
     "nature": "receita",
     "amount": 0.46,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2319,7 +2319,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 287108.53,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2328,7 +2328,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 210994.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2337,7 +2337,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 16212.17,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2346,7 +2346,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 56054.35,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2355,7 +2355,7 @@
     "account": "303-2 - Rendimento de Aplic Financeira",
     "nature": "receita",
     "amount": 0.24,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2364,7 +2364,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 303394.4,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2373,7 +2373,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 360798.15,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2382,7 +2382,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 14467.63,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2391,7 +2391,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 7172.78,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2400,7 +2400,7 @@
     "account": "303-2 - Rendimento de Aplic Financeira",
     "nature": "receita",
     "amount": 0.11,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2409,7 +2409,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 268359.8,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2418,7 +2418,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 358712.51,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2427,7 +2427,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 12308.18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2436,7 +2436,7 @@
     "account": "303-2 - Rendimento de Aplic Financeira",
     "nature": "receita",
     "amount": 0.09,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2445,7 +2445,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 45128.33,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2454,7 +2454,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 248072,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2463,7 +2463,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 331344.68,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2472,7 +2472,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 22831.18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2481,7 +2481,7 @@
     "account": "302-3 - Reembolso de Despesas",
     "nature": "receita",
     "amount": 233.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2490,7 +2490,7 @@
     "account": "302-3 - Reembolso de Despesas",
     "nature": "receita",
     "amount": 140,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2499,7 +2499,7 @@
     "account": "302-3 - Reembolso de Despesas",
     "nature": "receita",
     "amount": 140,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2508,7 +2508,7 @@
     "account": "302-3 - Reembolso de Despesas",
     "nature": "receita",
     "amount": 211,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2517,7 +2517,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 3561.18,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2526,7 +2526,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 202395.1,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2535,7 +2535,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 335790.38,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2544,7 +2544,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 41003.29,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2553,7 +2553,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 21953.29,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2562,7 +2562,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 205478,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2571,7 +2571,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 272084.12,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2580,7 +2580,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 33360.57,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2589,7 +2589,7 @@
     "account": "303-2 - Rendimento de Aplic Financeira",
     "nature": "receita",
     "amount": 0.02,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2598,7 +2598,7 @@
     "account": "302-3 - Reembolso de Despesas",
     "nature": "receita",
     "amount": 232.5,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2607,7 +2607,7 @@
     "account": "302-3 - Reembolso de Despesas",
     "nature": "receita",
     "amount": 363.49,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2616,7 +2616,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 163407.25,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2625,7 +2625,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 263884.67,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2634,7 +2634,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 8318.43,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2643,7 +2643,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 18718.06,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2652,7 +2652,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 278082.57,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2661,7 +2661,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 198068.14,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2670,7 +2670,7 @@
     "account": "303-3 - Juros Ativos",
     "nature": "receita",
     "amount": 3267.2,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2679,7 +2679,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 34205,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2688,7 +2688,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 152948.23,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2697,7 +2697,7 @@
     "account": "102-1 - Vendas de Produtos",
     "nature": "receita",
     "amount": 199901.97,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2706,7 +2706,7 @@
     "account": "102-1 - Vendas de Produtos - Transferência / PIX",
     "nature": "receita",
     "amount": 333950.19,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2715,7 +2715,7 @@
     "account": "102-1 - Vendas de Produtos - Boleto",
     "nature": "receita",
     "amount": 11035,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2724,7 +2724,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 136158.53,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2733,7 +2733,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 79.9,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2742,7 +2742,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 199.75,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2751,7 +2751,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 39.95,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2760,7 +2760,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 41.23,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2769,7 +2769,7 @@
     "account": "102-1 - Vendas Canceladas",
     "nature": "despesa",
     "amount": 15.84,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2778,7 +2778,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 205.6,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2787,7 +2787,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2796,7 +2796,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
     "nature": "despesa",
     "amount": 50,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2805,7 +2805,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 106536.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2814,7 +2814,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 106536.42,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2823,7 +2823,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 152916.81,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2832,7 +2832,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 152916.81,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2841,7 +2841,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 174129.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2850,7 +2850,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 174129.92,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2859,7 +2859,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 167325.71,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2868,7 +2868,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 167325.71,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2877,7 +2877,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 151630.54,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2886,7 +2886,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 151630.54,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2895,7 +2895,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 123978.71,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2904,7 +2904,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 123978.71,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2913,7 +2913,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 142615.19,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2922,7 +2922,7 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 142615.19,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2931,7 +2931,7 @@
     "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
     "nature": "receita",
     "amount": 129924.53,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   },
   {
     "company_cnpj": "26888098001040",
@@ -2940,6 +2940,6 @@
     "account": "102-1 - Vendas de Produtos - Débito e Crédito",
     "nature": "receita",
     "amount": 135886.55,
-    "created_at": "2025-11-17T11:23:56.748Z"
+    "created_at": "2025-11-17T11:29:58.841Z"
   }
 ]
