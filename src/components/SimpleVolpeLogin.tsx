@@ -46,7 +46,7 @@ export function SimpleVolpeLogin({ open, onClose, onLogged }: SimpleVolpeLoginPr
   if (!open) return null
 
   return (
-    <motion.div className="fixed inset-0 z-[80] bg-black/60 backdrop-blur-xl flex items-center justify-center">
+    <div className="fixed inset-0 z-[80] bg-black/60 backdrop-blur-xl flex items-center justify-center">
       <motion.div 
         variants={slideUp} 
         initial="hidden" 
@@ -103,6 +103,6 @@ export function SimpleVolpeLogin({ open, onClose, onLogged }: SimpleVolpeLoginPr
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   )
 }
