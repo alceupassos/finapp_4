@@ -23,6 +23,7 @@ import { SupabaseRest } from './services/supabaseRest';
 import { ProcessingStatsCard } from './components/ProcessingStatsCard';
 import { AcquirersCard } from './components/AcquirersCard';
 import { BanksCard } from './components/BanksCard';
+import { CompanyGroupSelector } from './components/CompanyGroupSelector';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
@@ -42,10 +43,10 @@ export function App(){
   
   // Filtros
   const [selectedMonth, setSelectedMonth] = useState('2025-11');
-  const [selectedCompany, setSelectedCompany] = useState('26888098000159');
+  const [selectedCompanies, setSelectedCompanies] = useState<string[]>(['26888098000159']); // Array de CNPJs
   const [companies, setCompanies] = useState<Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>>([]);
   
-  const { metrics, loading } = useFinancialData(selectedCompany, selectedMonth);
+  const { metrics, loading } = useFinancialData(selectedCompanies, selectedMonth);
 
   useEffect(() => {
     loadCompanies();
@@ -186,10 +187,16 @@ Sempre que relevante, fornecer:
           onPeriodChange={(p)=>setPeriod(p)}
           selectedMonth={selectedMonth}
           onMonthChange={setSelectedMonth}
-          selectedCompany={selectedCompany}
-          onCompanyChange={setSelectedCompany}
-          companies={companies}
         />
+
+        {/* Seletor de Agrupamento de Empresas */}
+        <div className="px-8 py-4 border-b border-slate-800">
+          <CompanyGroupSelector
+            companies={companies}
+            selectedCompanies={selectedCompanies}
+            onChange={setSelectedCompanies}
+          />
+        </div>
         
         <main className="flex-1 p-8">
           {currentView === 'Dashboard' && (
@@ -244,7 +251,7 @@ Sempre que relevante, fornecer:
           {/* Cashflow + Virtual Card */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
             <div className="xl:col-span-2">
-              <ModernCashflowChart period={period} cnpj={selectedCompany} selectedMonth={selectedMonth} />
+              <ModernCashflowChart period={period} cnpj={selectedCompanies[0] || '26888098000159'} selectedMonth={selectedMonth} />
             </div>
             <div>
               <VirtualCard3D />
@@ -257,7 +264,7 @@ Sempre que relevante, fornecer:
               <ModernTransactionsTable />
             </div>
             <div>
-              <RevenueDistributionGauge cnpj={selectedCompany} selectedMonth={selectedMonth} />
+              <RevenueDistributionGauge cnpj={selectedCompanies[0] || '26888098000159'} selectedMonth={selectedMonth} />
             </div>
           </div>
 
@@ -276,7 +283,7 @@ Sempre que relevante, fornecer:
           )}
 
           {currentView === 'Análises' && (
-            <AnaliticoDashboard selectedMonth={selectedMonth} selectedCompany={selectedCompany} />
+            <AnaliticoDashboard selectedMonth={selectedMonth} selectedCompany={selectedCompanies[0] || '26888098000159'} />
           )}
           {currentView === 'Fluxo de Caixa' && (
             <div className="grid grid-cols-1 gap-6">
@@ -294,9 +301,9 @@ Sempre que relevante, fornecer:
           )}
           {currentView === 'Notícias' && (
             <NoticiasPage 
-              cnpj={selectedCompany}
-              nomeEmpresa={companies.find(c => c.cnpj === selectedCompany)?.cliente_nome || 'Empresa'}
-              grupoEmpresarial={companies.find(c => c.cnpj === selectedCompany)?.grupo_empresarial || 'Grupo Empresarial'}
+              cnpj={selectedCompanies[0] || '26888098000159'}
+              nomeEmpresa={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.cliente_nome || 'Empresa'}
+              grupoEmpresarial={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.grupo_empresarial || 'Grupo Volpe'}
             />
           )}
         </main>

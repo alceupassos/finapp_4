@@ -12,7 +12,7 @@ interface FinancialMetrics {
   metaPoupancaProgress: number;
 }
 
-export function useFinancialData(cnpj: string = '26888098000159', selectedMonth?: string) {
+export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], selectedMonth?: string) {
   const [metrics, setMetrics] = useState<FinancialMetrics>({
     receitaTotal: 0,
     despesasTotal: 0,
@@ -25,14 +25,41 @@ export function useFinancialData(cnpj: string = '26888098000159', selectedMonth?
   });
   const [loading, setLoading] = useState(true);
 
+  // Normalizar para sempre ser array
+  const cnpjArray = Array.isArray(cnpjs) ? cnpjs : [cnpjs];
+
   useEffect(() => {
     loadFinancialData();
-  }, [cnpj, selectedMonth]);
+  }, [JSON.stringify(cnpjArray), selectedMonth]);
 
   const loadFinancialData = async () => {
     try {
-      const dreData = await SupabaseRest.getDRE(cnpj);
-      if (!dreData || dreData.length === 0) {
+      // Se nenhuma empresa selecionada, retornar zeros
+      if (cnpjArray.length === 0) {
+        setMetrics({
+          receitaTotal: 0,
+          despesasTotal: 0,
+          limiteDiario: 45000,
+          metaPoupanca: 150000,
+          receitaChange: 0,
+          despesasChange: 0,
+          limiteDiarioProgress: 0,
+          metaPoupancaProgress: 0,
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Buscar dados de todas as empresas selecionadas
+      const allDreData: any[] = [];
+      for (const cnpj of cnpjArray) {
+        const dreData = await SupabaseRest.getDRE(cnpj);
+        if (dreData && dreData.length > 0) {
+          allDreData.push(...dreData);
+        }
+      }
+
+      if (allDreData.length === 0) {
         setLoading(false);
         return;
       }
@@ -53,7 +80,8 @@ export function useFinancialData(cnpj: string = '26888098000159', selectedMonth?
       let receitaMesAnterior = 0;
       let despesaMesAnterior = 0;
 
-      dreData.forEach((item: any) => {
+      // Agregar dados de todas as empresas
+      allDreData.forEach((item: any) => {
         const itemDate = new Date(item.data);
         const itemYear = itemDate.getFullYear();
         const itemMonth = itemDate.getMonth();
