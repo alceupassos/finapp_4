@@ -16,8 +16,7 @@ import { NoticiasPage } from './components/NoticiasPage';
 import { Users, FileText, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { scaleOnHover, item } from './lib/motion';
-import { SettingsModal } from './components/SettingsModal';
-import { LogsModal } from './components/LogsModal';
+import { ConfigModal } from './components/ConfigModal';
 import { SimpleVolpeLogin } from './components/SimpleVolpeLogin';
 import { useFinancialData } from './hooks/useFinancialData';
 import { SupabaseRest } from './services/supabaseRest';
@@ -27,8 +26,7 @@ export type DFCItem = { data:string; descricao:string; entrada:number; saida:num
 
 export function App(){
   const [isDark, setIsDark] = useState(true);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [logsOpen, setLogsOpen] = useState(false);
+  const [configOpen, setConfigOpen] = useState(false);
   const [oracleContext, setOracleContext] = useState<string>('');
   const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Notícias'|'Fluxo de Caixa'|'Extrato de Lançamentos'|'Relatórios'|'Clientes'>('Dashboard')
@@ -67,7 +65,7 @@ export function App(){
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar role={role} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
+      <ModernSidebar role={role} onOpenSettings={() => setConfigOpen(true)} onOpenLogs={() => setConfigOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar 
           isDark={isDark} 
@@ -245,8 +243,7 @@ export function App(){
             />
           )}
         </main>
-        <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
-        <LogsModal open={logsOpen} onClose={() => setLogsOpen(false)} />
+        <ConfigModal open={configOpen} onClose={() => setConfigOpen(false)} onUpdateOracleContext={setOracleContext} />
         {!session && (
           isVolpeDomain ? (
             <SimpleVolpeLogin 

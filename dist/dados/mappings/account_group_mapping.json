@@ -1,0 +1,1867 @@
+{
+  "generated_at": "2025-11-17T01:09:15.542Z",
+  "reference_file": "DRE_DFC_VOLPE.xlsx",
+  "plan_file": "PlanoDeContas.xlsx",
+  "items": {
+    "102-1 - vendas de produtos - boleto": {
+      "code": "102-1",
+      "label": "102-1 - Vendas de Produtos - Boleto",
+      "dreGroup": "Receitas Operacionais",
+      "dfcGroup": "Receitas Operacionais",
+      "planName": "102-1 - Vendas de Produtos - Boleto",
+      "planType": "A Receber"
+    },
+    "102-1 - receita com prestação de servicos": {
+      "code": "102-1",
+      "label": "102-1 - Receita com Prestação de Servicos",
+      "dreGroup": "Receitas Operacionais",
+      "dfcGroup": "Receitas Operacionais",
+      "planName": "102-1 - Receita com Prestação de Servicos",
+      "planType": "A Receber"
+    },
+    "102-1 - vendas de produtos": {
+      "code": "102-1",
+      "label": "102-1 - Vendas de Produtos",
+      "dreGroup": "Receitas Operacionais",
+      "dfcGroup": "Receitas Operacionais",
+      "planName": "102-1 - Vendas de Produtos",
+      "planType": "A Receber"
+    },
+    "102-1 - vendas de produtos - débito e crédito": {
+      "code": "102-1",
+      "label": "102-1 - Vendas de Produtos - Débito e Crédito",
+      "dreGroup": "Receitas Operacionais",
+      "dfcGroup": "Receitas Operacionais",
+      "planName": "102-1 - Vendas de Produtos - Débito e Crédito",
+      "planType": "A Receber"
+    },
+    "302-1 - receitas diversas": {
+      "code": "302-1",
+      "label": "302-1 - Receitas Diversas",
+      "dreGroup": "Receitas Operacionais",
+      "dfcGroup": "Receitas Operacionais",
+      "planName": "302-1 - Receitas Diversas",
+      "planType": "A Receber"
+    },
+    "ajustes a crédito de cartão": {
+      "code": null,
+      "label": "Ajustes a Crédito de Cartão",
+      "dreGroup": "Receitas Operacionais",
+      "dfcGroup": "Receitas Operacionais",
+      "planName": "Ajustes a Crédito de Cartão",
+      "planType": "A Receber"
+    },
+    "ajustes a débito de cartão": {
+      "code": null,
+      "label": "Ajustes a Débito de Cartão",
+      "dreGroup": "Deduções de Receitas",
+      "dfcGroup": "Deduções de Receitas",
+      "planName": "Ajustes a Débito de Cartão",
+      "planType": "A Pagar"
+    },
+    "102-1 - vendas canceladas": {
+      "code": "102-1",
+      "label": "102-1 - Vendas Canceladas",
+      "dreGroup": "Deduções de Receitas",
+      "dfcGroup": "Deduções de Receitas",
+      "planName": "102-1 - Vendas Canceladas",
+      "planType": "A Pagar"
+    },
+    "300-9 - desconto concedido": {
+      "code": "300-9",
+      "label": "300-9 - Desconto Concedido",
+      "dreGroup": "Deduções de Receitas",
+      "dfcGroup": "Deduções de Receitas",
+      "planName": "300-9 - Desconto Concedido",
+      "planType": "A Pagar"
+    },
+    "431-9 - tarifa de cartao / meios de pagamento - aluguel de pos / outras taxas": {
+      "code": "431-9",
+      "label": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+      "dreGroup": "Deduções de Receitas",
+      "dfcGroup": "Deduções de Receitas",
+      "planName": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+      "planType": "A Pagar"
+    },
+    "431-9 - tarifa de cartao / meios de pagamento - padrão": {
+      "code": "431-9",
+      "label": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+      "dreGroup": "Deduções de Receitas",
+      "dfcGroup": "Deduções de Receitas",
+      "planName": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+      "planType": "A Pagar"
+    },
+    "205-0 - icms": {
+      "code": "205-0",
+      "label": "205-0 - ICMS",
+      "dreGroup": "Impostos Sobre o Faturamento",
+      "dfcGroup": "Impostos Sobre o Faturamento",
+      "planName": "205-0 - ICMS",
+      "planType": "A Pagar"
+    },
+    "421-4 - op manutencao de veículos": {
+      "code": "421-4",
+      "label": "421-4 - OP Manutencao de veículos",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "421-4 - OP Manutencao de veículos",
+      "planType": "A Pagar"
+    },
+    "422-4 - pedágio": {
+      "code": "422-4",
+      "label": "422-4 - Pedágio",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "422-4 - Pedágio",
+      "planType": "A Pagar"
+    },
+    "400-0 - custo de embalagens": {
+      "code": "400-0",
+      "label": "400-0 - Custo de Embalagens",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "400-0 - Custo de Embalagens",
+      "planType": "A Pagar"
+    },
+    "421-8 - op correios e fretes": {
+      "code": "421-8",
+      "label": "421-8 - OP Correios e fretes",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "421-8 - OP Correios e fretes",
+      "planType": "A Pagar"
+    },
+    "421-9 - seguros de carga": {
+      "code": "421-9",
+      "label": "421-9 - Seguros de carga",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "421-9 - Seguros de carga",
+      "planType": "A Pagar"
+    },
+    "201-6 - op salarios": {
+      "code": "201-6",
+      "label": "201-6 - OP Salarios",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "201-6 - OP Salarios",
+      "planType": "A Pagar"
+    },
+    "201-8 - op ferias": {
+      "code": "201-8",
+      "label": "201-8 - OP Ferias",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "201-8 - OP Ferias",
+      "planType": "A Pagar"
+    },
+    "400-0 - custo de mercadorias vendidas": {
+      "code": "400-0",
+      "label": "400-0 - Custo de Mercadorias Vendidas",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "400-0 - Custo de Mercadorias Vendidas",
+      "planType": "A Pagar"
+    },
+    "400-1 - custo de prestacao de servicos": {
+      "code": "400-1",
+      "label": "400-1 - Custo de Prestacao de Servicos",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "400-1 - Custo de Prestacao de Servicos",
+      "planType": "A Pagar"
+    },
+    "409-7 - serviços terceiros pf": {
+      "code": "409-7",
+      "label": "409-7 - Serviços Terceiros PF",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "409-7 - Serviços Terceiros PF",
+      "planType": "A Pagar"
+    },
+    "422-1 - op combustivel": {
+      "code": "422-1",
+      "label": "422-1 - OP Combustivel",
+      "dreGroup": "Despesas Operacionais",
+      "dfcGroup": "Despesas Operacionais",
+      "planName": "422-1 - OP Combustivel",
+      "planType": "A Pagar"
+    },
+    "201-6 - horas extras – dobras": {
+      "code": "201-6",
+      "label": "201-6 - Horas Extras – Dobras",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "201-6 - Horas Extras – Dobras",
+      "planType": "A Pagar"
+    },
+    "201-5 - pro-labore": {
+      "code": "201-5",
+      "label": "201-5 - Pro-Labore",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "201-5 - Pro-Labore",
+      "planType": "A Pagar"
+    },
+    "201-6 - salarios e ordenados": {
+      "code": "201-6",
+      "label": "201-6 - Salarios e Ordenados",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "201-6 - Salarios e Ordenados",
+      "planType": "A Pagar"
+    },
+    "201-8 - ferias": {
+      "code": "201-8",
+      "label": "201-8 - Ferias",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "201-8 - Ferias",
+      "planType": "A Pagar"
+    },
+    "202-0 - rescisoes": {
+      "code": "202-0",
+      "label": "202-0 - Rescisoes",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "202-0 - Rescisoes",
+      "planType": "A Pagar"
+    },
+    "202-6 - gratificacoes": {
+      "code": "202-6",
+      "label": "202-6 - Gratificacoes",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "202-6 - Gratificacoes",
+      "planType": "A Pagar"
+    },
+    "203-0 - inss": {
+      "code": "203-0",
+      "label": "203-0 - INSS",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "203-0 - INSS",
+      "planType": "A Pagar"
+    },
+    "203-1 - fgts": {
+      "code": "203-1",
+      "label": "203-1 - FGTS",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "203-1 - FGTS",
+      "planType": "A Pagar"
+    },
+    "415-3 - acordo trabalhista": {
+      "code": "415-3",
+      "label": "415-3 - Acordo Trabalhista",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "415-3 - Acordo Trabalhista",
+      "planType": "A Pagar"
+    },
+    "415-8 - outras despesas com funcionarios": {
+      "code": "415-8",
+      "label": "415-8 - Outras Despesas Com Funcionarios",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "415-8 - Outras Despesas Com Funcionarios",
+      "planType": "A Pagar"
+    },
+    "416-8 - vale transporte": {
+      "code": "416-8",
+      "label": "416-8 - Vale Transporte",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "416-8 - Vale Transporte",
+      "planType": "A Pagar"
+    },
+    "417-0 - vale refeicao": {
+      "code": "417-0",
+      "label": "417-0 - Vale Refeicao",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "417-0 - Vale Refeicao",
+      "planType": "A Pagar"
+    },
+    "417-4 - assistencia medica": {
+      "code": "417-4",
+      "label": "417-4 - Assistencia medica",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "417-4 - Assistencia medica",
+      "planType": "A Pagar"
+    },
+    "417-8 - seguro de vida": {
+      "code": "417-8",
+      "label": "417-8 - Seguro de Vida",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "417-8 - Seguro de Vida",
+      "planType": "A Pagar"
+    },
+    "418-3 - curso e treinamento": {
+      "code": "418-3",
+      "label": "418-3 - Curso e Treinamento",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "418-3 - Curso e Treinamento",
+      "planType": "A Pagar"
+    },
+    "419-1 - vale combustivel": {
+      "code": "419-1",
+      "label": "419-1 - Vale Combustivel",
+      "dreGroup": "Despesas Com Pessoal",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "419-1 - Vale Combustivel",
+      "planType": "A Pagar"
+    },
+    "421-8 - correios e fretes": {
+      "code": "421-8",
+      "label": "421-8 - Correios e Fretes",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "421-8 - Correios e Fretes",
+      "planType": "A Pagar"
+    },
+    "420-2 - energia eletrica": {
+      "code": "420-2",
+      "label": "420-2 - Energia Eletrica",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "420-2 - Energia Eletrica",
+      "planType": "A Pagar"
+    },
+    "420-3 - agua e esgoto": {
+      "code": "420-3",
+      "label": "420-3 - Agua e Esgoto",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "420-3 - Agua e Esgoto",
+      "planType": "A Pagar"
+    },
+    "420-5 - aluguel": {
+      "code": "420-5",
+      "label": "420-5 - Aluguel",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "420-5 - Aluguel",
+      "planType": "A Pagar"
+    },
+    "420-6 - manut e conservacao predial": {
+      "code": "420-6",
+      "label": "420-6 - Manut e Conservacao Predial",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "420-6 - Manut e Conservacao Predial",
+      "planType": "A Pagar"
+    },
+    "420-7 - telefonia": {
+      "code": "420-7",
+      "label": "420-7 - Telefonia",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "420-7 - Telefonia",
+      "planType": "A Pagar"
+    },
+    "420-9 - uniformes": {
+      "code": "420-9",
+      "label": "420-9 - Uniformes",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "420-9 - Uniformes",
+      "planType": "A Pagar"
+    },
+    "421-2 - manutencao e reparos": {
+      "code": "421-2",
+      "label": "421-2 - Manutencao e Reparos",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "421-2 - Manutencao e Reparos",
+      "planType": "A Pagar"
+    },
+    "421-4 - manutencao de veiculos": {
+      "code": "421-4",
+      "label": "421-4 - Manutencao de veiculos",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "421-4 - Manutencao de veiculos",
+      "planType": "A Pagar"
+    },
+    "421-9 - seguros": {
+      "code": "421-9",
+      "label": "421-9 - Seguros",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "421-9 - Seguros",
+      "planType": "A Pagar"
+    },
+    "422-0 - uber e taxi": {
+      "code": "422-0",
+      "label": "422-0 - Uber e Taxi",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "422-0 - Uber e Taxi",
+      "planType": "A Pagar"
+    },
+    "422-1 - combustivel": {
+      "code": "422-1",
+      "label": "422-1 - Combustivel",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "422-1 - Combustivel",
+      "planType": "A Pagar"
+    },
+    "422-2 - copa e cozinha": {
+      "code": "422-2",
+      "label": "422-2 - Copa e Cozinha",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "422-2 - Copa e Cozinha",
+      "planType": "A Pagar"
+    },
+    "422-7 - viagens e estadias": {
+      "code": "422-7",
+      "label": "422-7 - Viagens e Estadias",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "422-7 - Viagens e Estadias",
+      "planType": "A Pagar"
+    },
+    "422-9 - material de escritorio": {
+      "code": "422-9",
+      "label": "422-9 - Material de Escritorio",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "422-9 - Material de Escritorio",
+      "planType": "A Pagar"
+    },
+    "423-5 - estacionamento": {
+      "code": "423-5",
+      "label": "423-5 - Estacionamento",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "423-5 - Estacionamento",
+      "planType": "A Pagar"
+    },
+    "423-6 - material de limpeza": {
+      "code": "423-6",
+      "label": "423-6 - Material de Limpeza",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "423-6 - Material de Limpeza",
+      "planType": "A Pagar"
+    },
+    "424-6 - custa processuais": {
+      "code": "424-6",
+      "label": "424-6 - Custa Processuais",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "424-6 - Custa Processuais",
+      "planType": "A Pagar"
+    },
+    "425-1 - outras despesas": {
+      "code": "425-1",
+      "label": "425-1 - Outras Despesas",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "425-1 - Outras Despesas",
+      "planType": "A Pagar"
+    },
+    "425-5 - consultoria": {
+      "code": "425-5",
+      "label": "425-5 - Consultoria",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "425-5 - Consultoria",
+      "planType": "A Pagar"
+    },
+    "425-6 - contabilidade": {
+      "code": "425-6",
+      "label": "425-6 - Contabilidade",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "425-6 - Contabilidade",
+      "planType": "A Pagar"
+    },
+    "425-8 - juridico": {
+      "code": "425-8",
+      "label": "425-8 - Juridico",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "425-8 - Juridico",
+      "planType": "A Pagar"
+    },
+    "425-9 - limpeza": {
+      "code": "425-9",
+      "label": "425-9 - Limpeza",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "425-9 - Limpeza",
+      "planType": "A Pagar"
+    },
+    "426-2 - segurança e vigilância": {
+      "code": "426-2",
+      "label": "426-2 - Segurança e Vigilância",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "426-2 - Segurança e Vigilância",
+      "planType": "A Pagar"
+    },
+    "430-1 - iptu": {
+      "code": "430-1",
+      "label": "430-1 - IPTU",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "430-1 - IPTU",
+      "planType": "A Pagar"
+    },
+    "430-2 - ipva": {
+      "code": "430-2",
+      "label": "430-2 - IPVA",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "430-2 - IPVA",
+      "planType": "A Pagar"
+    },
+    "430-7 - iof": {
+      "code": "430-7",
+      "label": "430-7 - IOF",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "430-7 - IOF",
+      "planType": "A Pagar"
+    },
+    "431-3 - taxas e emolumentos": {
+      "code": "431-3",
+      "label": "431-3 - Taxas e Emolumentos",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "431-3 - Taxas e Emolumentos",
+      "planType": "A Pagar"
+    },
+    "434-1 - exames ocupacionais": {
+      "code": "434-1",
+      "label": "434-1 - Exames ocupacionais",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "434-1 - Exames ocupacionais",
+      "planType": "A Pagar"
+    },
+    "434-6 - impostos retidos": {
+      "code": "434-6",
+      "label": "434-6 - Impostos retidos",
+      "dreGroup": "Despesas Administrativas",
+      "dfcGroup": "Despesas Administrativas",
+      "planName": "434-6 - Impostos retidos",
+      "planType": "A Pagar"
+    },
+    "413-0 - outras despesas comerciais": {
+      "code": "413-0",
+      "label": "413-0 - Outras Despesas Comerciais",
+      "dreGroup": "Despesas Comerciais e Marketing",
+      "dfcGroup": "Despesas Comerciais e Marketing",
+      "planName": "413-0 - Outras Despesas Comerciais",
+      "planType": "A Pagar"
+    },
+    "427-9 - publicidade e propaganda": {
+      "code": "427-9",
+      "label": "427-9 - Publicidade e Propaganda",
+      "dreGroup": "Despesas Comerciais e Marketing",
+      "dfcGroup": "Despesas Comerciais e Marketing",
+      "planName": "427-9 - Publicidade e Propaganda",
+      "planType": "A Pagar"
+    },
+    "428-3 - producao de material": {
+      "code": "428-3",
+      "label": "428-3 - Producao de Material",
+      "dreGroup": "Despesas Comerciais e Marketing",
+      "dfcGroup": "Despesas Comerciais e Marketing",
+      "planName": "428-3 - Producao de Material",
+      "planType": "A Pagar"
+    },
+    "434-4 - marketing digital": {
+      "code": "434-4",
+      "label": "434-4 - Marketing Digital",
+      "dreGroup": "Despesas Comerciais e Marketing",
+      "dfcGroup": "Despesas Comerciais e Marketing",
+      "planName": "434-4 - Marketing Digital",
+      "planType": "A Pagar"
+    },
+    "434-5 - feiras e eventos": {
+      "code": "434-5",
+      "label": "434-5 - Feiras e Eventos",
+      "dreGroup": "Despesas Comerciais e Marketing",
+      "dfcGroup": "Despesas Comerciais e Marketing",
+      "planName": "434-5 - Feiras e Eventos",
+      "planType": "A Pagar"
+    },
+    "423-0 - material de informatica": {
+      "code": "423-0",
+      "label": "423-0 - Material de Informatica",
+      "dreGroup": "Despesas Com TI",
+      "dfcGroup": "Despesas Com TI",
+      "planName": "423-0 - Material de Informatica",
+      "planType": "A Pagar"
+    },
+    "423-4 - internet": {
+      "code": "423-4",
+      "label": "423-4 - Internet",
+      "dreGroup": "Despesas Com TI",
+      "dfcGroup": "Despesas Com TI",
+      "planName": "423-4 - Internet",
+      "planType": "A Pagar"
+    },
+    "425-7 - informatica e software": {
+      "code": "425-7",
+      "label": "425-7 - Informatica e Software",
+      "dreGroup": "Despesas Com TI",
+      "dfcGroup": "Despesas Com TI",
+      "planName": "425-7 - Informatica e Software",
+      "planType": "A Pagar"
+    },
+    "427-0 - sistema de gestao": {
+      "code": "427-0",
+      "label": "427-0 - Sistema de Gestao",
+      "dreGroup": "Despesas Com TI",
+      "dfcGroup": "Despesas Com TI",
+      "planName": "427-0 - Sistema de Gestao",
+      "planType": "A Pagar"
+    },
+    "303-2 - rendimento de aplic financeira": {
+      "code": "303-2",
+      "label": "303-2 - Rendimento de Aplic Financeira",
+      "dreGroup": "Receitas Financeiras",
+      "dfcGroup": "Receitas Financeiras",
+      "planName": "303-2 - Rendimento de Aplic Financeira",
+      "planType": "A Receber"
+    },
+    "303-3 - juros ativos": {
+      "code": "303-3",
+      "label": "303-3 - Juros Ativos",
+      "dreGroup": "Receitas Financeiras",
+      "dfcGroup": "Receitas Financeiras",
+      "planName": "303-3 - Juros Ativos",
+      "planType": "A Receber"
+    },
+    "303-4 - descontos obtidos": {
+      "code": "303-4",
+      "label": "303-4 - Descontos Obtidos",
+      "dreGroup": "Receitas Financeiras",
+      "dfcGroup": "Receitas Financeiras",
+      "planName": "303-4 - Descontos Obtidos",
+      "planType": "A Receber"
+    },
+    "431-5 - despesas bancarias": {
+      "code": "431-5",
+      "label": "431-5 - Despesas Bancarias",
+      "dreGroup": "Despesas Financeiras",
+      "dfcGroup": "Despesas Financeiras",
+      "planName": "431-5 - Despesas Bancarias",
+      "planType": "A Pagar"
+    },
+    "432-0 - juros passivos": {
+      "code": "432-0",
+      "label": "432-0 - Juros Passivos",
+      "dreGroup": "Despesas Financeiras",
+      "dfcGroup": "Despesas Financeiras",
+      "planName": "432-0 - Juros Passivos",
+      "planType": "A Pagar"
+    },
+    "200-8 - empréstimos": {
+      "code": "200-8",
+      "label": "200-8 - Empréstimos",
+      "dreGroup": "Outras Receitas",
+      "dfcGroup": "Outras Receitas",
+      "planName": "200-8 - Empréstimos",
+      "planType": "A Receber"
+    },
+    "302-3 - reembolso de despesas": {
+      "code": "302-3",
+      "label": "302-3 - Reembolso de Despesas",
+      "dreGroup": "Outras Receitas",
+      "dfcGroup": "Outras Receitas",
+      "planName": "302-3 - Reembolso de Despesas",
+      "planType": "A Pagar"
+    },
+    "outras entradas - filiais": {
+      "code": null,
+      "label": "Outras Entradas - Filiais",
+      "dreGroup": "Outras Receitas",
+      "dfcGroup": "Outras Receitas",
+      "planName": "Outras Entradas - Filiais",
+      "planType": "A Receber"
+    },
+    "111-03 - consorcio": {
+      "code": "111-03",
+      "label": "111-03 - Consorcio",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "111-03 - Consorcio",
+      "planType": "A Pagar"
+    },
+    "112-5 - maquinas e equipamentos": {
+      "code": "112-5",
+      "label": "112-5 - Maquinas e Equipamentos",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "112-5 - Maquinas e Equipamentos",
+      "planType": "A Pagar"
+    },
+    "112-7 - computadores e perifericos": {
+      "code": "112-7",
+      "label": "112-7 - Computadores e Perifericos",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "112-7 - Computadores e Perifericos",
+      "planType": "A Pagar"
+    },
+    "112-8 - sistemas e aplicativos": {
+      "code": "112-8",
+      "label": "112-8 - Sistemas e Aplicativos",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "112-8 - Sistemas e Aplicativos",
+      "planType": "A Pagar"
+    },
+    "112-9 - moveis e utensilios": {
+      "code": "112-9",
+      "label": "112-9 - Moveis e Utensilios",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "112-9 - Moveis e Utensilios",
+      "planType": "A Pagar"
+    },
+    "113-0 - veiculos": {
+      "code": "113-0",
+      "label": "113-0 - Veiculos",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "113-0 - Veiculos",
+      "planType": "A Pagar"
+    },
+    "114-2 - imovel": {
+      "code": "114-2",
+      "label": "114-2 - Imovel",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "114-2 - Imovel",
+      "planType": "A Pagar"
+    },
+    "200-8 - pagto empréstimos e financiamentos": {
+      "code": "200-8",
+      "label": "200-8 - Pagto Empréstimos e Financiamentos",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "200-8 - Pagto Empréstimos e Financiamentos",
+      "planType": "A Pagar"
+    },
+    "211-1 - tributos parcelados": {
+      "code": "211-1",
+      "label": "211-1 - Tributos Parcelados",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "211-1 - Tributos Parcelados",
+      "planType": "A Pagar"
+    },
+    "216-0 - distribuicao de lucro": {
+      "code": "216-0",
+      "label": "216-0 - Distribuicao de Lucro",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "216-0 - Distribuicao de Lucro",
+      "planType": "A Pagar"
+    },
+    "outras saídas - filiais": {
+      "code": null,
+      "label": "Outras Saídas - Filiais",
+      "dreGroup": "Investimentos e Outros",
+      "dfcGroup": "Investimentos e Outros",
+      "planName": "Outras Saídas - Filiais",
+      "planType": "A Pagar"
+    },
+    "201-7 - 13° salario": {
+      "code": "201-7",
+      "label": "201-7 - 13° Salario",
+      "dfcGroup": "Despesas Com Pessoal",
+      "planName": "201-7 - 13° Salario",
+      "planType": "A Pagar"
+    },
+    "102-1 - receita com prestação de servicos - débito e crédito": {
+      "code": "102-1",
+      "label": "102-1 - Receita com Prestação de Servicos - Débito e Crédito",
+      "planName": "102-1 - Receita com Prestação de Servicos - Débito e Crédito",
+      "planType": "A Receber"
+    },
+    "102-1 - vendas de produtos - delivery": {
+      "code": "102-1",
+      "label": "102-1 - Vendas de Produtos - Delivery",
+      "planName": "102-1 - Vendas de Produtos - Delivery",
+      "planType": "A Receber"
+    },
+    "102-1 - vendas de produtos - transferência / pix": {
+      "code": "102-1",
+      "label": "102-1 - Vendas de Produtos - Transferência / PIX",
+      "planName": "102-1 - Vendas de Produtos - Transferência / PIX",
+      "planType": "A Receber"
+    },
+    "102-1 - vendas de produtos - vouchers": {
+      "code": "102-1",
+      "label": "102-1 - Vendas de Produtos - Vouchers",
+      "planName": "102-1 - Vendas de Produtos - Vouchers",
+      "planType": "A Receber"
+    },
+    "103-2 - adiantamento a fornecedor": {
+      "code": "103-2",
+      "label": "103-2 - Adiantamento a Fornecedor",
+      "planName": "103-2 - Adiantamento a Fornecedor",
+      "planType": "A Pagar"
+    },
+    "105-6 - fundo nacional de marketing": {
+      "code": "105-6",
+      "label": "105-6 -  Fundo Nacional de Marketing",
+      "planName": "105-6 -  Fundo Nacional de Marketing",
+      "planType": "A Pagar"
+    },
+    "111-03 - resgate de capitalização": {
+      "code": "111-03",
+      "label": "111-03 - Resgate de Capitalização",
+      "planName": "111-03 - Resgate de Capitalização",
+      "planType": "A Receber"
+    },
+    "113-4 - benfeitorias em bens de terceiros": {
+      "code": "113-4",
+      "label": "113-4 - Benfeitorias em Bens de Terceiros",
+      "planName": "113-4 - Benfeitorias em Bens de Terceiros",
+      "planType": "A Pagar"
+    },
+    "118-6 - marcas e patentes": {
+      "code": "118-6",
+      "label": "118-6 - Marcas e Patentes",
+      "planName": "118-6 - Marcas e Patentes",
+      "planType": "A Pagar"
+    },
+    "201 -6 - salario complementar por serviço prestado": {
+      "code": "201",
+      "label": "201 -6 - Salario Complementar por Serviço Prestado",
+      "planName": "201 -6 - Salario Complementar por Serviço Prestado",
+      "planType": "A Pagar"
+    },
+    "201-6 - ajuda de custo": {
+      "code": "201-6",
+      "label": "201-6 - Ajuda de Custo",
+      "planName": "201-6 - Ajuda de Custo",
+      "planType": "A Pagar"
+    },
+    "201-6 - freelancer": {
+      "code": "201-6",
+      "label": "201-6 - Freelancer",
+      "planName": "201-6 - Freelancer",
+      "planType": "A Pagar"
+    },
+    "201-6 - op ajuda de custo": {
+      "code": "201-6",
+      "label": "201-6 - OP Ajuda de Custo",
+      "planName": "201-6 - OP Ajuda de Custo",
+      "planType": "A Pagar"
+    },
+    "201-7 - op 13° salario": {
+      "code": "201-7",
+      "label": "201-7 - OP 13° Salario",
+      "planName": "201-7 - OP 13° Salario",
+      "planType": "A Pagar"
+    },
+    "202-0 - op rescisoes": {
+      "code": "202-0",
+      "label": "202-0 - OP Rescisoes",
+      "planName": "202-0 - OP Rescisoes",
+      "planType": "A Pagar"
+    },
+    "202-6 - op gratificacoes": {
+      "code": "202-6",
+      "label": "202-6 - OP Gratificacoes",
+      "planName": "202-6 - OP Gratificacoes",
+      "planType": "A Pagar"
+    },
+    "203-0 - inss a recolher": {
+      "code": "203-0",
+      "label": "203-0 - INSS a Recolher",
+      "planName": "203-0 - INSS a Recolher",
+      "planType": "A Pagar"
+    },
+    "203-0 - op inss": {
+      "code": "203-0",
+      "label": "203-0 - OP INSS",
+      "planName": "203-0 - OP INSS",
+      "planType": "A Pagar"
+    },
+    "203-1 - op fgts": {
+      "code": "203-1",
+      "label": "203-1 - OP FGTS",
+      "planName": "203-1 - OP FGTS",
+      "planType": "A Pagar"
+    },
+    "203-2 - irrf": {
+      "code": "203-2",
+      "label": "203-2 - IRRF",
+      "planName": "203-2 - IRRF",
+      "planType": "A Pagar"
+    },
+    "203-2 - op irrf": {
+      "code": "203-2",
+      "label": "203-2 - OP IRRF",
+      "planName": "203-2 - OP IRRF",
+      "planType": "A Pagar"
+    },
+    "204-7 - pis": {
+      "code": "204-7",
+      "label": "204-7 - PIS",
+      "planName": "204-7 - PIS",
+      "planType": "A Pagar"
+    },
+    "204-8 - cofins": {
+      "code": "204-8",
+      "label": "204-8 - COFINS",
+      "planName": "204-8 - COFINS",
+      "planType": "A Pagar"
+    },
+    "204-9 - iss serviço": {
+      "code": "204-9",
+      "label": "204-9 - ISS Serviço",
+      "planName": "204-9 - ISS Serviço",
+      "planType": "A Pagar"
+    },
+    "205-1 - ipi": {
+      "code": "205-1",
+      "label": "205-1 - IPI",
+      "planName": "205-1 - IPI",
+      "planType": "A Pagar"
+    },
+    "205-2 - simples nacional": {
+      "code": "205-2",
+      "label": "205-2 - Simples Nacional",
+      "planName": "205-2 - Simples Nacional",
+      "planType": "A Pagar"
+    },
+    "205-6 - irrf s/ terceiros a recolher": {
+      "code": "205-6",
+      "label": "205-6 - IRRF s/ terceiros a recolher",
+      "planName": "205-6 - IRRF s/ terceiros a recolher",
+      "planType": "A Pagar"
+    },
+    "205-9 - pis/cofins/csll retido a recolher": {
+      "code": "205-9",
+      "label": "205-9 - PIS/COFINS/CSLL retido a recolher",
+      "planName": "205-9 - PIS/COFINS/CSLL retido a recolher",
+      "planType": "A Pagar"
+    },
+    "206-0 - iss retido a recolher": {
+      "code": "206-0",
+      "label": "206-0 - ISS retido a recolher",
+      "planName": "206-0 - ISS retido a recolher",
+      "planType": "A Pagar"
+    },
+    "206-2 - irpf": {
+      "code": "206-2",
+      "label": "206-2 - IRPF",
+      "planName": "206-2 - IRPF",
+      "planType": "A Pagar"
+    },
+    "206-2 - irpj": {
+      "code": "206-2",
+      "label": "206-2 - IRPJ",
+      "planName": "206-2 - IRPJ",
+      "planType": "A Pagar"
+    },
+    "206-3 - csll": {
+      "code": "206-3",
+      "label": "206-3 - CSLL",
+      "planName": "206-3 - CSLL",
+      "planType": "A Pagar"
+    },
+    "208-8 - outros adiantamentos de clientes": {
+      "code": "208-8",
+      "label": "208-8 - Outros Adiantamentos de Clientes",
+      "planName": "208-8 - Outros Adiantamentos de Clientes",
+      "planType": "A Receber"
+    },
+    "212-0 - dev. mútuos": {
+      "code": "212-0",
+      "label": "212-0 - Dev. Mútuos",
+      "planName": "212-0 - Dev. Mútuos",
+      "planType": "A Pagar"
+    },
+    "212-0 - mútuos": {
+      "code": "212-0",
+      "label": "212-0 - Mútuos",
+      "planName": "212-0 - Mútuos",
+      "planType": "A Receber"
+    },
+    "214-3 - afac": {
+      "code": "214-3",
+      "label": "214-3 - AFAC",
+      "planName": "214-3 - AFAC",
+      "planType": "A Receber"
+    },
+    "214-3 - dev. afac": {
+      "code": "214-3",
+      "label": "214-3 - Dev. AFAC",
+      "planName": "214-3 - Dev. AFAC",
+      "planType": "A Pagar"
+    },
+    "302-5 - venda de imobilizado": {
+      "code": "302-5",
+      "label": "302-5 - Venda de Imobilizado",
+      "planName": "302-5 - Venda de Imobilizado",
+      "planType": "A Receber"
+    },
+    "303-4 -descontos obtidos": {
+      "code": "303-4",
+      "label": "303-4 -Descontos Obtidos",
+      "planName": "303-4 -Descontos Obtidos",
+      "planType": "A Pagar"
+    },
+    "303-6 - multa s/ recebimento em atraso": {
+      "code": "303-6",
+      "label": "303-6 - Multa s/ Recebimento em Atraso",
+      "planName": "303-6 - Multa s/ Recebimento em Atraso",
+      "planType": "A Receber"
+    },
+    "400-5 - custos de taxa de franquias": {
+      "code": "400-5",
+      "label": "400-5 - Custos de Taxa de Franquias",
+      "planName": "400-5 - Custos de Taxa de Franquias",
+      "planType": "A Pagar"
+    },
+    "402-0 - op parcipacao nos lucros e bonus": {
+      "code": "402-0",
+      "label": "402-0 - OP Parcipacao nos Lucros e Bonus",
+      "planName": "402-0 - OP Parcipacao nos Lucros e Bonus",
+      "planType": "A Pagar"
+    },
+    "403-9 - op vale transporte": {
+      "code": "403-9",
+      "label": "403-9 - OP Vale Transporte",
+      "planName": "403-9 - OP Vale Transporte",
+      "planType": "A Pagar"
+    },
+    "404-1 - op vale refeicao": {
+      "code": "404-1",
+      "label": "404-1 - OP Vale Refeicao",
+      "planName": "404-1 - OP Vale Refeicao",
+      "planType": "A Pagar"
+    },
+    "404-3 - op cesta basica": {
+      "code": "404-3",
+      "label": "404-3 - OP Cesta Basica",
+      "planName": "404-3 - OP Cesta Basica",
+      "planType": "A Pagar"
+    },
+    "404-5 - op assistencia medica e odonto": {
+      "code": "404-5",
+      "label": "404-5 - OP Assistencia Medica e Odonto",
+      "planName": "404-5 - OP Assistencia Medica e Odonto",
+      "planType": "A Pagar"
+    },
+    "404-9 - op seguro de vida": {
+      "code": "404-9",
+      "label": "404-9 - OP Seguro de Vida",
+      "planName": "404-9 - OP Seguro de Vida",
+      "planType": "A Pagar"
+    },
+    "405-1 - op farmacia": {
+      "code": "405-1",
+      "label": "405-1 - OP Farmacia",
+      "planName": "405-1 - OP Farmacia",
+      "planType": "A Pagar"
+    },
+    "406-5 - op outros beneficios": {
+      "code": "406-5",
+      "label": "406-5 - OP Outros Beneficios",
+      "planName": "406-5 - OP Outros Beneficios",
+      "planType": "A Pagar"
+    },
+    "410-5 - op servicos tecnicos": {
+      "code": "410-5",
+      "label": "410-5 - OP Servicos Tecnicos",
+      "planName": "410-5 - OP Servicos Tecnicos",
+      "planType": "A Pagar"
+    },
+    "410-5 - serviços técnicos para laboratórios": {
+      "code": "410-5",
+      "label": "410-5 - Serviços técnicos para Laboratórios",
+      "planName": "410-5 - Serviços técnicos para Laboratórios",
+      "planType": "A Pagar"
+    },
+    "410-9 - op outros servicos prestados": {
+      "code": "410-9",
+      "label": "410-9 - OP Outros Servicos Prestados",
+      "planName": "410-9 - OP Outros Servicos Prestados",
+      "planType": "A Pagar"
+    },
+    "411-2 - refeicoes e lanches": {
+      "code": "411-2",
+      "label": "411-2 - Refeicoes e Lanches",
+      "planName": "411-2 - Refeicoes e Lanches",
+      "planType": "A Pagar"
+    },
+    "411-4 - viagens e representacoes": {
+      "code": "411-4",
+      "label": "411-4 - Viagens e Representacoes",
+      "planName": "411-4 - Viagens e Representacoes",
+      "planType": "A Pagar"
+    },
+    "411-6 - telefonia movel": {
+      "code": "411-6",
+      "label": "411-6 - Telefonia Movel",
+      "planName": "411-6 - Telefonia Movel",
+      "planType": "A Pagar"
+    },
+    "412-5 - outras despesas com vendas": {
+      "code": "412-5",
+      "label": "412-5 - Outras Despesas com Vendas",
+      "planName": "412-5 - Outras Despesas com Vendas",
+      "planType": "A Pagar"
+    },
+    "412-7 - comissoes e prêmios sobre vendas": {
+      "code": "412-7",
+      "label": "412-7 - Comissoes e Prêmios Sobre Vendas",
+      "planName": "412-7 - Comissoes e Prêmios Sobre Vendas",
+      "planType": "A Pagar"
+    },
+    "413-2 - representantes de vendas": {
+      "code": "413-2",
+      "label": "413-2 - Representantes de Vendas",
+      "planName": "413-2 - Representantes de Vendas",
+      "planType": "A Pagar"
+    },
+    "417-2 - cesta basica": {
+      "code": "417-2",
+      "label": "417-2 - Cesta Basica",
+      "planName": "417-2 - Cesta Basica",
+      "planType": "A Pagar"
+    },
+    "418-0 - farmacia": {
+      "code": "418-0",
+      "label": "418-0 - Farmacia",
+      "planName": "418-0 - Farmacia",
+      "planType": "A Pagar"
+    },
+    "419-4 - outros beneficios": {
+      "code": "419-4",
+      "label": "419-4 - Outros Beneficios",
+      "planName": "419-4 - Outros Beneficios",
+      "planType": "A Pagar"
+    },
+    "420-8 - condominio": {
+      "code": "420-8",
+      "label": "420-8 - Condominio",
+      "planName": "420-8 - Condominio",
+      "planType": "A Pagar"
+    },
+    "422-3 - cartorios": {
+      "code": "422-3",
+      "label": "422-3 - Cartorios",
+      "planName": "422-3 - Cartorios",
+      "planType": "A Pagar"
+    },
+    "422-5 - royalties e assistencia tecnica": {
+      "code": "422-5",
+      "label": "422-5 - Royalties e Assistencia Tecnica",
+      "planName": "422-5 - Royalties e Assistencia Tecnica",
+      "planType": "A Pagar"
+    },
+    "422-6 - aluguel de equipamento": {
+      "code": "422-6",
+      "label": "422-6 - Aluguel de Equipamento",
+      "planName": "422-6 - Aluguel de Equipamento",
+      "planType": "A Pagar"
+    },
+    "423-8 - bens de pequeno valor": {
+      "code": "423-8",
+      "label": "423-8 - Bens de Pequeno Valor",
+      "planName": "423-8 - Bens de Pequeno Valor",
+      "planType": "A Pagar"
+    },
+    "425-4 - auditoria": {
+      "code": "425-4",
+      "label": "425-4 - Auditoria",
+      "planName": "425-4 - Auditoria",
+      "planType": "A Pagar"
+    },
+    "426-4 - servico de motoboy": {
+      "code": "426-4",
+      "label": "426-4 - Servico de motoboy",
+      "planName": "426-4 - Servico de motoboy",
+      "planType": "A Pagar"
+    },
+    "426-6 - hospedagem de dados": {
+      "code": "426-6",
+      "label": "426-6 - Hospedagem de Dados",
+      "planName": "426-6 - Hospedagem de Dados",
+      "planType": "A Pagar"
+    },
+    "428-0 - taxa de entrega": {
+      "code": "428-0",
+      "label": "428-0 - Taxa de entrega",
+      "planName": "428-0 - Taxa de entrega",
+      "planType": "A Pagar"
+    },
+    "428-1 - agencia e assessoria": {
+      "code": "428-1",
+      "label": "428-1 - Agencia e Assessoria",
+      "planName": "428-1 - Agencia e Assessoria",
+      "planType": "A Pagar"
+    },
+    "431-4 - outras contribuicoes": {
+      "code": "431-4",
+      "label": "431-4 - Outras Contribuicoes",
+      "planName": "431-4 - Outras Contribuicoes",
+      "planType": "A Pagar"
+    },
+    "431-8 - multa e juros sobre contas pg em atraso": {
+      "code": "431-8",
+      "label": "431-8 - Multa e Juros Sobre Contas Pg em Atraso",
+      "planName": "431-8 - Multa e Juros Sobre Contas Pg em Atraso",
+      "planType": "A Pagar"
+    },
+    "431-9 - desconto complementar da operadora": {
+      "code": "431-9",
+      "label": "431-9 - Desconto Complementar da Operadora",
+      "planName": "431-9 - Desconto Complementar da Operadora",
+      "planType": "A Pagar"
+    },
+    "431-9 - desconto de cupom": {
+      "code": "431-9",
+      "label": "431-9 - Desconto de Cupom",
+      "planName": "431-9 - Desconto de Cupom",
+      "planType": "A Pagar"
+    },
+    "431-9 - tarifa de cartao / meios de pagamento - antecipação": {
+      "code": "431-9",
+      "label": "431-9 - Tarifa de Cartao / Meios de Pagamento - Antecipação",
+      "planName": "431-9 - Tarifa de Cartao / Meios de Pagamento - Antecipação",
+      "planType": "A Pagar"
+    },
+    "431-9 - tarifa de cartao / meios de pagamento - delivery": {
+      "code": "431-9",
+      "label": "431-9 - Tarifa de Cartao / Meios de Pagamento - Delivery",
+      "planName": "431-9 - Tarifa de Cartao / Meios de Pagamento - Delivery",
+      "planType": "A Pagar"
+    },
+    "431-9 - tarifa de cartao / meios de pagamento - voucher": {
+      "code": "431-9",
+      "label": "431-9 - Tarifa de Cartao / Meios de Pagamento - Voucher",
+      "planName": "431-9 - Tarifa de Cartao / Meios de Pagamento - Voucher",
+      "planType": "A Pagar"
+    },
+    "431-9 - taxa de manutenção mensal": {
+      "code": "431-9",
+      "label": "431-9 - Taxa de Manutenção Mensal",
+      "planName": "431-9 - Taxa de Manutenção Mensal",
+      "planType": "A Pagar"
+    },
+    "434-0 - recrutamento e seleção": {
+      "code": "434-0",
+      "label": "434-0 - Recrutamento e Seleção",
+      "planName": "434-0 - Recrutamento e Seleção",
+      "planType": "A Pagar"
+    },
+    "434-2 - criação e manutenção de site": {
+      "code": "434-2",
+      "label": "434-2 - Criação e manutenção de site",
+      "planName": "434-2 - Criação e manutenção de site",
+      "planType": "A Pagar"
+    },
+    "434-3 - google e redes sociais": {
+      "code": "434-3",
+      "label": "434-3 - Google e Redes Sociais",
+      "planName": "434-3 - Google e Redes Sociais",
+      "planType": "A Pagar"
+    },
+    "434-7 - celulares": {
+      "code": "434-7",
+      "label": "434-7 - Celulares",
+      "planName": "434-7 - Celulares",
+      "planType": "A Pagar"
+    },
+    "aluguel de pos / outras taxas": {
+      "code": null,
+      "label": "Aluguel de POS / Outras Taxas",
+      "planName": "Aluguel de POS / Outras Taxas",
+      "planType": "A Pagar"
+    },
+    "associação / cooperativa": {
+      "code": null,
+      "label": "Associação / Cooperativa",
+      "planName": "Associação / Cooperativa",
+      "planType": "A Pagar"
+    },
+    "cartão de crédito": {
+      "code": null,
+      "label": "CARTÃO DE CRÉDITO",
+      "planName": "CARTÃO DE CRÉDITO",
+      "planType": "A Pagar"
+    },
+    "descontos sobre despesas": {
+      "code": null,
+      "label": "Descontos sobre Despesas",
+      "planName": "Descontos sobre Despesas",
+      "planType": "A Receber"
+    },
+    "descontos sobre receitas": {
+      "code": null,
+      "label": "Descontos sobre Receitas",
+      "planName": "Descontos sobre Receitas",
+      "planType": "A Pagar"
+    },
+    "estorno de valores - entradas": {
+      "code": null,
+      "label": "Estorno de Valores - Entradas",
+      "planName": "Estorno de Valores - Entradas",
+      "planType": "A Receber"
+    },
+    "estorno de valores - saídas": {
+      "code": null,
+      "label": "Estorno de Valores - Saídas",
+      "planName": "Estorno de Valores - Saídas",
+      "planType": "A Pagar"
+    },
+    "falta de caixa": {
+      "code": null,
+      "label": "Falta de Caixa",
+      "planName": "Falta de Caixa",
+      "planType": "A Pagar"
+    },
+    "juros sobre despesas": {
+      "code": null,
+      "label": "Juros sobre Despesas",
+      "planName": "Juros sobre Despesas",
+      "planType": "A Pagar"
+    },
+    "juros sobre receitas": {
+      "code": null,
+      "label": "Juros sobre Receitas",
+      "planName": "Juros sobre Receitas",
+      "planType": "A Receber"
+    },
+    "multa sobre despesas": {
+      "code": null,
+      "label": "Multa sobre Despesas",
+      "planName": "Multa sobre Despesas",
+      "planType": "A Pagar"
+    },
+    "multa sobre receitas": {
+      "code": null,
+      "label": "Multa sobre Receitas",
+      "planName": "Multa sobre Receitas",
+      "planType": "A Receber"
+    },
+    "outras entradas - cessão": {
+      "code": null,
+      "label": "Outras Entradas - Cessão",
+      "planName": "Outras Entradas - Cessão",
+      "planType": "A Receber"
+    },
+    "outras entradas - coligadas": {
+      "code": null,
+      "label": "Outras Entradas - Coligadas",
+      "planName": "Outras Entradas - Coligadas",
+      "planType": "A Receber"
+    },
+    "outras entradas - conta corrente dos sócios": {
+      "code": null,
+      "label": "Outras Entradas - Conta Corrente dos Sócios",
+      "planName": "Outras Entradas - Conta Corrente dos Sócios",
+      "planType": "A Receber"
+    },
+    "outras saídas - coligadas": {
+      "code": null,
+      "label": "Outras Saídas - Coligadas",
+      "planName": "Outras Saídas - Coligadas",
+      "planType": "A Pagar"
+    },
+    "outras saídas - conta corrente dos sócios": {
+      "code": null,
+      "label": "Outras Saídas - Conta Corrente dos Sócios",
+      "planName": "Outras Saídas - Conta Corrente dos Sócios",
+      "planType": "A Pagar"
+    },
+    "sobra de caixa": {
+      "code": null,
+      "label": "Sobra de Caixa",
+      "planName": "Sobra de Caixa",
+      "planType": "A Receber"
+    },
+    "taxa administrativa de cartões": {
+      "code": null,
+      "label": "Taxa Administrativa de Cartões",
+      "planName": "Taxa Administrativa de Cartões",
+      "planType": "A Pagar"
+    },
+    "taxa de antecipação de cartões de crédito": {
+      "code": null,
+      "label": "Taxa de Antecipação de Cartões de Crédito",
+      "planName": "Taxa de Antecipação de Cartões de Crédito",
+      "planType": "A Pagar"
+    },
+    "vendas de mercadorias": {
+      "code": null,
+      "label": "Vendas de Mercadorias",
+      "planName": "Vendas de Mercadorias",
+      "planType": "A Receber"
+    }
+  },
+  "codeIndex": {
+    "201": [
+      "201 -6 - salario complementar por serviço prestado"
+    ],
+    "102-1": [
+      "102-1 - vendas de produtos - boleto",
+      "102-1 - receita com prestação de servicos",
+      "102-1 - vendas de produtos",
+      "102-1 - vendas de produtos - débito e crédito",
+      "102-1 - vendas canceladas",
+      "102-1 - receita com prestação de servicos - débito e crédito",
+      "102-1 - vendas de produtos - delivery",
+      "102-1 - vendas de produtos - transferência / pix",
+      "102-1 - vendas de produtos - vouchers"
+    ],
+    "302-1": [
+      "302-1 - receitas diversas"
+    ],
+    "300-9": [
+      "300-9 - desconto concedido"
+    ],
+    "431-9": [
+      "431-9 - tarifa de cartao / meios de pagamento - aluguel de pos / outras taxas",
+      "431-9 - tarifa de cartao / meios de pagamento - padrão",
+      "431-9 - desconto complementar da operadora",
+      "431-9 - desconto de cupom",
+      "431-9 - tarifa de cartao / meios de pagamento - antecipação",
+      "431-9 - tarifa de cartao / meios de pagamento - delivery",
+      "431-9 - tarifa de cartao / meios de pagamento - voucher",
+      "431-9 - taxa de manutenção mensal"
+    ],
+    "205-0": [
+      "205-0 - icms"
+    ],
+    "421-4": [
+      "421-4 - op manutencao de veículos",
+      "421-4 - manutencao de veiculos"
+    ],
+    "422-4": [
+      "422-4 - pedágio"
+    ],
+    "400-0": [
+      "400-0 - custo de embalagens",
+      "400-0 - custo de mercadorias vendidas"
+    ],
+    "421-8": [
+      "421-8 - op correios e fretes",
+      "421-8 - correios e fretes"
+    ],
+    "421-9": [
+      "421-9 - seguros de carga",
+      "421-9 - seguros"
+    ],
+    "201-6": [
+      "201-6 - op salarios",
+      "201-6 - horas extras – dobras",
+      "201-6 - salarios e ordenados",
+      "201-6 - ajuda de custo",
+      "201-6 - freelancer",
+      "201-6 - op ajuda de custo"
+    ],
+    "201-8": [
+      "201-8 - op ferias",
+      "201-8 - ferias"
+    ],
+    "400-1": [
+      "400-1 - custo de prestacao de servicos"
+    ],
+    "409-7": [
+      "409-7 - serviços terceiros pf"
+    ],
+    "422-1": [
+      "422-1 - op combustivel",
+      "422-1 - combustivel"
+    ],
+    "201-5": [
+      "201-5 - pro-labore"
+    ],
+    "202-0": [
+      "202-0 - rescisoes",
+      "202-0 - op rescisoes"
+    ],
+    "202-6": [
+      "202-6 - gratificacoes",
+      "202-6 - op gratificacoes"
+    ],
+    "203-0": [
+      "203-0 - inss",
+      "203-0 - inss a recolher",
+      "203-0 - op inss"
+    ],
+    "203-1": [
+      "203-1 - fgts",
+      "203-1 - op fgts"
+    ],
+    "415-3": [
+      "415-3 - acordo trabalhista"
+    ],
+    "415-8": [
+      "415-8 - outras despesas com funcionarios"
+    ],
+    "416-8": [
+      "416-8 - vale transporte"
+    ],
+    "417-0": [
+      "417-0 - vale refeicao"
+    ],
+    "417-4": [
+      "417-4 - assistencia medica"
+    ],
+    "417-8": [
+      "417-8 - seguro de vida"
+    ],
+    "418-3": [
+      "418-3 - curso e treinamento"
+    ],
+    "419-1": [
+      "419-1 - vale combustivel"
+    ],
+    "420-2": [
+      "420-2 - energia eletrica"
+    ],
+    "420-3": [
+      "420-3 - agua e esgoto"
+    ],
+    "420-5": [
+      "420-5 - aluguel"
+    ],
+    "420-6": [
+      "420-6 - manut e conservacao predial"
+    ],
+    "420-7": [
+      "420-7 - telefonia"
+    ],
+    "420-9": [
+      "420-9 - uniformes"
+    ],
+    "421-2": [
+      "421-2 - manutencao e reparos"
+    ],
+    "422-0": [
+      "422-0 - uber e taxi"
+    ],
+    "422-2": [
+      "422-2 - copa e cozinha"
+    ],
+    "422-7": [
+      "422-7 - viagens e estadias"
+    ],
+    "422-9": [
+      "422-9 - material de escritorio"
+    ],
+    "423-5": [
+      "423-5 - estacionamento"
+    ],
+    "423-6": [
+      "423-6 - material de limpeza"
+    ],
+    "424-6": [
+      "424-6 - custa processuais"
+    ],
+    "425-1": [
+      "425-1 - outras despesas"
+    ],
+    "425-5": [
+      "425-5 - consultoria"
+    ],
+    "425-6": [
+      "425-6 - contabilidade"
+    ],
+    "425-8": [
+      "425-8 - juridico"
+    ],
+    "425-9": [
+      "425-9 - limpeza"
+    ],
+    "426-2": [
+      "426-2 - segurança e vigilância"
+    ],
+    "430-1": [
+      "430-1 - iptu"
+    ],
+    "430-2": [
+      "430-2 - ipva"
+    ],
+    "430-7": [
+      "430-7 - iof"
+    ],
+    "431-3": [
+      "431-3 - taxas e emolumentos"
+    ],
+    "434-1": [
+      "434-1 - exames ocupacionais"
+    ],
+    "434-6": [
+      "434-6 - impostos retidos"
+    ],
+    "413-0": [
+      "413-0 - outras despesas comerciais"
+    ],
+    "427-9": [
+      "427-9 - publicidade e propaganda"
+    ],
+    "428-3": [
+      "428-3 - producao de material"
+    ],
+    "434-4": [
+      "434-4 - marketing digital"
+    ],
+    "434-5": [
+      "434-5 - feiras e eventos"
+    ],
+    "423-0": [
+      "423-0 - material de informatica"
+    ],
+    "423-4": [
+      "423-4 - internet"
+    ],
+    "425-7": [
+      "425-7 - informatica e software"
+    ],
+    "427-0": [
+      "427-0 - sistema de gestao"
+    ],
+    "303-2": [
+      "303-2 - rendimento de aplic financeira"
+    ],
+    "303-3": [
+      "303-3 - juros ativos"
+    ],
+    "303-4": [
+      "303-4 - descontos obtidos",
+      "303-4 -descontos obtidos"
+    ],
+    "431-5": [
+      "431-5 - despesas bancarias"
+    ],
+    "432-0": [
+      "432-0 - juros passivos"
+    ],
+    "200-8": [
+      "200-8 - empréstimos",
+      "200-8 - pagto empréstimos e financiamentos"
+    ],
+    "302-3": [
+      "302-3 - reembolso de despesas"
+    ],
+    "111-03": [
+      "111-03 - consorcio",
+      "111-03 - resgate de capitalização"
+    ],
+    "112-5": [
+      "112-5 - maquinas e equipamentos"
+    ],
+    "112-7": [
+      "112-7 - computadores e perifericos"
+    ],
+    "112-8": [
+      "112-8 - sistemas e aplicativos"
+    ],
+    "112-9": [
+      "112-9 - moveis e utensilios"
+    ],
+    "113-0": [
+      "113-0 - veiculos"
+    ],
+    "114-2": [
+      "114-2 - imovel"
+    ],
+    "211-1": [
+      "211-1 - tributos parcelados"
+    ],
+    "216-0": [
+      "216-0 - distribuicao de lucro"
+    ],
+    "201-7": [
+      "201-7 - 13° salario",
+      "201-7 - op 13° salario"
+    ],
+    "103-2": [
+      "103-2 - adiantamento a fornecedor"
+    ],
+    "105-6": [
+      "105-6 - fundo nacional de marketing"
+    ],
+    "113-4": [
+      "113-4 - benfeitorias em bens de terceiros"
+    ],
+    "118-6": [
+      "118-6 - marcas e patentes"
+    ],
+    "203-2": [
+      "203-2 - irrf",
+      "203-2 - op irrf"
+    ],
+    "204-7": [
+      "204-7 - pis"
+    ],
+    "204-8": [
+      "204-8 - cofins"
+    ],
+    "204-9": [
+      "204-9 - iss serviço"
+    ],
+    "205-1": [
+      "205-1 - ipi"
+    ],
+    "205-2": [
+      "205-2 - simples nacional"
+    ],
+    "205-6": [
+      "205-6 - irrf s/ terceiros a recolher"
+    ],
+    "205-9": [
+      "205-9 - pis/cofins/csll retido a recolher"
+    ],
+    "206-0": [
+      "206-0 - iss retido a recolher"
+    ],
+    "206-2": [
+      "206-2 - irpf",
+      "206-2 - irpj"
+    ],
+    "206-3": [
+      "206-3 - csll"
+    ],
+    "208-8": [
+      "208-8 - outros adiantamentos de clientes"
+    ],
+    "212-0": [
+      "212-0 - dev. mútuos",
+      "212-0 - mútuos"
+    ],
+    "214-3": [
+      "214-3 - afac",
+      "214-3 - dev. afac"
+    ],
+    "302-5": [
+      "302-5 - venda de imobilizado"
+    ],
+    "303-6": [
+      "303-6 - multa s/ recebimento em atraso"
+    ],
+    "400-5": [
+      "400-5 - custos de taxa de franquias"
+    ],
+    "402-0": [
+      "402-0 - op parcipacao nos lucros e bonus"
+    ],
+    "403-9": [
+      "403-9 - op vale transporte"
+    ],
+    "404-1": [
+      "404-1 - op vale refeicao"
+    ],
+    "404-3": [
+      "404-3 - op cesta basica"
+    ],
+    "404-5": [
+      "404-5 - op assistencia medica e odonto"
+    ],
+    "404-9": [
+      "404-9 - op seguro de vida"
+    ],
+    "405-1": [
+      "405-1 - op farmacia"
+    ],
+    "406-5": [
+      "406-5 - op outros beneficios"
+    ],
+    "410-5": [
+      "410-5 - op servicos tecnicos",
+      "410-5 - serviços técnicos para laboratórios"
+    ],
+    "410-9": [
+      "410-9 - op outros servicos prestados"
+    ],
+    "411-2": [
+      "411-2 - refeicoes e lanches"
+    ],
+    "411-4": [
+      "411-4 - viagens e representacoes"
+    ],
+    "411-6": [
+      "411-6 - telefonia movel"
+    ],
+    "412-5": [
+      "412-5 - outras despesas com vendas"
+    ],
+    "412-7": [
+      "412-7 - comissoes e prêmios sobre vendas"
+    ],
+    "413-2": [
+      "413-2 - representantes de vendas"
+    ],
+    "417-2": [
+      "417-2 - cesta basica"
+    ],
+    "418-0": [
+      "418-0 - farmacia"
+    ],
+    "419-4": [
+      "419-4 - outros beneficios"
+    ],
+    "420-8": [
+      "420-8 - condominio"
+    ],
+    "422-3": [
+      "422-3 - cartorios"
+    ],
+    "422-5": [
+      "422-5 - royalties e assistencia tecnica"
+    ],
+    "422-6": [
+      "422-6 - aluguel de equipamento"
+    ],
+    "423-8": [
+      "423-8 - bens de pequeno valor"
+    ],
+    "425-4": [
+      "425-4 - auditoria"
+    ],
+    "426-4": [
+      "426-4 - servico de motoboy"
+    ],
+    "426-6": [
+      "426-6 - hospedagem de dados"
+    ],
+    "428-0": [
+      "428-0 - taxa de entrega"
+    ],
+    "428-1": [
+      "428-1 - agencia e assessoria"
+    ],
+    "431-4": [
+      "431-4 - outras contribuicoes"
+    ],
+    "431-8": [
+      "431-8 - multa e juros sobre contas pg em atraso"
+    ],
+    "434-0": [
+      "434-0 - recrutamento e seleção"
+    ],
+    "434-2": [
+      "434-2 - criação e manutenção de site"
+    ],
+    "434-3": [
+      "434-3 - google e redes sociais"
+    ],
+    "434-7": [
+      "434-7 - celulares"
+    ]
+  }
+}

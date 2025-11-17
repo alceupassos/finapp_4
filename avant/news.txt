@@ -1,0 +1,3 @@
+news
+
+faça um clone do site  com nome de Tamborim News com notícias sobre tecnologia e IA, e em IA tenhaa áreas  LLMpara s,LLM chinesas, e área de vibecode e agentes

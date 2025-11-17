@@ -1,0 +1,54 @@
+cd /Users/alceualvespasssosmac/finapp_v4
+cat PAUSA_REINICIO.md
+
+O que eu fiz (resumo)
+Documentei o estado atual (arquivos adicionados/alterados) e o erro TS: "Não é possível localizar o módulo './components/NoticiasPage'".
+Adicionei instruções para reiniciar o dev server, reiniciar o TypeScript server e revalidar o componente NoticiasPage.
+Comitei e push no GitHub para armazenar o snapshot (commit 6216c214).
+🔧 Passos rápidos para retomar após reiniciar (copie/cole)
+Atualizar repositório e dependências (se preciso):
+
+cd /Users/alceualvespasssosmac/finapp_v4
+git checkout restore-frontend
+git pull origin restore-frontend
+pnpm install   # ou npm install
+
+Rodar frontend:
+pnpm dev       # ou npm run dev
+
+Se o TypeScript não reconhecer NoticiasPage:
+Em VS Code: Cmd + Shift + P → TypeScript: Restart TS Server
+Em VS Code: Cmd + Shift + P → Developer: Reload Window
+Reinicie Vite:
+
+pkill -f vite || true
+pnpm dev
+
+Verificação com CLI:
+npx tsc --noEmit
+
+Limpar cache se necessário:
+rm -rf node_modules/.cache
+rm -rf dist
+pnpm dev
+
+Verificar Notícias (UI):
+Abrir http://localhost:3003 → clicar Notícias no sidebar.
+Trocar empresa no filtro — procurar log no console do navegador: "📰 Notícias geradas".
+Confirmar abas: Mercado (48), Concorrentes (36), Tendências (48).
+Teste Supabase rápido:
+Arquivo: test_supabase_query.html (na raiz). Clique "Testar Query DRE".
+Alternativa via curl:
+
+curl -H "apikey: $SUPA_ANON" \
+     -H "Authorization: Bearer $SUPA_ANON" \
+     "https://xzrmzmcoslomtzkzgskn.supabase.co/rest/v1/dre_entries?company_cnpj=eq.26888098000159&limit=10"
+
+Observações importantes
+O TypeScript mostrou “module not found” mas o arquivo existe e não tem erro de sintaxe — normalmente é cache/HMR/TS server; recarregar o servidor de linguagem resolve.
+Já commitei e enviei para o GitHub; você não perde progresso ao reiniciar.
+Pendências de médio prazo: schema multi-tenant (Supabase) e integração F360 — estão documentadas e agendadas na lista de tarefas.
+✅ Próximo passo quando voltar
+Abra o PAUSA_REINICIO.md para confirmar os passos.
+Se quiser, eu posso aguardar e fazer os passos de ressincronização (por exemplo, restart Vite + reload TS) remotamente — me avise quando você retornar.
+Se quiser que eu execute algum desses passos agora (antes do reboot) ou adicione uma tarefa extra no snapshot, me diga qual e eu faço. Boa reinicialização! 🔁💤
