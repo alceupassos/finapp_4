@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { SupabaseRest } from '../services/supabaseRest'
+import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
 
 export function CustomersPage() {
@@ -32,7 +32,7 @@ export function CustomersPage() {
             </tr>
           </thead>
           <tbody>
-            {(loading ? [] : customers).map((c, idx) => (
+            {(loading ? [] : customers.filter(c => String(c.cnpj || '').replace(/^0+/, '') === MATRIZ_CNPJ)).map((c, idx) => (
               <tr key={idx} className="border-t border-border">
                 <td className="p-3">{c.cliente_nome}</td>
                 <td className="p-3">{c.cnpj}</td>

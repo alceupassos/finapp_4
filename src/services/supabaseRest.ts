@@ -1,5 +1,6 @@
 const BASE_URL = import.meta.env.VITE_SUPABASE_URL as string
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string
+export const MATRIZ_CNPJ = (import.meta.env.VITE_CNPJ_MATRIZ || '26888098000159') as string
 function getSupabaseAccessToken(): string | null {
   const raw = localStorage.getItem('supabase_session')
   if (!raw) return null
@@ -42,27 +43,14 @@ export const SupabaseRest = {
   restGet,
   restPost,
   getCompanies: async () => {
-    // Buscar empresas únicas de dre_entries e cashflow_entries
-    const dreRows = await restGet('dre_entries', { query: { select: 'company_cnpj,company_nome', limit: '1000' } })
-    const dfcRows = await restGet('cashflow_entries', { query: { select: 'company_cnpj,company_nome', limit: '1000' } })
-    
-    const empresasMap = new Map()
-    
-    ;[...dreRows, ...dfcRows].forEach((row: any) => {
-      const cnpj = row.company_cnpj
-      if (!empresasMap.has(cnpj)) {
-        empresasMap.set(cnpj, {
-          cnpj,
-          cliente_nome: row.company_nome,
-          grupo_empresarial: row.company_nome.includes('VOLPE') ? 'Grupo Volpe' : 'Outros'
-        })
-      }
-    })
-    
-    return Array.from(empresasMap.values()).sort((a, b) => a.cnpj.localeCompare(b.cnpj))
+    const cnpj14 = MATRIZ_CNPJ.replace(/^0+/, '')
+    const rows = await restGet('integration_f360', { query: { select: 'grupo_empresarial,cliente_nome,cnpj', cnpj: `eq.${cnpj14}`, limit: '1' } })
+    if (Array.isArray(rows) && rows.length) return rows
+    // Fallback: construir a empresa a partir de DRE/DFC
+    return [{ grupo_empresarial: 'Grupo Volpe', cliente_nome: 'Volpe Matriz', cnpj: cnpj14 }]
   },
   getDRE: async (cnpj: string) => {
-    const cnpj14 = (cnpj || '').replace(/^0+/, '')
+    const cnpj14 = (cnpj || MATRIZ_CNPJ).replace(/^0+/, '')
     const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
     if (!Array.isArray(rows)) return []
     console.log('🔍 getDRE recebeu', rows.length, 'registros para CNPJ', cnpj14);
@@ -74,7 +62,7 @@ export const SupabaseRest = {
     }))
   },
   getDFC: async (cnpj: string) => {
-    const cnpj14 = (cnpj || '').replace(/^0+/, '')
+    const cnpj14 = (cnpj || MATRIZ_CNPJ).replace(/^0+/, '')
     const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
     if (!Array.isArray(rows)) return []
     console.log('🔍 getDFC recebeu', rows.length, 'registros para CNPJ', cnpj14);

@@ -13,12 +13,18 @@ export type Session = {
 
 export const USE_DEMO = (import.meta.env.VITE_USE_DEMO === 'true')
 export let lastLoginError = ''
+export let lastAuthBase = ''
+export let lastAuthUrl = ''
 
 export async function gotruePasswordSignIn(email: string, password: string) {
-  const url = import.meta.env.VITE_SUPABASE_URL as string
+  const raw = import.meta.env.VITE_SUPABASE_URL as string
   const anon = import.meta.env.VITE_SUPABASE_ANON_KEY as string
-  if (!url || !anon) throw new Error('Variáveis VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY ausentes')
-  const res = await fetch(`${url}/auth/v1/token?grant_type=password`, {
+  if (!raw || !anon) throw new Error('Variáveis VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY ausentes')
+  const base = raw.replace(/\/$/, '').replace(/\/rest\/v1$/, '')
+  const url = `${base}/auth/v1/token?grant_type=password`
+  lastAuthBase = base
+  lastAuthUrl = url
+  const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', apikey: anon, Accept: 'application/json' },
     body: JSON.stringify({ email, password }),
@@ -36,9 +42,46 @@ export async function gotruePasswordSignIn(email: string, password: string) {
   return res.json()
 }
 
+async function gotrueSigninFallback(email: string, password: string) {
+  const raw = import.meta.env.VITE_SUPABASE_URL as string
+  const anon = import.meta.env.VITE_SUPABASE_ANON_KEY as string
+  const base = raw.replace(/\/$/, '').replace(/\/rest\/v1$/, '')
+  const url = `${base}/auth/v1/signin`
+  lastAuthBase = base
+  lastAuthUrl = url
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', apikey: anon, Accept: 'application/json' },
+    body: JSON.stringify({ email, password })
+  })
+  if (!res.ok) {
+    try { const err = await res.json(); lastLoginError = String(err.error_description || err.error || `HTTP ${res.status}`) } catch { lastLoginError = `HTTP ${res.status}` }
+    return null
+  }
+  lastLoginError = ''
+  return res.json()
+}
+
+export async function checkAuthEndpoint() {
+  const raw = import.meta.env.VITE_SUPABASE_URL as string
+  const anon = import.meta.env.VITE_SUPABASE_ANON_KEY as string
+  const base = raw?.replace(/\/$/, '').replace(/\/rest\/v1$/, '') || ''
+  if (!base || !anon) return { ok: false, error: 'ENV ausente' }
+  try {
+    const url = `${base}/auth/v1/settings`
+    const res = await fetch(url, { headers: { apikey: anon, Accept: 'application/json' } })
+    return { ok: res.ok, status: res.status, url }
+  } catch (e: any) {
+    return { ok: false, error: String(e?.message || e) }
+  }
+}
+
 export async function loginSupabase(email: string, password: string): Promise<Session | null> {
   try {
-    const data = await gotruePasswordSignIn(email, password)
+    let data = await gotruePasswordSignIn(email, password)
+    if (!data) {
+      data = await gotrueSigninFallback(email, password)
+    }
     if (!data || !data.access_token) return null
     localStorage.setItem('supabase_session', JSON.stringify(data))
     const user = { id: data.user?.id || 'unknown', email }
@@ -53,7 +96,8 @@ export async function loginSupabase(email: string, password: string): Promise<Se
     }
     localStorage.setItem('session_user', JSON.stringify(session))
     return session
-  } catch {
+  } catch (e: any) {
+    lastLoginError = lastLoginError || String(e?.message || e) || 'Erro inesperado no login'
     return null
   }
 }

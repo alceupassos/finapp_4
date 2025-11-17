@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowDownLeft, MoreVertical, Search } from 'lucide-react';
-import { SupabaseRest } from '../services/supabaseRest'
+import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
 import { useEffect, useMemo, useState } from 'react'
 
-type Tx = { id?: string|number; descricao?: string; data?: string; entrada?: number; saida?: number; saldo?: number; cnpj?: string }
+type Tx = { id?: string|number; descricao?: string; data?: string; entrada?: number; saida?: number; saldo?: number; cnpj?: string; status?: string }
 type Company = { grupo_empresarial?: string; cliente_nome?: string; cnpj?: string }
 
 const statusConfig = {
@@ -14,7 +14,7 @@ const statusConfig = {
 
 export function ModernTransactionsTable() {
   const [companies, setCompanies] = useState<Company[]>([])
-  const [cnpj, setCnpj] = useState<string>('')
+  const [cnpj, setCnpj] = useState<string>(MATRIZ_CNPJ)
   const [rows, setRows] = useState<Tx[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
@@ -29,10 +29,7 @@ export function ModernTransactionsTable() {
       try {
         const cs = await SupabaseRest.getCompanies() as Company[]
         setCompanies(cs || [])
-        const normEnds0159 = (cs || []).find(c => String(c.cnpj || '').replace(/^0+/, '').endsWith('0159'))?.cnpj
-        const firstVolpe = (cs || []).find(c => String(c.grupo_empresarial || '').toLowerCase().includes('volpe'))?.cnpj
-        const first = normEnds0159 || firstVolpe || (cs && cs[0]?.cnpj) || ''
-        setCnpj(first)
+        setCnpj(MATRIZ_CNPJ)
       } catch (e: any) {
         setError('Falha ao carregar empresas')
       }
@@ -46,7 +43,13 @@ export function ModernTransactionsTable() {
     ;(async () => {
       try {
         const data = await SupabaseRest.getDFC(cnpj) as Tx[]
-        setRows(Array.isArray(data) ? data : [])
+        const cleaned = (Array.isArray(data) ? data : []).filter(tx => {
+          const s = String(tx.status || '').toLowerCase()
+          if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
+          if (!s.includes('conciliado')) return false
+          return true
+        })
+        setRows(cleaned)
       } catch (e: any) {
         setError('Falha ao carregar extrato')
       } finally {
@@ -198,8 +201,8 @@ export function ModernTransactionsTable() {
           </thead>
           <tbody>
             {(loading ? [] : filteredRows).map((tx, index) => {
-              const amount = (tx.entrada || 0) - (tx.saida || 0)
-              const type = amount >= 0 ? 'income' : 'expense'
+              const gross = Math.abs(Number((tx.entrada ?? 0) || (tx.saida ?? 0)))
+              const type = (Number(tx.entrada || 0) > 0) ? 'income' : 'expense'
               const status = statusConfig[type === 'income' ? 'success' : 'pending']
               return (
                 <motion.tr
@@ -242,8 +245,7 @@ export function ModernTransactionsTable() {
                         )}
                       </div>
                       <span className={`text-sm font-bold ${type === 'income' ? 'text-emerald-400' : 'text-red-400'}`}>
-                        {amount > 0 ? '+' : ''}
-                        {Number(amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                        {Number(gross).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                       </span>
                     </div>
                   </td>
@@ -255,7 +257,7 @@ export function ModernTransactionsTable() {
                       className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-semibold border ${status.bg} ${status.text} ${status.border}`}
                     >
                       <span className={`w-1.5 h-1.5 rounded-full ${status.text.replace('text-', 'bg-')} mr-2`} />
-                      {Number(tx.saldo || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                      {Math.abs(Number(tx.saldo || 0)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </motion.span>
                   </td>
 
@@ -287,12 +289,7 @@ export function ModernTransactionsTable() {
           {loading ? 'Carregando...' : `Mostrando ${rows.length} lançamentos`} {cnpj && <span className="text-white font-semibold">• {cnpj}</span>}
         </p>
         <div className="flex items-center gap-2">
-          <select value={cnpj} onChange={(e)=>setCnpj(e.target.value)} className="px-4 py-2 bg-graphite-800 text-white rounded-xl text-sm">
-            <option value="">Selecione CNPJ</option>
-            {companies.map(c => (
-              <option key={c.cnpj} value={c.cnpj}>{c.cliente_nome} • {c.cnpj}</option>
-            ))}
-          </select>
+          <span className="text-xs text-graphite-400">CNPJ {cnpj}</span>
         </div>
       </div>
   </motion.div>

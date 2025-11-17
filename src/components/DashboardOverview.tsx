@@ -1,10 +1,10 @@
 import { Card, Metric, Text, Grid, Title, BadgeDelta } from "@tremor/react"
 import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
-import { SupabaseRest } from '../services/supabaseRest'
+import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
 import { useEffect, useMemo, useState } from 'react'
 
 type Period = 'Dia' | 'Semana' | 'Mês' | 'Ano'
-type Tx = { data?: string; entrada?: number; saida?: number }
+type Tx = { data?: string; entrada?: number; saida?: number; status?: string }
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
 
 function monthLabel(d: Date) {
@@ -13,7 +13,7 @@ function monthLabel(d: Date) {
 
 export function DashboardOverview({ period = 'Ano', session }: { period?: Period; session?: any }) {
   const [companies, setCompanies] = useState<Company[]>([])
-  const [cnpj, setCnpj] = useState<string>('')
+  const [cnpj, setCnpj] = useState<string>(MATRIZ_CNPJ)
   const [rows, setRows] = useState<Tx[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
@@ -23,9 +23,7 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
       try {
         const cs = await SupabaseRest.getCompanies() as Company[]
         setCompanies(cs || [])
-        // Forçar matriz 0159 como default
-        const matrizCnpj = '26888098000159'
-        setCnpj(matrizCnpj)
+        setCnpj(MATRIZ_CNPJ)
       } catch {
         setError('Falha ao carregar empresas')
       }
@@ -38,7 +36,13 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
     ;(async () => {
       try {
         const data = await SupabaseRest.getDFC(cnpj) as Tx[]
-        setRows(Array.isArray(data) ? data : [])
+        const filtered = (Array.isArray(data) ? data : []).filter(tx => {
+          const s = String(tx.status || '').toLowerCase()
+          if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
+          if (!s.includes('conciliado')) return false
+          return true
+        })
+        setRows(filtered)
       } finally {
         setLoading(false)
       }
@@ -47,8 +51,8 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
 
   const { receitaTotal, despesasTotal, lucro } = useMemo(() => {
     const r = rows.reduce((acc, tx) => {
-      acc.receitaTotal += Number(tx.entrada || 0)
-      acc.despesasTotal += Number(tx.saida || 0)
+      acc.receitaTotal += Math.abs(Number(tx.entrada || 0))
+      acc.despesasTotal += Math.abs(Number(tx.saida || 0))
       return acc
     }, { receitaTotal: 0, despesasTotal: 0 })
     return { ...r, lucro: r.receitaTotal - r.despesasTotal }
@@ -118,15 +122,7 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-4">
-          <label className="text-xs text-muted-foreground">Empresa/CNPJ</label>
-          <select value={cnpj} onChange={(e)=>setCnpj(e.target.value)} className="mt-1 px-3 py-2 bg-graphite-900 border border-graphite-800 rounded-md text-sm">
-            <option value="">Selecione</option>
-            {companies.map(c => (
-              <option key={c.cnpj} value={c.cnpj}>{c.cliente_nome} • {c.cnpj}</option>
-            ))}
-          </select>
-        </div>
+        <div className="mt-4 text-xs text-muted-foreground">CNPJ {cnpj}</div>
       </Card>
     </Grid>
   )
