@@ -39,6 +39,7 @@ const buildFullMonthList = (dates: Array<string | null | undefined>) => {
 export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
   const [companies, setCompanies] = useState<any[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<string>('26888098000159'); // Matriz VOLPE 0159
+  const [selectedMonth, setSelectedMonth] = useState<string>('all'); // 'all' ou 'YYYY-MM'
   const [dreData, setDreData] = useState<any[]>([]);
   const [dfcData, setDfcData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
@@ -389,7 +390,22 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
           <TabsContent value="dre" className="space-y-4">
             <Card>
               <CardHeader>
-                <CardTitle>DRE - Demonstração de Resultados por Mês</CardTitle>
+                <div className="flex items-center justify-between">
+                  <CardTitle>DRE - Demonstração de Resultados por Mês</CardTitle>
+                  <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+                    <SelectTrigger className="w-[200px]">
+                      <SelectValue placeholder="Selecione o mês" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos os meses</SelectItem>
+                      {dreMonths.slice().reverse().map(month => (
+                        <SelectItem key={month} value={month}>
+                          {new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </CardHeader>
               <CardContent>
                 {dreData.length > 0 ? (
@@ -399,12 +415,12 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                         <tr className="bg-muted">
                           <th className="border p-2 text-left sticky left-0 bg-muted z-10">Conta</th>
                           <th className="border p-2 text-left">Natureza</th>
-                          {dreMonths.map(month => (
+                          {(selectedMonth === 'all' ? dreMonths : [selectedMonth]).map(month => (
                             <th key={month} className="border p-2 text-right whitespace-nowrap">
-                              {month.slice(5)}
+                              {selectedMonth === 'all' ? month.slice(5) : new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })}
                             </th>
                           ))}
-                          <th className="border p-2 text-right font-bold bg-blue-50">Total</th>
+                          {selectedMonth === 'all' && <th className="border p-2 text-right font-bold bg-blue-50">Total</th>}
                         </tr>
                       </thead>
                       <tbody>
@@ -420,7 +436,7 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                                 {row.natureza}
                               </span>
                             </td>
-                            {dreMonths.map(month => {
+                            {(selectedMonth === 'all' ? dreMonths : [selectedMonth]).map(month => {
                               const value = row[month] || 0;
                               return (
                                 <td key={month} className="border p-2 text-right text-xs">
@@ -428,9 +444,11 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                                 </td>
                               );
                             })}
-                            <td className="border p-2 text-right font-bold bg-blue-50 text-xs">
-                              {formatCurrency(row.total)}
-                            </td>
+                            {selectedMonth === 'all' && (
+                              <td className="border p-2 text-right font-bold bg-blue-50 text-xs">
+                                {formatCurrency(row.total)}
+                              </td>
+                            )}
                           </tr>
                         )) : (
                           <tr>
@@ -443,7 +461,7 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                       <tfoot>
                         <tr className="bg-muted font-bold">
                           <td className="border p-2" colSpan={2}>TOTAIS</td>
-                          {dreMonths.map(month => {
+                          {(selectedMonth === 'all' ? dreMonths : [selectedMonth]).map(month => {
                             const total = dreMonthlyTable.reduce((sum: number, row: any) => sum + (row[month] || 0), 0);
                             return (
                               <td key={month} className="border p-2 text-right">
@@ -451,9 +469,11 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                               </td>
                             );
                           })}
-                          <td className="border p-2 text-right bg-blue-100">
-                            {formatCurrency(dreMonthlyTable.reduce((sum: number, row: any) => sum + row.total, 0))}
-                          </td>
+                          {selectedMonth === 'all' && (
+                            <td className="border p-2 text-right bg-blue-100">
+                              {formatCurrency(dreMonthlyTable.reduce((sum: number, row: any) => sum + row.total, 0))}
+                            </td>
+                          )}
                         </tr>
                       </tfoot>
                     </table>
@@ -471,7 +491,22 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
           <TabsContent value="dfc" className="space-y-4">
             <Card>
               <CardHeader>
-                <CardTitle>DFC - Demonstração de Fluxo de Caixa por Mês</CardTitle>
+                <div className="flex items-center justify-between">
+                  <CardTitle>DFC - Demonstração de Fluxo de Caixa por Mês</CardTitle>
+                  <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+                    <SelectTrigger className="w-[200px]">
+                      <SelectValue placeholder="Selecione o mês" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Todos os meses</SelectItem>
+                      {dfcMonths.slice().reverse().map(month => (
+                        <SelectItem key={month} value={month}>
+                          {new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </CardHeader>
               <CardContent>
                 {dfcData.length > 0 ? (
@@ -480,24 +515,28 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                       <thead>
                         <tr className="bg-muted">
                           <th className="border p-2 text-left sticky left-0 bg-muted z-10">Categoria</th>
-                          {dfcMonths.map(month => (
+                          {(selectedMonth === 'all' ? dfcMonths : [selectedMonth]).map(month => (
                             <th key={month} className="border p-2 text-center" colSpan={2}>
-                              {month.slice(5)}
+                              {selectedMonth === 'all' ? month.slice(5) : new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' })}
                             </th>
                           ))}
-                          <th className="border p-2 text-center bg-blue-50" colSpan={3}>Totais</th>
+                          {selectedMonth === 'all' && <th className="border p-2 text-center bg-blue-50" colSpan={3}>Totais</th>}
                         </tr>
                         <tr className="bg-muted/50 text-xs">
                           <th className="border p-2"></th>
-                          {dfcMonths.map(month => (
+                          {(selectedMonth === 'all' ? dfcMonths : [selectedMonth]).map(month => (
                             <React.Fragment key={month}>
                               <th className="border p-2 text-right text-green-700">Entrada</th>
                               <th className="border p-2 text-right text-red-700">Saída</th>
                             </React.Fragment>
                           ))}
-                          <th className="border p-2 text-right text-green-700 bg-green-50">Entradas</th>
-                          <th className="border p-2 text-right text-red-700 bg-red-50">Saídas</th>
-                          <th className="border p-2 text-right text-blue-700 bg-blue-50">Saldo</th>
+                          {selectedMonth === 'all' && (
+                            <>
+                              <th className="border p-2 text-right text-green-700 bg-green-50">Entradas</th>
+                              <th className="border p-2 text-right text-red-700 bg-red-50">Saídas</th>
+                              <th className="border p-2 text-right text-blue-700 bg-blue-50">Saldo</th>
+                            </>
+                          )}
                         </tr>
                       </thead>
                       <tbody>
@@ -506,7 +545,7 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                             <td className="border p-2 text-left sticky left-0 bg-background font-medium text-xs">
                               {row.categoria}
                             </td>
-                            {dfcMonths.map(month => {
+                            {(selectedMonth === 'all' ? dfcMonths : [selectedMonth]).map(month => {
                               const entrada = row[`${month}_entrada`] || 0;
                               const saida = row[`${month}_saida`] || 0;
                               return (
@@ -520,19 +559,23 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                                 </React.Fragment>
                               );
                             })}
-                            <td className="border p-2 text-right text-green-700 bg-green-50 font-semibold text-xs">
-                              {formatCurrency(row.totalEntradas)}
-                            </td>
-                            <td className="border p-2 text-right text-red-700 bg-red-50 font-semibold text-xs">
-                              {formatCurrency(row.totalSaidas)}
-                            </td>
-                            <td className="border p-2 text-right text-blue-700 bg-blue-50 font-bold text-xs">
-                              {formatCurrency(row.saldo)}
-                            </td>
+                            {selectedMonth === 'all' && (
+                              <>
+                                <td className="border p-2 text-right text-green-700 bg-green-50 font-semibold text-xs">
+                                  {formatCurrency(row.totalEntradas)}
+                                </td>
+                                <td className="border p-2 text-right text-red-700 bg-red-50 font-semibold text-xs">
+                                  {formatCurrency(row.totalSaidas)}
+                                </td>
+                                <td className="border p-2 text-right text-blue-700 bg-blue-50 font-bold text-xs">
+                                  {formatCurrency(row.saldo)}
+                                </td>
+                              </>
+                            )}
                           </tr>
                         )) : (
                           <tr>
-                            <td colSpan={dfcMonths.length * 2 + 4} className="border p-4 text-center text-muted-foreground">
+                            <td colSpan={(selectedMonth === 'all' ? dfcMonths.length : 1) * 2 + (selectedMonth === 'all' ? 4 : 1)} className="border p-4 text-center text-muted-foreground">
                               Nenhum dado DFC disponível
                             </td>
                           </tr>
@@ -541,7 +584,7 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                       <tfoot>
                         <tr className="bg-muted font-bold">
                           <td className="border p-2">TOTAIS</td>
-                          {dfcMonths.map(month => {
+                          {(selectedMonth === 'all' ? dfcMonths : [selectedMonth]).map(month => {
                             const totalEntrada = dfcMonthlyTable.reduce((sum: number, row: any) => sum + (row[`${month}_entrada`] || 0), 0);
                             const totalSaida = dfcMonthlyTable.reduce((sum: number, row: any) => sum + (row[`${month}_saida`] || 0), 0);
                             return (
@@ -555,15 +598,19 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
                               </React.Fragment>
                             );
                           })}
-                          <td className="border p-2 text-right bg-green-100 text-green-900">
-                            {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.totalEntradas, 0))}
-                          </td>
-                          <td className="border p-2 text-right bg-red-100 text-red-900">
-                            {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.totalSaidas, 0))}
-                          </td>
-                          <td className="border p-2 text-right bg-blue-100 text-blue-900">
-                            {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.saldo, 0))}
-                          </td>
+                          {selectedMonth === 'all' && (
+                            <>
+                              <td className="border p-2 text-right bg-green-100 text-green-900">
+                                {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.totalEntradas, 0))}
+                              </td>
+                              <td className="border p-2 text-right bg-red-100 text-red-900">
+                                {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.totalSaidas, 0))}
+                              </td>
+                              <td className="border p-2 text-right bg-blue-100 text-blue-900">
+                                {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.saldo, 0))}
+                              </td>
+                            </>
+                          )}
                         </tr>
                       </tfoot>
                     </table>
