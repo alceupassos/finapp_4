@@ -1,11 +1,21 @@
 import { SupabaseRest } from './supabaseRest'
 
+// Desabilitar logs em produção para evitar erros 400
+const isProduction = import.meta.env.PROD
+
 export const logger = {
-  info: (message: string, meta: Partial<{ endpoint: string; companyCnpj: string; userId: string; latencyMs: number }> = {}) =>
-    SupabaseRest.log({ level: 'info', service: 'UI', message, ...meta }),
-  warn: (message: string, meta: Partial<{ endpoint: string; companyCnpj: string; userId: string; latencyMs: number }> = {}) =>
-    SupabaseRest.log({ level: 'warn', service: 'UI', message, ...meta }),
-  error: (message: string, meta: Partial<{ endpoint: string; companyCnpj: string; userId: string; latencyMs: number }> = {}) =>
-    SupabaseRest.log({ level: 'error', service: 'UI', message, ...meta }),
+  info: (message: string, meta: Partial<{ endpoint: string; companyCnpj: string; userId: string; latencyMs: number }> = {}) => {
+    if (!isProduction) console.info(message, meta)
+    // Remover logs para Supabase temporariamente
+    return Promise.resolve()
+  },
+  warn: (message: string, meta: Partial<{ endpoint: string; companyCnpj: string; userId: string; latencyMs: number }> = {}) => {
+    if (!isProduction) console.warn(message, meta)
+    return Promise.resolve()
+  },
+  error: (message: string, meta: Partial<{ endpoint: string; companyCnpj: string; userId: string; latencyMs: number }> = {}) => {
+    console.error(message, meta)
+    return Promise.resolve()
+  },
 }
 

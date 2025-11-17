@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Cérebro estilizado com circuitos -->
+  <path d="M50 10 C30 10 20 20 20 35 C20 40 22 45 25 48 L25 52 C25 60 28 65 32 68 C28 72 25 78 25 85 C25 92 30 95 35 95 L65 95 C70 95 75 92 75 85 C75 78 72 72 68 68 C72 65 75 60 75 52 L75 48 C78 45 80 40 80 35 C80 20 70 10 50 10 Z" 
+        fill="url(#brainGrad)" 
+        stroke="#06b6d4" 
+        stroke-width="2"/>
+  
+  <!-- Circuitos e conexões neurais -->
+  <circle cx="35" cy="30" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="50" cy="25" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="65" cy="30" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="40" cy="45" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="60" cy="45" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="45" cy="60" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="55" cy="60" r="3" fill="#fff" opacity="0.8"/>
+  
+  <!-- Linhas de conexão -->
+  <line x1="35" y1="30" x2="50" y2="25" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <line x1="50" y1="25" x2="65" y2="30" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <line x1="35" y1="30" x2="40" y2="45" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <line x1="65" y1="30" x2="60" y2="45" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <line x1="40" y1="45" x2="45" y2="60" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <line x1="60" y1="45" x2="55" y2="60" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <line x1="45" y1="60" x2="55" y2="60" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+</svg>

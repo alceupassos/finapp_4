@@ -22,7 +22,9 @@ export default defineConfig({
             return 'vendor-recharts';
           }
 
-          if (id.includes('node_modules/react')) {
+          // React e dependências que precisam do React juntos
+          if (id.includes('node_modules/react') || 
+              id.includes('node_modules/@tanstack')) {
             return 'vendor-react';
           }
 
@@ -40,10 +42,6 @@ export default defineConfig({
 
           if (id.includes('node_modules/@supabase')) {
             return 'vendor-supabase';
-          }
-
-          if (id.includes('node_modules/@tanstack')) {
-            return 'vendor-tanstack';
           }
 
           if (id.includes('node_modules/@tremor')) {
