@@ -20,6 +20,9 @@ import { ConfigModal } from './components/ConfigModal';
 import { SimpleVolpeLogin } from './components/SimpleVolpeLogin';
 import { useFinancialData } from './hooks/useFinancialData';
 import { SupabaseRest } from './services/supabaseRest';
+import { ProcessingStatsCard } from './components/ProcessingStatsCard';
+import { AcquirersCard } from './components/AcquirersCard';
+import { BanksCard } from './components/BanksCard';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
@@ -173,7 +176,7 @@ Sempre que relevante, fornecer:
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar role={role} onOpenSettings={() => setConfigOpen(true)} onOpenLogs={() => setConfigOpen(true)} />
+      <ModernSidebar role={role} onOpenSettings={() => setConfigOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar 
           isDark={isDark} 
@@ -260,65 +263,14 @@ Sempre que relevante, fornecer:
 
           {/* Footer Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <motion.div
-              className="neomorphic neomorphic-hover rounded-2xl p-6 border border-graphite-800/30"
-              whileHover={scaleOnHover.whileHover}
-              transition={scaleOnHover.transition}
-              variants={item}
-              initial="hidden"
-              animate="show"
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/20">
-                  <Users className="w-6 h-6 text-blue-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-medium">Clientes Ativos</p>
-                  <p className="text-2xl font-bold text-foreground mt-1">1.248</p>
-                  <p className="text-xs text-success mt-1">+8% este mês</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              className="neomorphic neomorphic-hover rounded-2xl p-6 border border-graphite-800/30"
-              whileHover={scaleOnHover.whileHover}
-              transition={scaleOnHover.transition}
-              variants={item}
-              initial="hidden"
-              animate="show"
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-500/20">
-                  <FileText className="w-6 h-6 text-purple-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-medium">Documentos Processados</p>
-                  <p className="text-2xl font-bold text-foreground mt-1">8.542</p>
-                  <p className="text-xs text-success mt-1">+15% este mês</p>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              className="neomorphic neomorphic-hover rounded-2xl p-6 border border-graphite-800/30"
-              whileHover={scaleOnHover.whileHover}
-              transition={scaleOnHover.transition}
-              variants={item}
-              initial="hidden"
-              animate="show"
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 border border-gold-500/20">
-                  <Zap className="w-6 h-6 text-gold-400" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-medium">Automação</p>
-                  <p className="text-2xl font-bold text-foreground mt-1">94.8%</p>
-                  <p className="text-xs text-success mt-1">+2.3% este mês</p>
-                </div>
-              </div>
-            </motion.div>
+            <ProcessingStatsCard 
+              payments={1248} 
+              receipts={892} 
+              paymentsChange={12} 
+              receiptsChange={8} 
+            />
+            <AcquirersCard />
+            <BanksCard />
           </div>
           </>
           )}

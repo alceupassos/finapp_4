@@ -18,6 +18,11 @@ export function ModernTransactionsTable() {
   const [rows, setRows] = useState<Tx[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
+  const [filterType, setFilterType] = useState<'all' | 'month' | 'range'>('all')
+  const [selectedMonth, setSelectedMonth] = useState<string>('')
+  const [startDate, setStartDate] = useState<string>('')
+  const [endDate, setEndDate] = useState<string>('')
+  const [searchTerm, setSearchTerm] = useState<string>('')
 
   useEffect(() => {
     (async () => {
@@ -49,6 +54,49 @@ export function ModernTransactionsTable() {
       }
     })()
   }, [cnpj])
+
+  // Ordenar por data decrescente (mais recente primeiro) e filtrar
+  const filteredRows = useMemo(() => {
+    let filtered = [...rows]
+
+    // Ordenar por data decrescente
+    filtered.sort((a, b) => {
+      const dateA = new Date(a.data || '1900-01-01').getTime()
+      const dateB = new Date(b.data || '1900-01-01').getTime()
+      return dateB - dateA // Decrescente
+    })
+
+    // Filtro por busca
+    if (searchTerm) {
+      filtered = filtered.filter(tx => 
+        (tx.descricao || '').toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+
+    // Filtro por período
+    if (filterType === 'month' && selectedMonth) {
+      filtered = filtered.filter(tx => tx.data?.startsWith(selectedMonth))
+    } else if (filterType === 'range' && startDate && endDate) {
+      filtered = filtered.filter(tx => {
+        const txDate = tx.data || ''
+        return txDate >= startDate && txDate <= endDate
+      })
+    }
+
+    return filtered
+  }, [rows, searchTerm, filterType, selectedMonth, startDate, endDate])
+
+  // Gerar lista de meses disponíveis
+  const availableMonths = useMemo(() => {
+    const months = new Set<string>()
+    rows.forEach(tx => {
+      if (tx.data) {
+        months.add(tx.data.slice(0, 7))
+      }
+    })
+    return Array.from(months).sort().reverse()
+  }, [rows])
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -71,17 +119,57 @@ export function ModernTransactionsTable() {
               <input
                 type="text"
                 placeholder="Buscar..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-9 pr-3 py-2 neomorphic-inset border border-graphite-800/20 rounded-xl text-sm text-white placeholder-graphite-500 focus:outline-none focus:border-gold-500 transition-all w-48"
               />
             </div>
 
-            {/* Period Filter */}
-            <select className="px-4 py-2 neomorphic-inset border border-graphite-800/20 rounded-xl text-sm text-white focus:outline-none focus:border-gold-500 transition-all">
-              <option>Todos</option>
-              <option>Hoje</option>
-              <option>Esta Semana</option>
-              <option>Este Mês</option>
+            {/* Filter Type */}
+            <select 
+              value={filterType} 
+              onChange={(e) => setFilterType(e.target.value as any)}
+              className="px-4 py-2 neomorphic-inset border border-graphite-800/20 rounded-xl text-sm text-white focus:outline-none focus:border-gold-500 transition-all"
+            >
+              <option value="all">Todos os períodos</option>
+              <option value="month">Por mês</option>
+              <option value="range">Faixa de datas</option>
             </select>
+
+            {/* Month Filter */}
+            {filterType === 'month' && (
+              <select 
+                value={selectedMonth} 
+                onChange={(e) => setSelectedMonth(e.target.value)}
+                className="px-4 py-2 neomorphic-inset border border-graphite-800/20 rounded-xl text-sm text-white focus:outline-none focus:border-gold-500 transition-all"
+              >
+                <option value="">Selecione o mês</option>
+                {availableMonths.map(month => (
+                  <option key={month} value={month}>
+                    {new Date(month + '-01').toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
+                  </option>
+                ))}
+              </select>
+            )}
+
+            {/* Date Range Filters */}
+            {filterType === 'range' && (
+              <>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="px-3 py-2 neomorphic-inset border border-graphite-800/20 rounded-xl text-sm text-white focus:outline-none focus:border-gold-500 transition-all"
+                />
+                <span className="text-graphite-400 text-sm">até</span>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="px-3 py-2 neomorphic-inset border border-graphite-800/20 rounded-xl text-sm text-white focus:outline-none focus:border-gold-500 transition-all"
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -109,7 +197,7 @@ export function ModernTransactionsTable() {
             </tr>
           </thead>
           <tbody>
-            {(loading ? [] : rows).map((tx, index) => {
+            {(loading ? [] : filteredRows).map((tx, index) => {
               const amount = (tx.entrada || 0) - (tx.saida || 0)
               const type = amount >= 0 ? 'income' : 'expense'
               const status = statusConfig[type === 'income' ? 'success' : 'pending']
