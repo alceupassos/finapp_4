@@ -1,0 +1,938 @@
+[
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2024-12-01",
+    "created_at": "2025-11-17T01:55:04.126Z",
+    "kind": "out",
+    "amount": 777.63
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.126Z",
+    "kind": "out",
+    "amount": 1347822.27
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Financeiras",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.126Z",
+    "kind": "out",
+    "amount": 393629.34
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.126Z",
+    "kind": "out",
+    "amount": 2093.45
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.126Z",
+    "kind": "in",
+    "amount": 7200.58
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.126Z",
+    "kind": "out",
+    "amount": 5025.38
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2024-12-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 16836
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4322.35
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 24973.04
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1713858.45
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Financeiras",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 113633.53
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5354.93
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1172.3
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 8079.29
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4664.37
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 29414.28
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 180831.69
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 519.6
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5339.28
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 2151736.41
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 2843.54
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 0.02
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4462.94
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 41819.38
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 300544.71
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 532.08
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5267.26
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 2038290.52
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Financeiras",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 69158.83
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 296.35
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 15140.16
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5093.16
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 47899.72
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 295023.5
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1342.68
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5326.05
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1782985.36
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1226.15
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 4274.88
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5466.59
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Financeiras",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 181845.56
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 49460.97
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 219816.15
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 839.8
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1604383.1
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4931.04
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1940.09
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 10637.84
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4180.03
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 38527
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4923.65
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1643333.7
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1628.38
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 12034.7
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5530.62
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 42534.88
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1474212.5
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Impostos Sobre o Faturamento",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 567.3
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4956.76
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1045.36
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4171.83
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 873.65
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Financeiras",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 77405.56
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 59187.11
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 6865.04
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1322648.59
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 9028.79
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 4385.07
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 840.45
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 42084.8
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 8288.64
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 1375921.75
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 43340.34
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 17037.45
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 5872.43
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Financeiras",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 24.28
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Administrativas",
+    "date": "2025-11-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 967.71
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Despesas Operacionais",
+    "date": "2025-11-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 68744.8
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1776482.01
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1988526.53
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 2475133.08
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 2219143.02
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 2051115.07
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 2010242.09
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1884077.98
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1678211.88
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1616765.72
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 1578404.71
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-11-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 176032.86
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Outras Receitas/Despesas",
+    "date": "2025-11-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 2212.8
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Receitas Operacionais",
+    "date": "2025-12-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 7550
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 59826.67
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 266.04
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 237036.97
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 259.8
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 187382.61
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 219.85
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 184428.09
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 219.85
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 199359.58
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 219.85
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 173450.26
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "out",
+    "amount": 100
+  },
+  {
+    "company_cnpj": "26888098000400",
+    "company_nome": "VOLPE FILIAL 04",
+    "category": "Deduções de Receitas",
+    "date": "2025-11-01",
+    "created_at": "2025-11-17T01:55:04.127Z",
+    "kind": "in",
+    "amount": 116735.06
+  }
+]

@@ -1,16 +1,10 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowDownLeft, MoreVertical, Search } from 'lucide-react';
+import { SupabaseRest } from '../services/supabaseRest'
+import { useEffect, useMemo, useState } from 'react'
 
-const transactions = [
-  { id: 1, company: 'Shopify', amount: 145000, type: 'income', status: 'success', date: '12 Nov', icon: '🛒' },
-  { id: 2, company: 'Stripe', amount: 89500, type: 'income', status: 'success', date: '12 Nov', icon: '💳' },
-  { id: 3, company: 'AWS', amount: -32000, type: 'expense', status: 'success', date: '11 Nov', icon: '☁️' },
-  { id: 4, company: 'Google Ads', amount: -45000, type: 'expense', status: 'pending', date: '11 Nov', icon: '📢' },
-  { id: 5, company: 'Microsoft', amount: 125000, type: 'income', status: 'success', date: '10 Nov', icon: '💻' },
-  { id: 6, company: 'Salesforce', amount: -18000, type: 'expense', status: 'failed', date: '10 Nov', icon: '⚡' },
-  { id: 7, company: 'Adobe', amount: -28000, type: 'expense', status: 'success', date: '09 Nov', icon: '🎨' },
-  { id: 8, company: 'Zoom', amount: -12000, type: 'expense', status: 'success', date: '09 Nov', icon: '📹' },
-];
+type Tx = { id?: string|number; descricao?: string; data?: string; entrada?: number; saida?: number; saldo?: number; cnpj?: string }
+type Company = { grupo_empresarial?: string; cliente_nome?: string; cnpj?: string }
 
 const statusConfig = {
   success: { label: 'Concluído', color: 'emerald', bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/20' },
@@ -19,6 +13,42 @@ const statusConfig = {
 };
 
 export function ModernTransactionsTable() {
+  const [companies, setCompanies] = useState<Company[]>([])
+  const [cnpj, setCnpj] = useState<string>('')
+  const [rows, setRows] = useState<Tx[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string>('')
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const cs = await SupabaseRest.getCompanies() as Company[]
+        setCompanies(cs || [])
+        const normEnds0159 = (cs || []).find(c => String(c.cnpj || '').replace(/^0+/, '').endsWith('0159'))?.cnpj
+        const firstVolpe = (cs || []).find(c => String(c.grupo_empresarial || '').toLowerCase().includes('volpe'))?.cnpj
+        const first = normEnds0159 || firstVolpe || (cs && cs[0]?.cnpj) || ''
+        setCnpj(first)
+      } catch (e: any) {
+        setError('Falha ao carregar empresas')
+      }
+    })()
+  }, [])
+
+  useEffect(() => {
+    if (!cnpj) return
+    setLoading(true)
+    setError('')
+    ;(async () => {
+      try {
+        const data = await SupabaseRest.getDFC(cnpj) as Tx[]
+        setRows(Array.isArray(data) ? data : [])
+      } catch (e: any) {
+        setError('Falha ao carregar extrato')
+      } finally {
+        setLoading(false)
+      }
+    })()
+  }, [cnpj])
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -62,7 +92,7 @@ export function ModernTransactionsTable() {
           <thead>
             <tr className="border-b border-graphite-800">
               <th className="px-6 py-4 text-left text-xs font-semibold text-graphite-400 uppercase tracking-wider">
-                Empresa
+                Descrição
               </th>
               <th className="px-6 py-4 text-left text-xs font-semibold text-graphite-400 uppercase tracking-wider">
                 Data
@@ -71,7 +101,7 @@ export function ModernTransactionsTable() {
                 Valor
               </th>
               <th className="px-6 py-4 text-left text-xs font-semibold text-graphite-400 uppercase tracking-wider">
-                Status
+                Saldo
               </th>
               <th className="px-6 py-4 text-right text-xs font-semibold text-graphite-400 uppercase tracking-wider">
                 Ações
@@ -79,11 +109,13 @@ export function ModernTransactionsTable() {
             </tr>
           </thead>
           <tbody>
-            {transactions.map((transaction, index) => {
-              const status = statusConfig[transaction.status as keyof typeof statusConfig];
+            {(loading ? [] : rows).map((tx, index) => {
+              const amount = (tx.entrada || 0) - (tx.saida || 0)
+              const type = amount >= 0 ? 'income' : 'expense'
+              const status = statusConfig[type === 'income' ? 'success' : 'pending']
               return (
                 <motion.tr
-                  key={transaction.id}
+                  key={tx.id || index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 + index * 0.05 }}
@@ -97,33 +129,33 @@ export function ModernTransactionsTable() {
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         className="w-10 h-10 rounded-xl bg-gradient-to-br from-graphite-800 to-graphite-900 flex items-center justify-center text-xl group-hover:shadow-lg transition-shadow"
                       >
-                        {transaction.icon}
+                        💸
                       </motion.div>
                       <div>
-                        <p className="text-sm font-semibold text-white">{transaction.company}</p>
-                        <p className="text-xs text-graphite-400">Pagamento {transaction.type === 'income' ? 'recebido' : 'enviado'}</p>
+                        <p className="text-sm font-semibold text-white">{tx.descricao || 'Lançamento'}</p>
+                        <p className="text-xs text-graphite-400">{type === 'income' ? 'Entrada' : 'Saída'}</p>
                       </div>
                     </div>
                   </td>
 
                   {/* Date */}
                   <td className="px-6 py-4">
-                    <p className="text-sm text-graphite-300">{transaction.date}</p>
+                    <p className="text-sm text-graphite-300">{tx.data || '-'}</p>
                   </td>
 
                   {/* Amount */}
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <div className={`p-1 rounded-lg ${transaction.type === 'income' ? 'bg-emerald-500/10' : 'bg-red-500/10'}`}>
-                        {transaction.type === 'income' ? (
+                      <div className={`p-1 rounded-lg ${type === 'income' ? 'bg-emerald-500/10' : 'bg-red-500/10'}`}>
+                        {type === 'income' ? (
                           <ArrowUpRight className="w-4 h-4 text-emerald-400" />
                         ) : (
                           <ArrowDownLeft className="w-4 h-4 text-red-400" />
                         )}
                       </div>
-                      <span className={`text-sm font-bold ${transaction.type === 'income' ? 'text-emerald-400' : 'text-red-400'}`}>
-                        {transaction.amount > 0 ? '+' : ''}
-                        {transaction.amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                      <span className={`text-sm font-bold ${type === 'income' ? 'text-emerald-400' : 'text-red-400'}`}>
+                        {amount > 0 ? '+' : ''}
+                        {Number(amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                       </span>
                     </div>
                   </td>
@@ -135,7 +167,7 @@ export function ModernTransactionsTable() {
                       className={`inline-flex items-center px-3 py-1 rounded-lg text-xs font-semibold border ${status.bg} ${status.text} ${status.border}`}
                     >
                       <span className={`w-1.5 h-1.5 rounded-full ${status.text.replace('text-', 'bg-')} mr-2`} />
-                      {status.label}
+                      {Number(tx.saldo || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                     </motion.span>
                   </td>
 
@@ -152,6 +184,11 @@ export function ModernTransactionsTable() {
                 </motion.tr>
               );
             })}
+            {(!loading && rows.length === 0) && (
+              <tr>
+                <td colSpan={5} className="px-6 py-8 text-center text-sm text-graphite-400">Nenhum lançamento encontrado para {cnpj || 'empresa'}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -159,17 +196,17 @@ export function ModernTransactionsTable() {
       {/* Footer */}
       <div className="p-6 border-t border-graphite-800 flex items-center justify-between">
         <p className="text-sm text-graphite-400">
-          Mostrando <span className="text-white font-semibold">8</span> de <span className="text-white font-semibold">142</span> transações
+          {loading ? 'Carregando...' : `Mostrando ${rows.length} lançamentos`} {cnpj && <span className="text-white font-semibold">• {cnpj}</span>}
         </p>
         <div className="flex items-center gap-2">
-          <button className="px-4 py-2 bg-graphite-800 hover:bg-graphite-700 text-white rounded-xl text-sm font-medium transition-colors">
-            Anterior
-          </button>
-          <button className="px-4 py-2 bg-gold-500 hover:bg-gold-600 text-white rounded-xl text-sm font-medium transition-colors shadow-glow-sm">
-            Próxima
-          </button>
+          <select value={cnpj} onChange={(e)=>setCnpj(e.target.value)} className="px-4 py-2 bg-graphite-800 text-white rounded-xl text-sm">
+            <option value="">Selecione CNPJ</option>
+            {companies.map(c => (
+              <option key={c.cnpj} value={c.cnpj}>{c.cliente_nome} • {c.cnpj}</option>
+            ))}
+          </select>
         </div>
       </div>
-    </motion.div>
+  </motion.div>
   );
 }

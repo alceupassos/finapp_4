@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getSession, loginSupabase, lastLoginError } from './services/auth';
 import { ModernSidebar } from './components/ModernSidebar';
 import { ModernTopbar } from './components/ModernTopbar';
 import { AnimatedKPICard } from './components/AnimatedKPICard';
@@ -9,27 +10,31 @@ import { RevenueDistributionGauge } from './components/RevenueDistributionGauge'
 import { DashboardOverview } from './components/DashboardOverview';
 import { ReportsPage } from './components/ReportsPage';
 import { CustomersPage } from './components/CustomersPage';
-import { AnalisesPage } from './components/AnalisesPage';
+import { AnaliticoDashboard } from './components/AnaliticoDashboard';
 import { ConciliacaoPage } from './components/ConciliacaoPage';
 import { Users, FileText, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { scaleOnHover, item } from './lib/motion';
-import { AnaliticosModal } from './components/AnaliticosModal';
 import { SettingsModal } from './components/SettingsModal';
 import { LogsModal } from './components/LogsModal';
+import { SimpleVolpeLogin } from './components/SimpleVolpeLogin';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
 
 export function App(){
   const [isDark, setIsDark] = useState(true);
-  const [analiticosOpen, setAnaliticosOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [logsOpen, setLogsOpen] = useState(false);
   const [oracleContext, setOracleContext] = useState<string>('');
   const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
-  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Conciliação'|'Relatórios'|'Clientes'>('Dashboard')
+  const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Fluxo de Caixa'|'Extrato de Lançamentos'|'Relatórios'|'Clientes'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
+  const [session, setSession] = useState<any>(() => getSession())
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const isVolpeDomain = window.location.hostname.includes('dev.angrax.com.br') || window.location.hostname.includes('localhost')
 
   useState(() => {
     const handler = (e: any) => setCurrentView(e.detail)
@@ -39,7 +44,7 @@ export function App(){
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
-      <ModernSidebar role={role} onOpenAnaliticos={() => setAnaliticosOpen(true)} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
+      <ModernSidebar role={role} onOpenSettings={() => setSettingsOpen(true)} onOpenLogs={() => setLogsOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar isDark={isDark} onThemeToggle={() => setIsDark(!isDark)} oracleContext={oracleContext} currentPeriod={period} onPeriodChange={(p)=>setPeriod(p)} />
         
@@ -90,7 +95,7 @@ export function App(){
 
           {/* Tremor Overview */}
           <section className="mb-6">
-            <DashboardOverview period={period} />
+            <DashboardOverview period={period} session={session} key={`overview-${session? 'auth':'anon'}`} />
           </section>
 
           {/* Cashflow + Virtual Card */}
@@ -179,14 +184,14 @@ export function App(){
           )}
 
           {currentView === 'Análises' && (
-            <AnalisesPage />
+            <AnaliticoDashboard />
           )}
           {currentView === 'Fluxo de Caixa' && (
             <div className="grid grid-cols-1 gap-6">
               <ModernCashflowChart period={period} />
             </div>
           )}
-          {currentView === 'Conciliação' && (
+          {currentView === 'Extrato de Lançamentos' && (
             <ConciliacaoPage />
           )}
           {currentView === 'Relatórios' && (
@@ -195,10 +200,43 @@ export function App(){
           {currentView === 'Clientes' && (
             <CustomersPage />
           )}
+          {currentView === 'Análises' && (
+            <AnaliticoDashboard />
+          )}
         </main>
-        <AnaliticosModal open={analiticosOpen} onClose={() => setAnaliticosOpen(false)} />
         <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} onUpdateOracleContext={setOracleContext} />
         <LogsModal open={logsOpen} onClose={() => setLogsOpen(false)} />
+        {!session && (
+          isVolpeDomain ? (
+            <SimpleVolpeLogin 
+              open={!session} 
+              onClose={() => {}} 
+              onLogged={(s) => setSession(s)} 
+            />
+          ) : (
+            <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur flex items-center justify-center">
+              <div className="w-[360px] rounded-xl border border-graphite-800 bg-graphite-900 p-4 space-y-3">
+                <div className="text-sm font-semibold">Entrar</div>
+                {error && <div className="text-xs text-red-400">{error}</div>}
+                <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="E-mail" className="w-full bg-graphite-800 border border-graphite-700 rounded-sm px-2 py-1 text-xs"/>
+                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Senha" className="w-full bg-graphite-800 border border-graphite-700 rounded-sm px-2 py-1 text-xs"/>
+                <button onClick={async()=>{ 
+                  setError(''); 
+                  try {
+                    const s = await loginSupabase(email, password);
+                    if(!s){ 
+                      setError(lastLoginError || 'Credenciais inválidas'); 
+                      return;
+                    }
+                    setSession(s);
+                  } catch (err: any) {
+                    setError(err.message || 'Erro ao fazer login');
+                  }
+                }} className="px-3 py-1 rounded-sm bg-emerald-400 text-white text-xs">Entrar</button>
+              </div>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

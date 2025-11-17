@@ -1,0 +1,3539 @@
+[
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 13300.18,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 4370,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 51.48,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 589441.68,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 2680,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 64,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 900,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1438459.6,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 154,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 466,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 441190.07,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 1096,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2505.14,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "413-0 - Outras Despesas Comerciais",
+    "nature": "despesa",
+    "amount": 257,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "411-2 - Refeicoes e Lanches",
+    "nature": "despesa",
+    "amount": 58,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 454.98,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 25421.88,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 1099.85,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 365,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "despesa",
+    "amount": 600,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 105.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "418-0 - Farmacia",
+    "nature": "despesa",
+    "amount": 47,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 809.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 75,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4160,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 1040,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "430-7 - IOF",
+    "nature": "despesa",
+    "amount": 0.81,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "despesa",
+    "amount": 11407.74,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 44579.59,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 1588.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 1090,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 713659.59,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 389,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 2370,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "420-7 - Telefonia",
+    "nature": "despesa",
+    "amount": 30,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4406.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 1088,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "despesa",
+    "amount": 1740,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 712,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "203-1 - FGTS",
+    "nature": "despesa",
+    "amount": 4755.49,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 150,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 303.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2982,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 251,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 8446.1,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 25790.67,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 1305.18,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 55.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 435.91,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "despesa",
+    "amount": 896,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 249.7,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "420-9 - Uniformes",
+    "nature": "despesa",
+    "amount": 72,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 1134.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1774452.07,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "430-7 - IOF",
+    "nature": "despesa",
+    "amount": 1.29,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 66057.02,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4308.6,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 155,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1643.98,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 116,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 912432.78,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "430-7 - IOF",
+    "nature": "despesa",
+    "amount": 548.36,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 303,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 229,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 290,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2794.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 809.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "despesa",
+    "amount": 2248.45,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 1250,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 940,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 29880.74,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 454.98,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 1480.91,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 807,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 1114.19,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 22806.99,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 91762.26,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 1070,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 2770,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 859998.51,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "430-7 - IOF",
+    "nature": "despesa",
+    "amount": 434.26,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 2014.09,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 1101.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 24,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "despesa",
+    "amount": 2380.83,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 25292.77,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 43.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 35.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4594.2,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1436369.43,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 450,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "despesa",
+    "amount": 20,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2905.42,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 1325,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 160.71,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 32407.09,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 153.04,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 230.26,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "420-9 - Uniformes",
+    "nature": "despesa",
+    "amount": 300,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 1249.84,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 253.51,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "despesa",
+    "amount": 301.63,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 877.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 2620,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 235,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 160.7,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 26310.93,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1360.81,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 1760.2,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 901687.04,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "430-7 - IOF",
+    "nature": "despesa",
+    "amount": 5.62,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 662,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "despesa",
+    "amount": 2368.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1335777.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 674.45,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 2051,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 150,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2766.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 422,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 29244.01,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "despesa",
+    "amount": 80,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 674.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 1335.46,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 12,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "421-8 - Correios e Fretes",
+    "nature": "despesa",
+    "amount": 200,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "422-4 - Pedágio",
+    "nature": "despesa",
+    "amount": 554.1,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "despesa",
+    "amount": 301.63,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 769,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4744.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "201-8 - Ferias",
+    "nature": "despesa",
+    "amount": 3999.09,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 20478.92,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 44922.95,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 1960,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 844473.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1575.03,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 100,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1102322.38,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 802.3,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 2445,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 904.56,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 12,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "413-0 - Outras Despesas Comerciais",
+    "nature": "despesa",
+    "amount": 60,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2944.46,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 31536.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 150,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 431.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 866.06,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 2100,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 1154.18,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "despesa",
+    "amount": 291.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "201-8 - Ferias",
+    "nature": "despesa",
+    "amount": 770.34,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 290,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 451.53,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 3944.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 18854.63,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 50348.08,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 3199.7,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 238.59,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 690355.42,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1576.16,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 317,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 5977,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4824.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1125886.65,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 360,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 9130,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 2859.09,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "201-8 - Ferias",
+    "nature": "despesa",
+    "amount": 4690.73,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 26342.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 124.99,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 339.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 161,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 273.72,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 690.83,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "despesa",
+    "amount": 2517.62,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "203-1 - FGTS",
+    "nature": "despesa",
+    "amount": 617.42,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "102-1 - Vendas Canceladas",
+    "nature": "despesa",
+    "amount": 2550,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "despesa",
+    "amount": 17.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 608.57,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "despesa",
+    "amount": 18543.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 1040,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 64303.21,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "420-7 - Telefonia",
+    "nature": "despesa",
+    "amount": 60,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 194.89,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 611029.88,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1565.75,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 1063749.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 7783.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 780.39,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 487,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 3884.74,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 340.6,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "422-0 - Uber e Taxi",
+    "nature": "despesa",
+    "amount": 17,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 68.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 200,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "201-8 - Ferias",
+    "nature": "despesa",
+    "amount": 5012.24,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 1105.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 29210.99,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 241.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 651.28,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 7211,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 99.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "despesa",
+    "amount": 8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 190,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 560.44,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4685.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "despesa",
+    "amount": 22424.53,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 19848.63,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "despesa",
+    "amount": 469.55,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 89864.97,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 1757.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 718144.22,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1504.88,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 209.13,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 3282.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "despesa",
+    "amount": 166.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "despesa",
+    "amount": 42719.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 951567.27,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 207.36,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 246.53,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 3600,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 160,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 350,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 3332.75,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 25257.06,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "despesa",
+    "amount": 150,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 241.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 422.39,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 705.65,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "420-7 - Telefonia",
+    "nature": "despesa",
+    "amount": 15,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "despesa",
+    "amount": 220,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "201-8 - Ferias",
+    "nature": "despesa",
+    "amount": 11221.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "despesa",
+    "amount": 499.05,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4365.4,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "despesa",
+    "amount": 15352.84,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 1040,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "422-1 - Combustivel",
+    "nature": "despesa",
+    "amount": 6084.42,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "despesa",
+    "amount": 1612.93,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "despesa",
+    "amount": 1030,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "despesa",
+    "amount": 598.2,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "despesa",
+    "amount": 557.89,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "425-5 - Consultoria",
+    "nature": "despesa",
+    "amount": 990,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 559905.26,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "despesa",
+    "amount": 960822.91,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "420-7 - Telefonia",
+    "nature": "despesa",
+    "amount": 30,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "despesa",
+    "amount": 17,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "despesa",
+    "amount": 470,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "despesa",
+    "amount": 233.5,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "422-6 - Aluguel de Equipamento",
+    "nature": "despesa",
+    "amount": 3000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "despesa",
+    "amount": 1835,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "despesa",
+    "amount": 47.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "despesa",
+    "amount": 52262.18,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "despesa",
+    "amount": 2240,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "despesa",
+    "amount": 3274.16,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "despesa",
+    "amount": 1290,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "despesa",
+    "amount": 2782,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "102-1 - Vendas Canceladas",
+    "nature": "despesa",
+    "amount": 550,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "despesa",
+    "amount": 27930.86,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "425-9 - Limpeza",
+    "nature": "despesa",
+    "amount": 373.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "despesa",
+    "amount": 629.06,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "despesa",
+    "amount": 871.6,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "420-5 - Aluguel",
+    "nature": "despesa",
+    "amount": 5000,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "despesa",
+    "amount": 790,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "despesa",
+    "amount": 153.96,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "413-0 - Outras Despesas Comerciais",
+    "nature": "despesa",
+    "amount": 150,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "423-4 - Internet",
+    "nature": "despesa",
+    "amount": 149.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "despesa",
+    "amount": 4680,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "despesa",
+    "amount": 115.59,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "despesa",
+    "amount": 11509.48,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "201-8 - Ferias",
+    "nature": "despesa",
+    "amount": 750,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "despesa",
+    "amount": 15514.42,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-11-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "despesa",
+    "amount": 53287.11,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 373391.07,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 344051.9,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 480545.1,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 30216.76,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "receita",
+    "amount": 1.22,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 413871.84,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 405106.57,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 72868.24,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 570566.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "receita",
+    "amount": 1.49,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 501778.34,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 464904.83,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 43902.64,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 735529.34,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "receita",
+    "amount": 0.41,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 68345.74,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 463760.35,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 452255.17,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "receita",
+    "amount": 0.1,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 466263.37,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 459358.19,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 350672.55,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "receita",
+    "amount": 280,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 78764.3,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 380164.37,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "receita",
+    "amount": 332.21,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "receita",
+    "amount": 950.33,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 68485.81,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 373305.46,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "receita",
+    "amount": 1842.53,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "receita",
+    "amount": 310,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 360648.94,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 432462.52,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 64908.27,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 404641.64,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 325498.78,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 397416.6,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "receita",
+    "amount": 0.13,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "receita",
+    "amount": 411.82,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 74917.89,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 310413.44,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 339235.66,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "receita",
+    "amount": 0.14,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 443822.2,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 86739.65,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 375476.35,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 266483.05,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 388032.63,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 84455.77,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "receita",
+    "amount": 375428.54,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "102-1 - Vendas de Produtos - Transferência / PIX",
+    "nature": "receita",
+    "amount": 297958.67,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "receita",
+    "amount": 289,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "receita",
+    "amount": 334209.43,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-11-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "receita",
+    "amount": 29437.66,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 12.73,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 210.09,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 209.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 209.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 209.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 209.8,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 169.85,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 421.25,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 589.45,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "despesa",
+    "amount": 429.65,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 80693.88,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-01-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 80693.87,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 135453.03,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-02-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 135453.04,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 156818.7,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-03-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 156818.69,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 127018.08,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 127018.08,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 113854.91,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-05-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 113854.91,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 83905.01,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-06-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 83905.01,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 87806.62,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-07-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 87806.62,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 85858.73,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-08-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 85858.73,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 87892.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-09-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 87892.31,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "receita",
+    "amount": 91839.05,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  },
+  {
+    "company_cnpj": "26888098001201",
+    "company_nome": "VOLPE FILIAL 12",
+    "date": "2025-10-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "receita",
+    "amount": 91839.05,
+    "created_at": "2025-11-17T01:52:27.759Z"
+  }
+]

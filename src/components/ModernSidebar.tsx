@@ -9,13 +9,12 @@ import {
   ChevronRight,
   BarChart3,
   Users,
-  Bell,
-  Sigma
+  Bell
 } from 'lucide-react';
 import { useState } from 'react';
+import { logout } from '../services/auth'
 
 interface ModernSidebarProps {
-  onOpenAnaliticos?: () => void
   onOpenSettings?: () => void
   onOpenLogs?: () => void
   role?: 'admin' | 'cliente' | 'franqueado' | 'personalizado'
@@ -24,24 +23,23 @@ interface ModernSidebarProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', active: true },
   { icon: BarChart3, label: 'Análises', active: false },
-  { icon: Sigma, label: 'Analíticos Dashboard', active: false },
   { icon: TrendingUp, label: 'Fluxo de Caixa', active: false },
-  { icon: Wallet, label: 'Conciliação', active: false },
+  { icon: Wallet, label: 'Extrato de Lançamentos', active: false },
   { icon: FileText, label: 'Relatórios', active: false },
   { icon: Users, label: 'Clientes', active: false },
 ];
 
 function getBottomItems(role: ModernSidebarProps['role']) {
-  const items = [
+  const items: { icon: any; label: string; adminOnly?: boolean }[] = [
     { icon: Bell, label: 'Notificações' },
     { icon: Settings, label: 'Configurações' },
     { icon: FileText, label: 'Gerenciamento • Logs', adminOnly: true },
     { icon: LogOut, label: 'Sair' },
-  ] as const
+  ]
   return items.filter(i => !i.adminOnly || role === 'admin')
 }
 
-export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, role = 'cliente' }: ModernSidebarProps) {
+export function ModernSidebar({ onOpenSettings, onOpenLogs, role = 'cliente' }: ModernSidebarProps) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -77,9 +75,6 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
             onHoverStart={() => setHoveredIndex(index)}
             onHoverEnd={() => setHoveredIndex(null)}
             onClick={() => {
-              if (item.label === 'Analíticos Dashboard') {
-                onOpenAnaliticos && onOpenAnaliticos()
-              }
               if (item.label === 'Relatórios') {
                 const e = new CustomEvent('navigate', { detail: 'Relatórios' })
                 window.dispatchEvent(e)
@@ -88,7 +83,7 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
                 const e = new CustomEvent('navigate', { detail: 'Clientes' })
                 window.dispatchEvent(e)
               }
-              if (item.label === 'Dashboard' || item.label === 'Análises' || item.label === 'Fluxo de Caixa' || item.label === 'Conciliação') {
+              if (item.label === 'Dashboard' || item.label === 'Análises' || item.label === 'Fluxo de Caixa' || item.label === 'Extrato de Lançamentos') {
                 const e = new CustomEvent('navigate', { detail: item.label })
                 window.dispatchEvent(e)
               }
@@ -138,6 +133,7 @@ export function ModernSidebar({ onOpenAnaliticos, onOpenSettings, onOpenLogs, ro
             onClick={() => {
               if (item.label === 'Configurações') onOpenSettings && onOpenSettings()
               if (item.label === 'Gerenciamento • Logs') onOpenLogs && onOpenLogs()
+              if (item.label === 'Sair') { logout(); window.dispatchEvent(new CustomEvent('logout')); location.reload() }
             }}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
           >
