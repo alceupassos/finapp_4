@@ -9,7 +9,8 @@ import {
   ChevronRight,
   BarChart3,
   Users,
-  Bell
+  Bell,
+  Newspaper
 } from 'lucide-react';
 import { useState } from 'react';
 import { logout } from '../services/auth'
@@ -23,6 +24,7 @@ interface ModernSidebarProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', active: true },
   { icon: BarChart3, label: 'Análises', active: false },
+  { icon: Newspaper, label: 'Notícias', active: false },
   { icon: TrendingUp, label: 'Fluxo de Caixa', active: false },
   { icon: Wallet, label: 'Extrato de Lançamentos', active: false },
   { icon: FileText, label: 'Relatórios', active: false },
@@ -83,7 +85,7 @@ export function ModernSidebar({ onOpenSettings, onOpenLogs, role = 'cliente' }: 
                 const e = new CustomEvent('navigate', { detail: 'Clientes' })
                 window.dispatchEvent(e)
               }
-              if (item.label === 'Dashboard' || item.label === 'Análises' || item.label === 'Fluxo de Caixa' || item.label === 'Extrato de Lançamentos') {
+              if (item.label === 'Dashboard' || item.label === 'Análises' || item.label === 'Notícias' || item.label === 'Fluxo de Caixa' || item.label === 'Extrato de Lançamentos') {
                 const e = new CustomEvent('navigate', { detail: item.label })
                 window.dispatchEvent(e)
               }

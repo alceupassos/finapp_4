@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
 
-const Item = ({ label, active=false }: { label: string; active?: boolean }) => (
-  <div className={`flex items-center gap-3 px-3 py-2 rounded-xl ${active ? 'bg-[#131A22] text-white' : 'text-gray-300 hover:bg-[#0f141b]'}`}>
+const Item = ({ label, active=false, onClick }: { label: string; active?: boolean; onClick?: () => void }) => (
+  <div 
+    onClick={onClick}
+    className={`flex items-center gap-3 px-3 py-2 rounded-xl cursor-pointer ${active ? 'bg-[#131A22] text-white' : 'text-gray-300 hover:bg-[#0f141b]'}`}
+  >
     <span className="w-5 h-5 flex items-center justify-center">
       <span className="rounded-sm w-3 h-3 bg-gray-400 inline-block" />
     </span>

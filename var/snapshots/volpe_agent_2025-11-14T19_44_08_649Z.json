@@ -1,0 +1,181 @@
+{
+  "timestamp": "2025-11-14T19:44:08.649Z",
+  "companies": [
+    {
+      "cnpj": "26888098000159",
+      "business": "VOLPE LTDA (LOJA 01 - VOLPE MATRIZ)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000230",
+      "business": "VOLPE LTDA (LOJA 02 - VOLPE ZOIAO (SÃO MATEUS)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000310",
+      "business": "VOLPE LTDA (LOJA 03 - VOLPE MAUÁ)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000400",
+      "business": "VOLPE LTDA (LOJA 04 - VOLPE DIADEMA)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000582",
+      "business": "VOLPE LTDA (LOJA 05 - VOLPE GRAJAÚ)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000663",
+      "business": "VOLPE LTDA (LOJA 06 - VOLPE SANTO ANDRÉ)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000744",
+      "business": "VOLPE LTDA (LOJA 07 - VOLPE CAMPO LIMPO)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000825",
+      "business": "VOLPE LTDA (LOJA 08 - VOLPE BRASILÂNDIA)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098000906",
+      "business": "VOLPE LTDA (LOJA 09 - VOLPE POÁ)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098001040",
+      "business": "VOLPE LTDA (LOJA 10 - VOLPE ITAIM (JARDIM BARTIRA))",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098001120",
+      "business": "VOLPE LTDA ( VOLPE PRAIA GRANDE)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098001201",
+      "business": "VOLPE LTDA (LOJA 12 - VOLPE ITANHAÉM)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    },
+    {
+      "cnpj": "26888098001392",
+      "business": "VOLPE LTDA (LOJA 13 - VOLPE SÃO MATHEUS)",
+      "dreCount": 0,
+      "dfcCount": 0,
+      "totalDre": 0,
+      "totalDfc": 0,
+      "warnings": [
+        "Sem caminho DRE configurado ou login faltando",
+        "Sem caminho DFC configurado ou login faltando"
+      ]
+    }
+  ],
+  "totals": {
+    "dreRecords": 0,
+    "dfcRecords": 0,
+    "dreAmount": 0,
+    "dfcAmount": 0
+  },
+  "localLaunches": {
+    "path": "",
+    "records": 0,
+    "companies": 0
+  },
+  "supabase": {
+    "ready": true
+  },
+  "f360": {
+    "authenticated": false,
+    "drePath": "",
+    "dfcPath": "",
+    "year": "2025"
+  }
+}

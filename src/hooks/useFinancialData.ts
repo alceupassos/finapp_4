@@ -1,0 +1,116 @@
+import { useState, useEffect } from 'react';
+import { SupabaseRest } from '../services/supabaseRest';
+
+interface FinancialMetrics {
+  receitaTotal: number;
+  despesasTotal: number;
+  limiteDiario: number;
+  metaPoupanca: number;
+  receitaChange: number;
+  despesasChange: number;
+  limiteDiarioProgress: number;
+  metaPoupancaProgress: number;
+}
+
+export function useFinancialData(cnpj: string = '26888098000159', selectedMonth?: string) {
+  const [metrics, setMetrics] = useState<FinancialMetrics>({
+    receitaTotal: 0,
+    despesasTotal: 0,
+    limiteDiario: 45000,
+    metaPoupanca: 150000,
+    receitaChange: 0,
+    despesasChange: 0,
+    limiteDiarioProgress: 0,
+    metaPoupancaProgress: 0,
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadFinancialData();
+  }, [cnpj, selectedMonth]);
+
+  const loadFinancialData = async () => {
+    try {
+      const dreData = await SupabaseRest.getDRE(cnpj);
+      if (!dreData || dreData.length === 0) {
+        setLoading(false);
+        return;
+      }
+
+      // Parse do mês selecionado
+      const [selectedYear, selectedMonthNum] = selectedMonth 
+        ? selectedMonth.split('-').map(Number)
+        : [new Date().getFullYear(), new Date().getMonth() + 1];
+
+      const currentYear = selectedYear;
+      const currentMonth = selectedMonthNum - 1; // JavaScript usa 0-11 para meses
+
+      // Dados do mês atual
+      let receitaMesAtual = 0;
+      let despesaMesAtual = 0;
+      
+      // Dados do mês anterior
+      let receitaMesAnterior = 0;
+      let despesaMesAnterior = 0;
+
+      dreData.forEach((item: any) => {
+        const itemDate = new Date(item.data);
+        const itemYear = itemDate.getFullYear();
+        const itemMonth = itemDate.getMonth();
+
+        if (itemYear === currentYear && itemMonth === currentMonth) {
+          if (item.natureza === 'receita') {
+            receitaMesAtual += item.valor;
+          } else if (item.natureza === 'despesa') {
+            despesaMesAtual += Math.abs(item.valor);
+          }
+        } else if (
+          (itemYear === currentYear && itemMonth === currentMonth - 1) ||
+          (currentMonth === 0 && itemYear === currentYear - 1 && itemMonth === 11)
+        ) {
+          if (item.natureza === 'receita') {
+            receitaMesAnterior += item.valor;
+          } else if (item.natureza === 'despesa') {
+            despesaMesAnterior += Math.abs(item.valor);
+          }
+        }
+      });
+
+      // Calcular variações percentuais
+      const receitaChange = receitaMesAnterior > 0 
+        ? ((receitaMesAtual - receitaMesAnterior) / receitaMesAnterior) * 100 
+        : 0;
+      
+      const despesasChange = despesaMesAnterior > 0 
+        ? ((despesaMesAtual - despesaMesAnterior) / despesaMesAnterior) * 100 
+        : 0;
+
+      // Calcular progresso do limite diário (baseado em dias úteis do mês)
+      const diasUteis = 22; // Aproximadamente
+      const limiteMensal = 45000 * diasUteis;
+      const limiteDiarioProgress = Math.min(Math.round((receitaMesAtual / limiteMensal) * 100), 100);
+
+      // Calcular progresso da meta de poupança
+      const saldoMesAtual = receitaMesAtual - despesaMesAtual;
+      const metaPoupancaProgress = Math.min(Math.round((saldoMesAtual / 150000) * 100), 100);
+
+      setMetrics({
+        receitaTotal: receitaMesAtual,
+        despesasTotal: despesaMesAtual,
+        limiteDiario: 45000,
+        metaPoupanca: 150000,
+        receitaChange,
+        despesasChange,
+        limiteDiarioProgress,
+        metaPoupancaProgress,
+      });
+      
+      setLoading(false);
+    } catch (error) {
+      console.error('Erro ao carregar dados financeiros:', error);
+      setLoading(false);
+    }
+  };
+
+  return { metrics, loading };
+}

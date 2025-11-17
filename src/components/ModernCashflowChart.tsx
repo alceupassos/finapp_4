@@ -1,20 +1,14 @@
 import { motion } from 'framer-motion';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { useState, useEffect } from 'react';
+import { SupabaseRest } from '../services/supabaseRest';
 
-const mockData = [
-  { month: 'Jan', receita: 450000, despesa: 280000, saldo: 170000 },
-  { month: 'Fev', receita: 520000, despesa: 320000, saldo: 200000 },
-  { month: 'Mar', receita: 480000, despesa: 290000, saldo: 190000 },
-  { month: 'Abr', receita: 610000, despesa: 350000, saldo: 260000 },
-  { month: 'Mai', receita: 580000, despesa: 330000, saldo: 250000 },
-  { month: 'Jun', receita: 720000, despesa: 420000, saldo: 300000 },
-  { month: 'Jul', receita: 680000, despesa: 380000, saldo: 300000 },
-  { month: 'Ago', receita: 750000, despesa: 410000, saldo: 340000 },
-  { month: 'Set', receita: 820000, despesa: 450000, saldo: 370000 },
-  { month: 'Out', receita: 890000, despesa: 480000, saldo: 410000 },
-  { month: 'Nov', receita: 950000, despesa: 520000, saldo: 430000 },
-  { month: 'Dez', receita: 1020000, despesa: 550000, saldo: 470000 },
-];
+interface ChartData {
+  month: string;
+  receita: number;
+  despesa: number;
+  saldo: number;
+}
 
 interface CustomTooltipProps {
   active?: boolean;
@@ -55,7 +49,73 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
   return null;
 };
 
-export function ModernCashflowChart({ period = 'Ano' }: { period?: 'Dia'|'Semana'|'Mês'|'Ano' }) {
+export function ModernCashflowChart({ period = 'Ano', cnpj = '26888098000159', selectedMonth }: { period?: 'Dia'|'Semana'|'Mês'|'Ano', cnpj?: string, selectedMonth?: string }) {
+  const [chartData, setChartData] = useState<ChartData[]>([
+    { month: 'Jan', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Fev', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Mar', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Abr', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Mai', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Jun', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Jul', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Ago', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Set', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Out', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Nov', receita: 0, despesa: 0, saldo: 0 },
+    { month: 'Dez', receita: 0, despesa: 0, saldo: 0 },
+  ]);
+
+  useEffect(() => {
+    loadCashflowData();
+  }, [period, cnpj, selectedMonth]);
+
+  const loadCashflowData = async () => {
+    try {
+      const dreData = await SupabaseRest.getDRE(cnpj);
+      if (!dreData || dreData.length === 0) return;
+
+      const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+      const monthlyData: any = {};
+      
+      // Parse do ano selecionado
+      const [selectedYear] = selectedMonth 
+        ? selectedMonth.split('-').map(Number)
+        : [new Date().getFullYear()];
+      
+      const currentYear = selectedYear;
+
+      // Inicializar todos os meses
+      monthNames.forEach(month => {
+        monthlyData[month] = { month, receita: 0, despesa: 0, saldo: 0 };
+      });
+
+      // Agregar dados por mês
+      dreData.forEach((item: any) => {
+        const itemDate = new Date(item.data);
+        if (itemDate.getFullYear() !== currentYear) return;
+        
+        const monthIdx = itemDate.getMonth();
+        const month = monthNames[monthIdx];
+        
+        if (item.natureza === 'receita') {
+          monthlyData[month].receita += item.valor;
+        } else if (item.natureza === 'despesa') {
+          monthlyData[month].despesa += Math.abs(item.valor);
+        }
+      });
+
+      // Calcular saldo
+      Object.values(monthlyData).forEach((data: any) => {
+        data.saldo = data.receita - data.despesa;
+      });
+
+      const finalData = monthNames.map(month => monthlyData[month]);
+      setChartData(finalData);
+    } catch (error) {
+      console.error('Erro ao carregar dados de fluxo de caixa:', error);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -94,7 +154,7 @@ export function ModernCashflowChart({ period = 'Ano' }: { period?: 'Dia'|'Semana
       >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
-            data={period === 'Ano' ? mockData : period === 'Mês' ? mockData.slice(-4) : period === 'Semana' ? mockData.slice(-2) : mockData.slice(-1)}
+            data={period === 'Ano' ? chartData : period === 'Mês' ? chartData.slice(-4) : period === 'Semana' ? chartData.slice(-2) : chartData.slice(-1)}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
             <defs>
@@ -125,7 +185,14 @@ export function ModernCashflowChart({ period = 'Ano' }: { period?: 'Dia'|'Semana
               stroke="#6d6d6d"
               tick={{ fill: '#888888', fontSize: 12 }}
               tickLine={false}
-              tickFormatter={(value) => `R$ ${(value / 1000).toFixed(0)}k`}
+              tickFormatter={(value) => {
+                if (value >= 1000000) {
+                  return `R$ ${(value / 1000000).toFixed(1)}M`;
+                } else if (value >= 1000) {
+                  return `R$ ${(value / 1000).toFixed(0)}k`;
+                }
+                return `R$ ${value}`;
+              }}
             />
             
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#ff7a00', strokeWidth: 1 }} />

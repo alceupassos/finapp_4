@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { SupabaseRest } from '../services/supabaseRest';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from './ui/select';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, Area, AreaChart } from 'recharts';
 
 interface AnaliticoDashboardProps {
   className?: string;
@@ -75,15 +76,26 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
   const loadCompanyData = async (cnpj: string) => {
     setLoading(true);
     try {
+      console.log('🔍 Buscando dados para CNPJ:', cnpj);
       const [dre, dfc] = await Promise.all([
         SupabaseRest.getDRE(cnpj),
         SupabaseRest.getDFC(cnpj)
       ]);
       
+      console.log('✅ DRE recebido:', dre?.length || 0, 'registros');
+      console.log('✅ DFC recebido:', dfc?.length || 0, 'registros');
+      
+      if (dre && dre.length > 0) {
+        console.log('📝 Amostra DRE:', dre[0]);
+      }
+      if (dfc && dfc.length > 0) {
+        console.log('📝 Amostra DFC:', dfc[0]);
+      }
+      
       setDreData(dre || []);
       setDfcData(dfc || []);
     } catch (error) {
-      console.error('Erro ao carregar dados:', error);
+      console.error('❌ Erro ao carregar dados:', error);
     } finally {
       setLoading(false);
     }
@@ -100,6 +112,11 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
 
   const dreMonths = buildFullMonthList(dreData.map((item) => item.data));
   const dfcMonths = buildFullMonthList(dfcData.map((item) => item.data));
+
+  console.log('📊 DRE Data:', dreData.length, 'registros');
+  console.log('📊 DFC Data:', dfcData.length, 'registros');
+  console.log('📅 DRE Months:', dreMonths);
+  console.log('📅 DFC Months:', dfcMonths);
 
   const dreSummary = dreData.reduce((acc: Record<string, number>, item) => {
     const key = item.natureza || 'Outros';
@@ -161,6 +178,101 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D'];
 
+  // Processar DRE em formato de tabela mensal
+  const dreMonthlyTable = (() => {
+    if (!dreData || dreData.length === 0) return [];
+    
+    const accounts: Record<string, any> = {};
+    
+    dreData.forEach((item) => {
+      const month = item.data ? item.data.slice(0, 7) : '';
+      const account = item.conta || 'Outros';
+      const nature = item.natureza || 'Outros';
+      const value = Number(item.valor || 0);
+      
+      if (!accounts[account]) {
+        accounts[account] = { 
+          conta: account, 
+          natureza: nature,
+          total: 0
+        };
+        dreMonths.forEach(m => {
+          accounts[account][m] = 0;
+        });
+      }
+      
+      if (month) {
+        // Garantir que o mês existe no objeto
+        if (accounts[account][month] === undefined) {
+          accounts[account][month] = 0;
+        }
+        accounts[account][month] += value;
+      }
+      accounts[account].total += value;
+    });
+    
+    return Object.values(accounts)
+      .filter((acc: any) => Math.abs(acc.total) > 0)
+      .sort((a: any, b: any) => Math.abs(b.total) - Math.abs(a.total))
+      .slice(0, 50); // Limitar a 50 contas principais
+  })();
+
+  // Processar DFC em formato de tabela mensal
+  const dfcMonthlyTable = (() => {
+    if (!dfcData || dfcData.length === 0) return [];
+    
+    const categories: Record<string, any> = {};
+    
+    dfcData.forEach((item) => {
+      const month = item.data ? item.data.slice(0, 7) : '';
+      const category = item.descricao || 'Outros';
+      const entrada = Number(item.entrada || 0);
+      const saida = Number(item.saida || 0);
+      
+      if (!categories[category]) {
+        categories[category] = { 
+          categoria: category,
+          totalEntradas: 0,
+          totalSaidas: 0,
+          saldo: 0
+        };
+        dfcMonths.forEach(m => {
+          categories[category][`${m}_entrada`] = 0;
+          categories[category][`${m}_saida`] = 0;
+        });
+      }
+      
+      if (month) {
+        // Garantir que as chaves existem
+        if (categories[category][`${month}_entrada`] === undefined) {
+          categories[category][`${month}_entrada`] = 0;
+        }
+        if (categories[category][`${month}_saida`] === undefined) {
+          categories[category][`${month}_saida`] = 0;
+        }
+        categories[category][`${month}_entrada`] += entrada;
+        categories[category][`${month}_saida`] += saida;
+      }
+      categories[category].totalEntradas += entrada;
+      categories[category].totalSaidas += saida;
+      categories[category].saldo += (entrada - saida);
+    });
+    
+    return Object.values(categories)
+      .filter((cat: any) => Math.abs(cat.saldo) > 0 || cat.totalEntradas > 0 || cat.totalSaidas > 0)
+      .sort((a: any, b: any) => Math.abs(b.saldo) - Math.abs(a.saldo))
+      .slice(0, 30); // Limitar a 30 categorias principais
+  })();
+
+  // Lançamentos brutos (últimos 100)
+  const lancamentos = dreData.slice(0, 100).map(item => ({
+    data: item.data,
+    tipo: 'DRE',
+    conta: item.conta,
+    natureza: item.natureza,
+    valor: item.valor
+  }));
+
   return (
     <div className={className}>
       <div className="mb-6">
@@ -196,175 +308,404 @@ export function AnaliticoDashboard({ className }: AnaliticoDashboardProps) {
           <div className="text-lg">Carregando dados...</div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* DRE Analytics */}
-          <Card>
-            <CardHeader>
-              <CardTitle>DRE - Demonstração de Resultados</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {dreData.length > 0 ? (
-                <div>
-                  <div className="mb-4">
-                    <h3 className="text-sm font-medium mb-2">Resumo por Grupo</h3>
-                    <div className="space-y-1">
-                      {Object.entries(dreSummary).map(([grupo, valor]) => {
-                        const amount = Number(valor || 0);
-                        return (
-                          <div key={grupo} className="flex justify-between text-sm">
-                            <span>{grupo}</span>
+        <Tabs defaultValue="dre" className="w-full">
+          <TabsList className="grid w-full grid-cols-4">
+            <TabsTrigger value="dre">DRE</TabsTrigger>
+            <TabsTrigger value="dfc">DFC</TabsTrigger>
+            <TabsTrigger value="lancamentos">Lançamentos</TabsTrigger>
+            <TabsTrigger value="graficos">Gráficos</TabsTrigger>
+          </TabsList>
+
+          {/* Aba DRE */}
+          <TabsContent value="dre" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>DRE - Demonstração de Resultados por Mês</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {dreData.length > 0 ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-xs border-collapse">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border p-2 text-left sticky left-0 bg-muted z-10">Conta</th>
+                          <th className="border p-2 text-left">Natureza</th>
+                          {dreMonths.map(month => (
+                            <th key={month} className="border p-2 text-right whitespace-nowrap">
+                              {month.slice(5)}
+                            </th>
+                          ))}
+                          <th className="border p-2 text-right font-bold bg-blue-50">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dreMonthlyTable.length > 0 ? dreMonthlyTable.map((row: any, idx) => (
+                          <tr key={idx} className="hover:bg-muted/50">
+                            <td className="border p-2 text-left sticky left-0 bg-background font-medium text-xs">
+                              {row.conta}
+                            </td>
+                            <td className="border p-2 text-left">
+                              <span className={`px-2 py-1 rounded text-xs ${
+                                row.natureza === 'receita' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                              }`}>
+                                {row.natureza}
+                              </span>
+                            </td>
+                            {dreMonths.map(month => {
+                              const value = row[month] || 0;
+                              return (
+                                <td key={month} className="border p-2 text-right text-xs">
+                                  {Math.abs(value) > 0.01 ? formatCurrency(value) : '-'}
+                                </td>
+                              );
+                            })}
+                            <td className="border p-2 text-right font-bold bg-blue-50 text-xs">
+                              {formatCurrency(row.total)}
+                            </td>
+                          </tr>
+                        )) : (
+                          <tr>
+                            <td colSpan={dreMonths.length + 3} className="border p-4 text-center text-muted-foreground">
+                              Nenhum dado DRE disponível
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                      <tfoot>
+                        <tr className="bg-muted font-bold">
+                          <td className="border p-2" colSpan={2}>TOTAIS</td>
+                          {dreMonths.map(month => {
+                            const total = dreMonthlyTable.reduce((sum: number, row: any) => sum + (row[month] || 0), 0);
+                            return (
+                              <td key={month} className="border p-2 text-right">
+                                {formatCurrency(total)}
+                              </td>
+                            );
+                          })}
+                          <td className="border p-2 text-right bg-blue-100">
+                            {formatCurrency(dreMonthlyTable.reduce((sum: number, row: any) => sum + row.total, 0))}
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="text-center text-muted-foreground py-8">
+                    Nenhum dado DRE disponível para esta empresa
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Aba DFC */}
+          <TabsContent value="dfc" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>DFC - Demonstração de Fluxo de Caixa por Mês</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {dfcData.length > 0 ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-xs border-collapse">
+                      <thead>
+                        <tr className="bg-muted">
+                          <th className="border p-2 text-left sticky left-0 bg-muted z-10">Categoria</th>
+                          {dfcMonths.map(month => (
+                            <th key={month} className="border p-2 text-center" colSpan={2}>
+                              {month.slice(5)}
+                            </th>
+                          ))}
+                          <th className="border p-2 text-center bg-blue-50" colSpan={3}>Totais</th>
+                        </tr>
+                        <tr className="bg-muted/50 text-xs">
+                          <th className="border p-2"></th>
+                          {dfcMonths.map(month => (
+                            <React.Fragment key={month}>
+                              <th className="border p-2 text-right text-green-700">Entrada</th>
+                              <th className="border p-2 text-right text-red-700">Saída</th>
+                            </React.Fragment>
+                          ))}
+                          <th className="border p-2 text-right text-green-700 bg-green-50">Entradas</th>
+                          <th className="border p-2 text-right text-red-700 bg-red-50">Saídas</th>
+                          <th className="border p-2 text-right text-blue-700 bg-blue-50">Saldo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dfcMonthlyTable.length > 0 ? dfcMonthlyTable.map((row: any, idx) => (
+                          <tr key={idx} className="hover:bg-muted/50">
+                            <td className="border p-2 text-left sticky left-0 bg-background font-medium text-xs">
+                              {row.categoria}
+                            </td>
+                            {dfcMonths.map(month => {
+                              const entrada = row[`${month}_entrada`] || 0;
+                              const saida = row[`${month}_saida`] || 0;
+                              return (
+                                <React.Fragment key={month}>
+                                  <td className="border p-2 text-right text-green-600 text-xs">
+                                    {Math.abs(entrada) > 0.01 ? formatCurrency(entrada) : '-'}
+                                  </td>
+                                  <td className="border p-2 text-right text-red-600 text-xs">
+                                    {Math.abs(saida) > 0.01 ? formatCurrency(saida) : '-'}
+                                  </td>
+                                </React.Fragment>
+                              );
+                            })}
+                            <td className="border p-2 text-right text-green-700 bg-green-50 font-semibold text-xs">
+                              {formatCurrency(row.totalEntradas)}
+                            </td>
+                            <td className="border p-2 text-right text-red-700 bg-red-50 font-semibold text-xs">
+                              {formatCurrency(row.totalSaidas)}
+                            </td>
+                            <td className="border p-2 text-right text-blue-700 bg-blue-50 font-bold text-xs">
+                              {formatCurrency(row.saldo)}
+                            </td>
+                          </tr>
+                        )) : (
+                          <tr>
+                            <td colSpan={dfcMonths.length * 2 + 4} className="border p-4 text-center text-muted-foreground">
+                              Nenhum dado DFC disponível
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                      <tfoot>
+                        <tr className="bg-muted font-bold">
+                          <td className="border p-2">TOTAIS</td>
+                          {dfcMonths.map(month => {
+                            const totalEntrada = dfcMonthlyTable.reduce((sum: number, row: any) => sum + (row[`${month}_entrada`] || 0), 0);
+                            const totalSaida = dfcMonthlyTable.reduce((sum: number, row: any) => sum + (row[`${month}_saida`] || 0), 0);
+                            return (
+                              <React.Fragment key={month}>
+                                <td className="border p-2 text-right text-green-700">
+                                  {formatCurrency(totalEntrada)}
+                                </td>
+                                <td className="border p-2 text-right text-red-700">
+                                  {formatCurrency(totalSaida)}
+                                </td>
+                              </React.Fragment>
+                            );
+                          })}
+                          <td className="border p-2 text-right bg-green-100 text-green-900">
+                            {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.totalEntradas, 0))}
+                          </td>
+                          <td className="border p-2 text-right bg-red-100 text-red-900">
+                            {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.totalSaidas, 0))}
+                          </td>
+                          <td className="border p-2 text-right bg-blue-100 text-blue-900">
+                            {formatCurrency(dfcMonthlyTable.reduce((sum: number, row: any) => sum + row.saldo, 0))}
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="text-center text-muted-foreground py-8">
+                    Nenhum dado DFC disponível para esta empresa
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Aba Lançamentos */}
+          <TabsContent value="lancamentos" className="space-y-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>Lançamentos Brutos - Últimos 100 Registros</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-muted">
+                        <th className="border p-2 text-left">Data</th>
+                        <th className="border p-2 text-left">Tipo</th>
+                        <th className="border p-2 text-left">Conta</th>
+                        <th className="border p-2 text-left">Natureza</th>
+                        <th className="border p-2 text-right">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {lancamentos.map((item, idx) => (
+                        <tr key={idx} className="hover:bg-muted/50">
+                          <td className="border p-2">{item.data}</td>
+                          <td className="border p-2">
+                            <span className="px-2 py-1 rounded text-xs bg-blue-100 text-blue-800">
+                              {item.tipo}
+                            </span>
+                          </td>
+                          <td className="border p-2">{item.conta}</td>
+                          <td className="border p-2">
+                            <span className={`px-2 py-1 rounded text-xs ${
+                              item.natureza === 'receita' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                            }`}>
+                              {item.natureza}
+                            </span>
+                          </td>
+                          <td className="border p-2 text-right font-mono">
+                            {formatCurrency(item.valor || 0)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Aba Gráficos */}
+          <TabsContent value="graficos" className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* DRE Chart */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>DRE - Evolução Mensal</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {dreData.length > 0 ? (
+                    <div className="h-80">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={dreChartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis tickFormatter={(value) => `R$ ${(value/1000).toFixed(0)}k`} />
+                          <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                          <Legend />
+                          {Object.keys(dreSummary).map((grupo, index) => (
+                            <Bar key={grupo} dataKey={grupo} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                  ) : (
+                    <div className="text-center text-muted-foreground py-8">
+                      Sem dados
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* DFC Chart */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>DFC - Fluxo de Caixa</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {dfcData.length > 0 ? (
+                    <div className="h-80">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={dfcChartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis tickFormatter={(value) => `R$ ${(value/1000).toFixed(0)}k`} />
+                          <Tooltip formatter={(value: number) => formatCurrency(value)} />
+                          <Legend />
+                          <Area type="monotone" dataKey="entradas" stackId="1" stroke="#10b981" fill="#10b981" fillOpacity={0.6} />
+                          <Area type="monotone" dataKey="saidas" stackId="2" stroke="#ef4444" fill="#ef4444" fillOpacity={0.6} />
+                          <Line type="monotone" dataKey="saldo" stroke="#3b82f6" strokeWidth={2} />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+                  ) : (
+                    <div className="text-center text-muted-foreground py-8">
+                      Sem dados
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* DRE Summary */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>DRE - Resumo por Natureza</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {Object.entries(dreSummary).map(([grupo, valor]) => {
+                      const amount = Number(valor || 0);
+                      const totalNum = (Object.values(dreSummary) as number[]).reduce((sum, v) => sum + Math.abs(Number(v)), 0);
+                      const percentage = totalNum > 0 ? (Math.abs(amount) / totalNum) * 100 : 0;
+                      
+                      return (
+                        <div key={grupo} className="space-y-1">
+                          <div className="flex justify-between text-sm">
+                            <span className="font-medium">{grupo}</span>
                             <span className={amount >= 0 ? 'text-green-600' : 'text-red-600'}>
                               {formatCurrency(amount)}
                             </span>
                           </div>
-                        );
-                      })}
+                          <div className="w-full bg-muted rounded-full h-2">
+                            <div 
+                              className={`h-2 rounded-full ${amount >= 0 ? 'bg-green-500' : 'bg-red-500'}`}
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                          <div className="text-xs text-muted-foreground text-right">
+                            {percentage.toFixed(1)}%
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* DFC Summary */}
+              <Card>
+                <CardHeader>
+                  <CardTitle>DFC - Resumo de Fluxo</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-3 gap-4 mb-6">
+                    <div className="text-center p-4 rounded-lg bg-green-50">
+                      <div className="text-2xl font-bold text-green-600">
+                        {formatCurrency(dfcTotals.entradas)}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">Entradas</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-red-50">
+                      <div className="text-2xl font-bold text-red-600">
+                        {formatCurrency(dfcTotals.saidas)}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">Saídas</div>
+                    </div>
+                    <div className="text-center p-4 rounded-lg bg-blue-50">
+                      <div className="text-2xl font-bold text-blue-600">
+                        {formatCurrency(dfcTotals.saldo)}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">Saldo</div>
                     </div>
                   </div>
-                  
-                  <div className="h-64">
+                  <div className="h-48">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={dreChartData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="month" />
-                        <YAxis tickFormatter={(value) => `R$ ${(value/1000).toFixed(0)}k`} />
+                      <PieChart>
+                        <Pie
+                          data={[
+                            { name: 'Entradas', value: dfcTotals.entradas },
+                            { name: 'Saídas', value: Math.abs(dfcTotals.saidas) }
+                          ]}
+                          cx="50%"
+                          cy="50%"
+                          labelLine={false}
+                          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                          outerRadius={80}
+                          fill="#8884d8"
+                          dataKey="value"
+                        >
+                          <Cell fill="#10b981" />
+                          <Cell fill="#ef4444" />
+                        </Pie>
                         <Tooltip formatter={(value: number) => formatCurrency(value)} />
-                        <Legend />
-                        {Object.keys(dreSummary).map((grupo, index) => (
-                          <Bar key={grupo} dataKey={grupo} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </BarChart>
+                      </PieChart>
                     </ResponsiveContainer>
                   </div>
-                </div>
-              ) : (
-                <div className="text-center text-muted-foreground py-8">
-                  Nenhum dado DRE disponível para esta empresa
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* DFC Analytics */}
-          <Card>
-            <CardHeader>
-              <CardTitle>DFC - Demonstração de Fluxo de Caixa</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {dfcData.length > 0 ? (
-                <div>
-                  <div className="mb-4">
-                    <h3 className="text-sm font-medium mb-2">Resumo de Fluxo</h3>
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <div className="text-2xl font-bold text-green-600">
-                          {formatCurrency(dfcTotals.entradas)}
-                        </div>
-                        <div className="text-sm text-muted-foreground">Total Entradas</div>
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-red-600">
-                          {formatCurrency(dfcTotals.saidas)}
-                        </div>
-                        <div className="text-sm text-muted-foreground">Total Saídas</div>
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold text-blue-600">
-                          {formatCurrency(dfcTotals.saldo)}
-                        </div>
-                        <div className="text-sm text-muted-foreground">Saldo Final</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={dfcChartData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="month" />
-                        <YAxis tickFormatter={(value) => `R$ ${(value/1000).toFixed(0)}k`} />
-                        <Tooltip formatter={(value: number) => formatCurrency(value)} />
-                        <Legend />
-                        <Line type="monotone" dataKey="entradas" stroke="#10b981" name="Entradas" />
-                        <Line type="monotone" dataKey="saidas" stroke="#ef4444" name="Saídas" />
-                        <Line type="monotone" dataKey="saldo" stroke="#3b82f6" name="Saldo" />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
-              ) : (
-                <div className="text-center text-muted-foreground py-8">
-                  Nenhum dado DFC disponível para esta empresa
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* Tabelas Detalhadas */}
-          <Card className="lg:col-span-2">
-            <CardHeader>
-              <CardTitle>Dados Detalhados - {selectedCompanyName}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* DRE Detalhado */}
-                <div>
-                  <h4 className="text-sm font-medium mb-2">DRE Detalhado</h4>
-                  <div className="max-h-64 overflow-y-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="text-left py-1">Grupo</th>
-                          <th className="text-left py-1">Conta</th>
-                          <th className="text-right py-1">Valor</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {dreData.slice(0, 10).map((item, index) => (
-                          <tr key={index} className="border-b">
-                            <td className="py-1">{item.natureza || 'Outros'}</td>
-                            <td className="py-1">{item.conta}</td>
-                            <td className="py-1 text-right">{formatCurrency(item.valor || 0)}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {/* DFC Detalhado */}
-                <div>
-                  <h4 className="text-sm font-medium mb-2">DFC Detalhado</h4>
-                  <div className="max-h-64 overflow-y-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-b">
-                          <th className="text-left py-1">Data</th>
-                          <th className="text-left py-1">Descrição</th>
-                          <th className="text-right py-1">Valor</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {dfcData.slice(0, 10).map((item, index) => {
-                          const value = item.entrada ? item.entrada : item.saida ? -item.saida : item.saldo || 0;
-                          return (
-                            <tr key={index} className="border-b">
-                              <td className="py-1">{item.data}</td>
-                              <td className="py-1">{item.descricao}</td>
-                              <td className="py-1 text-right">
-                                {formatCurrency(value)}
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
       )}
     </div>
   );

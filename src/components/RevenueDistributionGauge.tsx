@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { TrendingUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { SupabaseRest } from '../services/supabaseRest';
 
 interface RevenueSource {
   name: string;
@@ -8,16 +10,75 @@ interface RevenueSource {
   percentage: number;
 }
 
-const revenueSources: RevenueSource[] = [
-  { name: 'Serviços BPO', value: 580000, color: '#ff7a00', percentage: 45 },
-  { name: 'Consultoria', value: 320000, color: '#10b981', percentage: 25 },
-  { name: 'Software', value: 250000, color: '#3b82f6', percentage: 20 },
-  { name: 'Outros', value: 130000, color: '#8b5cf6', percentage: 10 },
-];
+export function RevenueDistributionGauge({ cnpj = '26888098000159', selectedMonth }: { cnpj?: string, selectedMonth?: string }) {
+  const [revenueSources, setRevenueSources] = useState<RevenueSource[]>([
+    { name: 'Serviços BPO', value: 580000, color: '#ff7a00', percentage: 45 },
+    { name: 'Consultoria', value: 320000, color: '#10b981', percentage: 25 },
+    { name: 'Software', value: 250000, color: '#3b82f6', percentage: 20 },
+    { name: 'Outros', value: 130000, color: '#8b5cf6', percentage: 10 },
+  ]);
+  const [mainPercentage, setMainPercentage] = useState(73);
+  const [changePercent, setChangePercent] = useState(8.2);
 
-export function RevenueDistributionGauge() {
+  useEffect(() => {
+    loadRevenueData();
+  }, [cnpj, selectedMonth]);
+
+  const loadRevenueData = async () => {
+    try {
+      const dreData = await SupabaseRest.getDRE(cnpj);
+      if (!dreData || dreData.length === 0) return;
+
+      // Agrupar receitas por categoria (primeiros dígitos da conta)
+      const categoryMap: any = {};
+      
+      // Parse do ano selecionado
+      const [selectedYear] = selectedMonth 
+        ? selectedMonth.split('-').map(Number)
+        : [new Date().getFullYear()];
+      
+      const currentYear = selectedYear;
+      
+      dreData.forEach((item: any) => {
+        const itemDate = new Date(item.data);
+        if (itemDate.getFullYear() !== currentYear) return;
+        
+        if (item.natureza === 'receita' && item.valor > 0) {
+          const categoryCode = item.conta.split('-')[0].substring(0, 1);
+          const categoryName = 
+            categoryCode === '3' ? 'Serviços BPO' :
+            categoryCode === '4' ? 'Consultoria' :
+            categoryCode === '5' ? 'Software' : 'Outros';
+          
+          if (!categoryMap[categoryName]) categoryMap[categoryName] = 0;
+          categoryMap[categoryName] += item.valor;
+        }
+      });
+
+      const total = Object.values(categoryMap).reduce((sum: any, val: any) => sum + val, 0) as number;
+      
+      const colors = ['#ff7a00', '#10b981', '#3b82f6', '#8b5cf6'];
+      const sources = Object.entries(categoryMap)
+        .map(([name, value]: [string, any], idx) => ({
+          name,
+          value,
+          color: colors[idx] || '#8b5cf6',
+          percentage: Math.round((value / total) * 100)
+        }))
+        .sort((a, b) => b.value - a.value);
+
+      if (sources.length > 0) {
+        setRevenueSources(sources);
+        const targetValue = 800000;
+        const achieved = Math.round((total / targetValue) * 100);
+        setMainPercentage(Math.min(achieved, 100));
+      }
+    } catch (error) {
+      console.error('Erro ao carregar dados de receita:', error);
+    }
+  };
+
   const total = revenueSources.reduce((sum, source) => sum + source.value, 0);
-  const mainPercentage = 73; // Exemplo: performance geral
 
   return (
     <motion.div
@@ -80,7 +141,7 @@ export function RevenueDistributionGauge() {
             <p className="text-xs text-graphite-400">Meta Atingida</p>
             <div className="flex items-center justify-center gap-1 mt-2">
               <TrendingUp className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-semibold text-emerald-400">+8.2%</span>
+              <span className="text-sm font-semibold text-emerald-400">+{changePercent.toFixed(1)}%</span>
             </div>
           </motion.div>
         </div>

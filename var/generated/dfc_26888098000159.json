@@ -1,0 +1,1172 @@
+[
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 140494.52
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 120890.57
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 168415.76
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 206270.68
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 123802.72
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 128056.57
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 230612.56
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 170788.83
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 208479.38
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Administrativas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 200127.52
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 795431.78
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7514938.37
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 64950.98
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 427653.74
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 5289.02
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-11-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 720921.09
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 35105.14
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 6299927.9
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 176234
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 175.78
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Outras Receitas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 232000
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Outras Receitas",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 149.5
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 16974.2
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7326615.75
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 546540.79
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 172329.57
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 65066.26
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 71846.89
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 6430683.19
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 19185
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 328.5
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7630921.7
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 551488.72
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 16015.07
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 4490.89
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 423075.53
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 64266.36
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 38580.83
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 6345871.45
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 6607.19
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7755062.16
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 559027.24
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 15978.48
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 243507.8
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 438.27
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 186824.78
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 19554.43
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 73527.87
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 22896.75
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 6497629.79
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Impostos Sobre o Faturamento",
+    "date": "2024-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 562.41
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 16022.17
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 8282178.08
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 528128.51
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 14598.05
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7279815.59
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 244458.45
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 76521.26
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 65818.31
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 8877846.45
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 17268.49
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 548317.94
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 20389
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 227.84
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7405.66
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 279964.92
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 81959.87
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 10065.56
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7237729.3
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 16090.56
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 10126757.98
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 598697.86
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 446267.06
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 900.81
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 236450.57
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 82987.16
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 11299.8
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 8179.08
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 8754529.58
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 13976.28
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 11120704.94
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 576395.64
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 545.89
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 75422.94
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 225445.02
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 4167.3
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 9594304.7
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7024.39
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 9662.05
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 9183662.79
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 489712.33
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 259324.94
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 49211.85
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 7740.65
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7375639.66
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 17220.4
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 3540.58
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 6575611.07
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 410192.43
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 489.08
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 993793.18
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Financeiras",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 181679.19
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 24911.61
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Financeiras",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 4766329.74
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Comerciais e Marketing",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 9047.6
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com TI",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 7865.79
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Com Pessoal",
+    "date": "2024-12-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 1058.98
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Despesas Operacionais",
+    "date": "2024-12-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 108333.43
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2021-11-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 24913.86
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Investimentos e Outros",
+    "date": "2021-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 3563.89
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-10-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 7014159.78
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 6815546.94
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Outras Receitas",
+    "date": "2025-09-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 289.9
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-08-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 7400591.45
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 7594769.25
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 100428.26
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-07-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 159.83
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-06-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 7771480.43
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 8582761.75
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Outras Receitas",
+    "date": "2025-05-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 1612.69
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Outras Receitas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 1002.62
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-04-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 9914057.21
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 11088629.04
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 8597878.17
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Outras Receitas",
+    "date": "2025-02-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 2279.39
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 5253397.44
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Receitas Operacionais",
+    "date": "2024-12-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 17585.21
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 3242.7
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-03-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "out",
+    "amount": 295.89
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "category": "Deduções de Receitas",
+    "date": "2025-01-01",
+    "created_at": "2025-11-17T01:20:09.487Z",
+    "kind": "in",
+    "amount": 10354.53
+  }
+]

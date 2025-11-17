@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teste Supabase REST</title>
+</head>
+<body>
+  <h1>Teste de Query Supabase</h1>
+  <button onclick="testarQuery()">Testar Query DRE</button>
+  <pre id="result"></pre>
+
+  <script>
+    const BASE_URL = 'https://xzrmzmcoslomtzkzgskn.supabase.co';
+    const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6cm16bWNvc2xvbXR6a3pnc2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzNjc0NjgsImV4cCI6MjA0Njk0MzQ2OH0.VNtNa41ilrRy5lLfbxJjWmUhXu5nLYxPZxmKF71c0QQ';
+
+    async function testarQuery() {
+      const cnpj = '26888098000159';
+      const url = new URL(`${BASE_URL}/rest/v1/dre_entries`);
+      
+      // Teste 1: Query simples
+      url.searchParams.set('company_cnpj', `eq.${cnpj}`);
+      url.searchParams.set('select', '*');
+      url.searchParams.set('limit', '10');
+      
+      document.getElementById('result').textContent = 'Testando: ' + url.toString() + '\n\n';
+      
+      try {
+        const res = await fetch(url.toString(), {
+          headers: {
+            'apikey': ANON_KEY,
+            'Authorization': `Bearer ${ANON_KEY}`,
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (!res.ok) {
+          document.getElementById('result').textContent += `Erro: ${res.status} ${res.statusText}\n`;
+          return;
+        }
+        
+        const data = await res.json();
+        document.getElementById('result').textContent += `Sucesso! ${data.length} registros\n\n`;
+        document.getElementById('result').textContent += JSON.stringify(data[0], null, 2);
+      } catch (error) {
+        document.getElementById('result').textContent += 'Erro: ' + error.message;
+      }
+    }
+  </script>
+</body>
+</html>

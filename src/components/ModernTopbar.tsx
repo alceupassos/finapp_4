@@ -9,11 +9,42 @@ interface ModernTopbarProps {
   oracleContext?: string;
   currentPeriod?: 'Dia' | 'Semana' | 'Mês' | 'Ano'
   onPeriodChange?: (p: 'Dia' | 'Semana' | 'Mês' | 'Ano') => void
+  selectedMonth?: string;
+  onMonthChange?: (month: string) => void;
+  selectedCompany?: string;
+  onCompanyChange?: (cnpj: string) => void;
+  companies?: Array<{ cnpj: string; cliente_nome: string }>;
 }
 
-export function ModernTopbar({ onThemeToggle, isDark = true, oracleContext = '', currentPeriod = 'Ano', onPeriodChange }: ModernTopbarProps) {
+export function ModernTopbar({ 
+  onThemeToggle, 
+  isDark = true, 
+  oracleContext = '', 
+  currentPeriod = 'Ano', 
+  onPeriodChange,
+  selectedMonth = '2025-11',
+  onMonthChange,
+  selectedCompany = '26888098000159',
+  onCompanyChange,
+  companies = []
+}: ModernTopbarProps) {
   const [notifications, setNotifications] = useState(3);
   const [oracleOpen, setOracleOpen] = useState(false);
+
+  const months = [
+    { value: '2025-01', label: 'Janeiro 2025' },
+    { value: '2025-02', label: 'Fevereiro 2025' },
+    { value: '2025-03', label: 'Março 2025' },
+    { value: '2025-04', label: 'Abril 2025' },
+    { value: '2025-05', label: 'Maio 2025' },
+    { value: '2025-06', label: 'Junho 2025' },
+    { value: '2025-07', label: 'Julho 2025' },
+    { value: '2025-08', label: 'Agosto 2025' },
+    { value: '2025-09', label: 'Setembro 2025' },
+    { value: '2025-10', label: 'Outubro 2025' },
+    { value: '2025-11', label: 'Novembro 2025' },
+    { value: '2025-12', label: 'Dezembro 2025' },
+  ];
 
   return (
     <>
@@ -45,6 +76,35 @@ export function ModernTopbar({ onThemeToggle, isDark = true, oracleContext = '',
 
         {/* Actions */}
         <div className="flex items-center gap-3 ml-6">
+          {/* Filtro de Empresa */}
+          {companies.length > 0 && (
+            <select
+              value={selectedCompany}
+              onChange={(e) => onCompanyChange?.(e.target.value)}
+              className="px-4 py-2 rounded-xl bg-graphite-900 border border-graphite-800 text-white text-sm focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 transition-all"
+            >
+              <option value="">Todas as Empresas</option>
+              {companies.map((company) => (
+                <option key={company.cnpj} value={company.cnpj}>
+                  {company.cliente_nome}
+                </option>
+              ))}
+            </select>
+          )}
+
+          {/* Filtro de Mês */}
+          <select
+            value={selectedMonth}
+            onChange={(e) => onMonthChange?.(e.target.value)}
+            className="px-4 py-2 rounded-xl bg-graphite-900 border border-graphite-800 text-white text-sm focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 transition-all"
+          >
+            {months.map((month) => (
+              <option key={month.value} value={month.value}>
+                {month.label}
+              </option>
+            ))}
+          </select>
+
           {/* Oráculo de IA */}
           <motion.button
             whileHover={{ scale: 1.05 }}

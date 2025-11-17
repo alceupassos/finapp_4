@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-11-15T16:25:49.227Z",
+  "dreRecords": 1610,
+  "dfcRecords": 682891,
+  "companies": [
+    {
+      "company_cnpj": "26888098000159",
+      "dreRecords": 934,
+      "dfcRecords": 10543
+    },
+    {
+      "company_cnpj": "26888098000230",
+      "dreRecords": 41,
+      "dfcRecords": 2708
+    },
+    {
+      "company_cnpj": "26888098000310",
+      "dreRecords": 74,
+      "dfcRecords": 92010
+    },
+    {
+      "company_cnpj": "26888098000400",
+      "dreRecords": 57,
+      "dfcRecords": 50554
+    },
+    {
+      "company_cnpj": "26888098000582",
+      "dreRecords": 53,
+      "dfcRecords": 55058
+    },
+    {
+      "company_cnpj": "26888098000663",
+      "dreRecords": 56,
+      "dfcRecords": 80961
+    },
+    {
+      "company_cnpj": "26888098000744",
+      "dreRecords": 52,
+      "dfcRecords": 72576
+    },
+    {
+      "company_cnpj": "26888098000825",
+      "dreRecords": 56,
+      "dfcRecords": 48882
+    },
+    {
+      "company_cnpj": "26888098000906",
+      "dreRecords": 49,
+      "dfcRecords": 50363
+    },
+    {
+      "company_cnpj": "26888098001040",
+      "dreRecords": 56,
+      "dfcRecords": 35693
+    },
+    {
+      "company_cnpj": "26888098001120",
+      "dreRecords": 58,
+      "dfcRecords": 65405
+    },
+    {
+      "company_cnpj": "26888098001201",
+      "dreRecords": 66,
+      "dfcRecords": 35323
+    },
+    {
+      "company_cnpj": "26888098001392",
+      "dreRecords": 58,
+      "dfcRecords": 82815
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Login VOLPE</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 400px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input, select, button { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        button { background: #10b981; color: white; cursor: pointer; }
+        button:hover { background: #059669; }
+        .error { color: red; margin: 10px 0; }
+        .success { color: green; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Teste Login - Grupo VOLPE</h2>
+        
+        <form id="loginForm">
+            <input type="email" id="email" value="dev@angrax.com.br" placeholder="Email" required>
+            <input type="password" id="password" value="B5b0dcf500@#" placeholder="Senha" required>
+            
+            <select id="company" required>
+                <option value="">Carregando empresas...</option>
+            </select>
+            
+            <button type="submit">Entrar</button>
+        </form>
+        
+        <div id="message"></div>
+    </div>
+
+    <script type="module">
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+        
+        const supabaseUrl = 'https://xzrmzmcoslomtzkzgskn.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6cm16bWNvc2xvbXR6a3pnc2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2OTk5MjAsImV4cCI6MjA0NzI3NTkyMH0.8XyGqD4nG6X6n3wX8yGqD4nG6X6n3wX8yGqD4nG6X6n3w';
+        
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        
+        async function loadCompanies() {
+            try {
+                const { data, error } = await supabase
+                    .from('integration_f360')
+                    .select('*')
+                    .order('cliente_nome');
+                
+                if (error) throw error;
+                
+                const volpeCompanies = data.filter(c => 
+                    c.cliente_nome?.toLowerCase().includes('volpe') ||
+                    String(c.cnpj || '').startsWith('26888098')
+                );
+                
+                const select = document.getElementById('company');
+                select.innerHTML = '';
+                
+                volpeCompanies.forEach(company => {
+                    const option = document.createElement('option');
+                    option.value = company.cnpj.replace(/^0+/, '');
+                    option.textContent = `${company.cliente_nome} (${company.cnpj})`;
+                    if (option.value === '26888098000159') option.selected = true;
+                    select.appendChild(option);
+                });
+                
+            } catch (error) {
+                console.error('Erro ao carregar empresas:', error);
+                document.getElementById('message').innerHTML = '<div class="error">Erro ao carregar empresas</div>';
+            }
+        }
+        
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const company = document.getElementById('company').value;
+            
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+                
+                if (error) throw error;
+                
+                document.getElementById('message').innerHTML = `
+                    <div class="success">
+                        ✅ Login bem-sucedido!<br>
+                        Usuário: ${data.user.email}<br>
+                        Empresa selecionada: ${company}<br>
+                        <a href="http://localhost:3001?company=${company}" style="color: blue;">Ir para Dashboard</a>
+                    </div>
+                `;
+                
+                // Salvar no localStorage para o React app
+                localStorage.setItem('session_user', JSON.stringify({
+                    ...data.user,
+                    defaultCompany: company,
+                    accessToken: data.session.access_token
+                }));
+                
+            } catch (error) {
+                document.getElementById('message').innerHTML = `<div class="error">❌ Erro: ${error.message}</div>`;
+            }
+        });
+        
+        loadCompanies();
+    </script>
+</body>
+</html>

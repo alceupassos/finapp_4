@@ -1,0 +1,11 @@
+{
+  "webhook": {
+    "status": 404,
+    "body": ""
+  },
+  "supabase": {
+    "dreInserted": 1,
+    "dfcInserted": 1
+  },
+  "cnpj": "02723552000153"
+}

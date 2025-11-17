@@ -1,0 +1,5942 @@
+[
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1429.95,
+    "created_at": "2025-11-17T01:20:09.481Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1505.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1537,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1495.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1411.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1350.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1098.51,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1166.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1288.17,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "420-7 - Telefonia",
+    "nature": "Despesas Administrativas",
+    "amount": 1136.95,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 31312.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 202837.09,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 9540,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 20146,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 364706.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 82697.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 23700,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 64783.65,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3786.28,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 42468.72,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "Despesas Com Pessoal",
+    "amount": 20584.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 3000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 2186.68,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "434-5 - Feiras e Eventos",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 3567,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 7057882.96,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-11-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 720921.09,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 169216.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 167.33,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 30018.46,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "434-6 - Impostos retidos",
+    "nature": "Despesas Administrativas",
+    "amount": 3885.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 1040,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 6299927.9,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 6872.35,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "424-6 - Custa Processuais",
+    "nature": "Despesas Administrativas",
+    "amount": 450,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 175.78,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "Outras Receitas",
+    "amount": 149.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 149.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 15670.31,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 78679,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 54000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 54118.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 7555.99,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 1931,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 187495.65,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 22279.07,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "114-2 - Imovel",
+    "nature": "Investimentos e Outros",
+    "amount": 4000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 700,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1962.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "201-8 - Ferias",
+    "nature": "Despesas Com Pessoal",
+    "amount": 4059.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 1200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 55295,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 45958.32,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20650.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "427-9 - Publicidade e Propaganda",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 572.97,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 23040,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3960.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "422-0 - Uber e Taxi",
+    "nature": "Despesas Administrativas",
+    "amount": 86.93,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 1504.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 231.17,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 29398.13,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 217890.75,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "434-1 - Exames ocupacionais",
+    "nature": "Despesas Administrativas",
+    "amount": 450,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 692.37,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 1050.04,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 4842.68,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 8306.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 1111.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "113-0 - Veiculos",
+    "nature": "Investimentos e Outros",
+    "amount": 230000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 99.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 5390.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 11466.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 64423.35,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 33583.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "Despesas Com Pessoal",
+    "amount": 14219.91,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3652.66,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 64929.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 3000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-0 - Uber e Taxi",
+    "nature": "Despesas Administrativas",
+    "amount": 412.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 6820619.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 124973.25,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 137.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 104521.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 2640.43,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 203942.32,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 57732.81,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 2815,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 81005.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 4320.9,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 6430683.19,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 328.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 4398.67,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 21769.98,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 23079,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 7092,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "113-0 - Veiculos",
+    "nature": "Investimentos e Outros",
+    "amount": 2000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1150.48,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 77.93,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 172,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20650.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1796.59,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 780,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3663.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 623.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 10723.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 21430,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3514.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 2404.07,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 2.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1712.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 25417.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 227577.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 14808.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "Investimentos e Outros",
+    "amount": 10499.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 9930,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 6692.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 2798.37,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 4490.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "201 -6 - Salario Complementar por Serviço Prestado",
+    "nature": "Despesas",
+    "amount": 100,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 8212.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 1109.76,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 163.59,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41280.83,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "201-8 - Ferias",
+    "nature": "Despesas Com Pessoal",
+    "amount": 2364.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 102.18,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 162.25,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 6853.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 5482.78,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 3000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 189586.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 8168.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 64186.04,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 33509.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "Despesas Com Pessoal",
+    "amount": 14580.52,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3198.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 64124.83,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "434-6 - Impostos retidos",
+    "nature": "Despesas Administrativas",
+    "amount": 259.91,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 55587.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 483.22,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 7208517.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 2900,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1241.55,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 221425.04,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 141.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 52354.34,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "201 -6 - Salario Complementar por Serviço Prestado",
+    "nature": "Despesas",
+    "amount": 1300,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 6345871.45,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 30048,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 210,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 67240,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 23040.37,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "Investimentos e Outros",
+    "amount": 5274.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 2262.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 6312.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 3967.54,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 330,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 5927.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 780,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 3527.19,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 30629.93,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7781.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 19694.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3446.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 679.98,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 2.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20650.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3196.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 343.78,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1434.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 23295.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 221805.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 429.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 6802.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 329.77,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 7999.08,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 169000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 8204.99,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 970.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 450,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 21748.66,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41194.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 104.51,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 4407.52,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "201-8 - Ferias",
+    "nature": "Despesas Com Pessoal",
+    "amount": 4947.9,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7288.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 430,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 72263.42,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 36875.49,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "201-6 - Horas Extras – Dobras",
+    "nature": "Despesas Com Pessoal",
+    "amount": 22576.02,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3534.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "413-0 - Outras Despesas Comerciais",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 2594.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3600,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 2800,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 7326148.68,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 158896.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 73559.67,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 61489.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 630.68,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 167446.91,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 2163.97,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 11933.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 33888.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 99.45,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 80128.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 6643,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 6497629.79,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 672.32,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 63577,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 3743.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 8787.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 4376,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 15044.99,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 2400,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 5330.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2024-01-01",
+    "account": "205-0 - ICMS",
+    "nature": "Impostos Sobre o Faturamento",
+    "amount": 562.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 73428.42,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 6505.19,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3856.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 8170.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 6727.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 18569.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 2.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3196.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1797.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 2416.07,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20650.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 22118.79,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 228701.13,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 10455,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 87.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 3412.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 8182.98,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 1111.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 1690,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41220.83,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "201-8 - Ferias",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3852.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 4881.96,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 174476.48,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7587.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 7279815.59,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 430,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 70442.67,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 35452.02,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 80344.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3505.65,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 7865295.55,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 146.46,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 213080.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 3200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 50626.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 628.16,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3700,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 1429.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 9344.81,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 52740.38,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 2005,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 4408.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 62764.08,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 29643,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 4783.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 28310.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "424-6 - Custa Processuais",
+    "nature": "Despesas Administrativas",
+    "amount": 309.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 2133,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 780,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 4346.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7781.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 19675.94,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 76374.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 6977.78,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "413-0 - Outras Despesas Comerciais",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 939.12,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 379.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1452.74,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 4530,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 154.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 212,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20257.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 537.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 22799.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 245275.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 2115.11,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "102-1 - Vendas Canceladas",
+    "nature": "Deduções de Receitas",
+    "amount": 1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 226.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "423-0 - Material de Informatica",
+    "nature": "Despesas Com TI",
+    "amount": 1203.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 7975.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 1111.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "Investimentos e Outros",
+    "amount": 1263.9,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 1293.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 1263.9,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 3118.58,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41237.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "201 -6 - Salario Complementar por Serviço Prestado",
+    "nature": "Despesas",
+    "amount": 450,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 5502.43,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7286.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 510,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 70243.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 31261.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 8404618.93,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 6155.66,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 53250.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 246567.77,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 33033.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3475.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 146.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 234909.65,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 1275.72,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "Investimentos e Outros",
+    "amount": 17954.36,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 8340.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3700,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 7237729.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 84463.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 24185,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 3082.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 3330.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 1123.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 7032.79,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 780,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3820.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 180,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 28387.72,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 7730,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 8169.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "201 -6 - Salario Complementar por Serviço Prestado",
+    "nature": "Despesas",
+    "amount": 900,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 4587.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 1412.98,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7781.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 38351.44,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 778.62,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 4354,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1442.59,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20257.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 21362.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 275406.27,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 147,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 81813.47,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 1955,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 5660,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 1250,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 7946.27,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 1111.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 900.81,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41481.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "434-1 - Exames ocupacionais",
+    "nature": "Despesas Administrativas",
+    "amount": 320,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "201-8 - Ferias",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3275.19,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 3421.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 6826.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "201-8 - OP Ferias",
+    "nature": "Despesas Operacionais",
+    "amount": 23000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 350,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 85234.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 44369.79,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3448.18,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 182005.93,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 128.42,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 9519071.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 310429,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 2107.52,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 54801.29,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "434-6 - Impostos retidos",
+    "nature": "Despesas Administrativas",
+    "amount": 669.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 32908.73,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 60641.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 9400,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 25085.78,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "202-0 - Rescisoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3419.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 81120,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 7818.98,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 780,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 8754529.58,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 1705.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 1586,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 26378.19,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 959.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 1008.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "430-2 - IPVA",
+    "nature": "Despesas Administrativas",
+    "amount": 55832.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 5391.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3862.68,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 19508.55,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 82858.74,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 723.58,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7781.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 18615.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1526.51,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20257.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 19773.12,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 279590.97,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "424-6 - Custa Processuais",
+    "nature": "Despesas Administrativas",
+    "amount": 1000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas Canceladas",
+    "nature": "Deduções de Receitas",
+    "amount": 250,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 3000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 297,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 1955,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "434-5 - Feiras e Eventos",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 6998.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 3363.67,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "112-5 - Maquinas e Equipamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 14505.82,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "Investimentos e Outros",
+    "amount": 1130,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 1685.71,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 4764.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 3613.09,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 1111.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "423-0 - Material de Informatica",
+    "nature": "Despesas Com TI",
+    "amount": 1409.44,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 6337.49,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41543.03,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "Despesas Com Pessoal",
+    "amount": 400,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 350,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 327847.83,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "421-8 - Correios e Fretes",
+    "nature": "Despesas Administrativas",
+    "amount": 27,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 3070.65,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 5726,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 72266.86,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 39510.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 19600,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 81479,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 10528263.93,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 324.46,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "424-6 - Custa Processuais",
+    "nature": "Despesas Administrativas",
+    "amount": 296.16,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3423.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 219.95,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 3892.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 808.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "434-6 - Impostos retidos",
+    "nature": "Despesas Administrativas",
+    "amount": 373.07,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 12787.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 3872.63,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 57569.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 53089.28,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 9594304.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 11912.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 22858.64,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "419-1 - Vale Combustivel",
+    "nature": "Despesas Com Pessoal",
+    "amount": 3600,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1255,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "427-9 - Publicidade e Propaganda",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 30,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 2994,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 3220,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 3671.38,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 7637.67,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 46047.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 17181.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 6883.42,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "425-9 - Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 1560,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 25226.16,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "112-5 - Maquinas e Equipamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 19231.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 7781.1,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-8 - Correios e Fretes",
+    "nature": "Despesas Administrativas",
+    "amount": 81,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 3878.12,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 19968.34,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 75098.48,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 1069.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 272.44,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1438.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20257.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 169.63,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 263.48,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 17631.38,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 240275.44,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 3323.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 1955,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 2279.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 143815.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "422-0 - Uber e Taxi",
+    "nature": "Despesas Administrativas",
+    "amount": 272.25,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 954.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1715.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41426.27,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 4572.32,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 9315,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 350,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 61701.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 18200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 1129,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 10500,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3397.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 792.62,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "434-1 - Exames ocupacionais",
+    "nature": "Despesas Administrativas",
+    "amount": 1110,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 1404.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 8651908.23,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "434-6 - Impostos retidos",
+    "nature": "Despesas Administrativas",
+    "amount": 2991.19,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 340.94,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 110914.44,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 174447.91,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "421-8 - Correios e Fretes",
+    "nature": "Despesas Administrativas",
+    "amount": 27,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 43989.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 7375639.66,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 8279.98,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "415-8 - Outras Despesas Com Funcionarios",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1500,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 6448.52,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 430.68,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 32895.08,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "112-5 - Maquinas e Equipamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 96164,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 60923.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "112-7 - Computadores e Perifericos",
+    "nature": "Investimentos e Outros",
+    "amount": 530,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 35442.44,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 30259.05,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 159722,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 6043.08,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "430-2 - IPVA",
+    "nature": "Despesas Administrativas",
+    "amount": 8229.29,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 2608.05,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 801.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "434-5 - Feiras e Eventos",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 67.32,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 18617.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 120,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 2122.74,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "425-8 - Juridico",
+    "nature": "Despesas Administrativas",
+    "amount": 1200,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "201-6 - OP Salarios",
+    "nature": "Despesas Operacionais",
+    "amount": 35739.36,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 3455.36,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 184.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1258.54,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 6188.47,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "420-2 - Energia Eletrica",
+    "nature": "Despesas Administrativas",
+    "amount": 1289.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 20257.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 3353.26,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 14141.15,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 199692.26,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 47807.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 865,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 1955,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 54173.34,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 7987.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 952.55,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "102-1 - Vendas Canceladas",
+    "nature": "Deduções de Receitas",
+    "amount": 35,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 41317.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "422-1 - OP Combustivel",
+    "nature": "Despesas Operacionais",
+    "amount": 112573.66,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "113-0 - Veiculos",
+    "nature": "Investimentos e Outros",
+    "amount": 21925,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 4095.16,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "423-5 - Estacionamento",
+    "nature": "Despesas Administrativas",
+    "amount": 100,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3370.85,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "430-2 - IPVA",
+    "nature": "Despesas Administrativas",
+    "amount": 2360.36,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "416-8 - Vale Transporte",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1270.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "202-6 - Gratificacoes",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1216.34,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "431-5 - Despesas Bancarias",
+    "nature": "Despesas Financeiras",
+    "amount": 1920.58,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 6124470.55,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "421-4 - OP Manutencao de veículos",
+    "nature": "Despesas Operacionais",
+    "amount": 101974.81,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "425-6 - Contabilidade",
+    "nature": "Despesas Administrativas",
+    "amount": 16750.16,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "200-8 - Pagto Empréstimos e Financiamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 306619.42,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "421-2 - Manutencao e Reparos",
+    "nature": "Despesas Administrativas",
+    "amount": 6196.96,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "430-7 - IOF",
+    "nature": "Despesas Administrativas",
+    "amount": 1987.88,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "434-6 - Impostos retidos",
+    "nature": "Despesas Administrativas",
+    "amount": 0.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "422-1 - Combustivel",
+    "nature": "Despesas Administrativas",
+    "amount": 3362.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "422-4 - Pedágio",
+    "nature": "Despesas Operacionais",
+    "amount": 39896.02,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "201-5 - Pro-Labore",
+    "nature": "Despesas Com Pessoal",
+    "amount": 150000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "425-5 - Consultoria",
+    "nature": "Despesas Administrativas",
+    "amount": 2119,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "201-6 - Salarios e Ordenados",
+    "nature": "Despesas Com Pessoal",
+    "amount": 30490.48,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "400-0 - Custo de Embalagens",
+    "nature": "Despesas Operacionais",
+    "amount": 12984.75,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "303-4 - Descontos Obtidos",
+    "nature": "Receitas Financeiras",
+    "amount": 4766329.74,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "417-0 - Vale Refeicao",
+    "nature": "Despesas Com Pessoal",
+    "amount": 5567.13,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "421-8 - OP Correios e fretes",
+    "nature": "Despesas Operacionais",
+    "amount": 145012.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "431-3 - Taxas e Emolumentos",
+    "nature": "Despesas Administrativas",
+    "amount": 3183.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "422-9 - Material de Escritorio",
+    "nature": "Despesas Administrativas",
+    "amount": 10393.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "432-0 - Juros Passivos",
+    "nature": "Despesas Financeiras",
+    "amount": 179758.61,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "422-7 - Viagens e Estadias",
+    "nature": "Despesas Administrativas",
+    "amount": 14816.56,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "420-6 - Manut e Conservacao Predial",
+    "nature": "Despesas Administrativas",
+    "amount": 84526.22,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "112-9 - Moveis e Utensilios",
+    "nature": "Investimentos e Outros",
+    "amount": 94432.31,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "427-9 - Publicidade e Propaganda",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 4400,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "113-0 - Veiculos",
+    "nature": "Investimentos e Outros",
+    "amount": 24850,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "113-0 - Veiculos",
+    "nature": "Investimentos e Outros",
+    "amount": 12425,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "420-9 - Uniformes",
+    "nature": "Despesas Administrativas",
+    "amount": 2991,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "421-9 - Seguros",
+    "nature": "Despesas Administrativas",
+    "amount": 29667.96,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "420-3 - Agua e Esgoto",
+    "nature": "Despesas Administrativas",
+    "amount": 359.2,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "111-03 - Consorcio",
+    "nature": "Investimentos e Outros",
+    "amount": 12447.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "409-7 - Serviços Terceiros PF",
+    "nature": "Despesas Operacionais",
+    "amount": 817,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "426-2 - Segurança e Vigilância",
+    "nature": "Despesas Administrativas",
+    "amount": 8722.49,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "425-7 - Informatica e Software",
+    "nature": "Despesas Com TI",
+    "amount": 239.99,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "434-4 - Marketing Digital",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 4250.6,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "417-8 - Seguro de Vida",
+    "nature": "Despesas Com Pessoal",
+    "amount": 184.87,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "418-3 - Curso e Treinamento",
+    "nature": "Despesas Com Pessoal",
+    "amount": 6268.47,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2024-12-01",
+    "account": "203-1 - FGTS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 172.03,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2024-12-01",
+    "account": "203-0 - INSS",
+    "nature": "Despesas Com Pessoal",
+    "amount": 886.95,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "425-1 - Outras Despesas",
+    "nature": "Despesas Administrativas",
+    "amount": 30.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "428-3 - Producao de Material",
+    "nature": "Despesas Comerciais e Marketing",
+    "amount": 397,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "112-5 - Maquinas e Equipamentos",
+    "nature": "Investimentos e Outros",
+    "amount": 30264,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "417-4 - Assistencia medica",
+    "nature": "Despesas Com Pessoal",
+    "amount": 1360.84,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "216-0 - Distribuicao de Lucro",
+    "nature": "Investimentos e Outros",
+    "amount": 1955,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "434-1 - Exames ocupacionais",
+    "nature": "Despesas Administrativas",
+    "amount": 205,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "427-0 - Sistema de Gestao",
+    "nature": "Despesas Com TI",
+    "amount": 6673.25,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "422-2 - Copa e Cozinha",
+    "nature": "Despesas Administrativas",
+    "amount": 2.49,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "423-6 - Material de Limpeza",
+    "nature": "Despesas Administrativas",
+    "amount": 320.99,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "423-4 - Internet",
+    "nature": "Despesas Com TI",
+    "amount": 952.55,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "421-4 - Manutencao de veiculos",
+    "nature": "Despesas Administrativas",
+    "amount": 370.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "430-1 - IPTU",
+    "nature": "Despesas Administrativas",
+    "amount": 1379.57,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "420-5 - Aluguel",
+    "nature": "Despesas Administrativas",
+    "amount": 7428.11,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "421-9 - Seguros de carga",
+    "nature": "Despesas Operacionais",
+    "amount": 2142.12,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2024-12-01",
+    "account": "400-0 - Custo de Mercadorias Vendidas",
+    "nature": "Despesas Operacionais",
+    "amount": 108333.43,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "113-0 - Veiculos",
+    "nature": "Investimentos e Outros",
+    "amount": 544704.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2021-11-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 24913.86,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2021-07-01",
+    "account": "211-1 - Tributos Parcelados",
+    "nature": "Investimentos e Outros",
+    "amount": 3563.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 6939173.41,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 35105.14,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 74986.37,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "300-9 - Desconto Concedido",
+    "nature": "Deduções de Receitas",
+    "amount": 176234,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-10-01",
+    "account": "200-8 - Empréstimos",
+    "nature": "Outras Receitas",
+    "amount": 232000,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 6703736.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 29127.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 111810.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "300-9 - Desconto Concedido",
+    "nature": "Deduções de Receitas",
+    "amount": 19185,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "Receitas Financeiras",
+    "amount": 42719.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-09-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "Outras Receitas",
+    "amount": 289.9,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 7297350.27,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 26478.17,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 103141.76,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "302-1 - Receitas Diversas",
+    "nature": "Receitas Operacionais",
+    "amount": 99.42,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "300-9 - Desconto Concedido",
+    "nature": "Deduções de Receitas",
+    "amount": 243507.8,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "Receitas Financeiras",
+    "amount": 12102.66,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 7468579.73,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 22896.75,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 126189.52,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "300-9 - Desconto Concedido",
+    "nature": "Deduções de Receitas",
+    "amount": 100428.26,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 7666546.13,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 104934.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 14598.05,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-06-01",
+    "account": "300-9 - Desconto Concedido",
+    "nature": "Deduções de Receitas",
+    "amount": 20389,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 8480008.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 9325.32,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 102013.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "Outras Receitas",
+    "amount": 1612.69,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "300-9 - Desconto Concedido",
+    "nature": "Deduções de Receitas",
+    "amount": 446267.06,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "Outras Receitas",
+    "amount": 1002.62,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "Receitas Operacionais",
+    "amount": 740.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-05-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "Receitas Financeiras",
+    "amount": 740.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 9774138.24,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 139303.97,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 8179.08,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "Receitas Operacionais",
+    "amount": 615,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "Receitas Operacionais",
+    "amount": 2180,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 10993575.01,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 4167.3,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 89631.33,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 8509366.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 88511.28,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 5865.73,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "302-3 - Reembolso de Despesas",
+    "nature": "Outras Receitas",
+    "amount": 2279.39,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "102-1 - Receita com Prestação de Servicos",
+    "nature": "Receitas Operacionais",
+    "amount": 89627.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "303-2 - Rendimento de Aplic Financeira",
+    "nature": "Receitas Financeiras",
+    "amount": 7326.4,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "102-1 - Vendas de Produtos",
+    "nature": "Receitas Operacionais",
+    "amount": 5153415.51,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "Receitas Financeiras",
+    "amount": 1874.92,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2024-12-01",
+    "account": "102-1 - Vendas de Produtos - Boleto",
+    "nature": "Receitas Operacionais",
+    "amount": 17585.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "303-3 - Juros Ativos",
+    "nature": "Receitas Financeiras",
+    "amount": 17585.21,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-02-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 454.08,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-04-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 295.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 295.89,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-07-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Aluguel de POS / Outras Taxas",
+    "nature": "Deduções de Receitas",
+    "amount": 159.83,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-08-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "Deduções de Receitas",
+    "amount": 108.5,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "Deduções de Receitas",
+    "amount": 10354.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-01-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "Receitas Operacionais",
+    "amount": 10354.53,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "102-1 - Vendas de Produtos - Débito e Crédito",
+    "nature": "Receitas Operacionais",
+    "amount": 3242.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  },
+  {
+    "company_cnpj": "26888098000159",
+    "company_nome": "GRUPO VOLPE - MATRIZ",
+    "date": "2025-03-01",
+    "account": "431-9 - Tarifa de Cartao / Meios de Pagamento - Padrão",
+    "nature": "Deduções de Receitas",
+    "amount": 3242.7,
+    "created_at": "2025-11-17T01:20:09.482Z"
+  }
+]

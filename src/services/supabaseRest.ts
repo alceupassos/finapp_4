@@ -63,8 +63,9 @@ export const SupabaseRest = {
   },
   getDRE: async (cnpj: string) => {
     const cnpj14 = (cnpj || '').replace(/^0+/, '')
-    const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*' } })
+    const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
     if (!Array.isArray(rows)) return []
+    console.log('🔍 getDRE recebeu', rows.length, 'registros para CNPJ', cnpj14);
     return rows.map((r: any) => ({
       data: r.date || r.data,
       conta: r.account ?? r.conta ?? 'Conta',
@@ -74,8 +75,9 @@ export const SupabaseRest = {
   },
   getDFC: async (cnpj: string) => {
     const cnpj14 = (cnpj || '').replace(/^0+/, '')
-    const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*' } })
+    const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
     if (!Array.isArray(rows)) return []
+    console.log('🔍 getDFC recebeu', rows.length, 'registros para CNPJ', cnpj14);
     // Se já estiver no formato esperado, retorne direto
     if (rows.length && (rows[0].entrada !== undefined || rows[0].saida !== undefined)) return rows
     // Caso contrário, transformar de (date, kind, category, amount) -> (data, descricao, entrada, saida, saldo)

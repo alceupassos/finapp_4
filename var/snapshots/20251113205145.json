@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "timestamp": "2025-11-13T20:51:45.332Z",
+    "project": "finapp_v4"
+  },
+  "git": {
+    "branch": "main",
+    "status": "## main...origin/main\n M .gitignore\n M avant/ssh/old.md\n M package.json\n M src/components/DashboardOverview.tsx\n M src/components/SettingsModal.tsx\n?? \".trae/documents/Snapshot de Estado com Palavra\\342\\200\\221Chave e Agente Vigilante.md\"\n?? avant/ssh/my.md\n?? scripts/provision-ssh.sh\n?? scripts/snapshot.mjs\n?? scripts/starter/\n?? src/components/ImportModal.tsx\n?? src/services/importer.ts",
+    "diffStat": ".gitignore                           |  1 +\n avant/ssh/old.md                     |  7 +++++++\n package.json                         |  6 +++++-\n src/components/DashboardOverview.tsx | 40 ++++++++++++++++++++++++++++++++++--\n src/components/SettingsModal.tsx     | 12 ++++++++---\n 5 files changed, 60 insertions(+), 6 deletions(-)",
+    "recent": []
+  },
+  "devServer": {
+    "reachable": true,
+    "status": 200
+  },
+  "project": {
+    "packageJson": {
+      "name": "finapp-dashboard",
+      "private": true,
+      "version": "0.2.0",
+      "type": "module",
+      "scripts": {
+        "dev": "vite",
+        "build": "tsc -b && vite build",
+        "preview": "vite preview",
+        "deploy": "bash scripts/deploy.sh",
+        "snapshot": "node scripts/snapshot.mjs",
+        "snapshot:watch": "node scripts/snapshot.mjs --watch",
+        "key:provision": "bash scripts/provision-ssh.sh",
+        "starter:secrets": "bash scripts/starter/setup_github_secrets.sh"
+      },
+      "dependencies": {
+        "@hookform/resolvers": "^5.2.2",
+        "@radix-ui/react-dropdown-menu": "^2.0.6",
+        "@radix-ui/react-select": "^2.0.0",
+        "@radix-ui/react-tooltip": "^1.0.7",
+        "@tanstack/react-table": "^8.16.0",
+        "@tremor/react": "^3.18.7",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.1",
+        "date-fns": "^3.6.0",
+        "framer-motion": "^12.23.24",
+        "git": "^0.1.5",
+        "lucide-react": "^0.452.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-hook-form": "^7.66.0",
+        "recharts": "^3.4.1",
+        "sonner": "^1.7.4",
+        "tailwind-merge": "^2.6.0",
+        "xlsx": "^0.18.5",
+        "zod": "^3.25.76"
+      },
+      "devDependencies": {
+        "@types/node": "^20.10.6",
+        "@types/react": "^18.2.15",
+        "@types/react-dom": "^18.2.7",
+        "@vitejs/plugin-react": "^5.1.1",
+        "autoprefixer": "^10.4.17",
+        "postcss": "^8.4.35",
+        "tailwindcss": "^3.4.1",
+        "tailwindcss-animate": "^1.0.7",
+        "typescript": "^5.4.5",
+        "vite": "^5.0.12"
+      }
+    },
+    "viteConfig": "import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\nexport default defineConfig({\n  plugins: [react()],\n  server: { port: 3000 },\n})\n"
+  },
+  "env": {
+    "local": {
+      "VITE_SUPABASE_URL": "https://xzrmzmcoslomtzkzgskn.supabase.co",
+      "VITE_SUPABASE_ANON_KEY": "***"
+    },
+    "production": {
+      "VITE_SUPABASE_URL": "https://xzrmzmcoslomtzkzgskn.supabase.co",
+      "VITE_SUPABASE_ANON_KEY": "***"
+    }
+  }
+}
