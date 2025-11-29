@@ -64,13 +64,39 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
         return;
       }
 
-      // Parse do mês selecionado
-      const [selectedYear, selectedMonthNum] = selectedMonth 
-        ? selectedMonth.split('-').map(Number)
-        : [new Date().getFullYear(), new Date().getMonth() + 1];
+      // ✅ TAREFA 2: Detectar automaticamente o mês mais recente disponível nos dados
+      let targetYear: number
+      let targetMonth: number
+      
+      if (selectedMonth) {
+        // Se mês foi selecionado, usar ele
+        const [selectedYear, selectedMonthNum] = selectedMonth.split('-').map(Number)
+        targetYear = selectedYear
+        targetMonth = selectedMonthNum - 1
+      } else {
+        // Se não, detectar o mês mais recente nos dados
+        const dates = allDreData
+          .map((item: any) => {
+            if (!item.data) return null
+            const d = new Date(item.data)
+            return isNaN(d.getTime()) ? null : d
+          })
+          .filter((d: Date | null): d is Date => d !== null)
+        
+        if (dates.length === 0) {
+          console.warn('⚠️ useFinancialData: Nenhuma data válida encontrada')
+          setLoading(false)
+          return
+        }
+        
+        const maxDate = new Date(Math.max(...dates.map(d => d.getTime())))
+        targetYear = maxDate.getFullYear()
+        targetMonth = maxDate.getMonth()
+        console.log(`📅 useFinancialData: Mês mais recente detectado automaticamente: ${targetYear}-${String(targetMonth + 1).padStart(2, '0')}`)
+      }
 
-      const currentYear = selectedYear;
-      const currentMonth = selectedMonthNum - 1; // JavaScript usa 0-11 para meses
+      const currentYear = targetYear
+      const currentMonth = targetMonth // JavaScript usa 0-11 para meses
 
       // Dados do mês atual
       let receitaMesAtual = 0;

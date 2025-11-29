@@ -181,10 +181,69 @@ export const SupabaseRest = {
       
       console.log(`✅ getDFC: ${rows.length} registros para CNPJ ${cnpj14}`)
       
-      // Se tabela vazia, retornar array vazio (não tentar fallback)
+      // ✅ TAREFA 3: Se tabela vazia, gerar DFC a partir do DRE
       if (rows.length === 0) {
         console.warn(`⚠️ getDFC: Tabela cashflow_entries vazia para CNPJ ${cnpj14}`)
-        return []
+        console.log('🔄 getDFC: Gerando fluxo de caixa a partir do DRE...')
+        
+        try {
+          // Buscar dados DRE
+          const dreData = await SupabaseRest.getDRE(cnpj14)
+          if (dreData.length === 0) {
+            console.warn('⚠️ getDFC: DRE também está vazio, não é possível gerar DFC')
+            return []
+          }
+          
+          // Agrupar DRE por data e calcular entrada/saída
+          const dfcMap = new Map<string, { entrada: number; saida: number; descricao: string }>()
+          
+          dreData.forEach((dre: any) => {
+            if (!dre.data) return
+            
+            const dataKey = dre.data // "2025-10-01"
+            const existing = dfcMap.get(dataKey) || { entrada: 0, saida: 0, descricao: 'Lançamentos DRE' }
+            
+            if (dre.natureza === 'receita') {
+              existing.entrada += Math.abs(dre.valor || 0)
+            } else if (dre.natureza === 'despesa') {
+              existing.saida += Math.abs(dre.valor || 0)
+            }
+            
+            dfcMap.set(dataKey, existing)
+          })
+          
+          // Converter para array e ordenar por data
+          const dfcFromDre = Array.from(dfcMap.entries())
+            .map(([data, values]) => {
+              const v = values || { entrada: 0, saida: 0, descricao: 'Lançamentos DRE' }
+              return {
+                data,
+                entrada: v.entrada,
+                saida: v.saida,
+                descricao: v.descricao,
+                status: 'conciliado' as const,
+                saldo: 0 // Será calculado depois
+              }
+            })
+            .sort((a, b) => new Date(a.data || 0).getTime() - new Date(b.data || 0).getTime())
+          
+          // Calcular saldo acumulado
+          let running = 0
+          dfcFromDre.forEach(item => {
+            running += (item.entrada - item.saida)
+            item.saldo = running
+          })
+          
+          console.log(`✅ getDFC: Gerados ${dfcFromDre.length} registros de fluxo de caixa a partir do DRE`)
+          const totalEntrada = dfcFromDre.reduce((sum, r) => sum + r.entrada, 0)
+          const totalSaida = dfcFromDre.reduce((sum, r) => sum + r.saida, 0)
+          console.log(`📊 getDFC - Resumo (gerado do DRE): Total entrada R$ ${totalEntrada.toLocaleString('pt-BR')}, Total saída R$ ${totalSaida.toLocaleString('pt-BR')}`)
+          
+          return dfcFromDre
+        } catch (dreErr: any) {
+          console.error('❌ getDFC: Erro ao gerar DFC a partir do DRE:', dreErr?.message || dreErr)
+          return []
+        }
       }
       
       // Log da estrutura do primeiro registro para debug

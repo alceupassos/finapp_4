@@ -42,7 +42,7 @@ export function App(){
   const isVolpeDomain = window.location.hostname.includes('dev.angrax.com.br') || window.location.hostname.includes('localhost')
   
   // Filtros
-  const [selectedMonth, setSelectedMonth] = useState('2025-11');
+  const [selectedMonth, setSelectedMonth] = useState('2025-10'); // ✅ FIX: Dados são de outubro/2025
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>(['26888098000159']); // Array de CNPJs
   const [companies, setCompanies] = useState<Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>>([]);
   
