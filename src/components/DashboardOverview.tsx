@@ -109,7 +109,7 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
                   <stop offset="100%" stopColor="#38bdf8" stopOpacity={0.4} />
                 </linearGradient>
                 <filter id="barShadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.35" />
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000" floodOpacity="0.35" />
                 </filter>
               </defs>
               <CartesianGrid stroke="rgba(200,200,200,0.12)" vertical={false} />

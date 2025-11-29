@@ -12,7 +12,8 @@ export function CustomersPage() {
         const cs = await SupabaseRest.getCompanies() as Company[]
         setCustomers(Array.isArray(cs) ? cs : [])
       } catch (e: any) {
-        setError('Falha ao carregar clientes')
+        console.error('Erro ao carregar clientes:', e)
+        setError(`Falha ao carregar clientes: ${e?.message || 'Erro desconhecido'}`)
       } finally {
         setLoading(false)
       }

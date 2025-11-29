@@ -1,4 +1,4 @@
-import { SupabaseRest } from './supabaseRest'
+import { SupabaseRest, MATRIZ_CNPJ } from './supabaseRest'
 
 export type Role = 'admin'|'franqueado'|'cliente'|'personalizado'
 export type Session = {
@@ -76,6 +76,7 @@ export async function checkAuthEndpoint() {
   }
 }
 
+// ✅ FIX: Buscar empresas do usuário após login
 export async function loginSupabase(email: string, password: string): Promise<Session | null> {
   try {
     let data = await gotruePasswordSignIn(email, password)
@@ -85,12 +86,31 @@ export async function loginSupabase(email: string, password: string): Promise<Se
     if (!data || !data.access_token) return null
     localStorage.setItem('supabase_session', JSON.stringify(data))
     const user = { id: data.user?.id || 'unknown', email }
+    
+    // ✅ FIX: Buscar empresas do usuário após autenticação
+    let defaultCompany: string | null = null
+    try {
+      const userCompanies = await SupabaseRest.getUserCompanies(user.id)
+      if (userCompanies.length > 0) {
+        defaultCompany = userCompanies[0]
+        console.log('✅ Empresa padrão do usuário:', defaultCompany)
+      } else {
+        // Fallback: usar CNPJ da matriz
+        defaultCompany = MATRIZ_CNPJ
+        console.log('⚠️ Usuário sem empresas, usando matriz:', defaultCompany)
+      }
+    } catch (err: any) {
+      console.warn('Erro ao buscar empresas do usuário durante login:', err)
+      // Fallback: usar CNPJ da matriz em caso de erro
+      defaultCompany = MATRIZ_CNPJ
+    }
+    
     const session: Session = {
       id: user.id,
       email: user.email || email,
       name: (user.email || email).split('@')[0],
       role: 'cliente',
-      defaultCompany: null,
+      defaultCompany, // ✅ Agora é preenchido!
       mode: 'supabase',
       accessToken: data.access_token,
     }
