@@ -30,6 +30,21 @@ fi
 # Navegar para diretório do projeto
 cd "$PROJECT_DIR"
 
+# ✅ FIX: Garantir que .env.local tenha as variáveis Supabase
+if [ ! -f ".env.local" ] || [ ! -s ".env.local" ] || ! grep -q "VITE_SUPABASE_URL" .env.local; then
+    echo "🔧 Sincronizando variáveis de ambiente..."
+    if [ -f ".env.production" ]; then
+        cp .env.production .env.local
+        echo "✅ .env.local atualizado a partir de .env.production"
+    else
+        echo "⚠️  .env.production não encontrado, criando .env.local básico..."
+        cat > .env.local << 'EOF'
+VITE_SUPABASE_URL=https://xzrmzmcoslomtzkzgskn.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh6cm16bWNvc2xvbXR6a3pnc2tuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE3NTI2MjMsImV4cCI6MjA3NzMyODYyM30.smtxh5O5vKzdLBK3GWVudfFQsNpwkzXgc1Qev2gIicI
+EOF
+    fi
+fi
+
 # Verificar se node_modules existe
 if [ ! -d "node_modules" ]; then
     echo "📦 Instalando dependências..."
