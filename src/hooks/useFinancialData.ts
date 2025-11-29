@@ -108,11 +108,21 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
 
       // Log para debug
       console.log(`📊 useFinancialData: Processando ${allDreData.length} registros DRE`)
-      console.log(`📅 useFinancialData: Mês selecionado: ${selectedMonth || 'atual'} (${currentYear}-${currentMonth + 1})`)
+      console.log(`📅 useFinancialData: Mês selecionado: ${selectedMonth || 'atual'} (${currentYear}-${String(currentMonth + 1).padStart(2, '0')})`)
+      
+      // ✅ FIX: Log de amostra dos dados brutos
+      if (allDreData.length > 0) {
+        console.log('📋 useFinancialData - Amostra dos primeiros 5 registros:')
+        allDreData.slice(0, 5).forEach((item: any, idx: number) => {
+          console.log(`   ${idx + 1}. Data: ${item.data}, Natureza: ${item.natureza}, Valor: R$ ${item.valor?.toLocaleString('pt-BR') || 0}`)
+        })
+      }
       
       // Agregar dados de todas as empresas
       let processados = 0
       let ignorados = 0
+      const datasProcessadas = new Set<string>()
+      const datasIgnoradas = new Set<string>()
       
       allDreData.forEach((item: any) => {
         if (!item.data) {
@@ -130,9 +140,12 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
         
         const itemYear = itemDate.getFullYear()
         const itemMonth = itemDate.getMonth()
+        const itemMonthKey = `${itemYear}-${String(itemMonth + 1).padStart(2, '0')}`
 
+        // ✅ FIX: Filtrar APENAS o mês selecionado (não todos os meses)
         if (itemYear === currentYear && itemMonth === currentMonth) {
           processados++
+          datasProcessadas.add(itemMonthKey)
           if (item.natureza === 'receita') {
             receitaMesAtual += item.valor
           } else if (item.natureza === 'despesa') {
@@ -144,6 +157,7 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
           (itemYear === currentYear && itemMonth === currentMonth - 1) ||
           (currentMonth === 0 && itemYear === currentYear - 1 && itemMonth === 11)
         ) {
+          // Mês anterior para cálculo de variação
           if (item.natureza === 'receita') {
             receitaMesAnterior += item.valor
           } else if (item.natureza === 'despesa') {
@@ -151,11 +165,15 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
           }
         } else {
           ignorados++
+          datasIgnoradas.add(itemMonthKey)
         }
       })
       
       console.log(`📊 useFinancialData: ${processados} processados, ${ignorados} ignorados (fora do mês)`)
-      console.log(`💰 useFinancialData: Receita mês atual: R$ ${receitaMesAtual.toLocaleString('pt-BR')}, Despesas: R$ ${despesaMesAtual.toLocaleString('pt-BR')}`)
+      console.log(`📅 useFinancialData: Meses processados: ${Array.from(datasProcessadas).join(', ')}`)
+      console.log(`📅 useFinancialData: Meses ignorados (amostra): ${Array.from(datasIgnoradas).slice(0, 5).join(', ')}${datasIgnoradas.size > 5 ? '...' : ''}`)
+      console.log(`💰 useFinancialData: Receita mês atual: R$ ${receitaMesAtual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}, Despesas: R$ ${despesaMesAtual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`)
+      console.log(`💰 useFinancialData: Receita mês anterior: R$ ${receitaMesAnterior.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}, Despesas: R$ ${despesaMesAnterior.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`)
 
       // Calcular variações percentuais
       const receitaChange = receitaMesAnterior > 0 
