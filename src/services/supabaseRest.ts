@@ -108,40 +108,156 @@ export const SupabaseRest = {
   
   getDRE: async (cnpj: string) => {
     const cnpj14 = (cnpj || MATRIZ_CNPJ).replace(/^0+/, '')
-    const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
-    if (!Array.isArray(rows)) return []
-    console.log('🔍 getDRE recebeu', rows.length, 'registros para CNPJ', cnpj14);
-    return rows.map((r: any) => ({
-      data: r.date || r.data,
-      conta: r.account ?? r.conta ?? 'Conta',
-      natureza: r.nature ?? r.natureza ?? null,
-      valor: Number(r.amount ?? r.valor ?? 0)
-    }))
+    try {
+      const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
+      if (!Array.isArray(rows)) {
+        console.warn('⚠️ getDRE: resposta não é array', rows)
+        return []
+      }
+      
+      console.log(`✅ getDRE: ${rows.length} registros para CNPJ ${cnpj14}`)
+      
+      // Log da estrutura do primeiro registro para debug
+      if (rows.length > 0) {
+        const first = rows[0]
+        console.log('📋 getDRE - Estrutura do primeiro registro:', {
+          date: first.date,
+          data: first.data,
+          account: first.account,
+          conta: first.conta,
+          nature: first.nature,
+          natureza: first.natureza,
+          amount: first.amount,
+          valor: first.valor
+        })
+      }
+      
+      const mapped = rows.map((r: any) => {
+        // Mapear data: priorizar date, depois data, depois periodo
+        const dataValue = r.date || r.data || r.periodo || null
+        
+        // Mapear conta: priorizar account, depois conta, depois dre_line
+        const contaValue = r.account ?? r.conta ?? r.dre_line ?? 'Conta'
+        
+        // Mapear natureza: priorizar nature, depois natureza
+        const naturezaValue = r.nature ?? r.natureza ?? null
+        
+        // Mapear valor: priorizar amount, depois valor
+        const valorValue = Number(r.amount ?? r.valor ?? 0)
+        
+        return {
+          data: dataValue,
+          conta: contaValue,
+          natureza: naturezaValue,
+          valor: valorValue
+        }
+      })
+      
+      // Log de amostra dos dados mapeados
+      if (mapped.length > 0) {
+        console.log('📊 getDRE - Amostra de dados mapeados (primeiros 3):', mapped.slice(0, 3))
+        const receitas = mapped.filter((r: any) => r.natureza === 'receita').length
+        const despesas = mapped.filter((r: any) => r.natureza === 'despesa').length
+        const totalReceitas = mapped.filter((r: any) => r.natureza === 'receita').reduce((sum: number, r: any) => sum + r.valor, 0)
+        const totalDespesas = mapped.filter((r: any) => r.natureza === 'despesa').reduce((sum: number, r: any) => sum + r.valor, 0)
+        console.log(`📊 getDRE - Resumo: ${receitas} receitas (R$ ${totalReceitas.toLocaleString('pt-BR')}), ${despesas} despesas (R$ ${totalDespesas.toLocaleString('pt-BR')})`)
+      }
+      
+      return mapped
+    } catch (err: any) {
+      console.error('❌ getDRE falhou:', err?.message || err)
+      return []
+    }
   },
   
   getDFC: async (cnpj: string) => {
     const cnpj14 = (cnpj || MATRIZ_CNPJ).replace(/^0+/, '')
-    const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
-    if (!Array.isArray(rows)) return []
-    console.log('🔍 getDFC recebeu', rows.length, 'registros para CNPJ', cnpj14);
-    // Se já estiver no formato esperado, retorne direto
-    if (rows.length && (rows[0].entrada !== undefined || rows[0].saida !== undefined)) return rows
-    // Caso contrário, transformar de (date, kind, category, amount) -> (data, descricao, entrada, saida, saldo)
-    const sorted = [...rows].sort((a: any, b: any) => new Date(a.date || a.data).getTime() - new Date(b.date || b.data).getTime())
-    let running = 0
-    return sorted.map((r: any) => {
-      const entrada = String(r.kind || '').toLowerCase() === 'in' ? Number(r.amount || 0) : 0
-      const saida = String(r.kind || '').toLowerCase() === 'out' ? Number(r.amount || 0) : 0
-      running += (entrada - saida)
-      return {
-        data: r.date || r.data,
-        descricao: r.category || r.descricao || 'Lançamento',
-        entrada,
-        saida,
-        saldo: running,
-        id: r.id ?? undefined,
+    try {
+      const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
+      if (!Array.isArray(rows)) {
+        console.warn('⚠️ getDFC: resposta não é array', rows)
+        return []
       }
-    })
+      
+      console.log(`✅ getDFC: ${rows.length} registros para CNPJ ${cnpj14}`)
+      
+      // Se tabela vazia, retornar array vazio (não tentar fallback)
+      if (rows.length === 0) {
+        console.warn(`⚠️ getDFC: Tabela cashflow_entries vazia para CNPJ ${cnpj14}`)
+        return []
+      }
+      
+      // Log da estrutura do primeiro registro para debug
+      const first = rows[0]
+      console.log('📋 getDFC - Estrutura do primeiro registro:', {
+        date: first.date,
+        data: first.data,
+        kind: first.kind,
+        category: first.category,
+        descricao: first.descricao,
+        amount: first.amount,
+        valor: first.valor,
+        entrada: first.entrada,
+        saida: first.saida,
+        status: first.status
+      })
+      
+      // Se já estiver no formato esperado (com entrada/saida), retornar direto
+      if (first.entrada !== undefined || first.saida !== undefined) {
+        console.log('✅ getDFC: Dados já no formato esperado (entrada/saida)')
+        return rows.map((r: any) => ({
+          data: r.date || r.data || null,
+          entrada: Number(r.entrada || 0),
+          saida: Number(r.saida || 0),
+          status: r.status || 'conciliado',
+          descricao: r.descricao || r.category || 'Lançamento',
+          id: r.id
+        }))
+      }
+      
+      // Caso contrário, transformar de (date, kind, category, amount) -> (data, entrada, saida, saldo)
+      console.log('🔄 getDFC: Transformando dados de (date, kind, category, amount) para (data, entrada, saida)')
+      const sorted = [...rows].sort((a: any, b: any) => {
+        const dateA = new Date(a.date || a.data || 0).getTime()
+        const dateB = new Date(b.date || b.data || 0).getTime()
+        return dateA - dateB
+      })
+      
+      let running = 0
+      const mapped = sorted.map((r: any) => {
+        const kind = String(r.kind || '').toLowerCase()
+        const entrada = kind === 'in' ? Number(r.amount || r.valor || 0) : 0
+        const saida = kind === 'out' ? Number(r.amount || r.valor || 0) : 0
+        running += (entrada - saida)
+        
+        return {
+          data: r.date || r.data || null,
+          descricao: r.category || r.descricao || 'Lançamento',
+          entrada,
+          saida,
+          saldo: running,
+          status: r.status || 'conciliado',
+          id: r.id ?? undefined,
+        }
+      })
+      
+      // Log de amostra dos dados mapeados
+      if (mapped.length > 0) {
+        console.log('📊 getDFC - Amostra de dados mapeados (primeiros 3):', mapped.slice(0, 3))
+        const totalEntrada = mapped.reduce((sum: number, r: any) => sum + r.entrada, 0)
+        const totalSaida = mapped.reduce((sum: number, r: any) => sum + r.saida, 0)
+        console.log(`📊 getDFC - Resumo: Total entrada R$ ${totalEntrada.toLocaleString('pt-BR')}, Total saída R$ ${totalSaida.toLocaleString('pt-BR')}`)
+      }
+      
+      return mapped
+    } catch (err: any) {
+      console.error('❌ getDFC falhou:', err?.message || err)
+      // Se erro 404 ou tabela não existe, retornar array vazio
+      if (err?.message?.includes('404') || err?.message?.includes('does not exist')) {
+        console.warn('⚠️ getDFC: Tabela cashflow_entries pode não existir')
+      }
+      return []
+    }
   },
   
   log: (item: { level: 'info'|'warn'|'error'; service: 'UI'|'API'|'Edge'; endpoint?: string; companyCnpj?: string; userId?: string; message: string; latencyMs?: number }) => {

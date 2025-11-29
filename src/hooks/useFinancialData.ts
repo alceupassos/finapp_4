@@ -80,29 +80,56 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
       let receitaMesAnterior = 0;
       let despesaMesAnterior = 0;
 
+      // Log para debug
+      console.log(`📊 useFinancialData: Processando ${allDreData.length} registros DRE`)
+      console.log(`📅 useFinancialData: Mês selecionado: ${selectedMonth || 'atual'} (${currentYear}-${currentMonth + 1})`)
+      
       // Agregar dados de todas as empresas
+      let processados = 0
+      let ignorados = 0
+      
       allDreData.forEach((item: any) => {
-        const itemDate = new Date(item.data);
-        const itemYear = itemDate.getFullYear();
-        const itemMonth = itemDate.getMonth();
+        if (!item.data) {
+          console.warn('⚠️ useFinancialData: Item sem data:', item)
+          ignorados++
+          return
+        }
+        
+        const itemDate = new Date(item.data)
+        if (isNaN(itemDate.getTime())) {
+          console.warn('⚠️ useFinancialData: Data inválida:', item.data, item)
+          ignorados++
+          return
+        }
+        
+        const itemYear = itemDate.getFullYear()
+        const itemMonth = itemDate.getMonth()
 
         if (itemYear === currentYear && itemMonth === currentMonth) {
+          processados++
           if (item.natureza === 'receita') {
-            receitaMesAtual += item.valor;
+            receitaMesAtual += item.valor
           } else if (item.natureza === 'despesa') {
-            despesaMesAtual += Math.abs(item.valor);
+            despesaMesAtual += Math.abs(item.valor)
+          } else {
+            console.warn('⚠️ useFinancialData: Natureza desconhecida:', item.natureza, item)
           }
         } else if (
           (itemYear === currentYear && itemMonth === currentMonth - 1) ||
           (currentMonth === 0 && itemYear === currentYear - 1 && itemMonth === 11)
         ) {
           if (item.natureza === 'receita') {
-            receitaMesAnterior += item.valor;
+            receitaMesAnterior += item.valor
           } else if (item.natureza === 'despesa') {
-            despesaMesAnterior += Math.abs(item.valor);
+            despesaMesAnterior += Math.abs(item.valor)
           }
+        } else {
+          ignorados++
         }
-      });
+      })
+      
+      console.log(`📊 useFinancialData: ${processados} processados, ${ignorados} ignorados (fora do mês)`)
+      console.log(`💰 useFinancialData: Receita mês atual: R$ ${receitaMesAtual.toLocaleString('pt-BR')}, Despesas: R$ ${despesaMesAtual.toLocaleString('pt-BR')}`)
 
       // Calcular variações percentuais
       const receitaChange = receitaMesAnterior > 0 
