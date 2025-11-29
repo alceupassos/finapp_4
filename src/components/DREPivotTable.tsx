@@ -7,21 +7,49 @@ type DRERow = { data?: string; conta?: string; natureza?: string; valor?: number
 
 const MONTHS = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 
-const groupMap: { name: string; match: RegExp[] }[] = [
-  { name: 'Receitas Operacionais', match: [/vendas/i, /receita/i] },
-  { name: 'Deduções', match: [/desconto/i, /taxa/i, /tarifa/i] },
-  { name: 'Custos', match: [/custo/i, /cmv/i] },
-  { name: 'Despesas Operacionais', match: [/despesa/i, /salario/i, /ordenado/i, /combustivel/i, /frete/i, /correio/i] },
-  { name: 'Outras Receitas', match: [/outras receitas/i, /obtidos/i] },
-  { name: 'Outras Despesas', match: [/outras despesas/i, /concedido/i, /juros/i] },
-]
-
-function resolveGroup(r: DRERow): string {
-  const text = `${r.conta || ''} ${r.natureza || ''}`
-  for (const g of groupMap) {
-    if (g.match.some((m) => m.test(text))) return g.name
+// ✅ Estrutura hierárquica conforme especificação
+function categorizeAccount(conta: string, natureza: string): { category: string; subcategory?: string } {
+  const text = `${conta} ${natureza}`.toLowerCase()
+  
+  // Receita Bruta de Vendas
+  if (natureza === 'receita' && (text.includes('venda') || text.includes('produto') || text.includes('servico'))) {
+    return { category: 'RECEITA OPERACIONAL BRUTA', subcategory: 'Receita Bruta de Vendas' }
   }
-  return 'Outros'
+  
+  // Impostos
+  if (text.includes('imposto') || text.includes('icms') || text.includes('ipi') || text.includes('iss')) {
+    return { category: 'DEDUÇÕES DA RECEITA BRUTA', subcategory: 'Impostos' }
+  }
+  
+  // Taxas e Tarifas
+  if (text.includes('taxa') || text.includes('tarifa') || text.includes('desconto')) {
+    return { category: 'DEDUÇÕES DA RECEITA BRUTA', subcategory: 'Taxas e Tarifas' }
+  }
+  
+  // Despesas Comerciais
+  if (text.includes('comercial') || text.includes('vendas') || text.includes('marketing') || text.includes('propaganda')) {
+    return { category: 'DESPESAS', subcategory: 'Despesas Comerciais' }
+  }
+  
+  // Despesas Administrativas
+  if (text.includes('administrativa') || text.includes('admin') || text.includes('geral') || text.includes('telefonia') || text.includes('correio')) {
+    return { category: 'DESPESAS', subcategory: 'Despesas Administrativas' }
+  }
+  
+  // Despesas com Pessoal
+  if (text.includes('pessoal') || text.includes('salario') || text.includes('ordenado') || text.includes('folha') || text.includes('inss') || text.includes('fgts')) {
+    return { category: 'DESPESAS', subcategory: 'Despesas com Pessoal' }
+  }
+  
+  // Outras categorias
+  if (natureza === 'receita') {
+    return { category: 'OUTRAS RECEITAS' }
+  }
+  if (natureza === 'despesa') {
+    return { category: 'OUTRAS DESPESAS' }
+  }
+  
+  return { category: 'OUTROS' }
 }
 
 interface PivotRow {
@@ -29,6 +57,8 @@ interface PivotRow {
   months: number[]
   children?: Array<{ conta: string; months: number[] }>
   expanded?: boolean
+  isTotal?: boolean
+  isSubtotal?: boolean
 }
 
 interface DREPivotTableProps {
@@ -63,44 +93,152 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
   }, [cnpj])
 
   const pivot = useMemo(() => {
-    // Agrupar por grupo e conta
-    const byGroup = new Map<string, Map<string, number[]>>()
-
+    // Agrupar por categoria e subcategoria
+    const byCategory = new Map<string, Map<string, Map<string, number[]>>>()
+    
     rows.forEach((r) => {
       const d = r.data ? new Date(r.data) : new Date()
       const m = d.getMonth()
-      const group = resolveGroup(r)
+      const { category, subcategory } = categorizeAccount(r.conta || '', r.natureza || '')
       const conta = r.conta || 'Sem conta'
+      const valor = r.natureza === 'despesa' ? -Math.abs(Number(r.valor || 0)) : Math.abs(Number(r.valor || 0))
 
-      if (!byGroup.has(group)) {
-        byGroup.set(group, new Map())
+      if (!byCategory.has(category)) {
+        byCategory.set(category, new Map())
       }
-      const groupMap = byGroup.get(group)!
-      if (!groupMap.has(conta)) {
-        groupMap.set(conta, Array(12).fill(0))
+      const categoryMap = byCategory.get(category)!
+      
+      const subcatKey = subcategory || conta
+      if (!categoryMap.has(subcatKey)) {
+        categoryMap.set(subcatKey, new Map())
       }
-      const months = groupMap.get(conta)!
-      months[m] += Number(r.valor || 0)
+      const subcatMap = categoryMap.get(subcatKey)!
+      
+      if (!subcatMap.has(conta)) {
+        subcatMap.set(conta, Array(12).fill(0))
+      }
+      const months = subcatMap.get(conta)!
+      months[m] += valor
     })
 
-    // Converter para estrutura de pivot
-    const pivotRows: PivotRow[] = Array.from(byGroup.entries()).map(([group, contasMap]) => {
-      const groupMonths = Array(12).fill(0)
-      const children: Array<{ conta: string; months: number[] }> = []
-
-      contasMap.forEach((months, conta) => {
-        months.forEach((val, idx) => {
-          groupMonths[idx] += val
+    // Construir estrutura hierárquica
+    const pivotRows: PivotRow[] = []
+    
+    // 1. ▼ RECEITA OPERACIONAL BRUTA
+    const receitaBruta = byCategory.get('RECEITA OPERACIONAL BRUTA')
+    if (receitaBruta) {
+      const receitaBrutaMonths = Array(12).fill(0)
+      const receitaBrutaChildren: Array<{ conta: string; months: number[] }> = []
+      
+      receitaBruta.forEach((subcatMap, subcat) => {
+        subcatMap.forEach((months, conta) => {
+          months.forEach((val, idx) => {
+            receitaBrutaMonths[idx] += val
+          })
+          receitaBrutaChildren.push({ conta, months: [...months] })
         })
-        children.push({ conta, months: [...months] })
       })
+      
+      pivotRows.push({
+        group: '▼ RECEITA OPERACIONAL BRUTA',
+        months: receitaBrutaMonths,
+        children: receitaBrutaChildren,
+        expanded: expandedGroups.has('RECEITA OPERACIONAL BRUTA'),
+        isSubtotal: true,
+      })
+    }
 
-      return {
-        group,
-        months: groupMonths,
-        children,
-        expanded: expandedGroups.has(group),
-      }
+    // 2. ▼ (-) DEDUÇÕES DA RECEITA BRUTA
+    const deducoes = byCategory.get('DEDUÇÕES DA RECEITA BRUTA')
+    if (deducoes) {
+      const deducoesMonths = Array(12).fill(0)
+      const deducoesChildren: Array<{ conta: string; months: number[] }> = []
+      
+      deducoes.forEach((subcatMap, subcat) => {
+        subcatMap.forEach((months, conta) => {
+          months.forEach((val, idx) => {
+            deducoesMonths[idx] += val // Já é negativo se for despesa
+          })
+          deducoesChildren.push({ conta, months: [...months] })
+        })
+      })
+      
+      pivotRows.push({
+        group: '▼ (-) DEDUÇÕES DA RECEITA BRUTA',
+        months: deducoesMonths,
+        children: deducoesChildren,
+        expanded: expandedGroups.has('DEDUÇÕES DA RECEITA BRUTA'),
+        isSubtotal: true,
+      })
+    }
+
+    // 3. = RECEITA OPERACIONAL LÍQUIDA
+    const receitaLiquidaMonths = Array(12).fill(0)
+    const receitaBrutaRow = pivotRows.find(r => r.group === '▼ RECEITA OPERACIONAL BRUTA')
+    const deducoesRow = pivotRows.find(r => r.group === '▼ (-) DEDUÇÕES DA RECEITA BRUTA')
+    receitaBrutaRow?.months.forEach((val, idx) => {
+      receitaLiquidaMonths[idx] += val
+    })
+    deducoesRow?.months.forEach((val, idx) => {
+      receitaLiquidaMonths[idx] += val
+    })
+    pivotRows.push({
+      group: '= RECEITA OPERACIONAL LÍQUIDA',
+      months: receitaLiquidaMonths,
+      isTotal: true,
+    })
+
+    // 4. = LUCRO BRUTO
+    pivotRows.push({
+      group: '= LUCRO BRUTO',
+      months: [...receitaLiquidaMonths],
+      isTotal: true,
+    })
+
+    // 5. ▼ (-) DESPESAS
+    const despesas = byCategory.get('DESPESAS')
+    if (despesas) {
+      const despesasMonths = Array(12).fill(0)
+      const despesasChildren: Array<{ conta: string; months: number[] }> = []
+      
+      despesas.forEach((subcatMap, subcat) => {
+        subcatMap.forEach((months, conta) => {
+          months.forEach((val, idx) => {
+            despesasMonths[idx] += val // Já é negativo
+          })
+          despesasChildren.push({ conta, months: [...months] })
+        })
+      })
+      
+      pivotRows.push({
+        group: '▼ (-) DESPESAS',
+        months: despesasMonths,
+        children: despesasChildren,
+        expanded: expandedGroups.has('DESPESAS'),
+        isSubtotal: true,
+      })
+    }
+
+    // 6. = EBITDA
+    const ebitdaMonths = Array(12).fill(0)
+    receitaLiquidaMonths.forEach((val, idx) => {
+      ebitdaMonths[idx] += val
+    })
+    const despesasRow = pivotRows.find(r => r.group === '▼ (-) DESPESAS')
+    despesasRow?.months.forEach((val, idx) => {
+      ebitdaMonths[idx] += val
+    })
+    pivotRows.push({
+      group: '= EBITDA',
+      months: ebitdaMonths,
+      isTotal: true,
+    })
+
+    // 7. = LUCRO LÍQUIDO
+    pivotRows.push({
+      group: '= LUCRO LÍQUIDO',
+      months: [...ebitdaMonths],
+      isTotal: true,
     })
 
     return pivotRows
@@ -117,7 +255,9 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
   }
 
   const formatCurrency = (value: number) => {
-    return `R$ ${Math.round(value).toLocaleString('pt-BR')}`
+    const abs = Math.abs(value)
+    const formatted = abs.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+    return value < 0 ? `-R$ ${formatted}` : `R$ ${formatted}`
   }
 
   return (
@@ -135,18 +275,19 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
                   {m}
                 </th>
               ))}
+              <th className="p-3 text-right font-semibold">Total</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td className="p-4 text-center text-muted-foreground" colSpan={13}>
+                <td className="p-4 text-center text-muted-foreground" colSpan={14}>
                   Carregando...
                 </td>
               </tr>
             ) : pivot.length === 0 ? (
               <tr>
-                <td className="p-4 text-center text-muted-foreground" colSpan={13}>
+                <td className="p-4 text-center text-muted-foreground" colSpan={14}>
                   Sem dados para exibir
                 </td>
               </tr>
@@ -154,37 +295,56 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
               pivot.map((row) => (
                 <motion.tr
                   key={row.group}
-                  className="border-b border-graphite-800/50 hover:bg-graphite-800/30 transition-colors"
+                  className={`border-b border-graphite-800/50 hover:bg-graphite-800/30 transition-colors ${
+                    row.isTotal ? 'bg-graphite-900/50' : ''
+                  }`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 >
                   <td className="p-3">
-                    <button
-                      onClick={() => toggleGroup(row.group)}
-                      className="flex items-center gap-2 hover:text-gold-500 transition-colors"
-                    >
-                      {row.children && row.children.length > 0 ? (
-                        expandedGroups.has(row.group) ? (
+                    {row.isSubtotal && row.children && row.children.length > 0 ? (
+                      <button
+                        onClick={() => toggleGroup(row.group)}
+                        className="flex items-center gap-2 hover:text-gold-500 transition-colors"
+                      >
+                        {expandedGroups.has(row.group) ? (
                           <ChevronDown className="w-4 h-4" />
                         ) : (
                           <ChevronRight className="w-4 h-4" />
-                        )
-                      ) : (
-                        <span className="w-4 h-4" />
-                      )}
-                      <span className="font-medium">{row.group}</span>
-                    </button>
+                        )}
+                        <span className="font-medium">{row.group}</span>
+                      </button>
+                    ) : (
+                      <span className={`font-medium ${row.isTotal ? 'text-gold-400' : ''}`}>
+                        {row.group}
+                      </span>
+                    )}
                   </td>
                   {row.months.map((val, idx) => (
                     <td
                       key={idx}
                       className={`p-3 text-right ${
-                        val < 0 ? 'text-red-400' : 'text-emerald-400'
+                        row.isTotal 
+                          ? 'font-semibold text-gold-400' 
+                          : val < 0 
+                            ? 'text-red-400' 
+                            : 'text-emerald-400'
                       }`}
                     >
                       {formatCurrency(val)}
                     </td>
                   ))}
+                  <td
+                    className={`p-3 text-right font-semibold ${
+                      row.isTotal 
+                        ? 'text-gold-400' 
+                        : row.months.reduce((a, b) => a + b, 0) < 0 
+                          ? 'text-red-400' 
+                          : 'text-emerald-400'
+                    }`}
+                  >
+                    {formatCurrency(row.months.reduce((a, b) => a + b, 0))}
+                  </td>
                 </motion.tr>
               ))
             )}
@@ -194,7 +354,7 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
         {/* Linhas expandidas (children) */}
         <AnimatePresence>
           {pivot.map((row) =>
-            expandedGroups.has(row.group) && row.children ? (
+            expandedGroups.has(row.group) && row.children && row.children.length > 0 ? (
               <motion.tbody
                 key={`${row.group}-children`}
                 initial={{ opacity: 0, height: 0 }}
@@ -206,7 +366,7 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
                     key={`${row.group}-${child.conta}-${idx}`}
                     className="border-b border-graphite-800/30 bg-graphite-900/30"
                   >
-                    <td className="p-3 pl-8 text-muted-foreground">{child.conta}</td>
+                    <td className="p-3 pl-8 text-muted-foreground text-xs">{child.conta}</td>
                     {child.months.map((val, monthIdx) => (
                       <td
                         key={monthIdx}
@@ -217,6 +377,13 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
                         {formatCurrency(val)}
                       </td>
                     ))}
+                    <td
+                      className={`p-3 text-right text-xs font-medium ${
+                        child.months.reduce((a, b) => a + b, 0) < 0 ? 'text-red-400' : 'text-emerald-400'
+                      }`}
+                    >
+                      {formatCurrency(child.months.reduce((a, b) => a + b, 0))}
+                    </td>
                   </tr>
                 ))}
               </motion.tbody>
@@ -227,4 +394,3 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
     </div>
   )
 }
-

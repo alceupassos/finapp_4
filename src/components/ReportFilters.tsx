@@ -8,18 +8,38 @@ interface ReportFiltersProps {
   selectedPeriod: 'Ano' | 'Mês'
   selectedCompany: string
   selectedGroup: string
+  selectedYear?: string
+  selectedQuarter?: string
+  selectedMonth?: string
+  selectedCategory?: string
+  selectedDepartment?: string
   onPeriodChange: (period: 'Ano' | 'Mês') => void
   onCompanyChange: (cnpj: string) => void
   onGroupChange: (group: string) => void
+  onYearChange?: (year: string) => void
+  onQuarterChange?: (quarter: string) => void
+  onMonthChange?: (month: string) => void
+  onCategoryChange?: (category: string) => void
+  onDepartmentChange?: (department: string) => void
 }
 
 export function ReportFilters({
   selectedPeriod,
   selectedCompany,
   selectedGroup,
+  selectedYear,
+  selectedQuarter,
+  selectedMonth,
+  selectedCategory,
+  selectedDepartment,
   onPeriodChange,
   onCompanyChange,
   onGroupChange,
+  onYearChange,
+  onQuarterChange,
+  onMonthChange,
+  onCategoryChange,
+  onDepartmentChange,
 }: ReportFiltersProps) {
   const [companies, setCompanies] = useState<Company[]>([])
   const [groups, setGroups] = useState<string[]>([])
@@ -123,6 +143,121 @@ export function ReportFilters({
                   {company.cliente_nome || company.cnpj}
                 </option>
               ))}
+          </select>
+        </div>
+      )}
+
+      {/* Ano */}
+      {onYearChange && (
+        <div>
+          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
+            <Calendar className="w-3 h-3" />
+            Ano
+          </label>
+          <select
+            value={selectedYear || new Date().getFullYear().toString()}
+            onChange={(e) => onYearChange(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+          >
+            {Array.from({ length: 5 }, (_, i) => {
+              const year = new Date().getFullYear() - i
+              return (
+                <option key={year} value={year.toString()}>
+                  {year}
+                </option>
+              )
+            })}
+          </select>
+        </div>
+      )}
+
+      {/* Trimestre */}
+      {onQuarterChange && (
+        <div>
+          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
+            <Calendar className="w-3 h-3" />
+            Trimestre
+          </label>
+          <select
+            value={selectedQuarter || ''}
+            onChange={(e) => onQuarterChange(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+          >
+            <option value="">Todos</option>
+            <option value="T1">T1 (Jan-Mar)</option>
+            <option value="T2">T2 (Abr-Jun)</option>
+            <option value="T3">T3 (Jul-Set)</option>
+            <option value="T4">T4 (Out-Dez)</option>
+          </select>
+        </div>
+      )}
+
+      {/* Mês */}
+      {onMonthChange && (
+        <div>
+          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
+            <Calendar className="w-3 h-3" />
+            Mês
+          </label>
+          <select
+            value={selectedMonth || ''}
+            onChange={(e) => onMonthChange(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+          >
+            <option value="">Todos</option>
+            <option value="01">Janeiro</option>
+            <option value="02">Fevereiro</option>
+            <option value="03">Março</option>
+            <option value="04">Abril</option>
+            <option value="05">Maio</option>
+            <option value="06">Junho</option>
+            <option value="07">Julho</option>
+            <option value="08">Agosto</option>
+            <option value="09">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+          </select>
+        </div>
+      )}
+
+      {/* Categoria */}
+      {onCategoryChange && (
+        <div>
+          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
+            <Filter className="w-3 h-3" />
+            Categoria
+          </label>
+          <select
+            value={selectedCategory || ''}
+            onChange={(e) => onCategoryChange(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+          >
+            <option value="">Todas</option>
+            <option value="receita">Receitas</option>
+            <option value="despesa">Despesas</option>
+            <option value="imposto">Impostos</option>
+          </select>
+        </div>
+      )}
+
+      {/* Departamento */}
+      {onDepartmentChange && (
+        <div>
+          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
+            <Building2 className="w-3 h-3" />
+            Departamento
+          </label>
+          <select
+            value={selectedDepartment || ''}
+            onChange={(e) => onDepartmentChange(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+          >
+            <option value="">Todos</option>
+            <option value="comercial">Comercial</option>
+            <option value="administrativo">Administrativo</option>
+            <option value="pessoal">Pessoal</option>
+            <option value="financeiro">Financeiro</option>
           </select>
         </div>
       )}

@@ -3,8 +3,9 @@ import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
 import { ReportFilters } from './ReportFilters'
 import { DREPivotTable } from './DREPivotTable'
 import { DFCPivotTable } from './DFCPivotTable'
-import { MonthlyBarChart } from './MonthlyBarChart'
-import { AnimatedKPICard } from './AnimatedKPICard'
+import { LucroBrutoBarChart } from './LucroBrutoBarChart'
+import { KPICardsRow } from './KPICardsRow'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs'
 import { motion } from 'framer-motion'
 
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
@@ -15,6 +16,9 @@ export function ReportsPage() {
   const [selectedCompany, setSelectedCompany] = useState<string>(MATRIZ_CNPJ)
   const [selectedGroup, setSelectedGroup] = useState<string>('')
   const [selectedPeriod, setSelectedPeriod] = useState<'Ano' | 'Mês'>('Ano')
+  const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString())
+  const [selectedMonth, setSelectedMonth] = useState<string>('')
+  const [selectedQuarter, setSelectedQuarter] = useState<string>('')
   const [dreData, setDreData] = useState<DRERow[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
@@ -59,92 +63,99 @@ export function ReportsPage() {
     })()
   }, [selectedCompany])
 
-  // Calcular KPIs a partir dos dados DRE
+  // ✅ Cálculos DRE conforme especificação
   const kpis = useMemo(() => {
-    let receita = 0
-    let impostos = 0
-    let despesas = 0
-    let outrasReceitas = 0
-    let outrasDespesas = 0
-
-    dreData.forEach((r) => {
-      const text = `${r.conta || ''} ${r.natureza || ''}`.toLowerCase()
-      const valor = Number(r.valor || 0)
-
-      if (text.includes('receita') || text.includes('venda')) {
-        receita += valor
-      } else if (text.includes('imposto') || text.includes('taxa') || text.includes('tarifa')) {
-        impostos += valor
-      } else if (text.includes('despesa') || text.includes('custo')) {
-        despesas += valor
-      } else if (text.includes('outras receitas')) {
-        outrasReceitas += valor
-      } else if (text.includes('outras despesas')) {
-        outrasDespesas += valor
+    // Agrupar dados por natureza/conta
+    const grouped = dreData.reduce((acc, item) => {
+      const key = item.natureza || 'outros'
+      if (!acc[key]) {
+        acc[key] = []
       }
-    })
+      acc[key].push(item)
+      return acc
+    }, {} as Record<string, DRERow[]>)
 
-    const lucro = receita - impostos - despesas + outrasReceitas - outrasDespesas
-    const ebitda = lucro // Simplificado - normalmente seria lucro + depreciação + amortização
+    // Calcular Receita Bruta (todas as receitas)
+    const receitaBruta = (grouped.receita || []).reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    // Calcular Deduções (impostos, taxas, tarifas)
+    const deducoes = dreData
+      .filter((r) => {
+        const text = `${r.conta || ''} ${r.natureza || ''}`.toLowerCase()
+        return text.includes('imposto') || text.includes('taxa') || text.includes('tarifa') || text.includes('deducao')
+      })
+      .reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    // Receita Operacional Líquida
+    const receitaLiquida = receitaBruta - deducoes
+
+    // Calcular Despesas (comerciais, administrativas, pessoal)
+    const despesasComerciais = dreData
+      .filter((r) => {
+        const text = `${r.conta || ''}`.toLowerCase()
+        return text.includes('comercial') || text.includes('vendas') || text.includes('marketing')
+      })
+      .reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    const despesasAdministrativas = dreData
+      .filter((r) => {
+        const text = `${r.conta || ''}`.toLowerCase()
+        return text.includes('administrativa') || text.includes('admin') || text.includes('geral')
+      })
+      .reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    const despesasPessoal = dreData
+      .filter((r) => {
+        const text = `${r.conta || ''}`.toLowerCase()
+        return text.includes('pessoal') || text.includes('salario') || text.includes('ordenado') || text.includes('folha')
+      })
+      .reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    const despesasTotal = despesasComerciais + despesasAdministrativas + despesasPessoal
+
+    // Lucro Bruto = Receita Líquida (simplificado, normalmente seria Receita - CMV)
+    const lucroBruto = receitaLiquida
+
+    // EBITDA = Lucro Bruto - Despesas Operacionais
+    const ebitda = lucroBruto - despesasTotal
+
+    // Outras Receitas/Despesas
+    const outrasReceitas = dreData
+      .filter((r) => {
+        const text = `${r.conta || ''} ${r.natureza || ''}`.toLowerCase()
+        return r.natureza === 'receita' && (text.includes('financeira') || text.includes('outras'))
+      })
+      .reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    const outrasDespesas = dreData
+      .filter((r) => {
+        const text = `${r.conta || ''} ${r.natureza || ''}`.toLowerCase()
+        return r.natureza === 'despesa' && (text.includes('financeira') || text.includes('juros') || text.includes('outras'))
+      })
+      .reduce((sum, r) => sum + Math.abs(Number(r.valor || 0)), 0)
+
+    // Lucro Líquido = EBITDA + Outras Receitas - Outras Despesas
+    const lucroLiquido = ebitda + outrasReceitas - outrasDespesas
 
     return {
-      receita: Math.max(0, receita),
-      impostos: Math.max(0, impostos),
-      lucro,
+      receitaBruta,
+      impostos: deducoes,
+      lucroBruto,
       ebitda,
+      lucroLiquido,
     }
   }, [dreData])
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value)
-  }
-
   return (
-    <div className="grid gap-6">
-      {/* Cards KPI no topo */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <AnimatedKPICard
-          title="Receita Total"
-          value={formatCurrency(kpis.receita)}
-          change={12}
-          icon="TrendingUp"
-          trend="up"
-          color="green"
-          delay={0}
-        />
-        <AnimatedKPICard
-          title="Impostos"
-          value={formatCurrency(kpis.impostos)}
-          change={-5}
-          icon="TrendingDown"
-          trend="down"
-          color="red"
-          delay={0.1}
-        />
-        <AnimatedKPICard
-          title="Lucro Líquido"
-          value={formatCurrency(kpis.lucro)}
-          change={kpis.lucro > 0 ? 15 : -10}
-          icon="Wallet"
-          trend={kpis.lucro > 0 ? 'up' : 'down'}
-          color={kpis.lucro > 0 ? 'gold' : 'red'}
-          delay={0.2}
-        />
-        <AnimatedKPICard
-          title="EBITDA"
-          value={formatCurrency(kpis.ebitda)}
-          change={kpis.ebitda > 0 ? 18 : -8}
-          icon="Target"
-          trend={kpis.ebitda > 0 ? 'up' : 'down'}
-          color={kpis.ebitda > 0 ? 'blue' : 'red'}
-          delay={0.3}
-        />
-      </div>
+    <div className="space-y-6">
+      {/* 5 Cards KPI no topo */}
+      <KPICardsRow
+        receitaBruta={kpis.receitaBruta}
+        impostos={kpis.impostos}
+        lucroBruto={kpis.lucroBruto}
+        ebitda={kpis.ebitda}
+        lucroLiquido={kpis.lucroLiquido}
+      />
 
       {/* Layout principal: Filtros + Conteúdo */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -154,63 +165,67 @@ export function ReportsPage() {
             selectedPeriod={selectedPeriod}
             selectedCompany={selectedCompany}
             selectedGroup={selectedGroup}
+            selectedYear={selectedYear}
+            selectedQuarter={selectedQuarter}
+            selectedMonth={selectedMonth}
             onPeriodChange={setSelectedPeriod}
             onCompanyChange={setSelectedCompany}
             onGroupChange={setSelectedGroup}
+            onYearChange={setSelectedYear}
+            onQuarterChange={setSelectedQuarter}
+            onMonthChange={setSelectedMonth}
           />
         </div>
 
         {/* Conteúdo principal */}
         <div className="lg:col-span-3 space-y-6">
           {/* Tabs DRE/DFC */}
-          <div className="flex gap-2 border-b border-graphite-800">
-            <button
-              onClick={() => setActiveTab('DRE')}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${
-                activeTab === 'DRE'
-                  ? 'text-gold-500 border-b-2 border-gold-500'
-                  : 'text-muted-foreground hover:text-white'
-              }`}
-            >
-              DRE
-            </button>
-            <button
-              onClick={() => setActiveTab('DFC')}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${
-                activeTab === 'DFC'
-                  ? 'text-gold-500 border-b-2 border-gold-500'
-                  : 'text-muted-foreground hover:text-white'
-              }`}
-            >
-              DFC
-            </button>
-          </div>
+          <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'DRE' | 'DFC')}>
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="DRE">DRE</TabsTrigger>
+              <TabsTrigger value="DFC">DFC</TabsTrigger>
+            </TabsList>
 
-          {/* Tabela Pivot */}
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {activeTab === 'DRE' ? (
-              <DREPivotTable cnpj={selectedCompany} period={selectedPeriod} />
-            ) : (
-              <DFCPivotTable cnpj={selectedCompany} period={selectedPeriod} />
-            )}
-          </motion.div>
+            <TabsContent value="DRE" className="space-y-6 mt-6">
+              {/* Tabela Pivot DRE */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <DREPivotTable cnpj={selectedCompany} period={selectedPeriod} />
+              </motion.div>
 
-          {/* Gráfico de barras mensal */}
-          <MonthlyBarChart
-            data={dreData}
-            title={`Evolução Mensal - ${activeTab === 'DRE' ? 'DRE' : 'DFC'}`}
-          />
+              {/* Gráfico de barras mensal - Lucro Bruto */}
+              <LucroBrutoBarChart dreData={dreData} />
+            </TabsContent>
+
+            <TabsContent value="DFC" className="space-y-6 mt-6">
+              {/* Tabela Pivot DFC */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <DFCPivotTable cnpj={selectedCompany} period={selectedPeriod} />
+              </motion.div>
+
+              {/* Gráfico de barras mensal - DFC */}
+              <LucroBrutoBarChart dreData={dreData} />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
 
       {error && (
         <div className="card-premium p-4 bg-red-500/10 border-red-500/50">
           <p className="text-sm text-red-400">{error}</p>
+        </div>
+      )}
+
+      {loading && (
+        <div className="card-premium p-4 text-center">
+          <p className="text-sm text-muted-foreground">Carregando dados...</p>
         </div>
       )}
     </div>
