@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "preview:start": "vite preview --host 127.0.0.1 --port 4173",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "supabase:secrets": "supabase secrets set --env-file supabase-secrets.env"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

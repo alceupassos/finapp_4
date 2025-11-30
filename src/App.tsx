@@ -32,7 +32,8 @@ export function App(){
   const [isDark, setIsDark] = useState(true);
   const [configOpen, setConfigOpen] = useState(false);
   const [oracleContext, setOracleContext] = useState<string>('');
-  const [role] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('admin')
+  const [role, setRole] = useState<'admin'|'cliente'|'franqueado'|'personalizado'>('cliente')
+  const [thin, setThin] = useState<boolean>(true)
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Notícias'|'Fluxo de Caixa'|'Extrato de Lançamentos'|'Relatórios'|'Clientes'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
   const [session, setSession] = useState<any>(() => getSession())
@@ -160,6 +161,17 @@ Sempre que relevante, fornecer:
     }
   }, []);
 
+  useEffect(() => {
+    const isDevHost = window.location.hostname.includes('localhost')
+    if (session?.role) {
+      setRole(session.role)
+    } else if (isDevHost) {
+      setRole('admin')
+    } else {
+      setRole('cliente')
+    }
+  }, [session])
+
   const loadCompanies = async () => {
     try {
       const companiesList = await SupabaseRest.getCompanies();
@@ -176,7 +188,7 @@ Sempre que relevante, fornecer:
   })
 
   return (
-    <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500`}>
+    <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500 ${thin ? 'u-thin' : ''}`}>
       <ModernSidebar role={role} onOpenSettings={() => setConfigOpen(true)} />
       <div className="ml-64 flex flex-col min-h-screen">
         <ModernTopbar 
@@ -187,6 +199,7 @@ Sempre que relevante, fornecer:
           onPeriodChange={(p)=>setPeriod(p)}
           selectedMonth={selectedMonth}
           onMonthChange={setSelectedMonth}
+          extraActions={<button onClick={()=>setThin(v=>!v)} className="ultra-button">Ultra Thin</button>}
         />
 
         {/* Seletor de Agrupamento de Empresas */}

@@ -141,8 +141,24 @@
       inset 6px 6px 12px rgba(0, 0, 0, 0.5),
       inset -6px -6px 12px rgba(40, 40, 40, 0.1);
   }
+
+  .ultra-card {
+    @apply bg-card border border-border rounded-2xl shadow-none transition-all duration-200;
+  }
+  .ultra-card:hover { @apply border-foreground/10 scale-[1.01]; }
+  .ultra-chip { @apply px-3 py-1 rounded-full text-xs bg-graphite-900 border border-graphite-800; }
+  .ultra-sidebar { @apply bg-graphite-950 border-r border-graphite-900; }
+  .ultra-button { @apply px-3 py-2 rounded-xl bg-graphite-800 hover:bg-graphite-700 text-xs; }
 }
 
 :root { color-scheme: dark; }
 body { @apply text-gray-100; font-feature-settings: "cv02", "cv03", "cv04", "cv11"; }
 .card { @apply bg-card border border-border rounded-2xl; }
+
+.u-thin {
+  --radius: 0.5rem;
+}
+.u-thin .card-premium { border-width: 1px; border-color: rgba(255,255,255,0.06); box-shadow: none; border-radius: 0.75rem; }
+.u-thin .ultra-card { border-color: rgba(255,255,255,0.06); }
+.u-thin .ultra-chip { border-color: rgba(255,255,255,0.08); }
+.u-thin .ultra-button { border-color: rgba(255,255,255,0.06); }

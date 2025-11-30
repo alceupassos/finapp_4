@@ -1,0 +1,133 @@
+STACK RECOMENDADO — DESBLOQUEIO BIOMÉTRICO ULTRARRÁPIDO
+(Google AI Studio + Gemini 2.5 Pro)
+
+DECISÃO
+Use biometria nativa do sistema operacional para desbloquear o app (Face ID/Touch ID no iOS via LocalAuthentication; BiometricPrompt no Android via AndroidX). É a forma mais rápida, estável e com menos atrito. Opcionalmente, adicione um servidor de reconhecimento facial self‑hosted (CompreFace) apenas para casos específicos que exigem verificação de identidade por imagem.
+
+POR QUÊ
+• Velocidade e UX: o prompt nativo carrega instantaneamente, sem baixar modelos ou aquecer GPU/NNAPI.
+• Segurança/Privacidade: dados biométricos nunca saem do dispositivo; usamos apenas o “resultado” da autenticação.
+• Simplicidade: poucas linhas de código, manutenção quase zero, alta compatibilidade de devices.
+• Compliance: arquitetura privacy‑by‑design (LGPD).
+
+ARQUITETURA (VISÃO GERAL)
+1) Tela de Launch → checa suporte biométrico e cadastro de biometria.
+2) Se disponível, exibe o prompt nativo. Se não, cai no PIN/senha do app.
+3) Em sucesso, descriptografa um “App Session Secret” (chave simétrica) guardado no Keystore/Keychain para inicializar o cliente Gemini (sem expor API keys em texto).
+4) Renova token/secret por TTL (ex.: 24h) e bloqueia app ao background > X minutos.
+
+COMPONENTES
+• iOS: LocalAuthentication (LAContext) para Face ID/Touch ID.
+• Android: AndroidX Biometric (BiometricPrompt) para padrão único em versões modernas.
+• Cross-platform (React Native/Expo): expo-local-authentication para time‑to‑value; opcionalmente, react-native-biometrics para gerar/par assinar com chaves no Keystore/Secure Enclave.
+• Opcional (server side): CompreFace (Docker) se precisar de verificação por imagem (KYC interno, antifraude, auditoria). NÃO usar para “desbloquear” o app por padrão.
+
+FLUXO DE UX (RESUMO)
+• Primeira abertura: explicar por que usar biometria e oferecer ativar agora ou depois.
+• Reabertura diária: biometria → home. Se falhar 3x, cair para PIN.
+• Background > 5 minutos: exigir biometria de novo.
+• Modo viagem/risco: exigir duplo fator (biometria + PIN).
+
+IMPLEMENTAÇÃO — EXPO (REACT NATIVE) MÍNIMA
+// App.tsx (pseudoexemplo)
+import * as LocalAuthentication from 'expo-local-authentication';
+
+async function unlock() {
+  const hasHw = await LocalAuthentication.hasHardwareAsync();
+  const enrolled = await LocalAuthentication.isEnrolledAsync();
+  if (!hasHw || !enrolled) { return fallbackToPIN(); }
+  const res = await LocalAuthentication.authenticateAsync({
+    promptMessage: 'Autentique para continuar',
+    cancelLabel: 'Cancelar',
+    fallbackLabel: 'Usar PIN'
+  });
+  if (res.success) {
+    await bootstrapGeminiClient(); // descriptografa secret e inicia o cliente
+  } else {
+    return fallbackToPIN();
+  }
+}
+
+IMPLEMENTAÇÃO — ANDROID (KOTLIN) ESQUELETO
+// Dentro de uma Activity/Fragment
+val executor = ContextCompat.getMainExecutor(this)
+val promptInfo = BiometricPrompt.PromptInfo.Builder()
+  .setTitle("Desbloquear")
+  .setSubtitle("Autentique para continuar")
+  .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+  .build()
+val biometricPrompt = BiometricPrompt(this, executor,
+  object : BiometricPrompt.AuthenticationCallback() {
+    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+      bootstrapGeminiClient()
+    }
+    override fun onAuthenticationError(code: Int, err: CharSequence) { fallbackToPIN() }
+    override fun onAuthenticationFailed() { /* opcional: log */ }
+})
+biometricPrompt.authenticate(promptInfo)
+
+IMPLEMENTAÇÃO — iOS (SWIFT) ESQUELETO
+import LocalAuthentication
+
+func unlock() {
+  let context = LAContext()
+  var error: NSError?
+  if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+    context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
+      localizedReason: "Autentique para continuar") { success, _ in
+        DispatchQueue.main.async {
+          success ? bootstrapGeminiClient() : fallbackToPIN()
+        }
+    }
+  } else {
+    fallbackToPIN()
+  }
+}
+
+HARDENING (RECOMENDADO)
+• Chaves: gerar par de chaves (EC/Ed25519) no Secure Enclave/Keystore com proteção biométrica; armazenar apenas o público no backend. Assine um nonce na abertura do app para “prova de posse do device” e conclua o login sem enviar biometria ou segredo.
+• Secrets: manter Gemini/API keys fora do bundle; guarde um segredo criptografado no storage e só o desbloqueie após biometria.
+• Timeout e bloqueio: revalidar após background prolongado; apagar sessão após N falhas.
+• Telemetria: medir taxa de falhas/sucesso por device OS/versão para ajustar UX.
+
+OPCIONAL — RECONHECIMENTO FACIAL SELF‑HOSTED (NÃO PARA DESBLOQUEIO)
+Usar quando precisar comparar uma selfie com um cadastro (ex.: KYC interno). Sugestão: CompreFace (Docker).
+
+docker-compose.yml (mínimo ilustrativo):
+version: "3.7"
+services:
+  compreface-api:
+    image: exadel/compreface-api:latest
+    ports: ["8000:8000"]
+    environment:
+      - POSTGRES_PASSWORD=strong_password
+  compreface-fe:
+    image: exadel/compreface-fe:latest
+    ports: ["8001:80"]
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_PASSWORD=strong_password
+
+Exemplo de uso (pseudo):
+1) Criar “Face Collection/Recognition Service” pela UI.
+2) Enviar imagem via REST para detectar/identificar e obter embeddings/IDs.
+3) Persistir apenas embeddings/IDs (evite guardar imagens brutas).
+
+INTEGRAÇÃO COM GEMINI (GOOGLE AI STUDIO)
+• Após autenticar, inicialize o cliente Gemini com o segredo descriptografado (projeto, location, key/token).
+• Expire a sessão por inatividade/tempo; reexigir biometria para renovar.
+• Evite logar respostas com dados sensíveis do usuário; sanitize prompts/outputs.
+
+CHECKLIST DE PUBLICAÇÃO
+[ ] Verificar disponibilidade de biometria e cadastro do usuário
+[ ] Mensagens localizadas (pt-BR) coerentes com OS
+[ ] Permissões/plists/manifests conforme loja
+[ ] Fallback seguro (PIN) e limite de tentativas
+[ ] Keystore/Keychain ativado e testado
+[ ] Timeouts, bloqueio e limpeza de sessão
+[ ] Telemetria e alerta de anomalias
+[ ] Plano de suporte para devices sem biometria
+
+CONCLUSÃO
+Para desbloqueio ágil e sem dor de cabeça: biometria nativa do SO como padrão, keystore para segredos e (se necessário) CompreFace apenas para verificações por imagem fora do fluxo de desbloqueio. Isso entrega performance, privacidade e manutenção mínima.

@@ -58,6 +58,18 @@ async function restPost(path: string, body: unknown) {
 export const SupabaseRest = {
   restGet,
   restPost,
+  getMaskedSecrets: async (): Promise<Array<{ name: string; value: string }>> => {
+    try {
+      const rows = await restPost('rpc/get_masked_secrets', {})
+      if (!Array.isArray(rows)) return []
+      return rows.map((r: any) => ({
+        name: r.name || r.key || '',
+        value: r.value_masked || r.masked || r.value || ''
+      })).filter(s => s.name)
+    } catch (err: any) {
+      return []
+    }
+  },
   
   // ✅ NOVO: Buscar empresas do usuário pela tabela user_companies
   getUserCompanies: async (userId: string): Promise<string[]> => {

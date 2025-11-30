@@ -47,7 +47,7 @@ export function ModernSidebar({ onOpenSettings, role = 'cliente' }: ModernSideba
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-charcoal-950 via-graphite-950 to-charcoal-900 border-r border-graphite-900 flex flex-col z-50 pattern-soft"
+      className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-charcoal-950 via-graphite-950 to-charcoal-900 border-r border-graphite-900 flex flex-col z-50 pattern-soft ultra-sidebar"
     >
       {/* Logo */}
       <div className="p-6 border-b border-graphite-900 flex justify-center">

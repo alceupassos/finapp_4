@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type React from 'react'
 import { Search, Bell, Sun, Moon, Menu, Bot } from 'lucide-react';
 import { useState } from 'react';
 import { OracleModal } from './OracleModal';
@@ -14,6 +15,7 @@ interface ModernTopbarProps {
   selectedCompany?: string;
   onCompanyChange?: (cnpj: string) => void;
   companies?: Array<{ cnpj: string; cliente_nome: string }>;
+  extraActions?: React.ReactNode;
 }
 
 export function ModernTopbar({ 
@@ -26,7 +28,8 @@ export function ModernTopbar({
   onMonthChange,
   selectedCompany = '26888098000159',
   onCompanyChange,
-  companies = []
+  companies = [],
+  extraActions
 }: ModernTopbarProps) {
   const [notifications, setNotifications] = useState(3);
   const [oracleOpen, setOracleOpen] = useState(false);
@@ -182,6 +185,8 @@ export function ModernTopbar({
               <p className="text-sm font-bold text-emerald-400">+12.5%</p>
             </div>
           </div>
+
+          {extraActions}
         </div>
       </div>
 
