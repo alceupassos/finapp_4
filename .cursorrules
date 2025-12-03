@@ -1,5 +1,34 @@
 # Cursor Rules - FinApp Dashboard
 
+## 🚨 REGRAS CRÍTICAS IMUTÁVEIS
+
+> **LEIA PRIMEIRO**: Estas regras são fundamentais e NÃO devem ser violadas. Consulte `REGRAS_PROJETO.md` para detalhes completos.
+
+### 1. Tokens F360 NUNCA vão no `.env.local`
+- **CRÍTICO**: Tokens F360 são específicos por empresa e devem estar APENAS na tabela `companies.token_f360`
+- **O que vai no `.env.local`**: Apenas variáveis do Supabase (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `VITE_ENABLE_ADMIN`)
+- **NUNCA colocar**: `F360_TOKEN`, `F360_CNPJ`, `F360_WEBHOOK_*`, `VOLPE_TOKEN_*`
+- **Como usar**: Sempre buscar token do banco: `SELECT token_f360 FROM companies WHERE cnpj = ?`
+
+### 2. Empresas são associadas via `user_companies`
+- **CRÍTICO**: A tabela `user_companies` é a única fonte de verdade para acesso do usuário
+- **NUNCA**: Assumir que todas as empresas estão disponíveis, filtrar por token F360, usar `client_id` para acesso
+- **SEMPRE**: Buscar empresas do usuário logado via `user_companies`, verificar `user_id` antes de buscar empresas
+- **Fluxo**: Login → obter `user_id` → buscar em `user_companies` → mostrar apenas empresas encontradas
+
+### 3. Estrutura de Tabelas
+- **`companies`**: Armazena empresas com `token_f360` (não no .env)
+- **`user_companies`**: Controla acesso (user_id → company_cnpj)
+- **`clients`**: Agrupa empresas relacionadas (não controla acesso)
+- **Dados financeiros**: Sempre incluir `company_cnpj` e `company_id`
+
+### 4. Importação de Empresas
+- **SEMPRE**: Criar registro em `user_companies` ao criar/importar empresa
+- **SEMPRE**: Salvar `token_f360` na tabela `companies` (nunca no .env)
+- **NUNCA**: Pular dados inválidos - sempre tentar corrigir e importar
+
+---
+
 ## Regras de Filtros e Contexto
 
 ### 1. SEMPRE Respeitar Filtros da Página
