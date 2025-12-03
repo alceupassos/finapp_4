@@ -26,9 +26,9 @@ export function AdminKeysTab() {
         setEnvKeys(secrets.map(s => ({ name: s.name, value: s.value, origin: 'Supabase' })))
         return
       }
-      const entries = Object.entries(import.meta.env as any)
+      const entries: ParsedKey[] = Object.entries(import.meta.env as any)
         .filter(([k]) => k.startsWith('VITE_'))
-        .map(([name, value]) => ({ name, value: String(value ?? ''), origin: 'Env' }))
+        .map(([name, value]) => ({ name, value: String(value ?? ''), origin: 'Env' as const }))
       setEnvKeys(entries)
     })()
   }, [])

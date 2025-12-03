@@ -1,0 +1,21 @@
+{
+  "fileName": "ex.xlsx",
+  "filePath": "/Users/alceualvespasssosmac/dev/integrador/f360/bases/ex.xlsx",
+  "extractedAt": "2025-12-02T06:26:03.924Z",
+  "sheets": {
+    "Relatório Unificado": {
+      "headers": [
+        "Relatório Unificado"
+      ],
+      "rowCount": 43687,
+      "columnCount": 17
+    },
+    "Filtros": {
+      "headers": [
+        "Filtros"
+      ],
+      "rowCount": 17,
+      "columnCount": 2
+    }
+  }
+}

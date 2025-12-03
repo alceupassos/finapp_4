@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { SupabaseRest } from '../services/supabaseRest'
-import { ChevronRight, ChevronDown } from 'lucide-react'
+import { ChevronRight, ChevronDown, ChevronsDown, ChevronsRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   useReactTable,
@@ -64,6 +64,7 @@ interface TableRow {
   isTotal: boolean
   isSubtotal: boolean
   level: number
+  children?: TableRow[]
 }
 
 interface DREPivotTableProps {
@@ -367,26 +368,51 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
         const isExpanded = row.getIsExpanded()
         const hasChildren = row.original.children && row.original.children.length > 0
         
+        const level = row.original.level || 0
+        const indentSize = level * 20
+        
         return (
-          <div className="flex items-center gap-2" style={{ paddingLeft: `${row.original.level * 16}px` }}>
+          <div className="flex items-center gap-2" style={{ paddingLeft: `${indentSize}px` }}>
             {hasChildren ? (
               <button
                 onClick={() => row.toggleExpanded()}
-                className="flex items-center gap-2 hover:text-gold-500 transition-colors"
+                className="flex items-center gap-2 hover:text-gold-500 transition-colors group"
               >
-                {isExpanded ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ChevronRight className="w-4 h-4" />
-                )}
-                <span className={`font-medium ${row.original.isTotal ? 'text-gold-400' : ''}`}>
+                <motion.div
+                  animate={{ rotate: isExpanded ? 90 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {isExpanded ? (
+                    <ChevronDown className="w-4 h-4 text-gold-500" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4 text-graphite-400 group-hover:text-gold-500" />
+                  )}
+                </motion.div>
+                <span className={`font-medium transition-colors ${
+                  row.original.isTotal 
+                    ? 'text-gold-400 text-base' 
+                    : level === 0 
+                      ? 'text-white text-sm' 
+                      : level === 1 
+                        ? 'text-graphite-200 text-sm' 
+                        : 'text-graphite-400 text-xs'
+                }`}>
                   {getValue()}
                 </span>
               </button>
             ) : (
-              <span className={`${row.original.isTotal ? 'font-semibold text-gold-400' : row.original.conta ? 'text-sm text-slate-400' : 'font-medium'}`}>
-                {row.original.conta || getValue()}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="w-4 h-4" /> {/* Spacer for alignment */}
+                <span className={`${
+                  row.original.isTotal 
+                    ? 'font-semibold text-gold-400 text-base' 
+                    : row.original.conta 
+                      ? 'text-sm text-graphite-400' 
+                      : 'font-medium text-graphite-300 text-sm'
+                }`}>
+                  {row.original.conta || getValue()}
+                </span>
+              </div>
             )}
           </div>
         )
@@ -451,9 +477,52 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
     return value < 0 ? `-R$ ${formatted}` : `R$ ${formatted}`
   }
 
+  const expandAll = () => {
+    const allIds = tableData.map(row => row.id)
+    const newExpanded: ExpandedState = {}
+    allIds.forEach(id => {
+      newExpanded[id] = true
+    })
+    setExpanded(newExpanded)
+  }
+
+  const collapseAll = () => {
+    setExpanded({})
+  }
+
+  const allExpanded = useMemo(() => {
+    return tableData.every(row => {
+      if (row.children && row.children.length > 0) {
+        return expanded[row.id] === true
+      }
+      return true
+    })
+  }, [expanded, tableData])
+
   return (
     <div className="card-premium p-5">
-      <h3 className="text-sm font-semibold mb-4">DRE Consolidada</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-sm font-semibold">DRE Consolidada</h3>
+        <div className="flex gap-2">
+          <button
+            onClick={allExpanded ? collapseAll : expandAll}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-graphite-800 hover:bg-graphite-700 text-xs font-medium transition-colors"
+            title={allExpanded ? 'Recolher tudo' : 'Expandir tudo'}
+          >
+            {allExpanded ? (
+              <>
+                <ChevronsRight className="w-3 h-3" />
+                Recolher Tudo
+              </>
+            ) : (
+              <>
+                <ChevronsDown className="w-3 h-3" />
+                Expandir Tudo
+              </>
+            )}
+          </button>
+        </div>
+      </div>
       {error && <p className="text-xs text-red-400 mb-4">{error}</p>}
       
       <div className="overflow-auto">

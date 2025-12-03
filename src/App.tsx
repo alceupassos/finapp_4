@@ -24,6 +24,9 @@ import { ProcessingStatsCard } from './components/ProcessingStatsCard';
 import { AcquirersCard } from './components/AcquirersCard';
 import { BanksCard } from './components/BanksCard';
 import { CompanyGroupSelector } from './components/CompanyGroupSelector';
+import { F360ImportModal } from './components/F360ImportModal';
+import { DREExportButton } from './components/DREExportButton';
+import { DFCExportButton } from './components/DFCExportButton';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
@@ -47,6 +50,7 @@ export function App(){
   // ✅ FIX: Inicializar vazio, será preenchido após carregar empresas do usuário
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [companies, setCompanies] = useState<Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>>([]);
+  const [f360ImportOpen, setF360ImportOpen] = useState(false);
   
   const { metrics, loading } = useFinancialData(selectedCompanies, selectedMonth);
 
@@ -192,11 +196,18 @@ Sempre que relevante, fornecer:
     }
   };
 
-  useState(() => {
+  useEffect(() => {
     const handler = (e: any) => setCurrentView(e.detail)
+    const f360Handler = () => setF360ImportOpen(true)
+    
     window.addEventListener('navigate', handler as any)
-    return () => window.removeEventListener('navigate', handler as any)
-  })
+    window.addEventListener('f360-import', f360Handler)
+    
+    return () => {
+      window.removeEventListener('navigate', handler as any)
+      window.removeEventListener('f360-import', f360Handler)
+    }
+  }, [])
 
   return (
     <div className={`min-h-screen ${isDark ? 'dark bg-gradient-to-br from-charcoal-950 via-graphite-950 to-charcoal-900' : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'} transition-colors duration-500 ${thin ? 'u-thin' : ''}`}>
@@ -213,13 +224,27 @@ Sempre que relevante, fornecer:
           extraActions={<button onClick={()=>setThin(v=>!v)} className="ultra-button">Ultra Thin</button>}
         />
 
-        {/* Seletor de Agrupamento de Empresas */}
-        <div className="px-8 py-4 border-b border-slate-800">
-          <CompanyGroupSelector
-            companies={companies}
-            selectedCompanies={selectedCompanies}
-            onChange={setSelectedCompanies}
-          />
+        {/* Seletor de Agrupamento de Empresas e Botões de Exportação */}
+        <div className="px-8 py-4 border-b border-slate-800 flex items-center justify-between gap-4">
+          <div className="flex-1">
+            <CompanyGroupSelector
+              companies={companies}
+              selectedCompanies={selectedCompanies}
+              onChange={setSelectedCompanies}
+            />
+          </div>
+          <div className="flex gap-2">
+            <DREExportButton 
+              selectedCompanies={selectedCompanies}
+              selectedMonth={selectedMonth}
+              period={period}
+            />
+            <DFCExportButton 
+              selectedCompanies={selectedCompanies}
+              selectedMonth={selectedMonth}
+              period={period}
+            />
+          </div>
         </div>
         
         <main className="flex-1 p-8">
@@ -346,6 +371,7 @@ Sempre que relevante, fornecer:
           )}
         </main>
         <ConfigModal open={configOpen} onClose={() => setConfigOpen(false)} onUpdateOracleContext={setOracleContext} />
+        <F360ImportModal open={f360ImportOpen} onClose={() => setF360ImportOpen(false)} />
         {!session && (
           isVolpeDomain ? (
             <SimpleVolpeLogin 

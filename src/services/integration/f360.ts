@@ -70,3 +70,71 @@ export async function getF360Token(mdUrl: string): Promise<string | null> {
     return m?.[1] || null
   } catch { return null }
 }
+
+/**
+ * Transforma dados de DRE/DFC para a tabela consolidada dre_dfc_summaries
+ * Esta tabela armazena agregações mensais por empresa/conta/categoria
+ * para permitir cálculos rápidos de somas/diferenças em filtros multi-empresa
+ */
+export async function populateDreDfcSummaries(
+  dreEntries: Array<{ company_cnpj: string; date: string; account: string; natureza: string; valor: number }>,
+  dfcEntries: Array<{ company_cnpj: string; date: string; kind: string; category: string; amount: number; bank_account?: string }>
+): Promise<any[]> {
+  const summaries = new Map<string, any>()
+
+  // Processar DRE
+  for (const entry of dreEntries) {
+    const date = new Date(entry.date)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const key = `${entry.company_cnpj}_${year}_${month}_${entry.account}_${entry.natureza}`
+
+    const existing = summaries.get(key)
+    if (existing) {
+      existing.dre_value += Number(entry.valor || 0)
+    } else {
+      summaries.set(key, {
+        company_cnpj: entry.company_cnpj,
+        period_year: year,
+        period_month: month,
+        account: entry.account,
+        category: entry.natureza,
+        dre_value: Number(entry.valor || 0),
+        dfc_in: 0,
+        dfc_out: 0,
+        bank_account: null
+      })
+    }
+  }
+
+  // Processar DFC
+  for (const entry of dfcEntries) {
+    const date = new Date(entry.date)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const key = `${entry.company_cnpj}_${year}_${month}_${entry.category}_${entry.kind}_${entry.bank_account || ''}`
+
+    const existing = summaries.get(key)
+    if (existing) {
+      if (entry.kind === 'in') {
+        existing.dfc_in += Number(entry.amount || 0)
+      } else {
+        existing.dfc_out += Number(entry.amount || 0)
+      }
+    } else {
+      summaries.set(key, {
+        company_cnpj: entry.company_cnpj,
+        period_year: year,
+        period_month: month,
+        account: entry.category,
+        category: entry.kind,
+        dre_value: 0,
+        dfc_in: entry.kind === 'in' ? Number(entry.amount || 0) : 0,
+        dfc_out: entry.kind === 'out' ? Number(entry.amount || 0) : 0,
+        bank_account: entry.bank_account || null
+      })
+    }
+  }
+
+  return Array.from(summaries.values())
+}
