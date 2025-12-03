@@ -1,0 +1,8 @@
+﻿App/Voucher,Tipo,Funcionalidades,Automacao,Beneficios
+iFood,Integração Pronta,"Conciliação de vendas, pagamentos em cartão, vouchers e crédito iFood",Sincronização automática de pedidos e pagamentos,"Registro de taxas, antecipação de recebíveis, conciliação de VA/VR"
+Rappi,Integração Pronta,"Conciliação automática de vendas, vouchers (VA/VR)",Sincronização de transações financeiras,"Identificação de taxas, controle de recebíveis"
+Uber Eats,Integração Pronta,Conciliação de vendas via app e pagamentos,Importação automática de transações,Consolidação de vendas multicanal
+Alelo (VA/VR),Integração Pronta,Conciliação de vale-alimentação e vale-refeição,Sincronização automática de créditos,"Evita divergências, controla fluxo de caixa"
+Sodexo (VA/VR),Integração Pronta,Conciliação automática de vales,Sincronização de transações,Previsibilidade de recebimentos
+Ticket (VR),Integração Pronta,Conciliação de vale-refeição,Sincronização automática,Controle integrado de vales
+VR (Vale Refeição),Integração Pronta,Conciliação automática de vale-refeição,Sincronização de créditos e pagamentos,Integração com gestão de fluxo de caixa

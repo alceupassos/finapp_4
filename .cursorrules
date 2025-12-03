@@ -89,3 +89,179 @@ const query = {
 </button>
 ```
 
+---
+
+# 📚 ÍNDICE INCREMENTAL DO PROJETO
+
+> **Uso**: Consultar este índice antes de ler arquivos completos. Atualizar incrementalmente após mudanças significativas.
+
+## 🔍 QUICK REFERENCE - Arquivos Principais
+
+| Caminho | Função | Última Atualização |
+|---------|--------|-------------------|
+| `src/App.tsx` | Componente raiz, roteamento, filtros globais | 2025-01 |
+| `src/components/ReportsPage.tsx` | Página principal de relatórios com sidebar | 2025-01 |
+| `src/components/reports/ReportsSidebar.tsx` | Menu lateral retrátil de seções | 2025-01 |
+| `src/components/reports/DRESection.tsx` | Seção DRE com KPIs e gráficos | 2025-01 |
+| `src/components/reports/DFCSection.tsx` | Seção DFC (fluxo de caixa) | 2025-01 |
+| `src/components/reports/BanksSection.tsx` | Seção de contas bancárias | 2025-01 |
+| `src/components/reports/ReconciliationSection.tsx` | Conciliação bancária | 2025-01 |
+| `src/services/f360Service.ts` | Cliente TypeScript API F360 | 2025-01 |
+| `src/services/supabaseRest.ts` | Cliente REST Supabase, queries | 2025-01 |
+| `src/services/auth.ts` | Autenticação Supabase | 2025-01 |
+| `scripts/import_volpe_f360.mjs` | Importação dados 13 empresas Volpe | 2025-01 |
+| `scripts/register_volpe_companies.mjs` | Cadastro empresas no Supabase | 2025-01 |
+| `supabase/migrations/create_f360_volpe_tables.sql` | Tabelas DRE/DFC/Bancos | 2025-01 |
+
+## 🔐 CREDENCIAIS E CONFIGURAÇÕES
+
+### F360 Finanças
+- **Base URL**: `https://financas.f360.com.br`
+- **Token Grupo Volpe**: `223b065a-1873-4cfe-a36b-f092c602a03e`
+- **Login**: `volpe.matriz@ifinance.com.br`
+- **Senha**: `v3T$cABl5.`
+- **Endpoints principais**:
+  - Login: `POST /PublicLoginAPI/DoLogin`
+  - Plano Contas: `GET /PlanoDeContasPublicAPI/ListarPlanosContas`
+  - Contas Bancárias: `GET /ContaBancariaPublicAPI/ListarContasBancarias`
+  - Parcelas Títulos: `GET /ParcelasDeTituloPublicAPI/ListarParcelasDeTitulos`
+  - Relatórios: `POST /PublicRelatorioAPI/GerarRelatorio`
+
+### Supabase
+- **Variáveis**: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
+- **Tabelas principais**: `companies`, `dre_entries`, `dfc_entries`, `bank_accounts`, `bank_transactions`, `reconciliation_items`, `user_companies`, `accounting_entries`, `chart_of_accounts`
+
+### Grupo Volpe - 13 Empresas
+| CNPJ | Nome |
+|------|------|
+| 26888098000159 | VOLPE MATRIZ |
+| 26888098000230 | VOLPE ZOIAO |
+| 26888098000310 | VOLPE MAUÁ |
+| 26888098000400 | VOLPE DIADEMA |
+| 26888098000582 | VOLPE GRAJAÚ |
+| 26888098000663 | VOLPE SANTO ANDRÉ |
+| 26888098000744 | VOLPE CAMPO LIMPO |
+| 26888098000825 | VOLPE BRASILÂNDIA |
+| 26888098000906 | VOLPE POÁ |
+| 26888098001040 | VOLPE ITAIM |
+| 26888098001120 | VOLPE PRAIA GRANDE |
+| 26888098001201 | VOLPE ITANHAÉM |
+| 26888098001392 | VOLPE SÃO MATHEUS |
+
+## 🏗️ ARQUITETURA
+
+### Stack Principal
+- **Frontend**: React 18 + TypeScript + Vite
+- **UI**: TailwindCSS + Radix UI + Framer Motion
+- **Gráficos**: Recharts + Tremor
+- **Backend**: Supabase (PostgreSQL + Auth + Storage)
+- **Integração**: F360 API (REST + Webhooks)
+
+### Padrões de Código
+- **Componentes**: Functional Components com hooks
+- **Estado**: useState/useEffect, Zustand para global
+- **Queries**: Supabase REST API via `supabaseRest.ts`
+- **Animações**: Framer Motion (entrada escalonada, hover effects)
+- **Filtros**: Props drilling de App.tsx → componentes filhos
+- **Estilo**: Classes Tailwind + `card-premium` para cards
+
+### Estrutura de Pastas
+```
+src/
+├── components/        # Componentes React
+│   ├── reports/      # Seções de relatórios
+│   ├── charts/       # Gráficos Recharts
+│   └── ui/           # Componentes base Radix
+├── services/         # Clientes API, lógica de negócio
+├── hooks/            # Custom hooks
+├── types/            # TypeScript types
+└── lib/              # Utilitários
+
+scripts/              # Scripts Node.js (importação, migrações)
+supabase/migrations/  # Migrações SQL
+```
+
+## 🛠️ COMANDOS ÚTEIS
+
+### Desenvolvimento
+```bash
+npm run dev              # Iniciar dev server
+npm run build            # Build produção
+npm run lint             # Verificar TypeScript
+npm run preview          # Preview build
+```
+
+### Importação de Dados
+```bash
+# Importar 13 empresas Volpe do F360
+node scripts/import_volpe_f360.mjs
+
+# Cadastrar empresas no Supabase
+node scripts/register_volpe_companies.mjs
+```
+
+### Supabase
+```bash
+# Aplicar migrações
+supabase migration up
+
+# Configurar secrets
+npm run supabase:secrets
+```
+
+## 📝 CHANGELOG
+
+### 2025-01-XX - Importação F360 Grupo Volpe + Área Relatórios
+- ✅ Criadas tabelas: `dre_entries`, `dfc_entries`, `bank_accounts`, `bank_transactions`, `reconciliation_items`
+- ✅ Cadastradas 13 empresas Volpe no Supabase
+- ✅ Criado `f360Service.ts` - cliente TypeScript F360
+- ✅ Criado `import_volpe_f360.mjs` - script importação
+- ✅ Refatorado `ReportsPage.tsx` com sidebar retrátil
+- ✅ Criadas seções: DRE, DFC, Bancos, Conciliação
+- ✅ Componentes: `AnimatedReportCard`, `DREWaterfallChart`, `CashflowSankeyChart`
+- ✅ Animações Framer Motion em todos componentes
+
+### Histórico Anterior
+- Sistema base com dashboard, análises, notícias
+- Integração Supabase para dados financeiros
+- Componentes de gráficos e KPIs
+- Autenticação e controle de acesso
+
+## ⚠️ TODOs / PENDÊNCIAS
+
+### Alta Prioridade
+- [ ] Implementar busca real de dados DFC do Supabase (atualmente mockado)
+- [ ] Implementar busca real de contas bancárias e transações
+- [ ] Completar implementação Sankey chart (requer d3-sankey)
+- [ ] Adicionar método `getDFC()` no `supabaseRest.ts`
+- [ ] Testar importação completa F360 com dados reais
+
+### Média Prioridade
+- [ ] Implementar match automático de conciliação bancária
+- [ ] Adicionar exportação Excel para DRE/DFC
+- [ ] Criar seção "Plano de Contas" completa
+- [ ] Adicionar filtros avançados por categoria/centro de custo
+- [ ] Implementar cache de queries para performance
+
+### Baixa Prioridade
+- [ ] Adicionar testes unitários
+- [ ] Documentação de API
+- [ ] Otimização de bundle size
+- [ ] PWA support
+
+## 🔑 KEYWORDS PARA BUSCA RÁPIDA
+
+**F360**: `f360Service.ts`, `import_volpe_f360.mjs`, `F360Service`
+**DRE**: `DRESection.tsx`, `dre_entries`, `DREPivotTable.tsx`
+**DFC**: `DFCSection.tsx`, `dfc_entries`, `DFCPivotTable.tsx`
+**Bancos**: `BanksSection.tsx`, `bank_accounts`, `bank_transactions`
+**Conciliação**: `ReconciliationSection.tsx`, `reconciliation_items`
+**Filtros**: `HorizontalFilters.tsx`, `App.tsx` (selectedCompanies, period)
+**Gráficos**: `charts/`, `Recharts`, `DREWaterfallChart.tsx`
+**Animações**: `Framer Motion`, `AnimatedReportCard.tsx`
+**Supabase**: `supabaseRest.ts`, `auth.ts`, migrations em `supabase/migrations/`
+
+---
+
+> **Nota**: Este índice deve ser atualizado após mudanças significativas no projeto. Manter formato compacto para economizar tokens.
+

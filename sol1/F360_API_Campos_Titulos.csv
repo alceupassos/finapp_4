@@ -1,0 +1,27 @@
+﻿Endpoint,Objeto,Campo,Tipo,Formato,Obrigatório,Descrição
+Webhook - Títulos,Raiz,cnpj,string,00.000.000/0000-00,Sim,CNPJ da empresa
+Webhook - Títulos,Raiz,tipoTitulo,string,enum,Sim,Tipo do título: 'Pagar' ou 'Receber'
+Webhook - Títulos,Raiz,numeroTitulo,string,texto,Sim,Número do título
+Webhook - Títulos,Raiz,clienteFornecedor,string,CPF/CNPJ ou nome,Sim,CPF/CNPJ ou nome do fornecedor (contas a pagar) ou cliente (contas a receber). Será criado se não existir
+Webhook - Títulos,Raiz,detalhesClienteFornecedor,object,Objeto DetalhesClienteFornecedor,Não,Objeto opcional com dados para cadastrar pessoa caso não exista (nome + cpfCnpj)
+Webhook - Títulos,Raiz,emissao,string,yyyy-MM-dd,Sim,Data de emissão do título
+Webhook - Títulos,Raiz,valor,double,0.00,Sim,Valor total do título
+Webhook - Títulos,Raiz,tipoDocumento,string,enum,Sim,"Tipo de documento: Duplicata, Boleto, Nota Fiscal, Nota De Débito, Conta De Consumo, Cupom Fiscal, Outros, Previsão"
+Webhook - Títulos,Raiz,contaBancaria,string,texto,Sim,Nome de uma conta bancária já cadastrada no sistema
+Webhook - Títulos,Raiz,meioPagamento,string,enum,Sim,"Meio de pagamento: Boleto, Dinheiro, Cheque, DDA, DOC/TED, Depósito em Conta, Transferência Bancária, Débito Automático, Cartão de Crédito/Débito, Outros"
+Webhook - Títulos,Raiz,historico,string,texto,Não,Descrição adicional que pode ser adicionada ao título
+Webhook - Títulos,Raiz,remessaCnab,boolean,true/false,Não,"Indica origem do título: false=importação comum, true=gerado pelo CNAB. Padrão: false"
+Webhook - Títulos,Raiz,receitaDeCaixa,boolean,true/false,Não,Indica se o título será mostrado na tela de fechamento de caixa. Padrão: false
+Webhook - Títulos,Raiz,parcelas,array,Array de Objeto Parcela,Sim,Array com detalhes de cada parcela do título. Mínimo de 1 parcela (mesmo não parcelado)
+Webhook - Títulos,DetalhesClienteFornecedor,nome,string,texto,Não,Nome do fornecedor (contas a pagar) ou cliente (contas a receber)
+Webhook - Títulos,DetalhesClienteFornecedor,cpfCnpj,string,CPF ou CNPJ,Não,CPF ou CNPJ do fornecedor (contas a pagar) ou cliente (contas a receber)
+Webhook - Títulos,Parcela,vencimento,string,yyyy-MM-dd,Sim,Data de vencimento da parcela
+Webhook - Títulos,Parcela,valor,double,0.00,Sim,Valor da parcela
+Webhook - Títulos,Parcela,numeroParcela,short,inteiro,Sim,Número da parcela
+Webhook - Títulos,Parcela,liquidacao,string,yyyy-MM-dd,Não,"Data de liquidação. Se não preenchido, parcela fica como não liquidada; se preenchido, parcela será liquidada com a data informada"
+Webhook - Títulos,Parcela,codigoDeBarras,string,texto,Não,Código de barras da parcela
+Webhook - Títulos,Parcela,rateios,array,Array de Objeto Rateio,Não,Array opcional com rateios da parcela por centro de custo e plano de contas
+Webhook - Títulos,Rateio,competencia,string,MM-dd,Sim,Data de competência do rateio (formato mês-dia)
+Webhook - Títulos,Rateio,centroDeCusto,string,texto,Não,"Nome do centro de custo cadastrado no sistema. Se não preenchido, utiliza centro de custo padrão"
+Webhook - Títulos,Rateio,planoDeContas,string,texto,Sim,Nome do plano de contas cadastrado no sistema que será relacionado ao rateio
+Webhook - Títulos,Rateio,numeroParcela,short,inteiro,Sim,Número da parcela à qual este rateio faz referência

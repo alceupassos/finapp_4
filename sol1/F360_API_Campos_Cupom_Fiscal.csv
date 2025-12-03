@@ -1,0 +1,22 @@
+﻿Endpoint,Objeto,Campo,Tipo,Formato,Obrigatório,Descrição
+Webhook - Cupom Fiscal,Raiz,NomeSistema,string,texto,Sim,Nome do sistema PDV/ERP de origem
+Webhook - Cupom Fiscal,Raiz,Values,array,Array de cupons,Sim,Array contendo um ou mais cupons fiscais. CNPJEmitente e dia das datas devem ser únicos na mesma request
+Webhook - Cupom Fiscal,Values (Cupom),NumeroCupom,string,texto,Sim,Número único identificador do cupom fiscal
+Webhook - Cupom Fiscal,Values (Cupom),CNPJEmitente,string,números sem formatação,Sim,CNPJ da loja emitente cadastrado no F360 Finanças (sem traços e pontos)
+Webhook - Cupom Fiscal,Values (Cupom),Cliente,object,Objeto Cliente,Sim,Objeto com dados do cliente (Nome e CPF)
+Webhook - Cupom Fiscal,Cliente,Nome,string,texto,Sim,Nome do cliente do cupom
+Webhook - Cupom Fiscal,Cliente,CPF,string,números,Sim,CPF do cliente do cupom
+Webhook - Cupom Fiscal,Values (Cupom),Data,string,yyyy-MM-ddTHH:mm:ss,Sim,Data e hora em que a venda foi realizada
+Webhook - Cupom Fiscal,Values (Cupom),ValorTotal,double,0.00,Sim,Valor total da venda do cupom fiscal
+Webhook - Cupom Fiscal,Values (Cupom),ValorFrete,double,0.00,Não,Valor do frete relacionado à venda (opcional)
+Webhook - Cupom Fiscal,Values (Cupom),VendaCancelada,boolean,true/false,Não,"Se true, a venda será buscada no sistema e cancelada. Se não encontrada, não será cancelada. Padrão: false"
+Webhook - Cupom Fiscal,Values (Cupom),MeioPagamento,array,Array de Objeto MeioPagamento,Sim,Array com as diversas formas de pagamento do cupom fiscal
+Webhook - Cupom Fiscal,MeioPagamento,FormaPagamento,string,texto,Sim,Forma com que foi efetuado o pagamento
+Webhook - Cupom Fiscal,MeioPagamento,Valor,double,0.00,Sim,"Valor líquido pago naquela forma de pagamento (nas vendas em dinheiro, é o resultado do valor recebido menos o troco)"
+Webhook - Cupom Fiscal,MeioPagamento,QtdParcelas,int,inteiro,Não,"Quantidade de parcelas em que a forma de pagamento foi efetuada. Se não informado, considera 1 parcela"
+Webhook - Cupom Fiscal,MeioPagamento,Vencimento,string,yyyy-MM-ddTHH:mm:ss,Não,Data de vencimento do pagamento
+Webhook - Cupom Fiscal,MeioPagamento,Parcelas,array,Array de Objeto Parcela,Não,"Array opcional para informar detalhes de cada parcela separadamente. Se não preenchido, o parcelamento é calculado automaticamente através do valor, vencimento e QtdParcelas"
+Webhook - Cupom Fiscal,Parcelas (MeioPagamento),DataDeApresentacao,string,yyyy-MM-dd,Sim,Data de apresentação da parcela
+Webhook - Cupom Fiscal,Parcelas (MeioPagamento),Valor,double,0.00,Sim,Valor da parcela
+Webhook - Cupom Fiscal,Parcelas (MeioPagamento),NumeroDaParcela,int,inteiro,Sim,Número da parcela
+Webhook - Cupom Fiscal,Parcelas (MeioPagamento),Vencimento,string,yyyy-MM-ddTHH:mm:ss,Sim,Data de vencimento da parcela
