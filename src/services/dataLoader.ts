@@ -5,33 +5,20 @@ export async function loadCompaniesFallback() {
     const data = await SupabaseRest.getCompanies()
     if (Array.isArray(data) && data.length) {
       console.log('[dataLoader] Supabase companies loaded:', data.length)
-      // Filtrar apenas empresas do grupo VOLPE
-      const volpeCompanies = data.filter(c => 
-        c.cliente_nome?.toLowerCase().includes('volpe') ||
-        String(c.cnpj || '').startsWith('26888098')
-      )
-      
-      // Normalizar CNPJ removendo zeros à esquerda e forçar matriz 0159 como primeiro
-      const normalized = volpeCompanies.map(c => ({
+      // Normalizar CNPJ removendo zeros à esquerda
+      const normalized = data.map(c => ({
         ...c,
         cnpj: c.cnpj ? c.cnpj.replace(/^0+/, '') : c.cnpj
       }))
       
-      // Forçar matriz 0159 como primeira opção
-      normalized.sort((a: any, b: any) => {
-        const aIs0159 = String(a.cnpj || '') === '26888098000159' ? -1 : 1
-        const bIs0159 = String(b.cnpj || '') === '26888098000159' ? -1 : 1
-        return aIs0159 - bIs0159
-      })
-      
-      console.log('[dataLoader] Volpe companies loaded:', normalized.length)
-      return normalized.length > 0 ? normalized : [{ cliente_nome: 'Volpe Tech', cnpj: '26888098000159' }]
+      console.log('[dataLoader] Companies loaded:', normalized.length)
+      return normalized.length > 0 ? normalized : []
     }
   } catch (err) {
     console.warn('[dataLoader] Failed to load companies from Supabase:', err)
   }
   console.log('[dataLoader] Using mock company fallback')
-  return [{ cliente_nome: 'Volpe Tech', cnpj: '26888098000159' }]
+  return []
 }
 
 export async function loadDREFallback(cnpj?: string) {

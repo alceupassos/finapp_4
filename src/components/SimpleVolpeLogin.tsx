@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { gotruePasswordSignIn } from '../services/auth'
-import { SupabaseRest } from '../services/supabaseRest'
-import { fadeIn, slideUp, scaleOnHover } from '../lib/motion'
+import { loginSupabase } from '../services/auth'
+import { slideUp, scaleOnHover } from '../lib/motion'
 
 interface SimpleVolpeLoginProps {
   open: boolean
@@ -21,21 +20,14 @@ export function SimpleVolpeLogin({ open, onClose, onLogged }: SimpleVolpeLoginPr
     setLoading(true)
     
     try {
-      const session = await gotruePasswordSignIn(email, password)
+      const session = await loginSupabase(email, password)
       if (!session) {
         setError('Credenciais inválidas')
         setLoading(false)
         return
       }
       
-      // Forçar empresa VOLPE 0159 como padrão
-      const sessionWithCompany = {
-        ...session,
-        defaultCompany: '26888098000159',
-        companies: [{ cliente_nome: 'LOJA 01 - VOLPE MATRIZ', cnpj: '26888098000159' }]
-      }
-      
-      onLogged(sessionWithCompany)
+      onLogged(session)
       onClose()
     } catch (err: any) {
       setError(err.message || 'Erro ao fazer login')
@@ -79,10 +71,6 @@ export function SimpleVolpeLogin({ open, onClose, onLogged }: SimpleVolpeLoginPr
             disabled={loading}
           />
 
-          <div className="text-xs text-muted-foreground text-center">
-            <p>Empresa padrão: LOJA 01 - VOLPE MATRIZ (0159)</p>
-          </div>
-
           {error && <p className="text-xs text-destructive text-center">{error}</p>}
           
           <div className="flex gap-2 justify-end pt-2">
@@ -97,10 +85,6 @@ export function SimpleVolpeLogin({ open, onClose, onLogged }: SimpleVolpeLoginPr
             </motion.button>
           </div>
 
-          <div className="text-xs text-muted-foreground text-center">
-            <p>Usuário: dev@angrax.com.br</p>
-            <p>Empresa: 26888098000159 (Matriz)</p>
-          </div>
         </div>
       </motion.div>
     </div>

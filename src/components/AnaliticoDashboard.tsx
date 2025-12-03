@@ -9,6 +9,9 @@ interface AnaliticoDashboardProps {
   className?: string;
   selectedMonth?: string;
   selectedCompany?: string;
+  period?: 'Dia' | 'Semana' | 'Mês' | 'Ano';
+  companies?: Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>;
+  selectedCompanies?: string[];
 }
 
 const padMonth = (month: number) => String(month).padStart(2, '0');
@@ -38,56 +41,38 @@ const buildFullMonthList = (dates: Array<string | null | undefined>) => {
   return fullMonths;
 };
 
-export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth, selectedCompany: propSelectedCompany }: AnaliticoDashboardProps) {
-  const [companies, setCompanies] = useState<any[]>([]);
-  const [selectedCompany, setSelectedCompany] = useState<string>(propSelectedCompany || '26888098000159'); // Matriz VOLPE 0159
-  const [selectedMonth, setSelectedMonth] = useState<string>(propSelectedMonth || 'all'); // 'all' ou 'YYYY-MM'
+export function AnaliticoDashboard({ 
+  className, 
+  selectedMonth: propSelectedMonth, 
+  selectedCompany: propSelectedCompany,
+  period: propPeriod = 'Ano',
+  companies: propCompanies = [],
+  selectedCompanies: propSelectedCompanies = []
+}: AnaliticoDashboardProps) {
+  // Usar empresas e filtros globais passados como props
+  const companies = propCompanies.length > 0 ? propCompanies : [];
+  const selectedCompanies = propSelectedCompanies.length > 0 ? propSelectedCompanies : (propSelectedCompany ? [propSelectedCompany] : []);
+  const selectedMonth = propSelectedMonth || 'all';
+  const period = propPeriod;
+  
+  // Usar primeira empresa selecionada ou fallback
+  const selectedCompany = selectedCompanies.length > 0 ? selectedCompanies[0] : (propSelectedCompany || '26888098000159');
+  
   const [dreData, setDreData] = useState<any[]>([]);
   const [dfcData, setDfcData] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // Sincronizar com props quando mudarem
+  // Carregar dados quando empresas selecionadas mudarem
   useEffect(() => {
-    if (propSelectedMonth && propSelectedMonth !== selectedMonth) {
-      setSelectedMonth(propSelectedMonth);
+    if (selectedCompanies.length > 0) {
+      // Se múltiplas empresas, carregar dados consolidados
+      if (selectedCompanies.length > 1) {
+        loadConsolidatedData(selectedCompanies);
+      } else {
+        loadCompanyData(selectedCompanies[0]);
+      }
     }
-  }, [propSelectedMonth]);
-
-  useEffect(() => {
-    if (propSelectedCompany && propSelectedCompany !== selectedCompany) {
-      setSelectedCompany(propSelectedCompany);
-    }
-  }, [propSelectedCompany]);
-
-  useEffect(() => {
-    loadCompanies();
-  }, []);
-
-  useEffect(() => {
-    if (selectedCompany) {
-      loadCompanyData(selectedCompany);
-    }
-  }, [selectedCompany]);
-
-  const loadCompanies = async () => {
-    try {
-      const data = await SupabaseRest.getCompanies();
-      const volpeCompanies = data.filter(c => 
-        c.cliente_nome?.toLowerCase().includes('volpe') ||
-        String(c.cnpj || '').startsWith('26888098')
-      ).map(c => ({
-        ...c,
-        cnpj: c.cnpj ? c.cnpj.replace(/^0+/, '') : c.cnpj
-      })).sort((a: any, b: any) => {
-        const aIs0159 = String(a.cnpj || '') === '26888098000159' ? -1 : 1
-        const bIs0159 = String(b.cnpj || '') === '26888098000159' ? -1 : 1
-        return aIs0159 - bIs0159
-      });
-      setCompanies(volpeCompanies);
-    } catch (error) {
-      console.error('Erro ao carregar empresas:', error);
-    }
-  };
+  }, [selectedCompanies, selectedMonth, period]);
 
   const loadCompanyData = async (cnpj: string) => {
     setLoading(true);
@@ -117,6 +102,77 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
     } catch (error) {
       console.error('❌ Erro ao carregar dados:', error);
       // Em caso de erro, usar dados de exemplo
+      setDreData(generateSampleDREData());
+      setDfcData(generateSampleDFCData());
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadConsolidatedData = async (cnpjs: string[]) => {
+    setLoading(true);
+    try {
+      console.log('🔍 Buscando dados consolidados para', cnpjs.length, 'empresas');
+      
+      // Carregar dados de todas as empresas
+      const allDrePromises = cnpjs.map(cnpj => SupabaseRest.getDRE(cnpj));
+      const allDfcPromises = cnpjs.map(cnpj => SupabaseRest.getDFC(cnpj));
+      
+      const allDreResults = await Promise.all(allDrePromises);
+      const allDfcResults = await Promise.all(allDfcPromises);
+      
+      // Consolidar DRE: agrupar por data/conta e somar valores
+      const dreMap = new Map<string, { data: string; conta: string; natureza: string; valor: number }>();
+      allDreResults.forEach((dreArray: any[]) => {
+        if (Array.isArray(dreArray)) {
+          dreArray.forEach((item: any) => {
+            const key = `${item.data || ''}_${item.conta || ''}_${item.natureza || ''}`;
+            const existing = dreMap.get(key);
+            if (existing) {
+              existing.valor += Number(item.valor || 0);
+            } else {
+              dreMap.set(key, {
+                data: item.data || '',
+                conta: item.conta || '',
+                natureza: item.natureza || '',
+                valor: Number(item.valor || 0)
+              });
+            }
+          });
+        }
+      });
+      
+      // Consolidar DFC: agrupar por data/descrição e somar valores
+      const dfcMap = new Map<string, { data: string; descricao: string; entrada: number; saida: number; saldo: number }>();
+      allDfcResults.forEach((dfcArray: any[]) => {
+        if (Array.isArray(dfcArray)) {
+          dfcArray.forEach((item: any) => {
+            const key = `${item.data || ''}_${item.descricao || ''}`;
+            const existing = dfcMap.get(key);
+            if (existing) {
+              existing.entrada += Number(item.entrada || 0);
+              existing.saida += Number(item.saida || 0);
+              existing.saldo += Number(item.saldo || 0);
+            } else {
+              dfcMap.set(key, {
+                data: item.data || '',
+                descricao: item.descricao || '',
+                entrada: Number(item.entrada || 0),
+                saida: Number(item.saida || 0),
+                saldo: Number(item.saldo || 0)
+              });
+            }
+          });
+        }
+      });
+      
+      const consolidatedDre = Array.from(dreMap.values());
+      const consolidatedDfc = Array.from(dfcMap.values());
+      
+      setDreData(consolidatedDre.length > 0 ? consolidatedDre : generateSampleDREData());
+      setDfcData(consolidatedDfc.length > 0 ? consolidatedDfc : generateSampleDFCData());
+    } catch (error) {
+      console.error('❌ Erro ao carregar dados consolidados:', error);
       setDreData(generateSampleDREData());
       setDfcData(generateSampleDFCData());
     } finally {
@@ -193,7 +249,6 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
     }).format(value);
   };
 
-  const selectedCompanyName = companies.find(c => c.cnpj === selectedCompany)?.cliente_nome || 'Empresa';
 
   const dreMonths = buildFullMonthList(dreData.map((item) => item.data));
   const dfcMonths = buildFullMonthList(dfcData.map((item) => item.data));
@@ -360,33 +415,30 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
 
   return (
     <div className={className}>
-      <div className="mb-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Análises - Seleção de Empresa</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-4">
-              <label className="text-sm font-medium">Empresa:</label>
-              <Select value={selectedCompany} onValueChange={setSelectedCompany}>
-                <SelectTrigger className="w-[300px]">
-                  <SelectValue placeholder="Selecione uma empresa" />
-                </SelectTrigger>
-                <SelectContent>
-                  {companies.map((company) => (
-                    <SelectItem key={company.cnpj} value={company.cnpj}>
-                      {company.cliente_nome} ({company.cnpj})
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <span className="text-sm text-muted-foreground">
-                Visualizando: {selectedCompanyName}
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      {selectedCompanies.length > 0 && (
+        <div className="mb-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Análises</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center gap-4">
+                <span className="text-sm text-muted-foreground">
+                  {selectedCompanies.length === 1 
+                    ? `Visualizando: ${companies.find(c => c.cnpj === selectedCompany)?.cliente_nome || 'Empresa'}`
+                    : `Visualizando: ${selectedCompanies.length} empresas (Consolidado)`
+                  }
+                </span>
+                {period && (
+                  <span className="text-sm text-muted-foreground">
+                    • Período: {period}
+                  </span>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
@@ -407,7 +459,7 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>DRE - Demonstração de Resultados por Mês</CardTitle>
-                  <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+                  <Select value={selectedMonth} disabled>
                     <SelectTrigger className="w-[200px]">
                       <SelectValue placeholder="Selecione o mês" />
                     </SelectTrigger>
@@ -513,7 +565,7 @@ export function AnaliticoDashboard({ className, selectedMonth: propSelectedMonth
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle>DFC - Demonstração de Fluxo de Caixa por Mês</CardTitle>
-                  <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+                  <Select value={selectedMonth} disabled>
                     <SelectTrigger className="w-[200px]">
                       <SelectValue placeholder="Selecione o mês" />
                     </SelectTrigger>

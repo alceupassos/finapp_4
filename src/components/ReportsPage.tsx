@@ -11,57 +11,84 @@ import { motion } from 'framer-motion'
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
 type DRERow = { data?: string; conta?: string; natureza?: string; valor?: number }
 
-export function ReportsPage() {
-  const [companies, setCompanies] = useState<Company[]>([])
-  const [selectedCompany, setSelectedCompany] = useState<string>(MATRIZ_CNPJ)
-  const [selectedGroup, setSelectedGroup] = useState<string>('')
+interface ReportsPageProps {
+  companies?: Company[];
+  selectedCompanies?: string[];
+  selectedMonth?: string;
+}
+
+export function ReportsPage({ 
+  companies: propCompanies = [], 
+  selectedCompanies: propSelectedCompanies = [],
+  selectedMonth: propSelectedMonth = ''
+}: ReportsPageProps = {}) {
+  // Usar empresas e filtros globais passados como props
+  const companies = propCompanies.length > 0 ? propCompanies : []
+  const selectedCompanies = propSelectedCompanies.length > 0 ? propSelectedCompanies : [MATRIZ_CNPJ]
+  const globalSelectedMonth = propSelectedMonth
+  
+  // Usar primeira empresa selecionada ou fallback
+  const selectedCompany = selectedCompanies.length > 0 ? selectedCompanies[0] : MATRIZ_CNPJ
+  
   const [selectedPeriod, setSelectedPeriod] = useState<'Ano' | 'Mês'>('Ano')
   const [selectedYear, setSelectedYear] = useState<string>(new Date().getFullYear().toString())
-  const [selectedMonth, setSelectedMonth] = useState<string>('')
+  const [selectedMonth, setSelectedMonth] = useState<string>(globalSelectedMonth || '')
   const [selectedQuarter, setSelectedQuarter] = useState<string>('')
   const [dreData, setDreData] = useState<DRERow[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
   const [activeTab, setActiveTab] = useState<'DRE' | 'DFC'>('DRE')
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const cs = await SupabaseRest.getCompanies() as Company[]
-        setCompanies(cs || [])
-        if (cs.length > 0) {
-          setSelectedCompany(cs[0].cnpj || MATRIZ_CNPJ)
-          const uniqueGroups = Array.from(new Set(cs.map(c => c.grupo_empresarial).filter(Boolean))) as string[]
-          if (uniqueGroups.length > 0) {
-            setSelectedGroup(uniqueGroups[0])
-          }
-        }
-      } catch {
-        setError('Falha ao carregar empresas')
-      }
-    })()
-  }, [])
 
+  // Carregar dados quando empresas selecionadas mudarem
   useEffect(() => {
-    if (!selectedCompany) return
+    if (selectedCompanies.length === 0) return
     setLoading(true)
     ;(async () => {
       try {
-        const dre = await SupabaseRest.getDRE(selectedCompany) as any[]
-        const norm = (Array.isArray(dre) ? dre : []).map((r) => ({
-          data: r.data,
-          conta: r.conta,
-          natureza: r.natureza,
-          valor: Number(r.valor || 0),
-        }))
-        setDreData(norm)
+        // Se múltiplas empresas, carregar dados consolidados
+        if (selectedCompanies.length > 1) {
+          const allDrePromises = selectedCompanies.map(cnpj => SupabaseRest.getDRE(cnpj))
+          const allDreResults = await Promise.all(allDrePromises)
+          
+          // Consolidar DRE: agrupar por data/conta e somar valores
+          const dreMap = new Map<string, DRERow>()
+          allDreResults.forEach((dreArray: any[]) => {
+            if (Array.isArray(dreArray)) {
+              dreArray.forEach((item: any) => {
+                const key = `${item.data || ''}_${item.conta || ''}_${item.natureza || ''}`
+                const existing = dreMap.get(key)
+                if (existing) {
+                  existing.valor = (existing.valor || 0) + Number(item.valor || 0)
+                } else {
+                  dreMap.set(key, {
+                    data: item.data,
+                    conta: item.conta,
+                    natureza: item.natureza,
+                    valor: Number(item.valor || 0),
+                  })
+                }
+              })
+            }
+          })
+          setDreData(Array.from(dreMap.values()))
+        } else {
+          const dre = await SupabaseRest.getDRE(selectedCompany) as any[]
+          const norm = (Array.isArray(dre) ? dre : []).map((r) => ({
+            data: r.data,
+            conta: r.conta,
+            natureza: r.natureza,
+            valor: Number(r.valor || 0),
+          }))
+          setDreData(norm)
+        }
       } catch {
         setError('Falha ao carregar relatórios')
       } finally {
         setLoading(false)
       }
     })()
-  }, [selectedCompany])
+  }, [selectedCompanies, selectedCompany])
 
   // ✅ Cálculos DRE conforme especificação
   const kpis = useMemo(() => {
@@ -164,13 +191,14 @@ export function ReportsPage() {
           <ReportFilters
             selectedPeriod={selectedPeriod}
             selectedCompany={selectedCompany}
-            selectedGroup={selectedGroup}
+            selectedGroup=""
             selectedYear={selectedYear}
             selectedQuarter={selectedQuarter}
             selectedMonth={selectedMonth}
+            companies={companies}
             onPeriodChange={setSelectedPeriod}
-            onCompanyChange={setSelectedCompany}
-            onGroupChange={setSelectedGroup}
+            onCompanyChange={undefined}
+            onGroupChange={() => {}}
             onYearChange={setSelectedYear}
             onQuarterChange={setSelectedQuarter}
             onMonthChange={setSelectedMonth}
@@ -193,7 +221,7 @@ export function ReportsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <DREPivotTable cnpj={selectedCompany} period={selectedPeriod} />
+                <DREPivotTable cnpj={selectedCompanies.length > 1 ? selectedCompanies : selectedCompany} period={selectedPeriod} />
               </motion.div>
 
               {/* Gráfico de barras mensal - Lucro Bruto */}
@@ -207,7 +235,7 @@ export function ReportsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <DFCPivotTable cnpj={selectedCompany} period={selectedPeriod} />
+                <DFCPivotTable cnpj={selectedCompanies.length > 1 ? selectedCompanies : selectedCompany} period={selectedPeriod} />
               </motion.div>
 
               {/* Gráfico de barras mensal - DFC */}

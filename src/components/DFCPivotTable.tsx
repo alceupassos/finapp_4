@@ -14,7 +14,7 @@ interface PivotRow {
 }
 
 interface DFCPivotTableProps {
-  cnpj: string
+  cnpj: string | string[]
   period?: 'Ano' | 'Mês'
 }
 
@@ -27,15 +27,51 @@ export function DFCPivotTable({ cnpj, period = 'Ano' }: DFCPivotTableProps) {
   useEffect(() => {
     (async () => {
       try {
-        const data = await SupabaseRest.getDFC(cnpj) as any[]
-        const norm = (Array.isArray(data) ? data : []).map((r) => ({
-          data: r.data,
-          descricao: r.descricao || r.category || 'Lançamento',
-          entrada: Number(r.entrada || 0),
-          saida: Number(r.saida || 0),
-          saldo: Number(r.saldo || 0),
-        }))
-        setRows(norm)
+        setLoading(true)
+        const cnpjs = Array.isArray(cnpj) ? cnpj : [cnpj]
+        
+        // Se múltiplos CNPJs, carregar e consolidar
+        if (cnpjs.length > 1) {
+          const allDfcPromises = cnpjs.map(c => SupabaseRest.getDFC(c))
+          const allDfcResults = await Promise.all(allDfcPromises)
+          
+          // Consolidar: agrupar por data/descrição e somar valores
+          const dfcMap = new Map<string, DFCRow>()
+          allDfcResults.forEach((dfcArray: any[]) => {
+            if (Array.isArray(dfcArray)) {
+              dfcArray.forEach((item: any) => {
+                const key = `${item.data || ''}_${item.descricao || item.category || ''}`
+                const existing = dfcMap.get(key)
+                if (existing) {
+                  existing.entrada = (existing.entrada || 0) + Number(item.entrada || 0)
+                  existing.saida = (existing.saida || 0) + Number(item.saida || 0)
+                  existing.saldo = (existing.saldo || 0) + Number(item.saldo || 0)
+                } else {
+                  dfcMap.set(key, {
+                    data: item.data,
+                    descricao: item.descricao || item.category || 'Lançamento',
+                    entrada: Number(item.entrada || 0),
+                    saida: Number(item.saida || 0),
+                    saldo: Number(item.saldo || 0),
+                  })
+                }
+              })
+            }
+          })
+          const norm = Array.from(dfcMap.values())
+          setRows(norm)
+        } else {
+          // CNPJ único
+          const data = await SupabaseRest.getDFC(cnpjs[0]) as any[]
+          const norm = (Array.isArray(data) ? data : []).map((r) => ({
+            data: r.data,
+            descricao: r.descricao || r.category || 'Lançamento',
+            entrada: Number(r.entrada || 0),
+            saida: Number(r.saida || 0),
+            saldo: Number(r.saldo || 0),
+          }))
+          setRows(norm)
+        }
       } catch (e: any) {
         setError('Falha ao carregar DFC')
         console.error(e)
@@ -43,7 +79,7 @@ export function DFCPivotTable({ cnpj, period = 'Ano' }: DFCPivotTableProps) {
         setLoading(false)
       }
     })()
-  }, [cnpj])
+  }, [Array.isArray(cnpj) ? cnpj.join(',') : cnpj])
 
   const pivot = useMemo(() => {
     // Agrupar por categoria e descrição

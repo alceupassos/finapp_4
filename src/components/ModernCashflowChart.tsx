@@ -49,7 +49,17 @@ const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
   return null;
 };
 
-export function ModernCashflowChart({ period = 'Ano', cnpj = '26888098000159', selectedMonth }: { period?: 'Dia'|'Semana'|'Mês'|'Ano', cnpj?: string, selectedMonth?: string }) {
+export function ModernCashflowChart({ 
+  period = 'Ano', 
+  cnpj, 
+  selectedMonth,
+  selectedCompanies = []
+}: { 
+  period?: 'Dia'|'Semana'|'Mês'|'Ano'
+  cnpj?: string
+  selectedMonth?: string
+  selectedCompanies?: string[]
+}) {
   const [chartData, setChartData] = useState<ChartData[]>([
     { month: 'Jan', receita: 0, despesa: 0, saldo: 0 },
     { month: 'Fev', receita: 0, despesa: 0, saldo: 0 },
@@ -65,14 +75,30 @@ export function ModernCashflowChart({ period = 'Ano', cnpj = '26888098000159', s
     { month: 'Dez', receita: 0, despesa: 0, saldo: 0 },
   ]);
 
+  // Determinar quais empresas usar: selectedCompanies tem prioridade sobre cnpj
+  const companiesToLoad = selectedCompanies.length > 0 
+    ? selectedCompanies 
+    : (cnpj ? [cnpj] : ['26888098000159']);
+
   useEffect(() => {
     loadCashflowData();
-  }, [period, cnpj, selectedMonth]);
+  }, [period, selectedMonth, companiesToLoad.join(',')]);
 
   const loadCashflowData = async () => {
     try {
-      const dreData = await SupabaseRest.getDRE(cnpj);
-      if (!dreData || dreData.length === 0) return;
+      // Carregar dados de todas as empresas selecionadas
+      const allDrePromises = companiesToLoad.map(cnpj => SupabaseRest.getDRE(cnpj));
+      const allDreResults = await Promise.all(allDrePromises);
+
+      // Consolidar dados de todas as empresas
+      const consolidatedDre: any[] = [];
+      allDreResults.forEach((dreData: any[]) => {
+        if (Array.isArray(dreData)) {
+          consolidatedDre.push(...dreData);
+        }
+      });
+
+      if (consolidatedDre.length === 0) return;
 
       const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
       const monthlyData: any = {};
@@ -89,8 +115,8 @@ export function ModernCashflowChart({ period = 'Ano', cnpj = '26888098000159', s
         monthlyData[month] = { month, receita: 0, despesa: 0, saldo: 0 };
       });
 
-      // Agregar dados por mês
-      dreData.forEach((item: any) => {
+      // Agregar dados por mês (consolidado de todas as empresas)
+      consolidatedDre.forEach((item: any) => {
         const itemDate = new Date(item.data);
         if (itemDate.getFullYear() !== currentYear) return;
         
@@ -98,9 +124,9 @@ export function ModernCashflowChart({ period = 'Ano', cnpj = '26888098000159', s
         const month = monthNames[monthIdx];
         
         if (item.natureza === 'receita') {
-          monthlyData[month].receita += item.valor;
+          monthlyData[month].receita += Number(item.valor || 0);
         } else if (item.natureza === 'despesa') {
-          monthlyData[month].despesa += Math.abs(item.valor);
+          monthlyData[month].despesa += Math.abs(Number(item.valor || 0));
         }
       });
 

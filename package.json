@@ -34,8 +34,10 @@
     "recharts": "^3.4.1",
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.6.0",
+    "tesseract.js": "^6.0.1",
     "xlsx": "^0.18.5",
-    "zod": "^3.25.76"
+    "zod": "^3.25.76",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",

@@ -1,0 +1,22 @@
+{
+  "name": "AngraRH Landing",
+  "color": {
+    "brand": {
+      "primary": "#0C6FF9",
+      "accent": "#0FD3A6",
+      "dark": "#0B1220"
+    },
+    "ui": {
+      "bg": "#0B1220",
+      "surface": "#121826",
+      "border": "#1E293B",
+      "muted": "#64748B"
+    },
+    "semantic": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "danger": "#EF4444",
+      "info": "#3B82F6"
+    }
+  }
+}

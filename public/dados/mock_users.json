@@ -1,0 +1,45 @@
+[
+  {
+    "email": "admin@ifin.app",
+    "password": "fin123",
+    "name": "Admin BPO",
+    "role": "admin",
+    "companies": [
+      { "cnpj": "11.111.111/0100-11", "name": "Grupo Volpe", "group": "Grupo Volpe" }
+    ],
+    "defaultCompany": "11.111.111/0100-11"
+  },
+  {
+    "email": "franqueado@ifin.app",
+    "password": "fin123",
+    "name": "Franqueado iFinance",
+    "role": "franqueado",
+    "companies": [
+      { "cnpj": "22.222.222/0001-22", "name": "Loja Franquia A", "group": "iFinance" }
+    ],
+    "defaultCompany": "22.222.222/0001-22"
+  },
+  {
+    "email": "cliente@ifin.app",
+    "password": "fin123",
+    "name": "Cliente Demo",
+    "role": "cliente",
+    "companies": [
+      { "cnpj": "33.333.333/0001-33", "name": "Cliente Demo Ltda", "group": "Demo" }
+    ],
+    "defaultCompany": "33.333.333/0001-33"
+  },
+  {
+    "email": "dev@angrax.com.br",
+    "password": "B5b0dcf500@#",
+    "name": "Dev Angrax",
+    "role": "admin",
+    "companies": [
+      { "cnpj": "44.444.444/0001-44", "name": "Angrax Tecnologia", "group": "Angrax" },
+      { "cnpj": "55.555.555/0001-55", "name": "Empresa Teste 1", "group": "Testes" },
+      { "cnpj": "66.666.666/0001-66", "name": "Empresa Teste 2", "group": "Testes" }
+    ],
+    "defaultCompany": "44.444.444/0001-44"
+  }
+]
+

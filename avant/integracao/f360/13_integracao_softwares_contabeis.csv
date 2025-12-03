@@ -1,0 +1,5 @@
+﻿Software,Tipo,Modulo,Funcionalidade,Dados_Exportados
+Domínio,Integração Pronta,F360 Contábil,Exportação de relatórios contábeis padronizados,"DRE, balanço, transações financeiras"
+Contmatic,Integração Pronta,F360 Contábil,Compatibilidade com formato de importação,"Lançamentos contábeis, DRE"
+Questor,Integração Pronta,F360 Contábil,Exportação de dados fiscais,Relatórios contábeis padronizados
+Modelo Próprio F360,Integração Nativa,F360 Contábil,Organização exclusiva de dados fiscais,Dados estruturados para consulta e importação

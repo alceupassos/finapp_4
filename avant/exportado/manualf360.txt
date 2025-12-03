@@ -1,0 +1,651 @@
+## Importação Completa de Dados F360 para Sistema BI Automatizado
+
+A extração de todos os dados do F360 para um sistema BI automatizado requer uma **arquitetura em três camadas**: extração via API pública, armazenamento em data warehouse e visualização em ferramentas BI. Existem três estratégias principais, cada uma com vantagens específicas.
+
+### **1. Extração via API Pública (Recomendado para Automação)**[1][2]
+
+A API Pública da F360 oferece os principais endpoints necessários. Para configurar:
+
+1. **Criar Chave de API** no **F360 Finanças → Webservices → Criar → API Pública da F360**
+2. **Acessar Documentação**: https://documenter.getpostman.com/view/68066/Tz5m8Kcb[1]
+
+**Endpoints Principais:**
+- `GET /api/planoDeContas?cnpj=...` - Retorna todas as contas contábeis[3]
+- `GET /ParcelasDeTituloPublicAPI/ListarParcelasDeTitulos` - Títulos com paginação (100 itens/página, máx. 31 dias por requisição)[2]
+- `GET /api/centrosCusto?cnpj=...` - Centros de custo[3]
+- `GET /api/contasBancarias?cnpj=...` - Contas bancárias[3]
+
+A resposta inclui estrutura completa com rateios, permitindo reconstruir toda movimentação financeira.[2]
+
+### **2. Webhooks para Captura em Tempo Real**[4][5]
+
+Para dados em tempo real, configure um webhook que dispara automaticamente quando há novos lançamentos. O payload JSON inclui todos os campos necessários: competência, centro de custo, plano de contas e valores rateados. Use n8n ou Make para capturar esses webhooks e alimentar diretamente o data warehouse.[5][4]
+
+### **3. Exportação em Lote via Planilhas**[6][7]
+
+Para dados históricos completos:
+
+1. **DRE**: F360 Finanças → DRE → Exportar (selecione "Modelos 2, 3 ou 4" para tabelas dinâmicas)[7]
+2. **Contas a Pagar/Receber**: Clique em relatório → Exportar para Excel[6]
+3. **Dados Detalhados**: Os relatórios exportados incluem data, empresa, meio de pagamento, competência e plano de contas[8]
+
+### **Arquitetura Recomendada**
+
+```
+F360 API → Python Extractor → PostgreSQL Data Warehouse → Power BI/Looker
+    ↑                                                      ↑
+    └─────── n8n Agendado (Diário) ──────────────────────┘
+```
+
+### **Implementação Prática**
+
+**Step 1: Script Python para Extração**
+
+Criar um script que:
+- Conecta à API F360 com chave de API
+- Implementa paginação automática (máx. 31 dias por chamada)
+- Transforma JSON em formato tabular
+- Salva em CSV ou carrega direto no banco
+
+**Step 2: Data Warehouse (PostgreSQL)**
+
+Criar tabelas para:
+- `f360_plano_contas` - Mapeamento de contas
+- `f360_titulos` - Todas as despesas/receitas com valores
+- `f360_rateios` - Detalhamento de rateios por centro de custo
+- `f360_centros_custo` - Estrutura de centros
+
+**Step 3: Automação (n8n)**
+
+Agendar execução diária (ex: 8:00 AM):
+1. Python script executa extração
+2. Dados carregam no PostgreSQL
+3. Tabelas de fato/dimensão sincronizam automaticamente
+
+**Step 4: Visualização BI**
+
+Conectar Power BI ou Looker Studio diretamente ao PostgreSQL para:
+- Relatórios de DRE por período
+- Análise de despesas/receitas por centro de custo
+- Fluxo de caixa consolidado
+- Dashboard de contas a pagar/receber por vencimento
+
+### **Considerações Importantes**
+
+- **Limite de 31 dias**: Cada chamada API retorna máximo 31 dias. Para histórico completo, implementar loop com incremento de datas[2]
+- **Paginação**: API retorna 100 itens/página. Usar parâmetro `pagina` incrementando automaticamente[2]
+- **Rate Limiting**: F360 não documenta limites, mas recomenda-se 1-2 segundos entre requisições
+- **Suporte**: F360 não oferece suporte direto à API, mas documentação técnica completa está disponível[1]
+
+
+
+Como Configurar o F360 para Emitir os Relatórios Contábeis
+há 1 ano Atualizado
+Ainda não seguido por ninguém
+Empresas e Filiais
+Se o ERP Contábil que você utiliza requerer um código de empresa para os lançamentos e possuir um código de histórico padrão, siga as etapas abaixo. Caso contrário, você pode pular para a próxima seção.
+
+Cadastro do Código da Empresa:
+Acesse “Empresas e Filiais” em menu de cadastro.
+Selecione a empresa e clique em “Editar”, vá para a aba “Outras Informações”.
+Em dados adicionais informe o código da empresa clicando no botão "+" e escolha o layout desejado (Se não encontrar o layout desejado, entre em contato com o suporte).
+1.png
+
+Cadastro do Código Histórico Padrão:
+Na mesma tela em que configurou o código, você pode cadastrar os códigos de histórico padrão do seu sistema contábil. Isso permite diferenciar as provisões, os recebimentos e pagamentos nos arquivos de Obrigações, além dos lançamentos de Transferências Bancárias.
+Em seguida clique em “Salvar”.
+2.png
+
+Centro de Custo
+Se preferir fazer os lançamentos contábeis pelo código de centro de custo, siga as etapas abaixo. Caso contrário, você pode pular para a próxima seção.
+
+Acesse “Centro de Custo” em menu de cadastro.
+Selecione o centro de custo e clique em “Editar”.
+Em código externo, informe o código que correspondente no ERP Contábil.
+Em seguida clique em “Salvar”.
+3.png
+
+Contas
+Acesse “Contas” em menu de cadastro.
+Selecione a conta e clique em “Editar”.
+Em código externo, informe o código da conta correspondente no plano de contas contábil e o CNPJ da empresa a que essa conta está vinculada.
+4.png
+
+Os cadastros das contas contábeis para contas bancárias e caixa podem ser realizados por meio de uma planilha, acessível no canto direito da barra inferior. Para isso, basta inserir o CNPJ e a conta contábil no campo "Código Externo". Em seguida, salve a planilha e importe-a na opção "Upload de Arquivos".
+
+ 
+
+Plano de Contas (F360)
+Agora, o próximo passo é realizar o DE x PARA das contas do Plano de Contas do F360 Finanças.
+
+Acesse o menu de Cadastros e clique em "Plano de Contas".
+Para efetuar o DE x PARA na tela, selecione a conta desejada e clique em "Editar".
+Em seguida, escolha a aba "Contabilidade", onde orientaremos você a preencher os campos de "Obrigação Contábil" e "Provisão Contábil".
+Nos exemplos a seguir, iremos simular os registros contábeis de água e esgoto, adotando como premissa as contas contábeis reduzidas do ERP Contábil Domínio. No entanto, a mesma lógica pode ser aplicada a outros sistemas contábeis.
+
+Atenção: Essas contas são fictícias e servem apenas para ilustrar nosso exemplo.
+
+Exemplo de Contas do Plano de Contas Contábil:
+
+Conta 1110 – Conta Banco do Brasil (Conta de Ativo)
+Conta 2200 – Água a Pagar (Conta de Passivo)
+Conta 2215 – Fornecedor X (Conta de Passivo específica de um Fornecedor)
+Conta 2216 – Fornecedor Y (Conta de Passivo específica de um Fornecedor)
+Conta 3515 – Despesa de Água e Esgoto (Conta de Resultado)
+Exemplo 1 - A empresa deseja realizar a provisão da despesa e, quando pagar, realizar a baixa desse passivo. Por se tratar de valor não considerado relevante o cliente optou por registrar em conta de passivo sem direcionar para fornecedor específico.
+
+Nesse caso você precisa preencher a conta despesa no campo de Provisão e a conta de passivo no campo de Obrigação.
+
+5.png
+
+Assim o sistema vai gerar 2 lançamentos nesse exemplo:
+
+Arquivo de Provisão (Exemplo 1):
+Débito: Conta 3515 – Despesa de Água e Esgoto (Conta de Resultado).
+
+Crédito: Conta 2200 – Água a Pagar (Conta de Passivo).
+
+Arquivo de Obrigação (Exemplo 1):
+Débito: Conta 2200 – Água a Pagar (Conta de Passivo).
+
+Crédito: 1110 – Conta Banco do Brasil (Conta de Ativo).
+
+ 
+
+Exemplo 2 - A empresa deseja realizar a provisão da despesa e, ao efetuar o pagamento, registrar a baixa desse passivo em contas específicas de cada fornecedor.
+
+Nesse caso, você precisa preencher a conta de despesa no campo de Provisão e a conta de passivo no campo de Obrigação, direcionando para os fornecedores ou clientes previamente cadastrados no F360 Finanças.
+
+6.png
+
+Assim o sistema vai gerar os seguintes lançamentos nesse exemplo:
+
+Arquivo de Provisão (Exemplo 2):
+Lançamento 1 sempre que houver lançamentos no Fornecedor X:
+
+Débito: Conta 3515 – Despesa de Água e Esgoto (Conta de Resultado).
+
+Crédito: Conta 2215 – Fornecedor X (Conta de Passivo específica de um Fornecedor).
+
+ 
+
+Lançamento 2 sempre que houver lançamentos no Fornecedor Y:
+
+Débito: Conta 3515 – Despesa de Água e Esgoto (Conta de Resultado).
+
+Crédito: Conta 2216 – CAGECE (Conta de Passivo específica de um Fornecedor).
+
+ 
+
+Lançamento 3 sempre que houver lançamentos em outros fornecedores não listados nessa tela:
+
+Débito: Conta 3515 – Despesa de Água e Esgoto (Conta de Resultado).
+
+Crédito: Conta 2200 – Água a Pagar (Conta de Passivo).
+
+ 
+
+Arquivo de Obrigação (Exemplo 2):
+Lançamento 1 sempre que houver lançamentos no Fornecedor X:
+
+Débito: Conta 2215 – Fornecedor X (Conta de Passivo específica de um Fornecedor).
+
+Crédito: Conta 1110 – Conta Banco do Brasil (Conta de Ativo).
+
+ 
+
+Lançamento 2 sempre que houver lançamentos no Fornecedor Y:
+
+Débito: Conta 2216 –Fornecedor Y (Conta de Passivo específica de um Fornecedor).
+
+Crédito: Conta 1110 – Conta Banco do Brasil (Conta de Ativo).
+
+ 
+
+Lançamento 3 sempre que houver lançamentos em outros fornecedores não listados nessa tela:
+
+Débito: Conta 2200 – Água a Pagar (Conta de Passivo).
+
+Crédito: Conta 1110 – Conta Banco do Brasil (Conta de Ativo).
+
+ 
+
+Exemplo 3 - A empresa não deseja realizar a provisão da despesa e, quando pagar, realizar a contabilização diretamente no resultado.
+
+7.png
+
+O sistema vai gerar apenas um lançamento no arquivo de obrigação nesse exemplo:
+
+Arquivo de Obrigação (Exemplo 3):
+Débito: Conta 3515 – Despesa de Água e Esgoto (Conta de Resultado).
+
+Crédito: Conta 1110 – Conta Banco do Brasil (Conta de Ativo).
+
+
+
+
+POST
+Login
+{{URL}}/PublicLoginAPI/DoLogin
+HEADERS
+Content-Type
+application/json
+
+Body
+raw (json)
+json
+{ "token": "{{token_login}}" }
+Example Request
+Login
+View More
+nodejs
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'POST',
+  'hostname': '{{URL}}',
+  'path': '/PublicLoginAPI/DoLogin',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+var postData = JSON.stringify({
+  "token": "{{token_login}}"
+});
+
+req.write(postData);
+
+req.end();
+200 OK
+Example Response
+Body
+Headers (15)
+View More
+json
+{
+  "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZGEwOTEzNDI2Mjk1MzBlZDAyNGU1M2IiLCJjdXN0b21lcklkIjoiNWRhMDg5MzEyNjI5NTMwZWQwMjQ5MDE3Iiwid2Vic2VydmljZUlkIjoiNjBkYjE2MjA4OWQ1OWUwYWVjNWQxYWYxIiwiZW1haWwiOiI0MzRkODUwZC04NzI3LTQwOGEtOTE4OC0xYTQ4Mjk5MGQ0MWZAd2Vic2VydmljZS5jb20iLCJhY2Vzc29Ub3RhbCI6IlRydWUiLCJyb2xlcyI6IiIsIm5iZiI6MTYyNDk3MzMxMywiZXhwIjoxNjI0OTc2OTEzLCJpYXQiOjE2MjQ5NzMzMTN9.8PmneW6TSqEcSdZdr-HF6LR79DbSYNs43jZlyBfmC9M"
+}
+2 - Relatórios
+Aqui você irá encontrar todos os endpoints disponíveis relacionados a download de relatórios da F360.
+
+POST
+Gerar Relatório para Contabilidade
+{{URL}}/PublicRelatorioAPI/GerarRelatorio
+Esse método irá gerar um relatório para a contabilidade com base nas informações do módulo F360 Finanças. Os campos obrigatórios estão em negrito:
+
+Data: "yyyy-MM-dd"
+
+Fim: "yyyy-MM-dd".
+
+ModeloContabil: "provisao" ou "obrigacao". No modelo de "provisao", iremos exportar os lançamentos pela data de emissão do registro. Já no modelo de "obrigacao", iremos exportar pela data de pagamento.
+
+ModeloRelatorio: "tradicional" ou "gerencial". O modelo "tradicional" não virá com o rateio de centros de custos, ou seja, iremos considerar apenas o CNPJ da emissão das despesas/receitas. Já no "gerencial", iremos quebrar os lançamentos pelos centros de custos gerenciais que foram informados na plataforma.
+
+ExtensaoDeArquivo: "json" ou "csv".
+
+CNPJEmpresas: Informar a lista de CNPJ's para a criação do relatório. Caso vazio ou nulo, o relatório irá conter as movimentações de todas as lojas.
+
+EnviarNotificacaoPorWebbook: "true" ou "false".
+
+URLNotificaticao: Informar a URL que deseja ser notificado após o termino da criação do relatório. Isso é importante pois o processamento do relatório é feito em background em uma fila de mensagens. Quando você informa a URL de notificação, iremos encaminhar para você um aviso assim que o relatório terminar de ser processado e estiver pronto para download.
+
+Contas: Números externo das contas em que serão filtradas para a geração do relatório.
+
+F360 Finanças
+Essa documentação contém todas as API's públicas disponíveis pela plataforma da F360. A URL de produção para todos os endpoints é https://financas.f360.com.br/
+
+1 - Login
+O token é dispobinilizado pela plataforma da F360 ao criar um webservice de API Pública. Segue o link de como criar um token de autenticação na API:
+https://f360.zendesk.com/hc/pt-br/articles/360062098714
+
+POST
+Login
+{{URL}}/PublicLoginAPI/DoLogin
+HEADERS
+Content-Type
+application/json
+
+Body
+raw (json)
+json
+{ "token": "{{token_login}}" }
+Example Request
+Login
+View More
+nodejs
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'POST',
+  'hostname': '{{URL}}',
+  'path': '/PublicLoginAPI/DoLogin',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+var postData = JSON.stringify({
+  "token": "{{token_login}}"
+});
+
+req.write(postData);
+
+req.end();
+200 OK
+Example Response
+Body
+Headers (15)
+View More
+json
+{
+  "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZGEwOTEzNDI2Mjk1MzBlZDAyNGU1M2IiLCJjdXN0b21lcklkIjoiNWRhMDg5MzEyNjI5NTMwZWQwMjQ5MDE3Iiwid2Vic2VydmljZUlkIjoiNjBkYjE2MjA4OWQ1OWUwYWVjNWQxYWYxIiwiZW1haWwiOiI0MzRkODUwZC04NzI3LTQwOGEtOTE4OC0xYTQ4Mjk5MGQ0MWZAd2Vic2VydmljZS5jb20iLCJhY2Vzc29Ub3RhbCI6IlRydWUiLCJyb2xlcyI6IiIsIm5iZiI6MTYyNDk3MzMxMywiZXhwIjoxNjI0OTc2OTEzLCJpYXQiOjE2MjQ5NzMzMTN9.8PmneW6TSqEcSdZdr-HF6LR79DbSYNs43jZlyBfmC9M"
+}
+2 - Relatórios
+Aqui você irá encontrar todos os endpoints disponíveis relacionados a download de relatórios da F360.
+
+
+GET
+Listar Contas Bancárias
+{{URL}}/ContaBancariaPublicAPI/ListarContasBancarias
+Este método irá listar todas as contas bancárias disponíveis.
+
+AUTHORIZATION
+Bearer Token
+Token
+{{token_jwt}}
+
+HEADERS
+Content-Type
+application/json
+
+Example Request
+Listar Contas Bancárias
+View More
+nodejs
+var https = require('follow-redirects').https;
+var fs = require('fs');
+
+var options = {
+  'method': 'GET',
+  'hostname': '{{URL}}',
+  'path': '/ContaBancariaPublicAPI/ListarContasBancarias',
+  'headers': {
+    'Content-Type': 'application/json'
+  },
+  'maxRedirects': 20
+};
+
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
+Example Response
+Body
+Headers (0)
+View More
+{
+  "Result": [
+    {
+      "Id": "454061eb0d9a9413f8067ad6",
+      "Nome": "NOME DA CONTA TESTE",
+      "TipoDeConta": "Conta Corrente",
+      "Carteira": "0",
+      "Agencia": "1234",
+      "Conta": "1234567",
+      "DigitoConta": "12",
+      "NumeroBanco": 33
+    }
+  ],
+  "Ok": true
+}
+12 - Integrações
+Aqui você terá acesso aos endpoints disponíveis para consultar as Integrações
+
+POST
+Consultar Integrações
+{{URL}}/IntegracoesPublicAPI/ConsultarIntegracoes
+Este método irá consultar as integrações
+
+Segue os parâmetros da pesquisa (Parâmetros devem ser enviados no Body da requisição):
+
+Parâmetros Opcionais
+NomeDaIntegracao
+Descrição: Nome da integração.
+
+Tipo: string
+
+Exemplo: "Evo"
+
+MarcaDaFranquia
+Descrição: Marca da franquia.
+
+Tipo: string
+
+Exemplo: "Boticário"
+
+TipoDaIntegracao
+Descrição: Tipo de integração.
+
+Tipo: Enum
+
+Valores Possíveis:
+
+PDV (1) - PDV
+
+Adquirente (2) - Adquirente
+
+Titulos (3) - Títulos (Contas a Pagar e Receber)
+
+Outros (4) - Outros
+
+Exemplo: 1
+
+StatusDaIntegracao
+Descrição: Status da integração.
+
+Tipo: Enum
+
+Valores Possíveis:
+
+Ativo (1) - Ativo
+
+NaoAdaptado (2) - Não adaptado
+
+Emadaptacao (3) - Em adaptação
+
+ComPendencia (4) - Com pendência
+
+PendenteOnboarding (5) - Pendente onboarding
+
+Descontinuado (6) - Descontinuado
+
+Exemplo: 2
+
+Tipo da Integracao	Descrição
+0	None
+1	PDV
+2	Adquirente
+3	Titulos (Contas a Pagar e Receber)
+4	Outros
+Status da integração	Descrição
+1	Ativo
+2	Não adaptado
+3	Em adaptacao
+4	Com pendencia
+5	Pendente onboarding
+6	Descontinuado
+AUTHORIZATION
+Bearer Token
+Token
+{{token_jwt}}
+
+HEADERS
+Content-Type
+application/json
+
+Body
+raw (json)
+json
+{
+    "NomeDaIntegracao": "",
+    "MarcaDaFranquia": "",
+    "TipoDaIntegracao": "",
+    "StatusDaIntegracao": "1"
+}
+
+###########################################################################
+Exemplo de notificação do webhook:
+link de informacao: https://drive.google.com/file/d/1W709XgD8ZrK4HR3ugf_KtO46wZOAmCEt/view?usp=sharing
+codigo
+{
+	"Service": "relatorio_contabilidade",
+	"Value": "{\"Id\":\"6089e1d6bb96652498b01ada\",\"FileName\":\"cliente_teste-gerencial-provisao.json\"}"
+}
+
+Exemplo de arquivo contábil no formato JSON:
+link de informacao: https://drive.google.com/file/d/1US40NyNOnEGuznTb0uAgBn4ak7oBkUeo/view?usp=sharing
+codigo
+
+
+Exemplo de arquivo contábil no formato CSV:
+link de informacao: https://drive.google.com/file/d/1SLCd2_E_7WMwhy3YziCVRpiPTl2YhxsC/view?usp=sharing
+codigo
+Data do Lcto	Conta a Debito	Conta a Credito	Valor Lcto	Cod. Historico	Complem. Historico	Centro de Custo	Numero Titulo	Pagamento na mesma empresa?	Despesa pessoal de sócio?	CNPJ Empresa
+31/01/2021		88	172,30		DARF FOLHA PAGAMENTO	18	202101	Mesma empresa	Não	99.999.999/0001-99
+31/01/2021		88	54,00		DARF FOLHA PAGAMENTO RESCISAO	18	122020	Mesma empresa	Não	99.999.999/0001-99
+31/01/2021	4103	84	528,15		BOTICARIO FRANCHISING	18	120660311	Mesma empresa	Não	99.999.999/0001-99
+31/01/2021		3468	33,14		DARF CSRF 5952 PCC NF 8430	18	202101	Mesma empresa	Não	99.999.999/0001-99
+31/01/2021		3468	10,69		DARF IRRF 1708 IRRF NF 8430	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		84	4058,61		CALAMO	18	1183739	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021	4197	121	21069,89		EMP COM LTDA Aluguel QDB | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021	260	120	5297,51		COND ORD Condominio + IPTU + Energia Eletrica | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021	4227	4464	1748,73		COND ORD Condominio + IPTU + Energia Eletrica | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		112	493,35		COND ORD Condominio + IPTU + Energia Eletrica | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		109	592,21		GARE ICMS ICMS sobre Receita | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		86	1032,39		GPS INSS INSS Empresa e Funcionario | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	14	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		86	2657,26		GPS INSS INSS Empresa e Funcionario | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		94	6200,00		SALARIOS Salario | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL) | VIA MANAD	18	PREVISAO	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		87	290,60		FGTS FGTS do mes | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	14	202101	Mesma empresa	Não	99.999.999/0001-99
+30/01/2021		87	513,00		FGTS FGTS do mes | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+29/01/2021	3875	120	29,12		EXAME MEDICO	18	202101	Mesma empresa	Não	99.999.999/0001-99
+29/01/2021		293	04,00		TARIFA FOLHA PGTO BRADESCO TARIFA BANCARIA PAGAMENTO FUNCs NET EMPRESA	18		Mesma empresa	Não	99.999.999/0001-99
+29/01/2021		3310	00,02		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+28/01/2021	4332	84	1002,00		BOTICARIO FRANCHISING	18	120648003	Mesma empresa	Não	99.999.999/0001-99
+27/01/2021	4162	84	1321,05		BOTICARIO FRANCHISING	18	1537820	Mesma empresa	Não	99.999.999/0001-99
+26/01/2021		84	6505,63		CALAMO	18	1181939	Mesma empresa	Não	99.999.999/0001-99
+26/01/2021	3654	84	01,64		CALAMO	18	1181939	Mesma empresa	Não	99.999.999/0001-99
+26/01/2021	4103	84	852,36		BOTICARIO FRANCHISING	18	120646579	Mesma empresa	Não	99.999.999/0001-99
+26/01/2021		3310	00,01		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+25/01/2021	224	120	116,10		VR VISA VALE FERIADO	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+24/01/2021	224	120	22,20		VR VISA VALE DOMINGO	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+23/01/2021		3310	00,01		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+20/01/2021		4014	1665,53		VT SP TRANS	18	202102	Mesma empresa	Não	99.999.999/0001-99
+20/01/2021		293	16,00		TARIFA BANCARIA MENSAL TARIFA BANCARIA PAGAMENTO FUNCs NET EMPRESA	18		Mesma empresa	Não	99.999.999/0001-99
+20/01/2021	224	120	2034,00		VR VISA VALE	18	202102	Mesma empresa	Não	99.999.999/0001-99
+20/01/2021	4235	84	802,02		ASSOC LOJISTA Fundo de Promocao | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+20/01/2021	238	4472	204,35		TESA TELEFONIA Telefone | GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	PREVISAO	Mesma empresa	Não	99.999.999/0001-99
+20/01/2021	238	4472	455,12		VIVO TELEFONICA| GERADO PELO ORCAMENTO: ORCAMENTO DESPESAS (OFICIAL)	18	202101	Mesma empresa	Não	99.999.999/0001-99
+20/01/2021		3310	00,01		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+19/01/2021		3310	00,02		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+18/01/2021	4189	4456	890,00			18	202101	Mesma empresa	Não	99.999.999/0001-99
+18/01/2021	4189	4456	890,00		DAYANE	18	202101	Mesma empresa	Não	99.999.999/0001-99
+18/01/2021	4189	4456	890,00		THIAGO	18	202101	Mesma empresa	Não	99.999.999/0001-99
+18/01/2021	4189	4456	890,00		ANA	18	202101	Mesma empresa	Não	99.999.999/0001-99
+17/01/2021	224	120	22,20		VR VISA VALE DIFERENCA DE DOMINGO	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+16/01/2021	4162	84	2332,22		BOTICARIO FRANCHISING	18	1532031	Mesma empresa	Não	99.999.999/0001-99
+16/01/2021		3310	00,01		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+15/01/2021		293	93,45		TARIFA BANCARIA MENSAL TARIFA BANCARIA Max Empresarial 1	18	40121	Mesma empresa	Não	99.999.999/0001-99
+15/01/2021		84	11293,02		CALAMO	18	1180293	Mesma empresa	Não	99.999.999/0001-99
+15/01/2021	4103	84	1504,56		BOTICARIO FRANCHISING	18	120626667	Mesma empresa	Não	99.999.999/0001-99
+14/01/2021	226	120	25,00		CENTRAL NACIONAL UNIMED	18		Mesma empresa	Não	99.999.999/0001-99
+14/01/2021	226	120	374,50		CENTRAL NACIONAL UNIMED	14		Mesma empresa	Não	99.999.999/0001-99
+14/01/2021		94	500,50		CENTRAL NACIONAL UNIMED	18		Mesma empresa	Não	99.999.999/0001-99
+14/01/2021		293	04,00		TARIFA FOLHA PGTO BRADESCO TARIFA BANCARIA PAGAMENTO FUNCs NET EMPRESA	18		Mesma empresa	Não	99.999.999/0001-99
+13/01/2021		97	1863,79		THIAGO	18		Mesma empresa	Não	99.999.999/0001-99
+13/01/2021	233	120	13,75		TAXI UBER	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+12/01/2021			2838,57		FGTS GRRF	18	202101	Mesma empresa	Não	99.999.999/0001-99
+12/01/2021		98	3544,39		JULIANA	18	202101	Mesma empresa	Não	99.999.999/0001-99
+12/01/2021		4014	203,02		VT SP TRANS	18	202101	Mesma empresa	Não	99.999.999/0001-99
+12/01/2021	4391	84	961,68		ANTILHAS	18	1664610	Mesma empresa	Não	99.999.999/0001-99
+12/01/2021	4383	84	58,81		ANTILHAS	18	1664610	Mesma empresa	Não	99.999.999/0001-99
+12/01/2021	4383	84	333,46		ANTILHAS	18	1665092	Mesma empresa	Não	99.999.999/0001-99
+12/01/2021		3310	00,01		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+11/01/2021		293	24,00		TARIFA FOLHA PGTO BRADESCO TARIFA BANCARIA PAGAMENTO FUNCs NET EMPRESA	18		Mesma empresa	Não	99.999.999/0001-99
+11/01/2021		3310	00,02		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+10/01/2021	224	120	22,20		VR VISA VALE VR DIFERENCA DE DOMINGO	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+10/01/2021		3310	00,02		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+09/01/2021	3735	84	25,00		TREINAMENTO TESTE LOJA	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+09/01/2021	4162	84	1020,18		BOTICARIO FRANCHISING	18	1525930	Mesma empresa	Não	99.999.999/0001-99
+08/01/2021		84	5029,86		CALAMO	18	1179081	Mesma empresa	Não	99.999.999/0001-99
+08/01/2021	3654	84	01,64		CALAMO	18	1179081	Mesma empresa	Não	99.999.999/0001-99
+08/01/2021	4103	84	658,24		BOTICARIO FRANCHISING	18	120615655	Mesma empresa	Não	99.999.999/0001-99
+08/01/2021	4448	84	21,14		IN VITRO | Nota de remessa	18	813887	Mesma empresa	Não	99.999.999/0001-99
+06/01/2021	4162	84	2017,89		BOTICARIO FRANCHISING	18	1525081	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		293	61,00		TARIFA BANCARIA MENSAL TAR MANUT CONTA	18		Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		84	9853,88		CALAMO	18	1177746	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021	3654	84	01,64		CALAMO	18	1177746	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021	4103	84	1301,94		BOTICARIO FRANCHISING	18	120608757	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		94	2671,15		Folha normal	18	F3512/2020	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		94	3375,53		Folha normal	18	F4312/2020	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		94	2678,71		Folha normal	18	F5412/2020	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		94	3480,06		Folha normal	18	F5612/2020	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		94	2483,22		Folha normal	18	F5712/2020	Mesma empresa	Não	99.999.999/0001-99
+05/01/2021		94	2426,90		Folha normal	18	F5812/2020	Mesma empresa	Não	99.999.999/0001-99
+04/01/2021		84	196,25		IN VITRO	18	813420	Mesma empresa	Não	99.999.999/0001-99
+04/01/2021	4537	84	991,14		IN VITRO	18	813420	Mesma empresa	Não	99.999.999/0001-99
+04/01/2021		3310	00,03		VENDAS DINHEIRO Ajuste do Fechamento de Caixa Titulo gerado automaticamente	18		CNPJ da conta não foi preenchido	Não	99.999.999/0001-99
+14/01/2021		3620	119,60		Mooz Cartoes (Hagana) Debito 1/1	18		Mesma empresa		99.999.999/0001-99
+26/01/2021		296	79,90		Mooz Cartoes (Hagana) Debito 1/1	18		Mesma empresa		99.999.999/0001-99

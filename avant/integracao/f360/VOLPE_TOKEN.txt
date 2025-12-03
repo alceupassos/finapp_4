@@ -1,0 +1,8 @@
+F360_LOGIN_TOKEN=volpe.matriz@ifinance.com.br:8#v3T$cABl5. (ou o token gerado depois do login)
+
+
+TOKEN GRUPO VOLPE 223b065a-1873-4cfe-a36b-f092c602a03e
+volpe.matriz@ifinance.com.br:
+VOLPE_TOKEN_LOGIN=volpe.matriz@ifinance.com.br
+VOLPE_TOKEN_SENHA=v3T$cABl5.
+VOLPE_TOKEN_TOKEN=223b065a-1873-4cfe-a36b-f092c602a03e

@@ -44,12 +44,14 @@ export function App(){
   
   // Filtros
   const [selectedMonth, setSelectedMonth] = useState('2025-10'); // ✅ FIX: Dados são de outubro/2025
-  const [selectedCompanies, setSelectedCompanies] = useState<string[]>(['26888098000159']); // Array de CNPJs
+  // ✅ FIX: Inicializar vazio, será preenchido após carregar empresas do usuário
+  const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [companies, setCompanies] = useState<Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>>([]);
   
   const { metrics, loading } = useFinancialData(selectedCompanies, selectedMonth);
 
   useEffect(() => {
+    // Recarregar empresas quando a sessão mudar (após login)
     loadCompanies();
     
     // Configurar contexto padrão do Oráculo para análise BPO de Fluxo de Caixa
@@ -176,6 +178,15 @@ Sempre que relevante, fornecer:
     try {
       const companiesList = await SupabaseRest.getCompanies();
       setCompanies(companiesList);
+      
+      // ✅ FIX: Atualizar selectedCompanies com todas as empresas do usuário
+      if (companiesList.length > 0) {
+        const allCnpjs = companiesList.map(c => c.cnpj).filter(Boolean) as string[];
+        if (allCnpjs.length > 0) {
+          console.log('✅ Carregando', allCnpjs.length, 'empresas do usuário:', allCnpjs);
+          setSelectedCompanies(allCnpjs);
+        }
+      }
     } catch (error) {
       console.error('Erro ao carregar empresas:', error);
     }
@@ -264,7 +275,7 @@ Sempre que relevante, fornecer:
           {/* Cashflow + Virtual Card */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
             <div className="xl:col-span-2">
-              <ModernCashflowChart period={period} cnpj={selectedCompanies[0] || '26888098000159'} selectedMonth={selectedMonth} />
+              <ModernCashflowChart period={period} selectedCompanies={selectedCompanies} selectedMonth={selectedMonth} />
             </div>
             <div>
               <VirtualCard3D />
@@ -277,7 +288,7 @@ Sempre que relevante, fornecer:
               <ModernTransactionsTable />
             </div>
             <div>
-              <RevenueDistributionGauge cnpj={selectedCompanies[0] || '26888098000159'} selectedMonth={selectedMonth} />
+              <RevenueDistributionGauge cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : '26888098000159'} selectedMonth={selectedMonth} />
             </div>
           </div>
 
@@ -296,18 +307,32 @@ Sempre que relevante, fornecer:
           )}
 
           {currentView === 'Análises' && (
-            <AnaliticoDashboard selectedMonth={selectedMonth} selectedCompany={selectedCompanies[0] || '26888098000159'} />
+            <AnaliticoDashboard 
+              selectedMonth={selectedMonth} 
+              selectedCompany={selectedCompanies[0] || '26888098000159'}
+              period={period}
+              companies={companies}
+              selectedCompanies={selectedCompanies}
+            />
           )}
           {currentView === 'Fluxo de Caixa' && (
             <div className="grid grid-cols-1 gap-6">
-              <ModernCashflowChart period={period} />
+              <ModernCashflowChart 
+                period={period} 
+                selectedCompanies={selectedCompanies}
+                selectedMonth={selectedMonth}
+              />
             </div>
           )}
           {currentView === 'Extrato de Lançamentos' && (
             <ConciliacaoPage />
           )}
           {currentView === 'Relatórios' && (
-            <ReportsPage />
+            <ReportsPage 
+              companies={companies}
+              selectedCompanies={selectedCompanies}
+              selectedMonth={selectedMonth}
+            />
           )}
           {currentView === 'Clientes' && (
             <CustomersPage />
@@ -326,7 +351,11 @@ Sempre que relevante, fornecer:
             <SimpleVolpeLogin 
               open={!session} 
               onClose={() => {}} 
-              onLogged={(s) => setSession(s)} 
+              onLogged={(s) => {
+                setSession(s);
+                // Recarregar empresas após login para pegar as empresas do usuário
+                loadCompanies();
+              }} 
             />
           ) : (
             <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur flex items-center justify-center">
@@ -344,6 +373,8 @@ Sempre que relevante, fornecer:
                       return;
                     }
                     setSession(s);
+                    // Recarregar empresas após login para pegar as empresas do usuário
+                    loadCompanies();
                   } catch (err: any) {
                     setError(err.message || 'Erro ao fazer login');
                   }

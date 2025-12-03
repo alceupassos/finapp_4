@@ -37,12 +37,13 @@ export function CompanyGroupSelector({ companies, selectedCompanies, onChange }:
     .filter(c => selectedCompanies.includes(c.cnpj))
     .map(c => c.cliente_nome)
 
+  const allSelected = selectedCompanies.length === companies.length && companies.length > 0
   const displayText = selectedCompanies.length === 0
     ? 'Selecione empresas...'
+    : allSelected
+    ? 'Todas as empresas (Consolidado)'
     : selectedCompanies.length === 1
     ? selectedNames[0]
-    : selectedCompanies.length === companies.length
-    ? 'Todas as empresas (Grupo Consolidado)'
     : `${selectedCompanies.length} empresas selecionadas`
 
   return (
@@ -53,6 +54,11 @@ export function CompanyGroupSelector({ companies, selectedCompanies, onChange }:
       >
         <Building2 size={16} className="text-blue-400" />
         <span className="flex-1 text-left truncate">{displayText}</span>
+        {allSelected && (
+          <span className="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 text-xs rounded-full font-medium">
+            Consolidado
+          </span>
+        )}
         <ChevronDown size={16} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -81,9 +87,13 @@ export function CompanyGroupSelector({ companies, selectedCompanies, onChange }:
                 <div className="flex gap-2">
                   <button
                     onClick={selectAll}
-                    className="text-xs px-2 py-1 bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 rounded transition-colors"
+                    className={`text-xs px-3 py-1.5 rounded transition-colors font-medium ${
+                      allSelected
+                        ? 'bg-emerald-500 text-white hover:bg-emerald-600'
+                        : 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30'
+                    }`}
                   >
-                    Todas
+                    {allSelected ? '✓ Todas' : 'Todas'}
                   </button>
                   <button
                     onClick={clearAll}

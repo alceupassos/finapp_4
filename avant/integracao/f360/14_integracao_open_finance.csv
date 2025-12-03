@@ -1,0 +1,4 @@
+﻿Tipo,Partner,Funcionalidade,Bancos,Configuracao
+Open Finance,Pluggy (API única),Importação automática de extratos de múltiplos bancos,Principais instituições financeiras brasileiras,"Plug and play - conexão única, sem login repetido"
+Conciliação Bancária,Open Finance F360,Sincronização automática de movimentações financeiras,"Conta Corrente, Poupança, Crédito",Primeira conexão + manutenção automática
+Importação de Extratos,F360 Nativo,Importação manual em múltiplos formatos,Qualquer banco que exporte em padrão,"Upload de arquivos CNAB, CSV, OFX, XLS"

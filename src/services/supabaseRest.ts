@@ -1,3 +1,5 @@
+import { getSession } from './auth'
+
 const BASE_URL = import.meta.env.VITE_SUPABASE_URL as string
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 export const MATRIZ_CNPJ = (import.meta.env.VITE_CNPJ_MATRIZ || '26888098000159') as string
@@ -91,35 +93,131 @@ export const SupabaseRest = {
     }
   },
   
-  // ✅ FIX: getCompanies não busca mais coluna inexistente
+  // ✅ FIX: getCompanies agora busca empresas do usuário logado
   getCompanies: async () => {
+    try {
+      // Buscar empresas do usuário logado
+      const session = getSession()
+      if (session?.id) {
+        // Buscar CNPJs do usuário diretamente
+        let userCnpjs: string[] = []
+        try {
+          const rows = await restGet('user_companies', { 
+            query: { 
+              user_id: `eq.${session.id}`, 
+              select: 'company_cnpj',
+              limit: '100' 
+            } 
+          })
+          if (Array.isArray(rows)) {
+            userCnpjs = rows.map((r: any) => r.company_cnpj).filter(Boolean)
+            console.log('✅ getCompanies encontrou', userCnpjs.length, 'empresas para usuário', session.id)
+          }
+        } catch (err: any) {
+          console.warn('⚠️ Erro ao buscar empresas do usuário em getCompanies:', err?.message || err)
+        }
+        
+        if (userCnpjs.length > 0) {
+          console.log('✅ Buscando detalhes de', userCnpjs.length, 'empresas do usuário')
+          
+          // Buscar detalhes de cada empresa na tabela integration_f360 ou companies
+          const companiesList = []
+          for (const cnpj of userCnpjs) {
+            const cnpj14 = cnpj.replace(/^0+/, '')
+            try {
+              // Tentar buscar em integration_f360 primeiro
+              const rows = await restGet('integration_f360', { 
+                query: { 
+                  select: 'cliente_nome,cnpj,grupo_empresarial',
+                  cnpj: `eq.${cnpj14}`, 
+                  limit: '1' 
+                } 
+              })
+              
+              if (Array.isArray(rows) && rows.length > 0) {
+                companiesList.push({
+                  grupo_empresarial: rows[0].grupo_empresarial || 'Grupo Volpe',
+                  cliente_nome: rows[0].cliente_nome || rows[0].nome || 'Empresa',
+                  cnpj: cnpj14
+                })
+              } else {
+                // Fallback: buscar na tabela companies
+                const companyRows = await restGet('companies', {
+                  query: {
+                    select: 'razao_social,nome_fantasia,cnpj',
+                    cnpj: `eq.${cnpj14}`,
+                    limit: '1'
+                  }
+                })
+                
+                if (Array.isArray(companyRows) && companyRows.length > 0) {
+                  companiesList.push({
+                    grupo_empresarial: 'Grupo Volpe',
+                    cliente_nome: companyRows[0].nome_fantasia || companyRows[0].razao_social || 'Empresa',
+                    cnpj: cnpj14
+                  })
+                } else {
+                  // Se não encontrar, criar entrada básica
+                  companiesList.push({
+                    grupo_empresarial: 'Grupo Volpe',
+                    cliente_nome: `Empresa ${cnpj14}`,
+                    cnpj: cnpj14
+                  })
+                }
+              }
+            } catch (err: any) {
+              console.warn(`⚠️ Erro ao buscar detalhes da empresa ${cnpj14}:`, err?.message || err)
+              // Adicionar entrada básica mesmo com erro
+              companiesList.push({
+                grupo_empresarial: 'Grupo Volpe',
+                cliente_nome: `Empresa ${cnpj14}`,
+                cnpj: cnpj14
+              })
+            }
+          }
+          
+          if (companiesList.length > 0) {
+            console.log('✅ Retornando', companiesList.length, 'empresas do usuário')
+            return companiesList
+          }
+        }
+      }
+    } catch (err: any) {
+      console.warn('⚠️ Erro ao buscar empresas do usuário:', err?.message || err)
+    }
+    
+    // Fallback: se não houver usuário logado ou empresas, retornar apenas matriz
     const cnpj14 = MATRIZ_CNPJ.replace(/^0+/, '')
     try {
-      // ✅ FIX: Buscar apenas colunas que existem na tabela
       const rows = await restGet('integration_f360', { 
         query: { 
-          select: 'cliente_nome,cnpj',  // Removido grupo_empresarial
+          select: 'cliente_nome,cnpj,grupo_empresarial',
           cnpj: `eq.${cnpj14}`, 
-          limit: '10' 
+          limit: '1' 
         } 
       })
       if (Array.isArray(rows) && rows.length) {
-        // Adicionar grupo_empresarial como fallback
         return rows.map((r: any) => ({
-          grupo_empresarial: r.grupo_empresarial || 'Grupo Volpe',  // Fallback
+          grupo_empresarial: r.grupo_empresarial || 'Grupo Volpe',
           cliente_nome: r.cliente_nome || r.nome || 'Empresa',
           cnpj: r.cnpj || cnpj14
         }))
       }
     } catch (err: any) {
-      console.warn('⚠️ Erro ao buscar empresas de integration_f360:', err?.message || err)
+      console.warn('⚠️ Erro ao buscar empresa matriz:', err?.message || err)
     }
-    // Fallback: construir a empresa padrão
+    
+    // Último fallback: construir a empresa padrão
     return [{ grupo_empresarial: 'Grupo Volpe', cliente_nome: 'Volpe Matriz', cnpj: cnpj14 }]
   },
   
   getDRE: async (cnpj: string) => {
-    const cnpj14 = (cnpj || MATRIZ_CNPJ).replace(/^0+/, '')
+    // Ignorar se for string 'CONSOLIDADO' ou inválida
+    if (!cnpj || cnpj === 'CONSOLIDADO' || typeof cnpj !== 'string') {
+      console.warn('⚠️ getDRE: CNPJ inválido ou consolidado, usando matriz')
+      return []
+    }
+    const cnpj14 = cnpj.replace(/^0+/, '')
     try {
       const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
       if (!Array.isArray(rows)) {
@@ -183,7 +281,12 @@ export const SupabaseRest = {
   },
   
   getDFC: async (cnpj: string) => {
-    const cnpj14 = (cnpj || MATRIZ_CNPJ).replace(/^0+/, '')
+    // Ignorar se for string 'CONSOLIDADO' ou inválida
+    if (!cnpj || cnpj === 'CONSOLIDADO' || typeof cnpj !== 'string') {
+      console.warn('⚠️ getDFC: CNPJ inválido ou consolidado, usando matriz')
+      return []
+    }
+    const cnpj14 = cnpj.replace(/^0+/, '')
     try {
       const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
       if (!Array.isArray(rows)) {

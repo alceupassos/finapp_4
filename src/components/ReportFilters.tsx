@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Filter, Calendar, Building2, Users } from 'lucide-react'
+import { Filter, Calendar, Building2 } from 'lucide-react'
 import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
 
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
@@ -13,8 +13,9 @@ interface ReportFiltersProps {
   selectedMonth?: string
   selectedCategory?: string
   selectedDepartment?: string
+  companies?: Company[]
   onPeriodChange: (period: 'Ano' | 'Mês') => void
-  onCompanyChange: (cnpj: string) => void
+  onCompanyChange?: (cnpj: string) => void
   onGroupChange: (group: string) => void
   onYearChange?: (year: string) => void
   onQuarterChange?: (quarter: string) => void
@@ -32,6 +33,7 @@ export function ReportFilters({
   selectedMonth,
   selectedCategory,
   selectedDepartment,
+  companies: propCompanies = [],
   onPeriodChange,
   onCompanyChange,
   onGroupChange,
@@ -41,30 +43,32 @@ export function ReportFilters({
   onCategoryChange,
   onDepartmentChange,
 }: ReportFiltersProps) {
-  const [companies, setCompanies] = useState<Company[]>([])
-  const [groups, setGroups] = useState<string[]>([])
-  const [loading, setLoading] = useState(true)
+  // Usar empresas passadas como prop ou carregar localmente se não fornecidas
+  const [localCompanies, setLocalCompanies] = useState<Company[]>([])
+  const companies = propCompanies.length > 0 ? propCompanies : localCompanies
+  const [loading, setLoading] = useState(propCompanies.length === 0)
 
   useEffect(() => {
-    (async () => {
-      try {
-        const cs = await SupabaseRest.getCompanies() as Company[]
-        setCompanies(cs || [])
-        const uniqueGroups = Array.from(new Set((cs || []).map(c => c.grupo_empresarial).filter(Boolean))) as string[]
-        setGroups(uniqueGroups)
-        if (cs.length > 0 && !selectedCompany) {
-          onCompanyChange(cs[0].cnpj || MATRIZ_CNPJ)
+    if (propCompanies.length > 0) {
+      // Se empresas foram passadas, usar diretamente
+      setLoading(false)
+    } else {
+      // Se não, carregar localmente (fallback)
+      (async () => {
+        try {
+          const cs = await SupabaseRest.getCompanies() as Company[]
+          setLocalCompanies(cs || [])
+          if (cs.length > 0 && !selectedCompany && onCompanyChange) {
+            onCompanyChange(cs[0].cnpj || MATRIZ_CNPJ)
+          }
+        } catch (err) {
+          console.error('Erro ao carregar empresas:', err)
+        } finally {
+          setLoading(false)
         }
-        if (uniqueGroups.length > 0 && !selectedGroup) {
-          onGroupChange(uniqueGroups[0])
-        }
-      } catch (err) {
-        console.error('Erro ao carregar empresas:', err)
-      } finally {
-        setLoading(false)
-      }
-    })()
-  }, [])
+      })()
+    }
+  }, [propCompanies])
 
   return (
     <div className="card-premium p-5 space-y-6">
@@ -103,28 +107,8 @@ export function ReportFilters({
         </div>
       </div>
 
-      {/* Grupo Empresarial */}
-      {groups.length > 0 && (
-        <div>
-          <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
-            <Users className="w-3 h-3" />
-            Grupo Empresarial
-          </label>
-          <select
-            value={selectedGroup}
-            onChange={(e) => onGroupChange(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
-          >
-            {groups.map((group) => (
-              <option key={group} value={group}>
-                {group}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
 
-      {/* Empresa */}
+      {/* Empresa - Desabilitado, controlado pelos filtros globais */}
       {companies.length > 0 && (
         <div>
           <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-2">
@@ -133,11 +117,11 @@ export function ReportFilters({
           </label>
           <select
             value={selectedCompany}
-            onChange={(e) => onCompanyChange(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500"
+            onChange={(e) => onCompanyChange?.(e.target.value)}
+            disabled={propCompanies.length > 0}
+            className="w-full px-3 py-2 rounded-lg bg-graphite-800 border border-graphite-700 text-sm text-white focus:outline-none focus:ring-2 focus:ring-gold-500 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {companies
-              .filter((c) => !selectedGroup || c.grupo_empresarial === selectedGroup)
               .map((company) => (
                 <option key={company.cnpj} value={company.cnpj || ''}>
                   {company.cliente_nome || company.cnpj}

@@ -1,0 +1,4 @@
+﻿Modulo,Se_Integra_Com,Tipo,Dados_Compartilhados,Beneficio
+F360 Finanças,F360 Contábil,Integração Nativa,"Cupons fiscais, notas, transações financeiras","DRE automático, relatórios contábeis integrados"
+F360 Finanças,F360 Emissor,Integração Nativa,"Dados de vendas, informações para emissão de NF",Emissão de notas com dados pré-preenchidos
+F360 Contábil,"ERPs Contábeis (Domínio, Contmatic, etc)",Integração Preparada,Relatórios contábeis padronizados,Simplifica entrega ao contador

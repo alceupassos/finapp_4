@@ -147,3 +147,21 @@ export async function verifySupabaseDataAccess() {
     return { ok: false, error: String(err) }
   }
 }
+
+export async function validateMockLogin(email: string, password: string): Promise<Session | null> {
+  // Mock login for demo mode
+  if (password === 'fin-demo' || password === 'fin123' || password === 'B5b0dcf500@#') {
+    const session: Session = {
+      id: 'demo-user',
+      email,
+      name: email.split('@')[0],
+      role: email.includes('admin') ? 'admin' : email.includes('franqueado') ? 'franqueado' : 'cliente',
+      defaultCompany: MATRIZ_CNPJ,
+      mode: 'demo',
+      accessToken: 'demo-token',
+    }
+    localStorage.setItem('session_user', JSON.stringify(session))
+    return session
+  }
+  return null
+}

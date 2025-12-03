@@ -1,6 +1,8 @@
 interface AuthUser {
   name?: string;
   role?: 'admin' | 'franchisee' | 'client' | string;
+  franchiseeId?: string;
+  companyCnpj?: string;
 }
 
 export const useAuth = () => {

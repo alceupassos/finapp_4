@@ -27,23 +27,15 @@ export function VolpeLoginModal({ open, onClose, onLogged }: VolpeLoginModalProp
     try {
       const data = await SupabaseRest.getCompanies()
       if (Array.isArray(data) && data.length) {
-        // Filtrar apenas empresas do grupo VOLPE
-        const volpeCompanies = data.filter(c => 
-          c.cliente_nome?.toLowerCase().includes('volpe') ||
-          String(c.cnpj || '').startsWith('26888098')
-        ).map(c => ({
+        // Normalizar CNPJ removendo zeros à esquerda
+        const normalizedCompanies = data.map(c => ({
           ...c,
           cnpj: c.cnpj ? c.cnpj.replace(/^0+/, '') : c.cnpj
-        })).sort((a: any, b: any) => {
-          const aIs0159 = String(a.cnpj || '').endsWith('0159') ? 0 : 1
-          const bIs0159 = String(b.cnpj || '').endsWith('0159') ? 0 : 1
-          return aIs0159 - bIs0159
-        })
+        }))
         
-        setCompanies(volpeCompanies)
-        if (volpeCompanies.length > 0) {
-          const matriz = volpeCompanies.find(c => c.cnpj === '26888098000159')
-          setSelectedCompany(matriz ? matriz.cnpj : volpeCompanies[0].cnpj)
+        setCompanies(normalizedCompanies)
+        if (normalizedCompanies.length > 0) {
+          setSelectedCompany(normalizedCompanies[0].cnpj)
         }
       }
     } catch (err) {

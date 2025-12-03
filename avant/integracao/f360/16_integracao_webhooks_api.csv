@@ -1,0 +1,4 @@
+﻿Tipo,Formato,Origem,Funcionalidade,Uso
+Webhook Cupom Fiscal,JSON via HTTP POST,Qualquer sistema com API,Envio de recibos/vendas,"PDVs customizados, plataformas próprias"
+Webhook Títulos,JSON via HTTP POST,"ERPs, sistemas financeiros",Criação de contas a pagar/receber,Integração de sistemas legados
+API Pública,REST com autenticação Bearer Token,Qualquer aplicação,Consulta de cadastros,Validação de dados antes de envio via webhook
