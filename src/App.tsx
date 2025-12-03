@@ -24,7 +24,6 @@ import { ProcessingStatsCard } from './components/ProcessingStatsCard';
 import { AcquirersCard } from './components/AcquirersCard';
 import { BanksCard } from './components/BanksCard';
 import { CompanyGroupSelector } from './components/CompanyGroupSelector';
-import { F360ImportModal } from './components/F360ImportModal';
 import { DREExportButton } from './components/DREExportButton';
 import { DFCExportButton } from './components/DFCExportButton';
 
@@ -50,7 +49,6 @@ export function App(){
   // ✅ FIX: Inicializar vazio, será preenchido após carregar empresas do usuário
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [companies, setCompanies] = useState<Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>>([]);
-  const [f360ImportOpen, setF360ImportOpen] = useState(false);
   
   const { metrics, loading } = useFinancialData(selectedCompanies, selectedMonth);
 
@@ -198,14 +196,11 @@ Sempre que relevante, fornecer:
 
   useEffect(() => {
     const handler = (e: any) => setCurrentView(e.detail)
-    const f360Handler = () => setF360ImportOpen(true)
     
     window.addEventListener('navigate', handler as any)
-    window.addEventListener('f360-import', f360Handler)
     
     return () => {
       window.removeEventListener('navigate', handler as any)
-      window.removeEventListener('f360-import', f360Handler)
     }
   }, [])
 
@@ -371,7 +366,6 @@ Sempre que relevante, fornecer:
           )}
         </main>
         <ConfigModal open={configOpen} onClose={() => setConfigOpen(false)} onUpdateOracleContext={setOracleContext} />
-        <F360ImportModal open={f360ImportOpen} onClose={() => setF360ImportOpen(false)} />
         {!session && (
           isVolpeDomain ? (
             <SimpleVolpeLogin 

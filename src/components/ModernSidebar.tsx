@@ -12,8 +12,6 @@ import {
   Bell,
   Newspaper,
   Download,
-  Upload,
-  Database
 } from 'lucide-react';
 import { useState } from 'react';
 import { logout } from '../services/auth'
@@ -126,48 +124,6 @@ export function ModernSidebar({ onOpenSettings, role = 'cliente' }: ModernSideba
         ))}
       </nav>
 
-      {/* Seção F360 */}
-      <div className="p-4 border-t border-graphite-900">
-        <div className="px-2 mb-2 text-[11px] uppercase tracking-wide text-graphite-500">F360 Integração</div>
-        <div className="space-y-1">
-          <motion.button
-            whileHover={{ x: 5 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              const e = new CustomEvent('f360-import')
-              window.dispatchEvent(e)
-            }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
-          >
-            <Upload className="w-5 h-5" />
-            <span className="font-medium">Importar F360</span>
-          </motion.button>
-          <motion.button
-            whileHover={{ x: 5 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              const e = new CustomEvent('export-dre')
-              window.dispatchEvent(e)
-            }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
-          >
-            <Download className="w-5 h-5" />
-            <span className="font-medium">Exportar DRE</span>
-          </motion.button>
-          <motion.button
-            whileHover={{ x: 5 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              const e = new CustomEvent('export-dfc')
-              window.dispatchEvent(e)
-            }}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-graphite-400 hover:text-white hover:bg-graphite-900 transition-all duration-200"
-          >
-            <Download className="w-5 h-5" />
-            <span className="font-medium">Exportar DFC</span>
-          </motion.button>
-        </div>
-      </div>
 
       {/* Menu Inferior */}
       <div className="p-4 border-t border-graphite-900 space-y-1">

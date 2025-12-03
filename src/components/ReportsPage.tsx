@@ -7,6 +7,8 @@ import { KPICardsRow } from './KPICardsRow'
 import { HorizontalFilters } from './HorizontalFilters'
 import { ChartNavigationTabs, ChartTabId } from './ChartNavigationTabs'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './ui/tabs'
+import { DREExportButton } from './DREExportButton'
+import { DFCExportButton } from './DFCExportButton'
 import { motion } from 'framer-motion'
 import {
   FluxoCaixaBarChart,
@@ -242,12 +244,28 @@ export function ReportsPage({
 
         {activeChartTab === 'dre-dfc' && (
           <div className="space-y-6">
-            <Tabs value={activeDreDfcTab} onValueChange={(v) => setActiveDreDfcTab(v as 'DRE' | 'DFC')}>
-              <TabsList className="grid w-full grid-cols-2 mb-6">
-                <TabsTrigger value="DRE">DRE</TabsTrigger>
-                <TabsTrigger value="DFC">DFC</TabsTrigger>
-              </TabsList>
+            <div className="flex items-center justify-between mb-4">
+              <Tabs value={activeDreDfcTab} onValueChange={(v) => setActiveDreDfcTab(v as 'DRE' | 'DFC')}>
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="DRE">DRE</TabsTrigger>
+                  <TabsTrigger value="DFC">DFC</TabsTrigger>
+                </TabsList>
+              </Tabs>
+              <div className="flex gap-2">
+                <DREExportButton 
+                  selectedCompanies={selectedCompanies}
+                  selectedMonth={selectedMonth}
+                  period={selectedPeriod}
+                />
+                <DFCExportButton 
+                  selectedCompanies={selectedCompanies}
+                  selectedMonth={selectedMonth}
+                  period={selectedPeriod}
+                />
+              </div>
+            </div>
 
+            <Tabs value={activeDreDfcTab} onValueChange={(v) => setActiveDreDfcTab(v as 'DRE' | 'DFC')}>
               <TabsContent value="DRE" className="space-y-6">
                 <DREPivotTable cnpj={cnpjForCharts} period={selectedPeriod} />
                 <LucroBrutoBarChart dreData={dreData} />

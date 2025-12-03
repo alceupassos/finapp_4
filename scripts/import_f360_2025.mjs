@@ -183,29 +183,61 @@ async function importMonth(cnpj, year, month) {
     const dreRows = transformToDRE(parcelas, cnpj)
     const dfcRows = transformToDFC(parcelas, cnpj)
 
-    // Inserir DRE
+    // Inserir DRE com verificação de duplicação
     if (dreRows.length > 0) {
+      // Verificar duplicatas antes de inserir
+      const uniqueDreRows = []
+      const seenKeys = new Set()
+      
+      for (const row of dreRows) {
+        const key = `${row.company_cnpj}_${row.date}_${row.account}`
+        if (!seenKeys.has(key)) {
+          seenKeys.add(key)
+          uniqueDreRows.push(row)
+        }
+      }
+      
+      if (uniqueDreRows.length < dreRows.length) {
+        console.log(`⚠️  Removidas ${dreRows.length - uniqueDreRows.length} duplicatas DRE antes de inserir`)
+      }
+      
       const { error: dreError } = await supabase
         .from('dre_entries')
-        .upsert(dreRows, { onConflict: 'company_cnpj,date,account' })
+        .upsert(uniqueDreRows, { onConflict: 'company_cnpj,date,account' })
       
       if (dreError) {
         console.error(`❌ Erro ao inserir DRE para ${cnpj}:`, dreError)
       } else {
-        console.log(`✅ ${dreRows.length} registros DRE inseridos`)
+        console.log(`✅ ${uniqueDreRows.length} registros DRE inseridos/atualizados`)
       }
     }
 
-    // Inserir DFC
+    // Inserir DFC com verificação de duplicação
     if (dfcRows.length > 0) {
+      // Verificar duplicatas antes de inserir
+      const uniqueDfcRows = []
+      const seenKeys = new Set()
+      
+      for (const row of dfcRows) {
+        const key = `${row.company_cnpj}_${row.date}_${row.kind}_${row.category}`
+        if (!seenKeys.has(key)) {
+          seenKeys.add(key)
+          uniqueDfcRows.push(row)
+        }
+      }
+      
+      if (uniqueDfcRows.length < dfcRows.length) {
+        console.log(`⚠️  Removidas ${dfcRows.length - uniqueDfcRows.length} duplicatas DFC antes de inserir`)
+      }
+      
       const { error: dfcError } = await supabase
         .from('cashflow_entries')
-        .upsert(dfcRows, { onConflict: 'company_cnpj,date,kind,category' })
+        .upsert(uniqueDfcRows, { onConflict: 'company_cnpj,date,kind,category' })
       
       if (dfcError) {
         console.error(`❌ Erro ao inserir DFC para ${cnpj}:`, dfcError)
       } else {
-        console.log(`✅ ${dfcRows.length} registros DFC inseridos`)
+        console.log(`✅ ${uniqueDfcRows.length} registros DFC inseridos/atualizados`)
       }
     }
 
