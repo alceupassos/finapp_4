@@ -136,7 +136,7 @@ export const SupabaseRest = {
               
               if (Array.isArray(rows) && rows.length > 0) {
                 companiesList.push({
-                  grupo_empresarial: rows[0].grupo_empresarial || 'Grupo Volpe',
+                  grupo_empresarial: rows[0].grupo_empresarial || '',
                   cliente_nome: rows[0].cliente_nome || rows[0].nome || 'Empresa',
                   cnpj: cnpj14
                 })
@@ -144,7 +144,7 @@ export const SupabaseRest = {
                 // Fallback: buscar na tabela companies
                 const companyRows = await restGet('companies', {
                   query: {
-                    select: 'razao_social,nome_fantasia,cnpj',
+                    select: 'razao_social,nome_fantasia,cnpj,grupo_empresarial',
                     cnpj: `eq.${cnpj14}`,
                     limit: '1'
                   }
@@ -152,14 +152,14 @@ export const SupabaseRest = {
                 
                 if (Array.isArray(companyRows) && companyRows.length > 0) {
                   companiesList.push({
-                    grupo_empresarial: 'Grupo Volpe',
+                    grupo_empresarial: companyRows[0].grupo_empresarial || '',
                     cliente_nome: companyRows[0].nome_fantasia || companyRows[0].razao_social || 'Empresa',
                     cnpj: cnpj14
                   })
                 } else {
-                  // Se não encontrar, criar entrada básica
+                  // Se não encontrar, criar entrada básica sem grupo específico
                   companiesList.push({
-                    grupo_empresarial: 'Grupo Volpe',
+                    grupo_empresarial: '',
                     cliente_nome: `Empresa ${cnpj14}`,
                     cnpj: cnpj14
                   })
@@ -167,9 +167,9 @@ export const SupabaseRest = {
               }
             } catch (err: any) {
               console.warn(`⚠️ Erro ao buscar detalhes da empresa ${cnpj14}:`, err?.message || err)
-              // Adicionar entrada básica mesmo com erro
+              // Adicionar entrada básica mesmo com erro, sem grupo específico
               companiesList.push({
-                grupo_empresarial: 'Grupo Volpe',
+                grupo_empresarial: '',
                 cliente_nome: `Empresa ${cnpj14}`,
                 cnpj: cnpj14
               })
@@ -198,7 +198,7 @@ export const SupabaseRest = {
       })
       if (Array.isArray(rows) && rows.length) {
         return rows.map((r: any) => ({
-          grupo_empresarial: r.grupo_empresarial || 'Grupo Volpe',
+          grupo_empresarial: r.grupo_empresarial || '',
           cliente_nome: r.cliente_nome || r.nome || 'Empresa',
           cnpj: r.cnpj || cnpj14
         }))
@@ -207,8 +207,8 @@ export const SupabaseRest = {
       console.warn('⚠️ Erro ao buscar empresa matriz:', err?.message || err)
     }
     
-    // Último fallback: construir a empresa padrão
-    return [{ grupo_empresarial: 'Grupo Volpe', cliente_nome: 'Volpe Matriz', cnpj: cnpj14 }]
+    // Último fallback: construir a empresa padrão sem grupo específico
+    return [{ grupo_empresarial: '', cliente_nome: 'Empresa Matriz', cnpj: cnpj14 }]
   },
   
   getDRE: async (cnpj: string) => {

@@ -1,0 +1,91 @@
+# Cursor Rules - FinApp Dashboard
+
+## Regras de Filtros e Contexto
+
+### 1. SEMPRE Respeitar Filtros da Página
+- **CRÍTICO**: Todos os componentes, gráficos, tabelas e funções devem SEMPRE respeitar os filtros selecionados pelo usuário na página
+- Filtros incluem: período (Ano/Mês), ano, trimestre, mês, categoria, conta bancária, empresas selecionadas
+- NUNCA ignorar ou sobrescrever filtros do usuário
+- Quando criar novos componentes, SEMPRE aceitar e aplicar filtros como props
+- Quando buscar dados, SEMPRE usar os filtros fornecidos nas queries
+
+### 2. Filtros Globais vs Locais
+- Filtros globais vêm de `App.tsx` (selectedCompanies, period, selectedMonth)
+- Filtros locais vêm de componentes específicos (HorizontalFilters, etc)
+- Componentes devem aceitar ambos e aplicar a interseção dos filtros
+- Prioridade: filtros locais específicos > filtros globais
+
+### 3. Botão de Reset de Filtros
+- Sempre incluir um botão discreto para resetar filtros aos valores padrão
+- Botão deve ser visível mas não intrusivo (ícone pequeno, posição discreta)
+- Reset deve voltar para: Ano atual, período "Ano", todos os meses/trimestres/categorias
+
+### 4. Empresas e Grupos
+- NUNCA filtrar por "Grupo Volpe" ou qualquer grupo específico hardcoded
+- Usar apenas empresas associadas ao usuário logado via `user_companies`
+- Não assumir grupo empresarial específico - usar dados do banco
+- Remover todos os fallbacks hardcoded com "Grupo Volpe"
+
+### 5. Dados e Queries
+- Todas as queries devem usar filtros de período, empresa e categoria quando aplicável
+- Não retornar dados fora do período selecionado
+- Não retornar dados de empresas não selecionadas
+- Consolidar dados apenas das empresas selecionadas
+
+### 6. Componentes de Gráficos
+- Todos os gráficos devem aceitar props de filtros (cnpj, year, month, etc)
+- Aplicar filtros antes de renderizar dados
+- Mostrar indicador visual quando filtros estão ativos
+- Atualizar automaticamente quando filtros mudam
+
+### 7. Performance
+- Cachear dados apenas quando filtros são os mesmos
+- Invalidar cache quando filtros mudam
+- Não fazer queries desnecessárias com filtros diferentes
+
+## Exemplos de Implementação
+
+### Componente com Filtros
+```typescript
+interface MyComponentProps {
+  selectedCompanies: string[]
+  selectedYear: string
+  selectedMonth?: string
+  // ... outros filtros
+}
+
+export function MyComponent({ selectedCompanies, selectedYear, selectedMonth }: MyComponentProps) {
+  // SEMPRE usar os filtros fornecidos
+  const data = useMemo(() => {
+    return fetchData(selectedCompanies, selectedYear, selectedMonth)
+  }, [selectedCompanies, selectedYear, selectedMonth])
+  
+  // ...
+}
+```
+
+### Query com Filtros
+```typescript
+const query = {
+  company_cnpj: `in.(${selectedCompanies.join(',')})`,
+  year: `eq.${selectedYear}`,
+  ...(selectedMonth && { month: `eq.${selectedMonth}` })
+}
+```
+
+### Botão Reset
+```typescript
+<button
+  onClick={() => {
+    onYearChange(new Date().getFullYear().toString())
+    onMonthChange('')
+    onQuarterChange('')
+    onCategoryChange('')
+  }}
+  className="text-xs text-muted-foreground hover:text-foreground"
+  title="Limpar filtros"
+>
+  <X className="w-3 h-3" />
+</button>
+```
+

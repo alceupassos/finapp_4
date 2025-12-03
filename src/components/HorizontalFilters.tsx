@@ -1,4 +1,4 @@
-import { Calendar, Filter, Building2 } from 'lucide-react'
+import { Calendar, Filter, Building2, X } from 'lucide-react'
 
 interface HorizontalFiltersProps {
   selectedPeriod: 'Ano' | 'Mês'
@@ -30,6 +30,23 @@ export function HorizontalFilters({
   onBankAccountChange,
 }: HorizontalFiltersProps) {
   const currentYear = new Date().getFullYear()
+
+  const hasActiveFilters = 
+    selectedQuarter !== '' || 
+    selectedMonth !== '' || 
+    selectedCategory !== '' || 
+    selectedBankAccount !== '' ||
+    selectedPeriod !== 'Ano' ||
+    (selectedYear && selectedYear !== currentYear.toString())
+
+  const resetFilters = () => {
+    onPeriodChange('Ano')
+    onYearChange?.(currentYear.toString())
+    onQuarterChange?.('')
+    onMonthChange?.('')
+    onCategoryChange?.('')
+    onBankAccountChange?.('')
+  }
 
   return (
     <div className="card-premium p-4 mb-6">
@@ -159,6 +176,20 @@ export function HorizontalFilters({
               <option value="itau-taxa">Itaú - Taxa</option>
               <option value="santander">Santander</option>
             </select>
+          </div>
+        )}
+
+        {/* Botão discreto para resetar filtros */}
+        {hasActiveFilters && (
+          <div className="flex items-center ml-auto">
+            <button
+              onClick={resetFilters}
+              className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs text-muted-foreground hover:text-foreground hover:bg-graphite-800 transition-colors"
+              title="Limpar todos os filtros"
+            >
+              <X className="w-3 h-3" />
+              <span className="hidden sm:inline">Limpar</span>
+            </button>
           </div>
         )}
       </div>

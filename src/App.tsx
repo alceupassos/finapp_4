@@ -366,7 +366,7 @@ Sempre que relevante, fornecer:
             <NoticiasPage 
               cnpj={selectedCompanies[0] || '26888098000159'}
               nomeEmpresa={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.cliente_nome || 'Empresa'}
-              grupoEmpresarial={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.grupo_empresarial || 'Grupo Volpe'}
+              grupoEmpresarial={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.grupo_empresarial || ''}
             />
           )}
         </main>
