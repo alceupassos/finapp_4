@@ -1,0 +1,11 @@
+{
+  "mappings": [
+    {
+      "token": "013162e0-b9a0-4e3b-b016-47ae83f5809c",
+      "cnpj": "12345678000190",
+      "companyName": "CARREIRA PRETA"
+    }
+  ],
+  "instructions": "Este arquivo mapeia tokens F360 para CNPJs. Copie para token-cnpj-mapping.json e preencha com os dados reais."
+}
+

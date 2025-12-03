@@ -1,0 +1,122 @@
+# PRD: Sistema de Integração Financeira Multi-ERP
+
+## Contexto do Projeto
+Criar sistema web para importar, analisar e visualizar dados financeiros de clientes dos ERPs F360 e OMIE. 
+Arquivo crítico: **Tokens_f360.xlsx** contém todos os tokens de acesso.
+
+## Problema Principal
+**F360**: Um único token pode acessar múltiplas empresas do mesmo grupo
+- Exemplo: Token VOLPE acessa VOLPE - LOJA 1, VOLPE - LOJA 2, etc.
+- Necessário estratégia para identificar e separar cada CNPJ
+
+**OMIE**: Mais simples, geralmente 1 token = 1 empresa
+
+## Stack Tecnológico
+- Next.js 14 (App Router)
+- TypeScript
+- Supabase (DB + Vector Store para RAG)
+- Redis (cache)
+- MCP Servers (já configurado no Cursor)
+
+## Arquivos de Referência Disponíveis
+- `Tokens_f360.xlsx` - CRÍTICO: todos os tokens dos clientes
+- `/VOLPE/*.xlsx` - Exemplos de DREs e dados exportados
+- `/F360/` - Códigos de integração anterior (com bugs)
+- `/OMIE/` - Documentação e exemplos
+
+## Fases de Desenvolvimento
+
+### FASE 0: Preparação (2 horas) - URGENTE
+- [ ] Haiku processa Tokens_f360.xlsx → tokens_f360.json
+- [ ] Haiku analisa estrutura VOLPE → volpe_structure.json
+- [ ] Identificar e documentar APIs disponíveis
+- [ ] Setup inicial Next.js + Supabase
+
+### FASE 1: MVP Cliente Único (2 dias)
+**Objetivo**: Importar VOLPE completo como teste
+
+#### Backend
+- [ ] Criar schema Supabase:
+```sql
+  - clients (id, name, token, erp_type)
+  - companies (id, client_id, name, cnpj)
+  - transactions (id, company_id, date, account, value)
+  - chart_of_accounts (id, company_id, code, name, type)
+```
+- [ ] Função para ler tokens_f360.json
+- [ ] API F360: detectar múltiplas empresas por token
+- [ ] Importar dados de 1 loja VOLPE
+- [ ] Validar contra Excel exportado (margem erro <1%)
+
+#### Frontend
+- [ ] Auth Supabase (user: alceu@angra.io, senha: B5b0dcf500@#)
+- [ ] Página de importação manual
+- [ ] Visualização básica dos dados importados
+
+### FASE 2: Multi-Empresa e DRE (3 dias)
+- [ ] Importar TODAS as lojas VOLPE (mesmo token)
+- [ ] Estratégia de namespace por CNPJ
+- [ ] Geração de DRE em runtime (não gravar no DB)
+- [ ] Comparação automática com Excel
+- [ ] Cache Redis (TTL 12 horas)
+
+### FASE 3: OMIE e Automação (3 dias)
+- [ ] Integração OMIE (mais simples)
+- [ ] Cron jobs Supabase (03h e 13h BRT)
+- [ ] Edge Function para importação manual
+- [ ] DFC completo
+- [ ] Dashboard com métricas
+
+### FASE 4: RAG e Inteligência (2 dias)
+- [ ] Setup vector store Supabase
+- [ ] RAG híbrido para consultas
+- [ ] Análises automáticas com skills BPO
+- [ ] Alertas de anomalias
+
+## Decisões Técnicas Importantes
+
+### Otimização de Tokens (Cursor/Claude)
+1. NUNCA ler Excels grandes diretamente
+2. Usar apenas JSONs processados pelo Haiku
+3. Types TypeScript gerados dos JSONs
+4. Máximo 50KB por arquivo de contexto
+
+### Estratégia F360 Multi-Empresa
+```typescript
+// Pseudo-código
+const empresas = await f360.listarEmpresas(token);
+for (const empresa of empresas) {
+  const dados = await f360.buscarDados(token, empresa.cnpj);
+  await supabase.upsert('companies', {
+    client_id: clientId,
+    cnpj: empresa.cnpj,
+    name: empresa.name
+  });
+}
+```
+
+### DRE/DFC Runtime
+- NÃO gravar DRE/DFC no banco
+- Calcular sempre em runtime
+- Cache no Redis por 12h
+- Estrutura baseada nos Excels VOLPE
+
+## Critérios de Sucesso
+- [ ] Importar 100% dos dados VOLPE
+- [ ] DRE batendo com Excel (±1%)
+- [ ] Atualização automática funcionando
+- [ ] Tempo de importação <5 min por cliente
+- [ ] Zero tokens desperdiçados no Cursor
+
+## Riscos e Mitigações
+| Risco | Probabilidade | Impacto | Mitigação |
+|-------|--------------|---------|-----------|
+| Tokens Cursor estourados | Alta | Alto | JSONs preprocessados |
+| F360 retorna dados misturados | Alta | Médio | Separação por CNPJ |
+| Estrutura DRE inconsistente | Média | Alto | Normalização do plano de contas |
+| Rate limit APIs | Baixa | Médio | Queue com retry |
+
+## Observações
+- Sistema anterior em `/F360` tem bugs, analisar mas não copiar
+- VOLPE é o caso de teste mais complexo (múltiplas filiais)
+- Priorizar funcionalidade sobre UI inicialmente

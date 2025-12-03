@@ -3,6 +3,7 @@ import { Badge } from './ui/badge';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
 import { Progress } from './ui/progress';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { formatCurrency } from '../lib/formatters';
 
 export function KpiCard({ titulo, valor, subtitulo, variacao, negativo=false, progress }:{ titulo:string; valor:number; subtitulo?:string; variacao?:number; negativo?:boolean; progress?: number }){
   const hasVar = typeof variacao === 'number';
@@ -31,7 +32,7 @@ export function KpiCard({ titulo, valor, subtitulo, variacao, negativo=false, pr
         </div>
       </CardHeader>
       <CardContent>
-        <div className={`text-2xl font-semibold ${negativo? 'text-red-300':'text-gray-100'}`}>R$ {valor.toLocaleString('pt-BR',{minimumFractionDigits:2})}</div>
+        <div className={`text-2xl font-semibold ${negativo? 'text-red-300':'text-gray-100'}`}>{formatCurrency(valor, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
         {subtitulo && <div className="text-xs text-gray-500 mt-1">{subtitulo}</div>}
         {typeof progress === 'number' && <div className="mt-2"><Progress value={progress} /></div>}
       </CardContent>

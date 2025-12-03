@@ -260,6 +260,138 @@ npm run supabase:secrets
 **Gráficos**: `charts/`, `Recharts`, `DREWaterfallChart.tsx`
 **Animações**: `Framer Motion`, `AnimatedReportCard.tsx`
 **Supabase**: `supabaseRest.ts`, `auth.ts`, migrations em `supabase/migrations/`
+**Scripts2**: `scripts2/scripts/` - Soluções de importação/exportação e troubleshooting
+
+## 📦 SCRIPTS2 - SOLUÇÕES DE IMPORTAÇÃO/EXPORTAÇÃO
+
+> **IMPORTANTE**: Sempre consultar `scripts2/scripts/` ao planejar importações/exportações ou resolver problemas com empresas do Grupo Volpe.
+
+### Arquivos Principais em scripts2/scripts/
+
+| Arquivo | Função | Quando Usar |
+|---------|--------|-------------|
+| `import-all-f360.ts` | Importação em massa F360 (batches de 10) | Importar múltiplas empresas de tokens_f360.json |
+| `populate-companies.ts` | Popular empresas via API F360 | Cadastrar empresas descobrindo CNPJs via ListarContasBancarias |
+| `import-from-excel.ts` | Importar empresas de Excel (unico.xlsx, grupo.xlsx) | Importar empresas com flag is_group correta |
+| `import-grupos.ts` | Importar empresas de grupos empresariais | Processar grupos com múltiplas empresas (ex: VOLPE) |
+| `investigate-group-token.ts` | Investigar API de grupos F360 | Descobrir CNPJs de empresas dentro de grupos |
+| `find-company-with-data.ts` | Encontrar empresas com dados | Verificar quais empresas têm dados importados |
+| `check-database-status.ts` | Verificar status do banco | Diagnosticar problemas de dados faltantes |
+| `extract-xlsx-schema.ts` | Extrair schema de Excel | Analisar estrutura de arquivos Excel |
+
+### Estratégias de Importação (Baseadas em scripts2/)
+
+#### 1. Extração de CNPJs de Grupos
+**Problema**: Token de grupo acessa múltiplas empresas, precisa descobrir CNPJs individuais.
+
+**Soluções (em ordem de prioridade)**:
+1. **ListarContasBancarias** (mais confiável para grupos)
+   - Endpoint: `GET /ContaBancariaPublicAPI/ListarContasBancarias`
+   - Extrai CNPJs do campo `CNPJ` ou `cnpj` das contas
+   - Função: `extractCnpjsFromBankAccounts()` em `populate-companies.ts`
+
+2. **ListarPessoas**
+   - Endpoint: `GET /PessoasPublicAPI/ListarPessoas`
+   - Extrai CNPJs de clientes/fornecedores
+   - Função: `extractCnpjs()` em `import-grupos.ts`
+
+3. **GerarRelatorioContabil**
+   - Endpoint: `POST /PublicRelatorioAPI/GerarRelatorio`
+   - Extrai CNPJs do relatório gerado
+   - Função: `extractCnpjs()` em `investigate-group-token.ts`
+
+#### 2. Processamento de Grupos
+**Estratégia**:
+- Criar empresa grupo com `is_group = true` e `group_token = token`
+- Para cada CNPJ encontrado, criar empresa filha com `parent_company_id = grupo.id`
+- Usar mesmo `token_f360` para todas as empresas do grupo
+
+**Arquivo de referência**: `import-grupos.ts` linhas 70-277
+
+#### 3. Mapeamento Token -> CNPJ
+**Quando usar**: Se CNPJ não pode ser extraído via API.
+
+**Arquivo**: `token-cnpj-mapping.json` (exemplo em `token-cnpj-mapping.example.json`)
+```json
+{
+  "mappings": [
+    {
+      "token": "uuid-token",
+      "cnpj": "12345678000190",
+      "companyName": "Nome da Empresa"
+    }
+  ]
+}
+```
+
+#### 4. Validação e Troubleshooting
+- **Verificar empresas**: `check-database-status.ts`
+- **Encontrar empresas com dados**: `find-company-with-data.ts`
+- **Investigar problemas**: `investigate-group-token.ts`
+
+### Problemas Comuns e Soluções
+
+#### Problema: Empresas do Grupo Volpe não carregam
+**Causa**: Token de grupo não extrai CNPJs corretamente.
+
+**Solução**:
+1. Usar `ListarContasBancarias` primeiro (mais confiável)
+2. Se falhar, tentar `ListarPessoas`
+3. Se ainda falhar, usar `GerarRelatorioContabil`
+4. Se nenhum funcionar, usar mapeamento manual em `token-cnpj-mapping.json`
+
+**Arquivo de referência**: `import-all-f360.ts` linhas 532-787
+
+#### Problema: Dados não aparecem na interface
+**Causa**: Empresas criadas mas sem dados financeiros importados.
+
+**Solução**:
+1. Verificar se empresas existem: `check-database-status.ts`
+2. Verificar se têm dados: `find-company-with-data.ts`
+3. Importar dados financeiros: `import-all-f360.ts` (importa plano de contas + lançamentos)
+
+#### Problema: Importação muito lenta
+**Solução**: 
+- Processar em batches (padrão: 10 empresas)
+- Delay entre batches (padrão: 1 segundo)
+- Paginação por mês para lançamentos (12 meses)
+
+### Padrões de Código (scripts2/)
+
+#### Autenticação F360
+```typescript
+const authResponse = await fetch('https://financas.f360.com.br/PublicLoginAPI/DoLogin', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ token }),
+})
+const jwt = (await authResponse.json()).Token
+```
+
+#### Extração de CNPJs
+```typescript
+function extractCnpjsFromBankAccounts(bankAccounts: unknown[]): string[] {
+  const cnpjs = new Set<string>()
+  for (const account of bankAccounts) {
+    const acc = account as Record<string, unknown>
+    if (acc.CNPJ) {
+      const cnpj = String(acc.CNPJ).replace(/\D/g, '')
+      if (cnpj.length === 14) cnpjs.add(cnpj)
+    }
+  }
+  return Array.from(cnpjs)
+}
+```
+
+#### Processamento em Batches
+```typescript
+const BATCH_SIZE = 10
+for (let i = 0; i < tokens.length; i += BATCH_SIZE) {
+  const batch = tokens.slice(i, i + BATCH_SIZE)
+  await Promise.all(batch.map(token => processCompany(token)))
+  await new Promise(resolve => setTimeout(resolve, 1000)) // Delay
+}
+```
 
 ---
 

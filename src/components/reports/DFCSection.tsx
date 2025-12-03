@@ -24,18 +24,23 @@ export function DFCSection({
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (selectedCompanies.length === 0) return
+    if (selectedCompanies.length === 0) {
+      setDfcData([])
+      setLoading(false)
+      return
+    }
 
     setLoading(true)
     ;(async () => {
       try {
-        // Buscar dados DFC do Supabase
-        // Nota: Implementar método getDFC no SupabaseRest se necessário
-        const cnpj = selectedCompanies[0]
-        // Por enquanto, usar dados mockados ou implementar busca real
-        setDfcData([])
+        const year = parseInt(selectedYear) || new Date().getFullYear()
+        const month = selectedMonth ? parseInt(selectedMonth.split('-')[1]) : undefined
+        
+        const data = await SupabaseRest.getDfcSummaries(selectedCompanies, year, month)
+        setDfcData(data || [])
       } catch (error) {
         console.error('Erro ao carregar DFC:', error)
+        setDfcData([])
       } finally {
         setLoading(false)
       }
@@ -159,6 +164,29 @@ export function DFCSection({
         <div className="card-premium p-4 text-center">
           <p className="text-sm text-muted-foreground">Carregando dados DFC...</p>
         </div>
+      )}
+
+      {!loading && dfcData.length === 0 && selectedCompanies.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="card-premium p-8 text-center"
+        >
+          <p className="text-graphite-400 mb-2">Nenhum dado DFC encontrado</p>
+          <p className="text-sm text-graphite-500">
+            Importe dados do Excel ou API F360 para visualizar o fluxo de caixa
+          </p>
+        </motion.div>
+      )}
+
+      {!loading && selectedCompanies.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="card-premium p-8 text-center"
+        >
+          <p className="text-graphite-400">Selecione pelo menos uma empresa para visualizar os dados DFC</p>
+        </motion.div>
       )}
     </div>
   )

@@ -101,6 +101,8 @@ export function ReportsPage({
     }
   }
 
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+
   return (
     <div className="flex relative">
       {/* Sidebar */}
@@ -109,8 +111,8 @@ export function ReportsPage({
         onSectionChange={setActiveSection}
       />
 
-      {/* Main Content */}
-      <div className="flex-1 ml-64 p-8">
+      {/* Main Content - ajusta margem baseado no estado da sidebar */}
+      <div className="flex-1 p-8 transition-all duration-300" style={{ marginLeft: '320px' }}>
         {/* Filtros horizontais no topo */}
         <HorizontalFilters
           selectedPeriod={selectedPeriod}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { TrendingUp, TrendingDown } from 'lucide-react'
+import { formatCurrency, formatNumber, formatPercentage } from '../../lib/formatters'
 
 interface AnimatedReportCardProps {
   title: string
@@ -21,14 +22,11 @@ export function AnimatedReportCard({
   const formatValue = (val: number) => {
     switch (format) {
       case 'currency':
-        return new Intl.NumberFormat('pt-BR', {
-          style: 'currency',
-          currency: 'BRL',
-        }).format(val)
+        return formatCurrency(val)
       case 'percentage':
-        return `${val.toFixed(2)}%`
+        return formatPercentage(val)
       default:
-        return new Intl.NumberFormat('pt-BR').format(val)
+        return formatNumber(val)
     }
   }
 

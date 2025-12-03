@@ -26,6 +26,7 @@ import { BanksCard } from './components/BanksCard';
 import { CompanyGroupSelector } from './components/CompanyGroupSelector';
 import { DREExportButton } from './components/DREExportButton';
 import { DFCExportButton } from './components/DFCExportButton';
+import { formatCurrency } from './lib/formatters';
 
 export type DREItem = { grupo:string; conta:string; valor:number };
 export type DFCItem = { data:string; descricao:string; entrada:number; saida:number; saldo:number };
@@ -249,7 +250,7 @@ Sempre que relevante, fornecer:
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
             <AnimatedKPICard
               title="Receita Total"
-              value={loading ? 'R$ 0' : `R$ ${Math.round(metrics.receitaTotal).toLocaleString('pt-BR')}`}
+              value={loading ? 'R$ 0' : formatCurrency(Math.round(metrics.receitaTotal))}
               change={loading ? 0 : metrics.receitaChange}
               trend={metrics.receitaChange >= 0 ? "up" : "down"}
               icon="TrendingUp"
@@ -258,7 +259,7 @@ Sempre que relevante, fornecer:
             />
             <AnimatedKPICard
               title="Despesas"
-              value={loading ? 'R$ 0' : `R$ ${Math.round(metrics.despesasTotal).toLocaleString('pt-BR')}`}
+              value={loading ? 'R$ 0' : formatCurrency(Math.round(metrics.despesasTotal))}
               change={loading ? 0 : metrics.despesasChange}
               trend={metrics.despesasChange >= 0 ? "up" : "down"}
               icon="TrendingDown"
@@ -267,7 +268,7 @@ Sempre que relevante, fornecer:
             />
             <AnimatedKPICard
               title="Limite Diário"
-              value={`R$ ${metrics.limiteDiario.toLocaleString('pt-BR')}`}
+              value={formatCurrency(metrics.limiteDiario)}
               change={loading ? 0 : metrics.limiteDiarioProgress}
               trend="up"
               icon="Wallet"
@@ -277,7 +278,7 @@ Sempre que relevante, fornecer:
             />
             <AnimatedKPICard
               title="Meta de Poupança"
-              value={`R$ ${metrics.metaPoupanca.toLocaleString('pt-BR')}`}
+              value={formatCurrency(metrics.metaPoupanca)}
               change={loading ? 0 : metrics.metaPoupancaProgress}
               trend="up"
               icon="Target"

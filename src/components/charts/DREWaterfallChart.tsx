@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
+import { formatCurrency } from '../../lib/formatters'
 
 interface DREWaterfallChartProps {
   dreData: Array<{ conta?: string; natureza?: string; valor?: number }>
@@ -69,13 +70,7 @@ export function DREWaterfallChart({ dreData }: DREWaterfallChartProps) {
         <YAxis
           stroke="#9ca3af"
           style={{ fontSize: '12px' }}
-          tickFormatter={(value) =>
-            new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-              notation: 'compact',
-            }).format(value)
-          }
+          tickFormatter={(value) => formatCurrency(value, { showSymbol: true })}
         />
         <Tooltip
           contentStyle={{
@@ -83,12 +78,7 @@ export function DREWaterfallChart({ dreData }: DREWaterfallChartProps) {
             border: '1px solid #374151',
             borderRadius: '8px',
           }}
-          formatter={(value: number) =>
-            new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-            }).format(value)
-          }
+          formatter={(value: number) => formatCurrency(value)}
         />
         <Bar dataKey="value" radius={[8, 8, 0, 0]}>
           {chartData.map((entry, index) => (

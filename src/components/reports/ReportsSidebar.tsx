@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard,
@@ -66,15 +66,40 @@ const menuItems: MenuItem[] = [
 
 export function ReportsSidebar({ activeSection, onSectionChange }: ReportsSidebarProps) {
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+      // Auto-colapsar em telas pequenas
+      if (window.innerWidth < 1024) {
+        setIsCollapsed(true)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    handleResize() // Chamar uma vez para inicializar
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const isMobile = windowWidth < 1024
+  const sidebarWidth = isCollapsed ? 64 : 256
+  const leftOffset = isMobile ? 0 : 256 // Offset da sidebar principal
 
   return (
     <motion.aside
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className={`fixed left-64 top-0 h-screen bg-gradient-to-b from-graphite-950 via-charcoal-950 to-graphite-900 border-r border-graphite-800 transition-all duration-300 ${
-        isCollapsed ? 'w-16' : 'w-64'
-      } z-40`}
+      className={`fixed top-0 h-screen bg-gradient-to-b from-graphite-950 via-charcoal-950 to-graphite-900 border-r border-graphite-800 transition-all duration-300 z-40 ${
+        isMobile
+          ? isCollapsed
+            ? 'left-0 w-16'
+            : 'left-0 w-64 shadow-2xl'
+          : `left-64 ${isCollapsed ? 'w-16' : 'w-64'}`
+      }`}
+      style={{ left: isMobile ? 0 : `${leftOffset}px` }}
     >
       {/* Header */}
       <div className="p-4 border-b border-graphite-800 flex items-center justify-between">

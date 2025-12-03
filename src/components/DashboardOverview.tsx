@@ -2,6 +2,7 @@ import { Card, Metric, Text, Grid, Title, BadgeDelta } from "@tremor/react"
 import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
 import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
 import { useEffect, useMemo, useState } from 'react'
+import { formatCurrency } from '../lib/formatters'
 
 type Period = 'Dia' | 'Semana' | 'Mês' | 'Ano'
 type Tx = { data?: string; entrada?: number; saida?: number; status?: string }
@@ -89,7 +90,7 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
             <Title>{k.name}</Title>
             <BadgeDelta deltaType={k.delta >= 0 ? "moderateIncrease" : "moderateDecrease"}>{k.delta}%</BadgeDelta>
           </div>
-          <Metric>R$ {Number(k.value).toLocaleString('pt-BR')}</Metric>
+          <Metric>{formatCurrency(Number(k.value))}</Metric>
           <Text className="mt-2 text-sm text-muted-foreground">{loading ? 'Carregando...' : `Empresa ${cnpj || ''}`}</Text>
         </Card>
       ))}

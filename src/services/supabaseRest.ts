@@ -434,6 +434,191 @@ export const SupabaseRest = {
     }
   },
   
+  getBankAccounts: async (cnpjs: string[]) => {
+    if (!cnpjs || cnpjs.length === 0) return []
+    try {
+      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      if (cnpjList.length === 0) return []
+      
+      const query = cnpjList.map(c => `company_cnpj.eq.${c}`).join(',')
+      const rows = await restGet('bank_accounts', { query: { or: query, select: '*', limit: '1000' } })
+      
+      if (!Array.isArray(rows)) {
+        console.warn('⚠️ getBankAccounts: resposta não é array', rows)
+        return []
+      }
+      
+      return rows.map((r: any) => ({
+        id: r.id,
+        company_cnpj: r.company_cnpj,
+        nome: r.nome || r.name,
+        tipo_conta: r.tipo_conta || r.tipo || 'Conta Corrente',
+        banco_numero: r.banco_numero || r.banco,
+        agencia: r.agencia,
+        conta: r.conta,
+        digito_conta: r.digito_conta || r.digito,
+        saldo_atual: Number(r.saldo_atual || r.saldo || 0),
+        saldo_data: r.saldo_data || r.updated_at,
+        active: r.active !== false,
+      }))
+    } catch (err: any) {
+      console.error('❌ getBankAccounts falhou:', err?.message || err)
+      return []
+    }
+  },
+
+  getBankTransactions: async (cnpjs: string[], dateFrom?: string, dateTo?: string) => {
+    if (!cnpjs || cnpjs.length === 0) return []
+    try {
+      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      if (cnpjList.length === 0) return []
+      
+      const query: any = {
+        or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
+        select: '*',
+        limit: '5000',
+        order: 'date.desc',
+      }
+      
+      if (dateFrom) query.date = `gte.${dateFrom}`
+      if (dateTo) query.date = `${query.date ? '&' : ''}lte.${dateTo}`
+      
+      const rows = await restGet('bank_transactions', { query })
+      
+      if (!Array.isArray(rows)) {
+        console.warn('⚠️ getBankTransactions: resposta não é array', rows)
+        return []
+      }
+      
+      return rows.map((r: any) => ({
+        id: r.id,
+        company_cnpj: r.company_cnpj,
+        bank_account_id: r.bank_account_id,
+        date: r.date,
+        description: r.description || r.descricao,
+        amount: Number(r.amount || r.valor || 0),
+        type: r.type || (Number(r.amount || 0) >= 0 ? 'credit' : 'debit'),
+        balance: Number(r.balance || r.saldo || 0),
+        reconciled: r.reconciled || false,
+      }))
+    } catch (err: any) {
+      console.error('❌ getBankTransactions falhou:', err?.message || err)
+      return []
+    }
+  },
+
+  getReconciliationItems: async (cnpjs: string[], status?: 'conciliado' | 'pendente' | 'divergente') => {
+    if (!cnpjs || cnpjs.length === 0) return []
+    try {
+      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      if (cnpjList.length === 0) return []
+      
+      const query: any = {
+        or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
+        select: '*,bank_transactions(*),accounting_entries(*)',
+        limit: '1000',
+        order: 'date.desc',
+      }
+      
+      if (status) query.status = `eq.${status}`
+      
+      const rows = await restGet('reconciliation_items', { query })
+      
+      if (!Array.isArray(rows)) {
+        console.warn('⚠️ getReconciliationItems: resposta não é array', rows)
+        return []
+      }
+      
+      return rows.map((r: any) => ({
+        id: r.id,
+        company_cnpj: r.company_cnpj,
+        date: r.date,
+        bankTransaction: r.bank_transactions || r.bankTransaction,
+        accountingEntry: r.accounting_entries || r.accountingEntry,
+        bankAmount: Number(r.bank_amount || 0),
+        accountingAmount: Number(r.accounting_amount || 0),
+        status: r.status || 'pendente',
+        difference: Number(r.difference || 0),
+        notes: r.notes || r.observacoes,
+      }))
+    } catch (err: any) {
+      console.error('❌ getReconciliationItems falhou:', err?.message || err)
+      return []
+    }
+  },
+
+  getDreSummaries: async (cnpjs: string[], year: number, month?: number) => {
+    if (!cnpjs || cnpjs.length === 0) return []
+    try {
+      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      if (cnpjList.length === 0) return []
+      
+      const query: any = {
+        or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
+        period_year: `eq.${year}`,
+        select: '*',
+        limit: '10000',
+      }
+      
+      if (month) query.period_month = `eq.${month}`
+      
+      const rows = await restGet('dre_dfc_summaries', { query })
+      
+      if (!Array.isArray(rows)) {
+        return []
+      }
+      
+      return rows.map((r: any) => ({
+        id: r.id,
+        company_cnpj: r.company_cnpj,
+        period_year: r.period_year,
+        period_month: r.period_month,
+        account: r.account,
+        category: r.category,
+        dre_value: Number(r.dre_value || 0),
+      }))
+    } catch (err: any) {
+      console.error('❌ getDreSummaries falhou:', err?.message || err)
+      return []
+    }
+  },
+
+  getDfcSummaries: async (cnpjs: string[], year: number, month?: number) => {
+    if (!cnpjs || cnpjs.length === 0) return []
+    try {
+      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      if (cnpjList.length === 0) return []
+      
+      const query: any = {
+        or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
+        period_year: `eq.${year}`,
+        select: '*',
+        limit: '10000',
+      }
+      
+      if (month) query.period_month = `eq.${month}`
+      
+      const rows = await restGet('dfc_entries', { query })
+      
+      if (!Array.isArray(rows)) {
+        return []
+      }
+      
+      return rows.map((r: any) => ({
+        id: r.id,
+        company_cnpj: r.company_cnpj,
+        date: r.date,
+        kind: r.kind,
+        category: r.category,
+        amount: Number(r.amount || 0),
+        bank_account: r.bank_account,
+      }))
+    } catch (err: any) {
+      console.error('❌ getDfcSummaries falhou:', err?.message || err)
+      return []
+    }
+  },
+
   log: (item: { level: 'info'|'warn'|'error'; service: 'UI'|'API'|'Edge'; endpoint?: string; companyCnpj?: string; userId?: string; message: string; latencyMs?: number }) => {
     // ✅ FIX: Não falhar se log falhar
     return restPost('app_logs', { ...item, ts: new Date().toISOString() }).catch(err => {

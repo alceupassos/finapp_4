@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle2, XCircle, AlertCircle, Clock } from 'lucide-react'
 import { AnimatedReportCard } from './AnimatedReportCard'
+import { formatCurrency, formatDate } from '../../lib/formatters'
+import { SupabaseRest } from '../../services/supabaseRest'
 
 interface ReconciliationSectionProps {
   selectedCompanies: string[]
@@ -40,16 +42,51 @@ export function ReconciliationSection({
   const [selectedStatus, setSelectedStatus] = useState<ReconciliationStatus | 'all'>('all')
 
   useEffect(() => {
-    if (selectedCompanies.length === 0) return
+    if (selectedCompanies.length === 0) {
+      setItems([])
+      setLoading(false)
+      return
+    }
 
     setLoading(true)
     ;(async () => {
       try {
         // Buscar itens de conciliação do Supabase
-        // Implementar busca real quando necessário
-        setItems([])
+        const reconciliationData = await SupabaseRest.getReconciliationItems(selectedCompanies)
+        
+        // Mapear dados do Supabase para o formato esperado
+        const mappedItems: ReconciliationItem[] = reconciliationData.map((r: any) => {
+          const statusMap: Record<string, ReconciliationStatus> = {
+            'conciliado': 'matched',
+            'pendente': 'pending',
+            'divergente': 'divergent',
+            'unmatched': 'unmatched',
+          }
+          
+          return {
+            id: r.id,
+            bankTransaction: {
+              date: r.bankTransaction?.date || r.date,
+              description: r.bankTransaction?.description || 'Transação bancária',
+              amount: r.bankAmount || r.bankTransaction?.amount || 0,
+              type: (r.bankAmount || 0) >= 0 ? 'credit' : 'debit',
+            },
+            accountingEntry: r.accountingEntry ? {
+              date: r.accountingEntry.date || r.date,
+              description: r.accountingEntry.description || 'Lançamento contábil',
+              amount: r.accountingAmount || r.accountingEntry.amount || 0,
+            } : undefined,
+            status: statusMap[r.status] || 'pending',
+            matchType: r.matchType || 'auto',
+            confidence: r.confidence,
+            amountDiff: r.difference || r.amountDiff,
+          }
+        })
+        
+        setItems(mappedItems)
       } catch (error) {
         console.error('Erro ao carregar conciliação:', error)
+        setItems([])
       } finally {
         setLoading(false)
       }
@@ -210,7 +247,7 @@ export function ReconciliationSection({
                       className="border-b border-graphite-800/50 hover:bg-graphite-900/50 transition-colors"
                     >
                       <td className="py-3 px-4 text-sm text-graphite-300">
-                        {new Date(item.bankTransaction.date).toLocaleDateString('pt-BR')}
+                        {formatDate(item.bankTransaction.date)}
                       </td>
                       <td className="py-3 px-4 text-sm text-white">
                         {item.bankTransaction.description}
@@ -223,10 +260,7 @@ export function ReconciliationSection({
                         }`}
                       >
                         {item.bankTransaction.type === 'credit' ? '+' : '-'}
-                        {new Intl.NumberFormat('pt-BR', {
-                          style: 'currency',
-                          currency: 'BRL',
-                        }).format(Math.abs(item.bankTransaction.amount))}
+                        {formatCurrency(Math.abs(item.bankTransaction.amount))}
                       </td>
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2">

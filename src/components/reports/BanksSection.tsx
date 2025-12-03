@@ -4,6 +4,7 @@ import { Building2, TrendingUp, TrendingDown } from 'lucide-react'
 import { SupabaseRest } from '../../services/supabaseRest'
 import { SaldoBancarioChart } from '../charts/SaldoBancarioChart'
 import { AnimatedReportCard } from './AnimatedReportCard'
+import { formatCurrency, formatDate } from '../../lib/formatters'
 
 interface BanksSectionProps {
   selectedCompanies: string[]
@@ -21,17 +22,33 @@ export function BanksSection({
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (selectedCompanies.length === 0) return
+    if (selectedCompanies.length === 0) {
+      setBankAccounts([])
+      setTransactions([])
+      setLoading(false)
+      return
+    }
 
     setLoading(true)
     ;(async () => {
       try {
-        // Buscar contas bancárias e transações
-        // Implementar busca real no Supabase quando necessário
-        setBankAccounts([])
-        setTransactions([])
+        // Buscar contas bancárias
+        const accounts = await SupabaseRest.getBankAccounts(selectedCompanies)
+        setBankAccounts(accounts || [])
+
+        // Buscar transações do mês selecionado
+        const year = parseInt(selectedYear) || new Date().getFullYear()
+        const month = selectedMonth ? parseInt(selectedMonth.split('-')[1]) : new Date().getMonth() + 1
+        const dateFrom = `${year}-${String(month).padStart(2, '0')}-01`
+        const lastDay = new Date(year, month, 0).getDate()
+        const dateTo = `${year}-${String(month).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`
+
+        const trans = await SupabaseRest.getBankTransactions(selectedCompanies, dateFrom, dateTo)
+        setTransactions(trans || [])
       } catch (error) {
         console.error('Erro ao carregar dados bancários:', error)
+        setBankAccounts([])
+        setTransactions([])
       } finally {
         setLoading(false)
       }
@@ -154,15 +171,10 @@ export function BanksSection({
                 </div>
                 <div className="text-right">
                   <p className="text-lg font-bold text-white">
-                    {new Intl.NumberFormat('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    }).format(Number(account.saldo_atual || 0))}
+                    {formatCurrency(Number(account.saldo_atual || 0))}
                   </p>
                   <p className="text-xs text-graphite-500">
-                    {account.saldo_data
-                      ? new Date(account.saldo_data).toLocaleDateString('pt-BR')
-                      : 'Sem data'}
+                    {account.saldo_data ? formatDate(account.saldo_data) : 'Sem data'}
                   </p>
                 </div>
               </motion.div>
