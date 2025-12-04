@@ -1,4 +1,4 @@
-import { SupabaseRest, MATRIZ_CNPJ } from './supabaseRest'
+import { SupabaseRest } from './supabaseRest'
 
 export type Role = 'admin'|'franqueado'|'cliente'|'personalizado'
 export type Session = {
@@ -95,14 +95,14 @@ export async function loginSupabase(email: string, password: string): Promise<Se
         defaultCompany = userCompanies[0]
         console.log('✅ Empresa padrão do usuário:', defaultCompany)
       } else {
-        // Fallback: usar CNPJ da matriz
-        defaultCompany = MATRIZ_CNPJ
-        console.log('⚠️ Usuário sem empresas, usando matriz:', defaultCompany)
+        // Usuário sem empresas - não definir empresa padrão
+        defaultCompany = null
+        console.log('⚠️ Usuário sem empresas associadas')
       }
     } catch (err: any) {
       console.warn('Erro ao buscar empresas do usuário durante login:', err)
-      // Fallback: usar CNPJ da matriz em caso de erro
-      defaultCompany = MATRIZ_CNPJ
+      // Em caso de erro, não definir empresa padrão
+      defaultCompany = null
     }
     
     const session: Session = {
@@ -150,13 +150,13 @@ export async function verifySupabaseDataAccess() {
 
 export async function validateMockLogin(email: string, password: string): Promise<Session | null> {
   // Mock login for demo mode
-  if (password === 'fin-demo' || password === 'fin123' || password === 'B5b0dcf500@#') {
+  if (password === 'fin-demo' || password === 'fin123' || password === 'B5b0dcf500@#' || password === 'app321') {
     const session: Session = {
       id: 'demo-user',
       email,
       name: email.split('@')[0],
       role: email.includes('admin') ? 'admin' : email.includes('franqueado') ? 'franqueado' : 'cliente',
-      defaultCompany: MATRIZ_CNPJ,
+      defaultCompany: null,
       mode: 'demo',
       accessToken: 'demo-token',
     }

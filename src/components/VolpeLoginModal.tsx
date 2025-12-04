@@ -11,11 +11,11 @@ interface VolpeLoginModalProps {
 }
 
 export function VolpeLoginModal({ open, onClose, onLogged }: VolpeLoginModalProps) {
-  const [email, setEmail] = useState('dev@angrax.com.br')
-  const [password, setPassword] = useState('B5b0dcf500@#')
+  const [email, setEmail] = useState('adm@ifin.app.br')
+  const [password, setPassword] = useState('app321')
   const [error, setError] = useState('')
   const [companies, setCompanies] = useState<any[]>([])
-  const [selectedCompany, setSelectedCompany] = useState('26888098000159')
+  const [selectedCompany, setSelectedCompany] = useState('')
 
   useEffect(() => {
     if (open) {
@@ -78,7 +78,13 @@ export function VolpeLoginModal({ open, onClose, onLogged }: VolpeLoginModalProp
       >
         <div className="p-7 space-y-4">
           <div className="flex flex-col items-center gap-2">
-            <img src="/finapp-logo.png" alt="fin.app" className="w-40 h-auto" />
+            {/* Logo iFinance */}
+            <div className="flex items-center justify-center mb-2">
+              <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg px-4 py-2">
+                <span className="text-white font-bold text-xl">iFinance</span>
+              </div>
+            </div>
+            <img src="/finapp-logo.png" alt="fin.app" className="w-32 h-auto opacity-80" />
             <h3 className="text-sm font-semibold">Login - Grupo VOLPE</h3>
             <p className="text-xs text-muted-foreground">Acesso exclusivo para empresas do grupo VOLPE</p>
           </div>
@@ -129,7 +135,6 @@ export function VolpeLoginModal({ open, onClose, onLogged }: VolpeLoginModalProp
           </div>
 
           <div className="text-xs text-muted-foreground text-center pt-2">
-            <p>Usuário: dev@angrax.com.br</p>
             <p>Empresas disponíveis: {companies.length}</p>
           </div>
         </div>
