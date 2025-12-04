@@ -329,8 +329,8 @@ export class F360SingleImporter {
       accepts_entries: true,
     }))
 
-    const { error } = await this.supabase
-      .from('chart_of_accounts')
+    const { error } = await (this.supabase
+      .from('chart_of_accounts') as any)
       .upsert(inserts, { onConflict: 'company_id,code' })
 
     if (error) throw error
@@ -418,23 +418,23 @@ export class F360SingleImporter {
     let accountingCount = 0
 
     if (dreEntries.length > 0) {
-      const { error } = await this.supabase
-        .from('dre_entries')
+      const { error } = await (this.supabase
+        .from('dre_entries') as any)
         .upsert(dreEntries, { onConflict: 'company_cnpj,date,account,natureza' })
       if (error) throw error
       dreCount = dreEntries.length
     }
 
     if (dfcEntries.length > 0) {
-      const { error } = await this.supabase
-        .from('dfc_entries')
+      const { error } = await (this.supabase
+        .from('dfc_entries') as any)
         .upsert(dfcEntries, { onConflict: 'company_cnpj,date,kind,category,bank_account' })
       if (error) throw error
       dfcCount = dfcEntries.length
     }
 
     if (accountingEntries.length > 0) {
-      const { error } = await this.supabase.from('accounting_entries').insert(accountingEntries)
+      const { error } = await (this.supabase.from('accounting_entries') as any).insert(accountingEntries)
       if (error) throw error
       accountingCount = accountingEntries.length
     }
@@ -501,14 +501,14 @@ export class F360GroupImporter {
    * Mapear CNPJ para company_id no banco
    */
   async getCompanyId(cnpj: string): Promise<string | null> {
-    const { data, error } = await this.supabase
-      .from('companies')
+    const { data, error } = await ((this.supabase
+      .from('companies') as any)
       .select('id')
       .eq('cnpj', cnpj)
-      .single()
+      .single())
 
     if (error || !data) return null
-    return data.id
+    return (data as any).id
   }
 
   /**
@@ -607,23 +607,23 @@ export class F360GroupImporter {
     let accountingCount = 0
 
     if (dreEntries.length > 0) {
-      const { error } = await this.supabase
-        .from('dre_entries')
+      const { error } = await (this.supabase
+        .from('dre_entries') as any)
         .upsert(dreEntries, { onConflict: 'company_cnpj,date,account,natureza' })
       if (error) throw error
       dreCount = dreEntries.length
     }
 
     if (dfcEntries.length > 0) {
-      const { error } = await this.supabase
-        .from('dfc_entries')
+      const { error } = await (this.supabase
+        .from('dfc_entries') as any)
         .upsert(dfcEntries, { onConflict: 'company_cnpj,date,kind,category,bank_account' })
       if (error) throw error
       dfcCount = dfcEntries.length
     }
 
     if (accountingEntries.length > 0) {
-      const { error } = await this.supabase.from('accounting_entries').insert(accountingEntries)
+      const { error } = await (this.supabase.from('accounting_entries') as any).insert(accountingEntries)
       if (error) throw error
       accountingCount = accountingEntries.length
     }
@@ -696,8 +696,8 @@ export class F360ImportService {
 
     try {
       // Buscar company_id
-      const { data: company, error: companyError } = await this.supabase
-        .from('companies')
+      const { data: company, error: companyError } = await (this.supabase
+        .from('companies') as any)
         .select('id')
         .eq('cnpj', companyCnpj.replace(/\D/g, ''))
         .single()
@@ -818,8 +818,8 @@ export class F360ImportService {
               accepts_entries: true,
             }))
 
-            const { error } = await this.supabase
-              .from('chart_of_accounts')
+            const { error } = await (this.supabase
+              .from('chart_of_accounts') as any)
               .upsert(inserts, { onConflict: 'company_id,code' })
 
             if (!error) chartOfAccountsCount = inserts.length
