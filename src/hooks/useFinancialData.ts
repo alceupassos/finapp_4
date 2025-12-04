@@ -12,6 +12,13 @@ interface FinancialMetrics {
   metaPoupancaProgress: number;
 }
 
+interface MonthlyData {
+  receita: number[];
+  despesas: number[];
+  limite: number[];
+  poupanca: number[];
+}
+
 export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: string) {
   const [metrics, setMetrics] = useState<FinancialMetrics>({
     receitaTotal: 0,
@@ -24,6 +31,12 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
     metaPoupancaProgress: 0,
   });
   const [loading, setLoading] = useState(true);
+  const [monthlyData, setMonthlyData] = useState<MonthlyData>({
+    receita: [],
+    despesas: [],
+    limite: [],
+    poupanca: [],
+  });
 
   // Normalizar para sempre ser array, filtrando valores vazios
   const cnpjArray = Array.isArray(cnpjs) 
@@ -48,16 +61,39 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
           limiteDiarioProgress: 0,
           metaPoupancaProgress: 0,
         });
+        setMonthlyData({
+          receita: [],
+          despesas: [],
+          limite: [],
+          poupanca: [],
+        });
         setLoading(false);
         return;
       }
 
       // Buscar dados de todas as empresas selecionadas
       const allDreData: any[] = [];
+      
+      // Determinar ano e mês para busca
+      let searchYear: number | undefined;
+      let searchMonth: number | undefined;
+      
+      if (selectedMonth) {
+        const [yearStr, monthStr] = selectedMonth.split('-');
+        searchYear = parseInt(yearStr);
+        searchMonth = parseInt(monthStr);
+      } else {
+        // Se não tem mês selecionado, buscar ano atual completo para ter dados dos últimos 12 meses
+        searchYear = new Date().getFullYear();
+      }
+      
       for (const cnpj of cnpjArray) {
-        const dreData = await SupabaseRest.getDRE(cnpj);
+        const dreData = await SupabaseRest.getDRE(cnpj, searchYear, searchMonth);
         if (dreData && dreData.length > 0) {
           allDreData.push(...dreData);
+          console.log(`✅ useFinancialData: ${dreData.length} registros DRE carregados para CNPJ ${cnpj}`);
+        } else {
+          console.warn(`⚠️ useFinancialData: Nenhum dado DRE encontrado para CNPJ ${cnpj} (ano: ${searchYear}, mês: ${searchMonth || 'todos'})`);
         }
       }
 
@@ -97,8 +133,8 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
         console.log(`📅 useFinancialData: Mês mais recente detectado automaticamente: ${targetYear}-${String(targetMonth + 1).padStart(2, '0')}`)
       }
 
-      const currentYear = targetYear
-      const currentMonth = targetMonth // JavaScript usa 0-11 para meses
+      const filterYear = targetYear
+      const filterMonth = targetMonth // JavaScript usa 0-11 para meses
 
       // Dados do mês atual
       let receitaMesAtual = 0;
@@ -110,7 +146,7 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
 
       // Log para debug
       console.log(`📊 useFinancialData: Processando ${allDreData.length} registros DRE`)
-      console.log(`📅 useFinancialData: Mês selecionado: ${selectedMonth || 'atual'} (${currentYear}-${String(currentMonth + 1).padStart(2, '0')})`)
+      console.log(`📅 useFinancialData: Mês selecionado: ${selectedMonth || 'atual'} (${filterYear}-${String(filterMonth + 1).padStart(2, '0')})`)
       
       // ✅ FIX: Log de amostra dos dados brutos
       if (allDreData.length > 0) {
@@ -145,7 +181,7 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
         const itemMonthKey = `${itemYear}-${String(itemMonth + 1).padStart(2, '0')}`
 
         // ✅ FIX: Filtrar APENAS o mês selecionado (não todos os meses)
-        if (itemYear === currentYear && itemMonth === currentMonth) {
+        if (itemYear === filterYear && itemMonth === filterMonth) {
           processados++
           datasProcessadas.add(itemMonthKey)
           if (item.natureza === 'receita') {
@@ -156,8 +192,8 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
             console.warn('⚠️ useFinancialData: Natureza desconhecida:', item.natureza, item)
           }
         } else if (
-          (itemYear === currentYear && itemMonth === currentMonth - 1) ||
-          (currentMonth === 0 && itemYear === currentYear - 1 && itemMonth === 11)
+          (itemYear === filterYear && itemMonth === filterMonth - 1) ||
+          (filterMonth === 0 && itemYear === filterYear - 1 && itemMonth === 11)
         ) {
           // Mês anterior para cálculo de variação
           if (item.natureza === 'receita') {
@@ -195,6 +231,50 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
       const saldoMesAtual = receitaMesAtual - despesaMesAtual;
       const metaPoupancaProgress = Math.min(Math.round((saldoMesAtual / 150000) * 100), 100);
 
+      // Calcular dados mensais para sparklines (últimos 12 meses)
+      const monthlyReceita = new Array(12).fill(0);
+      const monthlyDespesas = new Array(12).fill(0);
+      const monthlyLimite = new Array(12).fill(0);
+      const monthlyPoupanca = new Array(12).fill(0);
+      
+      // Agrupar dados por mês do ano atual (para sparklines)
+      const sparklineYear = targetYear;
+      allDreData.forEach((item: any) => {
+        if (!item.data) return;
+        const itemDate = new Date(item.data);
+        if (isNaN(itemDate.getTime())) return;
+        
+        const itemYear = itemDate.getFullYear();
+        const itemMonth = itemDate.getMonth();
+        
+        // Se for do ano atual ou ano anterior (para ter 12 meses)
+        const monthIndex = itemYear === sparklineYear ? itemMonth : (itemYear === sparklineYear - 1 ? itemMonth + 12 : -1);
+        
+        // Considerar apenas últimos 12 meses
+        if (monthIndex >= 0 && monthIndex < 12) {
+          if (item.natureza === 'receita') {
+            monthlyReceita[monthIndex] += item.valor || 0;
+          } else if (item.natureza === 'despesa') {
+            monthlyDespesas[monthIndex] += Math.abs(item.valor || 0);
+          }
+        }
+      });
+      
+      // Calcular limite e poupança mensais
+      for (let i = 0; i < 12; i++) {
+        const diasUteis = 22;
+        monthlyLimite[i] = 45000 * diasUteis * (i + 1) / 12; // Progressão linear
+        const saldo = monthlyReceita[i] - monthlyDespesas[i];
+        monthlyPoupanca[i] = Math.max(0, saldo); // Não negativo
+      }
+
+      setMonthlyData({
+        receita: monthlyReceita,
+        despesas: monthlyDespesas,
+        limite: monthlyLimite,
+        poupanca: monthlyPoupanca,
+      });
+
       setMetrics({
         receitaTotal: receitaMesAtual,
         despesasTotal: despesaMesAtual,
@@ -213,5 +293,5 @@ export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: 
     }
   };
 
-  return { metrics, loading };
+  return { metrics, loading, monthlyData };
 }

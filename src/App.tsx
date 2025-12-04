@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { getSession, loginSupabase, lastLoginError } from './services/auth';
 import { ModernSidebar } from './components/ModernSidebar';
 import { ModernTopbar } from './components/ModernTopbar';
-import { AnimatedKPICard } from './components/AnimatedKPICard';
+import { PremiumKPICard } from './components/reports/PremiumKPICard';
+import { PeriodFilter, type PeriodMode } from './components/reports/PeriodFilter';
 import { ModernCashflowChart } from './components/ModernCashflowChart';
 import { SaldoBancarioChart } from './components/charts/SaldoBancarioChart';
 import { ModernTransactionsTable } from './components/ModernTransactionsTable';
@@ -39,6 +40,7 @@ export function App(){
   const [thin, setThin] = useState<boolean>(true)
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Notícias'|'Fluxo de Caixa'|'Extrato de Lançamentos'|'Relatórios'|'Clientes'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
+  const [periodMode, setPeriodMode] = useState<PeriodMode>('Y')
   const [session, setSession] = useState<any>(() => getSession())
   const [email, setEmail] = useState('alceu@angra.io')
   const [password, setPassword] = useState('app321')
@@ -51,7 +53,17 @@ export function App(){
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>([]);
   const [companies, setCompanies] = useState<Array<{ cnpj: string; cliente_nome: string; grupo_empresarial: string }>>([]);
   
-  const { metrics, loading } = useFinancialData(selectedCompanies, selectedMonth);
+  const { metrics, loading, monthlyData } = useFinancialData(selectedCompanies, selectedMonth);
+  
+  // Mapear periodMode para period (compatibilidade)
+  const handlePeriodModeChange = (mode: PeriodMode) => {
+    setPeriodMode(mode);
+    // Mapear para o sistema antigo se necessário
+    if (mode === 'D') setPeriod('Dia');
+    else if (mode === 'M') setPeriod('Mês');
+    else if (mode === 'Y') setPeriod('Ano');
+    else if (mode === 'All') setPeriod('Ano');
+  };
 
   useEffect(() => {
     // Recarregar empresas quando a sessão mudar (após login)
@@ -254,45 +266,66 @@ Sempre que relevante, fornecer:
         <main className="flex-1 p-8">
           {currentView === 'Dashboard' && (
           <>
+          {/* Period Filter */}
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <PeriodFilter
+                mode={periodMode}
+                onModeChange={handlePeriodModeChange}
+              />
+              {selectedCompanies.length > 0 && (
+                <span className="text-sm text-graphite-400">
+                  {selectedCompanies.length} {selectedCompanies.length === 1 ? 'empresa' : 'empresas'} selecionada{selectedCompanies.length > 1 ? 's' : ''}
+                </span>
+              )}
+            </div>
+          </div>
+
           {/* KPI Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
-            <AnimatedKPICard
+            <PremiumKPICard
               title="Receita Total"
-              value={loading ? 'R$ 0' : formatCurrency(Math.round(metrics.receitaTotal))}
-              change={loading ? 0 : metrics.receitaChange}
+              value={loading ? 0 : metrics.receitaTotal}
+              trendValue={loading ? 0 : metrics.receitaChange}
               trend={metrics.receitaChange >= 0 ? "up" : "down"}
-              icon="TrendingUp"
-              color="green"
-              sparklineData={[42, 48, 45, 52, 58, 65, 70, 68, 75, 80, 85, 90]}
+              trendPeriod="vs mês anterior"
+              format="currency"
+              sparklineData={monthlyData?.receita || []}
+              delay={0}
+              subtitle={selectedCompanies.length > 1 ? `${selectedCompanies.length} empresas (Consolidado)` : undefined}
             />
-            <AnimatedKPICard
+            <PremiumKPICard
               title="Despesas"
-              value={loading ? 'R$ 0' : formatCurrency(Math.round(metrics.despesasTotal))}
-              change={loading ? 0 : metrics.despesasChange}
-              trend={metrics.despesasChange >= 0 ? "up" : "down"}
-              icon="TrendingDown"
-              color="red"
-              sparklineData={[30, 35, 40, 38, 42, 45, 48, 50, 52, 54, 56, 58]}
+              value={loading ? 0 : metrics.despesasTotal}
+              trendValue={loading ? 0 : metrics.despesasChange}
+              trend={metrics.despesasChange >= 0 ? "down" : "up"}
+              trendPeriod="vs mês anterior"
+              format="currency"
+              sparklineData={monthlyData?.despesas || []}
+              delay={0.1}
+              subtitle={selectedCompanies.length > 1 ? `${selectedCompanies.length} empresas (Consolidado)` : undefined}
             />
-            <AnimatedKPICard
+            <PremiumKPICard
               title="Limite Diário"
-              value={formatCurrency(metrics.limiteDiario)}
-              change={loading ? 0 : metrics.limiteDiarioProgress}
+              value={metrics.limiteDiario}
+              trendValue={metrics.limiteDiarioProgress}
               trend="up"
-              icon="Wallet"
-              color="blue"
-              sparklineData={[20, 25, 30, 28, 32, 35, 38, 40, 42, 43, 44, 45]}
-              progress={loading ? 0 : metrics.limiteDiarioProgress}
+              trendPeriod="Progresso"
+              format="currency"
+              sparklineData={monthlyData?.limite || []}
+              delay={0.2}
+              subtitle={`Progresso ${metrics.limiteDiarioProgress}%`}
             />
-            <AnimatedKPICard
+            <PremiumKPICard
               title="Meta de Poupança"
-              value={formatCurrency(metrics.metaPoupanca)}
-              change={loading ? 0 : metrics.metaPoupancaProgress}
+              value={metrics.metaPoupanca}
+              trendValue={metrics.metaPoupancaProgress}
               trend="up"
-              icon="Target"
-              color="gold"
-              sparklineData={[10, 20, 35, 45, 60, 70, 80, 90, 95, 100, 105, 110]}
-              progress={loading ? 0 : metrics.metaPoupancaProgress}
+              trendPeriod="Progresso"
+              format="currency"
+              sparklineData={monthlyData?.poupanca || []}
+              delay={0.3}
+              subtitle={`Progresso ${metrics.metaPoupancaProgress}%`}
             />
           </div>
 
