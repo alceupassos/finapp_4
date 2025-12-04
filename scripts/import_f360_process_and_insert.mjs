@@ -94,8 +94,131 @@ function normalizeCnpj(cnpj) {
 }
 
 /**
- * Determinar natureza (receita/despesa) usando múltiplas estratégias
- * Melhorado para capturar corretamente receitas e despesas
+ * Carregar Plano de Contas da API F360 e criar Map para lookup
+ * O Plano de Contas é a fonte mais confiável para classificação
+ */
+async function loadPlanoDeContas() {
+  console.log('📋 Carregando Plano de Contas...')
+  try {
+    const response = await f360Request('/PlanoDeContasPublicAPI/ListarPlanosContas')
+    const planos = response.Result || []
+    
+    const map = new Map()
+    for (const plano of planos) {
+      map.set(plano.PlanoDeContasId, {
+        nome: plano.Nome,
+        tipo: plano.Tipo, // "A receber" ou "A pagar"
+        codigoContabil: plano.CodigoObrigacaoContabil
+      })
+    }
+    
+    const receberCount = [...map.values()].filter(p => p.tipo === 'A receber').length
+    const pagarCount = [...map.values()].filter(p => p.tipo === 'A pagar').length
+    
+    console.log(`✅ Plano de Contas carregado: ${map.size} contas`)
+    console.log(`   - A receber: ${receberCount}`)
+    console.log(`   - A pagar: ${pagarCount}\n`)
+    
+    return map
+  } catch (error) {
+    console.error(`⚠️  Erro ao carregar Plano de Contas: ${error.message}`)
+    console.log('   Continuando sem lookup no plano de contas...\n')
+    return new Map()
+  }
+}
+
+/**
+ * Classificar DRE usando lookup no Plano de Contas (ESTRATÉGIA PRINCIPAL)
+ * Com fallbacks para quando o plano não está disponível
+ */
+function classificarDRE(entry, planoMap) {
+  // ESTRATÉGIA 1: Lookup no Plano de Contas por ID (MAIS CONFIAVEL)
+  const planoId = entry.IdPlanoDeContas || entry.PlanoDeContasId
+  if (planoId && planoMap.has(planoId)) {
+    const plano = planoMap.get(planoId)
+    if (plano.tipo === 'A receber') return 'receita'
+    if (plano.tipo === 'A pagar') return 'despesa'
+  }
+  
+  // ESTRATÉGIA 1b: Lookup no Plano de Contas por nome (quando ID não disponível)
+  const nomeConta = String(entry.NomePlanoDeContas || '').trim()
+  if (nomeConta && planoMap.size > 0) {
+    // Buscar pelo nome exato ou parcial
+    for (const [id, plano] of planoMap.entries()) {
+      if (plano.nome === nomeConta || nomeConta.includes(plano.nome) || plano.nome.includes(nomeConta)) {
+        if (plano.tipo === 'A receber') return 'receita'
+        if (plano.tipo === 'A pagar') return 'despesa'
+        break
+      }
+    }
+  }
+  
+  // ESTRATÉGIA 2: Campo TipoPlanoDeContas (vem direto na entry)
+  const tipoPlano = String(entry.TipoPlanoDeContas || entry.TipoLcto || entry.TipoTitulo || '').toLowerCase()
+  if (tipoPlano.includes('receber') || tipoPlano === 'a receber') return 'receita'
+  if (tipoPlano.includes('pagar') || tipoPlano === 'a pagar') return 'despesa'
+  
+  // ESTRATÉGIA 3: Campo Tipo (boolean - pode não estar presente ou estar incorreto)
+  if (entry.Tipo === true) return 'receita'
+  if (entry.Tipo === false) {
+    // Se Tipo é false, pode ser despesa, mas vamos validar com código da conta
+    // para evitar falsos positivos (já que diagnóstico mostrou 100% false)
+  }
+  
+  // ESTRATÉGIA 4: Código da conta (XXX-X no início do nome)
+  // nomeConta já foi definido acima
+  const matchCodigo = nomeConta.match(/^(\d{3})-(\d)/)
+  if (matchCodigo) {
+    const grupo = parseInt(matchCodigo[1])
+    // Contas 100-199: receitas
+    if (grupo >= 100 && grupo < 200) return 'receita'
+    // Contas 300-399: receitas
+    if (grupo >= 300 && grupo < 400) return 'receita'
+    // Contas 200-299: custos/despesas
+    if (grupo >= 200 && grupo < 300) return 'despesa'
+    // Contas 400+: despesas
+    if (grupo >= 400) return 'despesa'
+  }
+  
+  // ESTRATÉGIA 5: Palavras-chave no nome da conta
+  const nomeContaLower = nomeConta.toLowerCase()
+  const keywordsReceita = ['receita', 'venda', 'faturamento', 'recebimento', 'rendimento', 'receber']
+  const keywordsDespesa = ['despesa', 'custo', 'pagamento', 'pagar', 'salario', 'salário', 'fornecedor', 'compra']
+  
+  if (keywordsReceita.some(k => nomeContaLower.includes(k)) && !nomeContaLower.includes('cancelad')) {
+    return 'receita'
+  }
+  if (keywordsDespesa.some(k => nomeContaLower.includes(k))) {
+    return 'despesa'
+  }
+  
+  // FALLBACK: Logar e retornar 'despesa' (mais comum) para revisão manual
+  // Apenas logar se realmente não conseguiu classificar (evitar spam)
+  const planoIdCheck = entry.IdPlanoDeContas || entry.PlanoDeContasId
+  if (!planoIdCheck && !matchCodigo && nomeConta.length === 0) {
+    console.warn('⚠️  Classificação indefinida, assumindo despesa:', {
+      planoId: planoIdCheck || 'N/A',
+      nomeConta: nomeConta.substring(0, 50) || 'N/A',
+      tipo: entry.Tipo,
+      tipoPlano: entry.TipoPlanoDeContas || 'N/A'
+    })
+  }
+  return 'despesa'
+}
+
+/**
+ * Classificar DFC usando mesma lógica da DRE
+ */
+function classificarDFC(entry, planoMap) {
+  const natureza = classificarDRE(entry, planoMap)
+  if (natureza === 'receita') return 'in'
+  if (natureza === 'despesa') return 'out'
+  return 'out' // Default para saída
+}
+
+/**
+ * Determinar natureza (receita/despesa) - DEPRECATED
+ * Mantido para compatibilidade, mas usar classificarDRE() no lugar
  */
 function determinarNatureza(entry) {
   const valor = parseFloat(String(entry.ValorLcto || 0))
@@ -206,7 +329,7 @@ function escapeSQL(str) {
   return `'${String(str).replace(/'/g, "''").substring(0, 500)}'`
 }
 
-async function importarEmpresa(company, dataInicio, dataFim) {
+async function importarEmpresa(company, dataInicio, dataFim, planoMap) {
   const { cnpj, nome } = company
   
   console.log(`\n📊 ${nome} (${cnpj})`)
@@ -217,7 +340,7 @@ async function importarEmpresa(company, dataInicio, dataFim) {
       body: JSON.stringify({
         Data: dataInicio,
         DataFim: dataFim,
-        ModeloContabil: 'provisao',
+        ModeloContabil: 'obrigacao', // 'obrigacao' = data de pagamento, pode incluir mais receitas
         ModeloRelatorio: 'gerencial',
         ExtensaoDeArquivo: 'json',
         CNPJEmpresas: [normalizeCnpj(cnpj)],
@@ -290,7 +413,7 @@ async function importarEmpresa(company, dataInicio, dataFim) {
         dateStr = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       }
 
-      const natureza = determinarNatureza(entry)
+      const natureza = classificarDRE(entry, planoMap)
       if (natureza === 'receita') debugNaturezaCount.receita++
       else if (natureza === 'despesa') debugNaturezaCount.despesa++
       else debugNaturezaCount.nao_determinado++
@@ -318,11 +441,12 @@ async function importarEmpresa(company, dataInicio, dataFim) {
           dfcDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
         }
         
-        // DFC: receita = entrada (in), despesa = saída (out)
+        // DFC: usar classificarDFC para determinar tipo
+        const kindDFC = classificarDFC(entry, planoMap)
         dfcEntries.push({
           company_cnpj: entryCnpj,
           date: dfcDate,
-          kind: natureza === 'receita' ? 'in' : 'out',
+          kind: kindDFC,
           category: account,
           amount: Math.abs(valor),
           bank_account: entry.ContaBancaria || '',
@@ -392,6 +516,9 @@ async function main() {
   console.log('🚀 Processamento F360 para Importação via SQL\n')
   
   await loginF360()
+  
+  // Carregar Plano de Contas ANTES de processar empresas (para lookup)
+  const planoMap = await loadPlanoDeContas()
 
   const hoje = new Date()
   const tresMesesAtras = new Date(hoje.getFullYear(), hoje.getMonth() - 3, 1)
@@ -404,7 +531,7 @@ async function main() {
   const allDfcEntries = []
 
   for (const company of VOLPE_COMPANIES) {
-    const result = await importarEmpresa(company, dataInicio, dataFim)
+    const result = await importarEmpresa(company, dataInicio, dataFim, planoMap)
     allDreEntries.push(...result.dre)
     allDfcEntries.push(...result.dfc)
     await new Promise(resolve => setTimeout(resolve, 3000))
