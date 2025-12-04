@@ -136,7 +136,12 @@ const query = {
 | `src/components/reports/BanksSection.tsx` | Seção de contas bancárias | 2025-01 |
 | `src/components/reports/ReconciliationSection.tsx` | Conciliação bancária | 2025-01 |
 | `src/services/f360Service.ts` | Cliente TypeScript API F360 | 2025-01 |
+| `src/services/f360ImportService.ts` | Serviço unificado importação F360 (SINGLE/GROUP) | 2025-01 |
 | `src/services/supabaseRest.ts` | Cliente REST Supabase, queries | 2025-01 |
+| `supabase/functions/sync-f360/index.ts` | Edge Function sincronização F360 | 2025-01 |
+| `supabase/functions/f360-discover/index.ts` | Edge Function descobrir empresas F360 | 2025-01 |
+| `scripts/import_volpe_complete.mjs` | Importação completa Grupo Volpe | 2025-01 |
+| `scripts/tests/test_f360_*.mjs` | Bateria de testes F360 | 2025-01 |
 | `src/services/auth.ts` | Autenticação Supabase | 2025-01 |
 | `scripts/import_volpe_f360.mjs` | Importação dados 13 empresas Volpe | 2025-01 |
 | `scripts/register_volpe_companies.mjs` | Cadastro empresas no Supabase | 2025-01 |
@@ -146,7 +151,7 @@ const query = {
 
 ### F360 Finanças
 - **Base URL**: `https://financas.f360.com.br`
-- **Token Grupo Volpe**: `223b065a-1873-4cfe-a36b-f092c602a03e`
+- **Token Grupo Volpe**: `eb0e1ef3-516c-4e4a-a043-5b1e45794f42` (atualizado 2025-01)
 - **Login**: `volpe.matriz@ifinance.com.br`
 - **Senha**: `v3T$cABl5.`
 - **Endpoints principais**:
@@ -155,6 +160,7 @@ const query = {
   - Contas Bancárias: `GET /ContaBancariaPublicAPI/ListarContasBancarias`
   - Parcelas Títulos: `GET /ParcelasDeTituloPublicAPI/ListarParcelasDeTitulos`
   - Relatórios: `POST /PublicRelatorioAPI/GerarRelatorio`
+  - Download Relatório: `GET /PublicRelatorioAPI/Download?id={relatorioId}`
 
 ### Supabase
 - **Variáveis**: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`
@@ -222,11 +228,20 @@ npm run preview          # Preview build
 
 ### Importação de Dados
 ```bash
-# Importar 13 empresas Volpe do F360
+# Importar 13 empresas Volpe do F360 (completo)
+node scripts/import_volpe_complete.mjs
+
+# Importar 13 empresas Volpe do F360 (método antigo)
 node scripts/import_volpe_f360.mjs
 
 # Cadastrar empresas no Supabase
 node scripts/register_volpe_companies.mjs
+
+# Testes F360
+node scripts/tests/test_f360_login.mjs
+node scripts/tests/test_f360_group.mjs
+node scripts/tests/test_f360_single.mjs [token]
+node scripts/tests/test_f360_persistence.mjs
 ```
 
 ### Supabase
@@ -239,6 +254,16 @@ npm run supabase:secrets
 ```
 
 ## 📝 CHANGELOG
+
+### 2025-01-XX - Sistema Completo Importação F360 (SINGLE/GROUP)
+- ✅ Criado `f360ImportService.ts` - serviço unificado com suporte SINGLE e GROUP
+- ✅ Criadas Edge Functions: `sync-f360` e `f360-discover`
+- ✅ Criada bateria de testes: `test_f360_login`, `test_f360_single`, `test_f360_group`, `test_f360_persistence`
+- ✅ Criado `import_volpe_complete.mjs` - importação completa Grupo Volpe
+- ✅ Implementada detecção automática de modo (SINGLE/GROUP)
+- ✅ Implementado mapeamento de CNPJ para grupos
+- ✅ Atualizado token Grupo Volpe: `eb0e1ef3-516c-4e4a-a043-5b1e45794f42`
+- ✅ Adicionadas regras de importação F360 no `.cursorrules`
 
 ### 2025-01-XX - Importação F360 Grupo Volpe + Área Relatórios
 - ✅ Criadas tabelas: `dre_entries`, `dfc_entries`, `bank_accounts`, `bank_transactions`, `reconciliation_items`
@@ -263,7 +288,7 @@ npm run supabase:secrets
 - [ ] Implementar busca real de contas bancárias e transações
 - [ ] Completar implementação Sankey chart (requer d3-sankey)
 - [ ] Adicionar método `getDFC()` no `supabaseRest.ts`
-- [ ] Testar importação completa F360 com dados reais
+- [x] Testar importação completa F360 com dados reais
 
 ### Média Prioridade
 - [ ] Implementar match automático de conciliação bancária
@@ -280,7 +305,7 @@ npm run supabase:secrets
 
 ## 🔑 KEYWORDS PARA BUSCA RÁPIDA
 
-**F360**: `f360Service.ts`, `import_volpe_f360.mjs`, `F360Service`
+**F360**: `f360Service.ts`, `f360ImportService.ts`, `import_volpe_complete.mjs`, `F360Service`, `F360ImportService`, `F360SingleImporter`, `F360GroupImporter`
 **DRE**: `DRESection.tsx`, `dre_entries`, `DREPivotTable.tsx`
 **DFC**: `DFCSection.tsx`, `dfc_entries`, `DFCPivotTable.tsx`
 **Bancos**: `BanksSection.tsx`, `bank_accounts`, `bank_transactions`
