@@ -56,7 +56,7 @@ export function AnaliticoDashboard({
   const period = propPeriod;
   
   // Usar primeira empresa selecionada ou fallback
-  const selectedCompany = selectedCompanies.length > 0 ? selectedCompanies[0] : (propSelectedCompany || '26888098000159');
+  const selectedCompany = selectedCompanies.length > 0 ? selectedCompanies[0] : (propSelectedCompany || undefined);
   
   const [dreData, setDreData] = useState<any[]>([]);
   const [dfcData, setDfcData] = useState<any[]>([]);
@@ -71,6 +71,11 @@ export function AnaliticoDashboard({
       } else {
         loadCompanyData(selectedCompanies[0]);
       }
+    } else {
+      // Se não houver empresas selecionadas, limpar dados
+      setDreData([]);
+      setDfcData([]);
+      setLoading(false);
     }
   }, [selectedCompanies, selectedMonth, period]);
 
@@ -106,6 +111,12 @@ export function AnaliticoDashboard({
   }
 
   const loadCompanyData = async (cnpj: string) => {
+    if (!cnpj || cnpj.trim() === '') {
+      setDreData([]);
+      setDfcData([]);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     try {
       const { startDate, endDate } = getPeriodDates(period)
@@ -158,6 +169,12 @@ export function AnaliticoDashboard({
   };
 
   const loadConsolidatedData = async (cnpjs: string[]) => {
+    if (!cnpjs || cnpjs.length === 0) {
+      setDreData([]);
+      setDfcData([]);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     try {
       const { startDate, endDate } = getPeriodDates(period)

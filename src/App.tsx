@@ -40,10 +40,10 @@ export function App(){
   const [currentView, setCurrentView] = useState<'Dashboard'|'Análises'|'Notícias'|'Fluxo de Caixa'|'Extrato de Lançamentos'|'Relatórios'|'Clientes'>('Dashboard')
   const [period, setPeriod] = useState<'Dia'|'Semana'|'Mês'|'Ano'>('Ano')
   const [session, setSession] = useState<any>(() => getSession())
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('alceu@angra.io')
+  const [password, setPassword] = useState('app321')
   const [error, setError] = useState('')
-  const isVolpeDomain = window.location.hostname.includes('dev.angrax.com.br') || window.location.hostname.includes('localhost')
+  const isVolpeDomain = window.location.hostname.includes('dev.angrax.com.br') || window.location.hostname.includes('localhost') || window.location.hostname.includes('ifin.app.br')
   
   // Filtros
   const [selectedMonth, setSelectedMonth] = useState('2025-10'); // ✅ FIX: Dados são de outubro/2025
@@ -177,6 +177,14 @@ Sempre que relevante, fornecer:
     }
   }, [session])
 
+  // ✅ FIX: Recarregar empresas quando a sessão mudar (após login)
+  useEffect(() => {
+    if (session?.id) {
+      console.log('🔄 Sessão detectada, recarregando empresas para usuário:', session.id);
+      loadCompanies();
+    }
+  }, [session?.id])
+
   const loadCompanies = async () => {
     try {
       const companiesList = await SupabaseRest.getCompanies();
@@ -304,7 +312,7 @@ Sempre que relevante, fornecer:
               <ModernCashflowChart period={period} selectedCompanies={selectedCompanies} selectedMonth={selectedMonth} />
             </div>
             <div>
-              <SaldoBancarioChart cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : '26888098000159'} />
+              <SaldoBancarioChart cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : undefined} />
             </div>
           </div>
 
@@ -314,7 +322,7 @@ Sempre que relevante, fornecer:
               <ModernTransactionsTable selectedCompanies={selectedCompanies} />
             </div>
             <div>
-              <RevenueDistributionGauge cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : '26888098000159'} selectedMonth={selectedMonth} />
+              <RevenueDistributionGauge cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : undefined} selectedMonth={selectedMonth} />
             </div>
           </div>
 
@@ -335,7 +343,7 @@ Sempre que relevante, fornecer:
           {currentView === 'Análises' && (
             <AnaliticoDashboard 
               selectedMonth={selectedMonth} 
-              selectedCompany={selectedCompanies[0] || '26888098000159'}
+              selectedCompany={selectedCompanies[0] || undefined}
               period={period}
               companies={companies}
               selectedCompanies={selectedCompanies}
@@ -365,9 +373,9 @@ Sempre que relevante, fornecer:
           )}
           {currentView === 'Notícias' && (
             <NoticiasPage 
-              cnpj={selectedCompanies[0] || '26888098000159'}
-              nomeEmpresa={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.cliente_nome || 'Empresa'}
-              grupoEmpresarial={companies.find(c => c.cnpj === (selectedCompanies[0] || '26888098000159'))?.grupo_empresarial || ''}
+              cnpj={selectedCompanies[0] || undefined}
+              nomeEmpresa={selectedCompanies[0] ? companies.find(c => c.cnpj === selectedCompanies[0])?.cliente_nome || 'Empresa' : 'Empresa'}
+              grupoEmpresarial={selectedCompanies[0] ? companies.find(c => c.cnpj === selectedCompanies[0])?.grupo_empresarial || '' : ''}
             />
           )}
         </main>
@@ -385,9 +393,12 @@ Sempre que relevante, fornecer:
             />
           ) : (
             <div className="fixed inset-0 z-[90] bg-black/60 backdrop-blur flex items-center justify-center">
-              <div className="w-[360px] rounded-xl border border-graphite-800 bg-graphite-900 p-4 space-y-3">
-                <div className="text-sm font-semibold">Entrar</div>
-                {error && <div className="text-xs text-red-400">{error}</div>}
+              <div className="w-[380px] rounded-xl border border-graphite-800 bg-graphite-900 p-7 space-y-4">
+                <div className="flex flex-col items-center gap-2">
+                  <img src="/finapp-logo.png" alt="fin.app" className="w-32 h-auto opacity-80" />
+                  <h3 className="text-sm font-semibold">Entrar</h3>
+                </div>
+                {error && <div className="text-xs text-red-400 text-center">{error}</div>}
                 <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="E-mail" className="w-full bg-graphite-800 border border-graphite-700 rounded-sm px-2 py-1 text-xs"/>
                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Senha" className="w-full bg-graphite-800 border border-graphite-700 rounded-sm px-2 py-1 text-xs"/>
                 <button onClick={async()=>{ 
@@ -395,7 +406,8 @@ Sempre que relevante, fornecer:
                   try {
                     const s = await loginSupabase(email, password);
                     if(!s){ 
-                      setError(lastLoginError || 'Credenciais inválidas'); 
+                      const errorMsg = lastLoginError || 'Credenciais inválidas';
+                      setError(errorMsg.includes('404') ? 'Erro de conexão com o servidor. Verifique as configurações.' : errorMsg); 
                       return;
                     }
                     setSession(s);
@@ -404,7 +416,7 @@ Sempre que relevante, fornecer:
                   } catch (err: any) {
                     setError(err.message || 'Erro ao fazer login');
                   }
-                }} className="px-3 py-1 rounded-sm bg-emerald-400 text-white text-xs">Entrar</button>
+                }} className="w-full px-3 py-2 rounded-sm bg-emerald-400 text-white hover:bg-emerald-500 text-xs">Entrar</button>
               </div>
             </div>
           )

@@ -11,7 +11,7 @@ interface VolpeLoginModalProps {
 }
 
 export function VolpeLoginModal({ open, onClose, onLogged }: VolpeLoginModalProps) {
-  const [email, setEmail] = useState('adm@ifin.app.br')
+  const [email, setEmail] = useState('alceu@angra.io')
   const [password, setPassword] = useState('app321')
   const [error, setError] = useState('')
   const [companies, setCompanies] = useState<any[]>([])
@@ -78,12 +78,6 @@ export function VolpeLoginModal({ open, onClose, onLogged }: VolpeLoginModalProp
       >
         <div className="p-7 space-y-4">
           <div className="flex flex-col items-center gap-2">
-            {/* Logo iFinance */}
-            <div className="flex items-center justify-center mb-2">
-              <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg px-4 py-2">
-                <span className="text-white font-bold text-xl">iFinance</span>
-              </div>
-            </div>
             <img src="/finapp-logo.png" alt="fin.app" className="w-32 h-auto opacity-80" />
             <h3 className="text-sm font-semibold">Login - Grupo VOLPE</h3>
             <p className="text-xs text-muted-foreground">Acesso exclusivo para empresas do grupo VOLPE</p>

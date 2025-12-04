@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Filter, Calendar, Building2 } from 'lucide-react'
-import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
+import { SupabaseRest } from '../services/supabaseRest'
 
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
 
@@ -59,7 +59,7 @@ export function ReportFilters({
           const cs = await SupabaseRest.getCompanies() as Company[]
           setLocalCompanies(cs || [])
           if (cs.length > 0 && !selectedCompany && onCompanyChange) {
-            onCompanyChange(cs[0].cnpj || MATRIZ_CNPJ)
+            onCompanyChange(cs[0].cnpj || '')
           }
         } catch (err) {
           console.error('Erro ao carregar empresas:', err)

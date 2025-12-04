@@ -10,7 +10,7 @@ interface RevenueSource {
   percentage: number;
 }
 
-export function RevenueDistributionGauge({ cnpj = '26888098000159', selectedMonth }: { cnpj?: string, selectedMonth?: string }) {
+export function RevenueDistributionGauge({ cnpj, selectedMonth }: { cnpj?: string, selectedMonth?: string }) {
   const [revenueSources, setRevenueSources] = useState<RevenueSource[]>([
     { name: 'Serviços BPO', value: 580000, color: '#ff7a00', percentage: 45 },
     { name: 'Consultoria', value: 320000, color: '#10b981', percentage: 25 },
@@ -25,6 +25,10 @@ export function RevenueDistributionGauge({ cnpj = '26888098000159', selectedMont
   }, [cnpj, selectedMonth]);
 
   const loadRevenueData = async () => {
+    if (!cnpj) {
+      setRevenueSources([]);
+      return;
+    }
     try {
       const dreData = await SupabaseRest.getDRE(cnpj);
       if (!dreData || dreData.length === 0) return;

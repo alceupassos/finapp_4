@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { MATRIZ_CNPJ } from '../services/supabaseRest'
 import { HorizontalFilters } from './HorizontalFilters'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ReportsSidebar, type ReportSection } from './reports/ReportsSidebar'
@@ -24,7 +23,7 @@ export function ReportsPage({
   selectedMonth: propSelectedMonth = ''
 }: ReportsPageProps = {}) {
   const companies = propCompanies.length > 0 ? propCompanies : []
-  const selectedCompanies = propSelectedCompanies.length > 0 ? propSelectedCompanies : [MATRIZ_CNPJ]
+  const selectedCompanies = propSelectedCompanies.length > 0 ? propSelectedCompanies : []
   const globalSelectedMonth = propSelectedMonth
   
   const [selectedPeriod, setSelectedPeriod] = useState<'Ano' | 'Mês'>('Ano')

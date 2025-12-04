@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowDownLeft, MoreVertical, Search } from 'lucide-react';
-import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
+import { SupabaseRest } from '../services/supabaseRest'
 import { useEffect, useMemo, useState } from 'react'
 
 type Tx = { id?: string|number; descricao?: string; data?: string; entrada?: number; saida?: number; saldo?: number; cnpj?: string; status?: string }
@@ -22,10 +22,8 @@ export function ModernTransactionsTable({ selectedCompanies = [] }: { selectedCo
   const [endDate, setEndDate] = useState<string>('')
   const [searchTerm, setSearchTerm] = useState<string>('')
 
-  // Usar empresas selecionadas ou fallback para MATRIZ_CNPJ
-  const companiesToLoad = selectedCompanies.length > 0 
-    ? selectedCompanies 
-    : [MATRIZ_CNPJ]
+  // Usar empresas selecionadas - se não houver, não carregar dados
+  const companiesToLoad = selectedCompanies.length > 0 ? selectedCompanies : []
 
   useEffect(() => {
     if (companiesToLoad.length === 0) return

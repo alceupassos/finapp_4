@@ -12,7 +12,7 @@ interface FinancialMetrics {
   metaPoupancaProgress: number;
 }
 
-export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], selectedMonth?: string) {
+export function useFinancialData(cnpjs: string[] | string = [], selectedMonth?: string) {
   const [metrics, setMetrics] = useState<FinancialMetrics>({
     receitaTotal: 0,
     despesasTotal: 0,
@@ -25,8 +25,10 @@ export function useFinancialData(cnpjs: string[] | string = ['26888098000159'], 
   });
   const [loading, setLoading] = useState(true);
 
-  // Normalizar para sempre ser array
-  const cnpjArray = Array.isArray(cnpjs) ? cnpjs : [cnpjs];
+  // Normalizar para sempre ser array, filtrando valores vazios
+  const cnpjArray = Array.isArray(cnpjs) 
+    ? cnpjs.filter(c => c && c.trim() !== '') 
+    : (cnpjs && cnpjs.trim() !== '' ? [cnpjs] : []);
 
   useEffect(() => {
     loadFinancialData();

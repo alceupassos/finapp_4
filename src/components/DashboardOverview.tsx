@@ -1,6 +1,6 @@
 import { Card, Metric, Text, Grid, Title, BadgeDelta } from "@tremor/react"
 import { ResponsiveContainer, BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
-import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
+import { SupabaseRest } from '../services/supabaseRest'
 import { useEffect, useMemo, useState } from 'react'
 import { formatCurrency } from '../lib/formatters'
 
@@ -25,10 +25,8 @@ export function DashboardOverview({
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
 
-  // Usar empresas selecionadas ou fallback para MATRIZ_CNPJ
-  const companiesToLoad = selectedCompanies.length > 0 
-    ? selectedCompanies 
-    : [MATRIZ_CNPJ]
+  // Usar empresas selecionadas - se não houver, não carregar dados
+  const companiesToLoad = selectedCompanies.length > 0 ? selectedCompanies : []
 
   // Calcular datas baseadas no período
   const getPeriodDates = (period: Period) => {
@@ -62,7 +60,11 @@ export function DashboardOverview({
   }
 
   useEffect(() => {
-    if (companiesToLoad.length === 0) return
+    if (companiesToLoad.length === 0) {
+      setRows([])
+      setLoading(false)
+      return
+    }
     setLoading(true)
     ;(async () => {
       try {
@@ -197,9 +199,11 @@ export function DashboardOverview({
           </ResponsiveContainer>
         </div>
         <div className="mt-4 text-xs text-muted-foreground">
-          {companiesToLoad.length === 1 
-            ? `CNPJ ${companiesToLoad[0]}`
-            : `${companiesToLoad.length} empresas consolidadas`
+          {companiesToLoad.length === 0 
+            ? 'Selecione empresas para visualizar dados'
+            : companiesToLoad.length === 1 
+              ? `CNPJ ${companiesToLoad[0]}`
+              : `${companiesToLoad.length} empresas consolidadas`
           }
         </div>
       </Card>

@@ -284,7 +284,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, setActiveTab }) => {
 export const FinancialReportsPage: React.FC<FinancialReportsPageProps> = ({
   dreData,
   dfcData,
-  empresas = [{ cnpj: '26888098000159', nome: 'Volpe Matriz' }],
+  empresas = [],
   gruposEmpresariais = ['Grupo Volpe'],
   selectedEmpresa,
   onEmpresaChange

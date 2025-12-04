@@ -78,9 +78,26 @@ export function ModernCashflowChart({
   // Determinar quais empresas usar: selectedCompanies tem prioridade sobre cnpj
   const companiesToLoad = selectedCompanies.length > 0 
     ? selectedCompanies 
-    : (cnpj ? [cnpj] : ['26888098000159']);
+    : (cnpj ? [cnpj] : []);
 
   useEffect(() => {
+    if (companiesToLoad.length === 0) {
+      setChartData([
+        { month: 'Jan', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Fev', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Mar', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Abr', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Mai', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Jun', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Jul', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Ago', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Set', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Out', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Nov', receita: 0, despesa: 0, saldo: 0 },
+        { month: 'Dez', receita: 0, despesa: 0, saldo: 0 },
+      ]);
+      return;
+    }
     loadCashflowData();
   }, [period, selectedMonth, companiesToLoad.join(',')]);
 

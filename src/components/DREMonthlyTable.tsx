@@ -1,20 +1,25 @@
 import { useEffect, useMemo, useState } from 'react'
-import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
+import { SupabaseRest } from '../services/supabaseRest'
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card'
 
 type DRERow = { data?: string; conta?: string; natureza?: string; valor?: number }
 
 const MONTHS = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
 
-export function DREMonthlyTable(){
+export function DREMonthlyTable({ cnpj }: { cnpj?: string }){
   const [rows, setRows] = useState<DRERow[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
 
   useEffect(()=>{
+    if (!cnpj) {
+      setRows([])
+      setLoading(false)
+      return
+    }
     (async ()=>{
       try{
-        const data = await SupabaseRest.getDRE(MATRIZ_CNPJ) as any[]
+        const data = await SupabaseRest.getDRE(cnpj) as any[]
         const norm = (Array.isArray(data)?data:[]).map(r=>({
           data: r.data,
           conta: r.conta,
@@ -26,7 +31,7 @@ export function DREMonthlyTable(){
         setError('Falha ao carregar DRE')
       }finally{ setLoading(false) }
     })()
-  },[])
+  },[cnpj])
 
   const grouped = useMemo(()=>{
     const map = new Map<string, number[]>()
@@ -44,7 +49,7 @@ export function DREMonthlyTable(){
   return (
     <Card className="rounded-2xl border border-border">
       <CardHeader>
-        <CardTitle>DRE • Matriz {MATRIZ_CNPJ}</CardTitle>
+        <CardTitle>DRE {cnpj ? `• ${cnpj}` : '(Selecione uma empresa)'}</CardTitle>
         <span className="text-xs text-muted-foreground">Colunas de Janeiro a Dezembro (período: Ano)</span>
         {error && <span className="text-xs text-destructive">{error}</span>}
       </CardHeader>

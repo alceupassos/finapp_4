@@ -2,7 +2,6 @@ import { getSession } from './auth'
 
 const BASE_URL = import.meta.env.VITE_SUPABASE_URL as string
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string
-export const MATRIZ_CNPJ = (import.meta.env.VITE_CNPJ_MATRIZ || '26888098000159') as string
 
 function getSupabaseAccessToken(): string | null {
   const raw = localStorage.getItem('supabase_session')
@@ -186,35 +185,16 @@ export const SupabaseRest = {
       console.warn('⚠️ Erro ao buscar empresas do usuário:', err?.message || err)
     }
     
-    // Fallback: se não houver usuário logado ou empresas, retornar apenas matriz
-    const cnpj14 = MATRIZ_CNPJ.replace(/^0+/, '')
-    try {
-      const rows = await restGet('integration_f360', { 
-        query: { 
-          select: 'cliente_nome,cnpj,grupo_empresarial',
-          cnpj: `eq.${cnpj14}`, 
-          limit: '1' 
-        } 
-      })
-      if (Array.isArray(rows) && rows.length) {
-        return rows.map((r: any) => ({
-          grupo_empresarial: r.grupo_empresarial || '',
-          cliente_nome: r.cliente_nome || r.nome || 'Empresa',
-          cnpj: r.cnpj || cnpj14
-        }))
-      }
-    } catch (err: any) {
-      console.warn('⚠️ Erro ao buscar empresa matriz:', err?.message || err)
-    }
-    
-    // Último fallback: construir a empresa padrão sem grupo específico
-    return [{ grupo_empresarial: '', cliente_nome: 'Empresa Matriz', cnpj: cnpj14 }]
+    // Se não houver usuário logado ou empresas, retornar array vazio
+    // Não usar fallback para empresa específica - usuário deve ter empresas associadas
+    console.warn('⚠️ Nenhuma empresa encontrada para o usuário')
+    return []
   },
   
   getDRE: async (cnpj: string, year?: number, month?: number) => {
     // Ignorar se for string 'CONSOLIDADO' ou inválida
     if (!cnpj || cnpj === 'CONSOLIDADO' || typeof cnpj !== 'string') {
-      console.warn('⚠️ getDRE: CNPJ inválido ou consolidado, usando matriz')
+      console.warn('⚠️ getDRE: CNPJ inválido ou consolidado, retornando vazio')
       return []
     }
     const cnpj14 = cnpj.replace(/^0+/, '')

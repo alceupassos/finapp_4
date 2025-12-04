@@ -32,9 +32,18 @@ export async function gotruePasswordSignIn(email: string, password: string) {
   if (!res.ok) {
     try {
       const err = await res.json()
-      lastLoginError = String(err.error_description || err.error || `HTTP ${res.status}`)
+      const errorMsg = err.error_description || err.error || `HTTP ${res.status}`
+      if (res.status === 404) {
+        lastLoginError = `Erro de conexão: Endpoint de autenticação não encontrado. Verifique VITE_SUPABASE_URL.`
+      } else {
+        lastLoginError = String(errorMsg)
+      }
     } catch {
-      lastLoginError = `HTTP ${res.status}`
+      if (res.status === 404) {
+        lastLoginError = `Erro de conexão: Endpoint de autenticação não encontrado (HTTP 404). Verifique VITE_SUPABASE_URL.`
+      } else {
+        lastLoginError = `HTTP ${res.status}`
+      }
     }
     return null
   }

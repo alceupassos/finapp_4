@@ -135,12 +135,6 @@ export function CompanyGroupSelector({ companies, selectedCompanies, onChange }:
                         </div>
                       </div>
 
-                      {/* Badge se matriz */}
-                      {company.cnpj === '26888098000159' && (
-                        <span className="text-xs px-2 py-0.5 bg-amber-500/20 text-amber-400 rounded-full">
-                          Matriz
-                        </span>
-                      )}
                     </button>
                   )
                 })}

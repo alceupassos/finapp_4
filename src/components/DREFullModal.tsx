@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { SupabaseRest, MATRIZ_CNPJ } from '../services/supabaseRest'
+import { SupabaseRest } from '../services/supabaseRest'
 import { motion } from 'framer-motion'
 import { X, Download } from 'lucide-react'
 import * as XLSX from 'xlsx'
@@ -23,12 +23,28 @@ function resolveGroup(r: Row){
   return 'Outros'
 }
 
-export function DREFullModal({ open, onClose }:{ open:boolean; onClose:()=>void }){
+export function DREFullModal({ open, onClose, cnpj }: { open: boolean; onClose: () => void; cnpj?: string }){
   const [rows, setRows] = useState<Row[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  useEffect(()=>{ if(!open) return; (async()=>{ try{ const data = await SupabaseRest.getDRE(MATRIZ_CNPJ) as any[]; setRows((Array.isArray(data)?data:[]).map(r=>({ data:r.data, conta:r.conta, natureza:r.natureza, valor:Number(r.valor||0) }))) } catch { setError('Falha ao carregar DRE') } finally{ setLoading(false) } })() },[open])
+  useEffect(()=>{ 
+    if(!open || !cnpj) {
+      setRows([])
+      setLoading(false)
+      return
+    }
+    (async()=>{ 
+      try{ 
+        const data = await SupabaseRest.getDRE(cnpj) as any[]
+        setRows((Array.isArray(data)?data:[]).map(r=>({ data:r.data, conta:r.conta, natureza:r.natureza, valor:Number(r.valor||0) }))) 
+      } catch { 
+        setError('Falha ao carregar DRE') 
+      } finally{ 
+        setLoading(false) 
+      } 
+    })()
+  },[open, cnpj])
 
   const pivot = useMemo(()=>{
     const byGroup = new Map<string, number[]>()
@@ -40,7 +56,7 @@ export function DREFullModal({ open, onClose }:{ open:boolean; onClose:()=>void 
     const header = ['Grupo', ...MONTHS]
     const data = pivot.map(r=>[r.group, ...r.months.map(v=>Math.round(v))])
     const ws = XLSX.utils.aoa_to_sheet([header, ...data])
-    const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'DRE'); XLSX.writeFile(wb, `DRE_${MATRIZ_CNPJ}.xlsx`)
+    const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, 'DRE'); XLSX.writeFile(wb, `DRE_${cnpj || 'empresas'}.xlsx`)
   }
 
   if(!open) return null
@@ -48,7 +64,7 @@ export function DREFullModal({ open, onClose }:{ open:boolean; onClose:()=>void 
     <motion.div className="fixed inset-0 z-[95] bg-black/70" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <motion.div className="fixed inset-6 rounded-2xl bg-graphite-950 border border-graphite-800 flex flex-col" initial={{ scale: 0.98 }} animate={{ scale: 1 }}>
         <div className="p-4 border-b border-graphite-800 flex items-center justify-between">
-          <div className="text-sm font-semibold">DRE Completo • Matriz {MATRIZ_CNPJ}</div>
+          <div className="text-sm font-semibold">DRE Completo {cnpj ? `• ${cnpj}` : ''}</div>
           <div className="flex items-center gap-2">
             <button onClick={exportXlsx} className="px-3 py-1 rounded-md bg-gold-500 text-white text-xs flex items-center gap-1"><Download className="w-3 h-3"/>Exportar</button>
             <button onClick={onClose} className="p-2 rounded-md bg-graphite-800"><X className="w-4 h-4 text-white"/></button>

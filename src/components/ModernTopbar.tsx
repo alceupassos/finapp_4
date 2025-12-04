@@ -26,7 +26,7 @@ export function ModernTopbar({
   onPeriodChange,
   selectedMonth = '2025-11',
   onMonthChange,
-  selectedCompany = '26888098000159',
+  selectedCompany,
   onCompanyChange,
   companies = [],
   extraActions

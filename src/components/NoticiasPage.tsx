@@ -33,7 +33,7 @@ interface NoticiasPageProps {
 }
 
 export function NoticiasPage({ 
-  cnpj = '26888098000159', 
+  cnpj, 
   nomeEmpresa = 'Volpe BPO',
   grupoEmpresarial = 'Grupo Volpe'
 }: NoticiasPageProps) {
@@ -45,11 +45,20 @@ export function NoticiasPage({
   const [tendencias, setTendencias] = useState<Noticia[]>([]);
 
   useEffect(() => {
+    if (!cnpj) {
+      setPerfilEmpresa(null);
+      setNoticias([]);
+      setConcorrentes([]);
+      setTendencias([]);
+      setLoading(false);
+      return;
+    }
     buscarInformacaoEmpresa();
     carregarNoticias();
   }, [cnpj, nomeEmpresa, grupoEmpresarial]);
 
   const buscarInformacaoEmpresa = async () => {
+    if (!cnpj) return;
     const perfil = await gerarPerfilEmpresa(cnpj, nomeEmpresa, grupoEmpresarial);
     setPerfilEmpresa(perfil);
     setEmpresaInfo(formatarDescricaoEmpresa(perfil));
