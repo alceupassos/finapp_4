@@ -4,3 +4,4 @@ dist
 .deploy-config
 *.log
 .DS_Store
+.env.production

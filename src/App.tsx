@@ -304,7 +304,7 @@ Sempre que relevante, fornecer:
               <ModernCashflowChart period={period} selectedCompanies={selectedCompanies} selectedMonth={selectedMonth} />
             </div>
             <div>
-              <SaldoBancarioChart cnpj={selectedCompanies.length > 0 ? selectedCompanies : '26888098000159'} />
+              <SaldoBancarioChart cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : '26888098000159'} />
             </div>
           </div>
 
