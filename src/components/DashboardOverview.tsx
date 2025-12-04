@@ -12,24 +12,23 @@ function monthLabel(d: Date) {
   return ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'][d.getMonth()]
 }
 
-export function DashboardOverview({ period = 'Ano', session }: { period?: Period; session?: any }) {
-  const [companies, setCompanies] = useState<Company[]>([])
-  const [cnpj, setCnpj] = useState<string>(MATRIZ_CNPJ)
+export function DashboardOverview({ 
+  period = 'Ano', 
+  session,
+  selectedCompanies = []
+}: { 
+  period?: Period
+  session?: any
+  selectedCompanies?: string[]
+}) {
   const [rows, setRows] = useState<Tx[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const cs = await SupabaseRest.getCompanies() as Company[]
-        setCompanies(cs || [])
-        setCnpj(MATRIZ_CNPJ)
-      } catch {
-        setError('Falha ao carregar empresas')
-      }
-    })()
-  }, [])
+  // Usar empresas selecionadas ou fallback para MATRIZ_CNPJ
+  const companiesToLoad = selectedCompanies.length > 0 
+    ? selectedCompanies 
+    : [MATRIZ_CNPJ]
 
   // Calcular datas baseadas no período
   const getPeriodDates = (period: Period) => {
@@ -63,7 +62,7 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
   }
 
   useEffect(() => {
-    if (!cnpj) return
+    if (companiesToLoad.length === 0) return
     setLoading(true)
     ;(async () => {
       try {
@@ -71,25 +70,51 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
         const year = startDate.getFullYear()
         const month = period === 'Mês' || period === 'Dia' || period === 'Semana' ? startDate.getMonth() + 1 : undefined
         
-        const data = await SupabaseRest.getDFC(cnpj, year, month) as Tx[]
+        // Carregar dados de todas as empresas selecionadas
+        const allDfcPromises = companiesToLoad.map(cnpj => SupabaseRest.getDFC(cnpj, year, month))
+        const allDfcResults = await Promise.all(allDfcPromises)
         
-        // Filtrar por período real
-        const filtered = (Array.isArray(data) ? data : []).filter(tx => {
-          if (!tx.data) return false
-          const txDate = new Date(tx.data)
-          if (txDate < startDate || txDate > endDate) return false
-          
-          const s = String(tx.status || '').toLowerCase()
-          if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
-          if (!s.includes('conciliado')) return false
-          return true
+        // Consolidar dados de todas as empresas
+        const consolidatedRows: Tx[] = []
+        allDfcResults.forEach((data: Tx[]) => {
+          if (Array.isArray(data)) {
+            // Filtrar por período real
+            const filtered = data.filter(tx => {
+              if (!tx.data) return false
+              const txDate = new Date(tx.data)
+              if (txDate < startDate || txDate > endDate) return false
+              
+              const s = String(tx.status || '').toLowerCase()
+              if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
+              if (!s.includes('conciliado')) return false
+              return true
+            })
+            consolidatedRows.push(...filtered)
+          }
         })
-        setRows(filtered)
+        
+        // Agrupar e somar por data para evitar duplicatas
+        const groupedMap = new Map<string, Tx>()
+        consolidatedRows.forEach(tx => {
+          const key = tx.data || ''
+          const existing = groupedMap.get(key)
+          if (existing) {
+            existing.entrada = (existing.entrada || 0) + (tx.entrada || 0)
+            existing.saida = (existing.saida || 0) + (tx.saida || 0)
+          } else {
+            groupedMap.set(key, { ...tx })
+          }
+        })
+        
+        setRows(Array.from(groupedMap.values()))
+      } catch (err) {
+        setError('Falha ao carregar dados')
+        console.error('Erro ao carregar DFC:', err)
       } finally {
         setLoading(false)
       }
     })()
-  }, [cnpj, period])
+  }, [companiesToLoad.join(','), period])
 
   const { receitaTotal, despesasTotal, lucro } = useMemo(() => {
     const r = rows.reduce((acc, tx) => {
@@ -132,7 +157,14 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
             <BadgeDelta deltaType={k.delta >= 0 ? "moderateIncrease" : "moderateDecrease"}>{k.delta}%</BadgeDelta>
           </div>
           <Metric>{formatCurrency(Number(k.value))}</Metric>
-          <Text className="mt-2 text-sm text-muted-foreground">{loading ? 'Carregando...' : `Empresa ${cnpj || ''}`}</Text>
+          <Text className="mt-2 text-sm text-muted-foreground">
+            {loading 
+              ? 'Carregando...' 
+              : companiesToLoad.length === 1
+                ? `Empresa ${companiesToLoad[0]}`
+                : `${companiesToLoad.length} empresas (Consolidado)`
+            }
+          </Text>
         </Card>
       ))}
       <Card className="rounded-3xl col-span-1 md:col-span-2 bg-card border border-border shadow-card">
@@ -164,7 +196,12 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="mt-4 text-xs text-muted-foreground">CNPJ {cnpj}</div>
+        <div className="mt-4 text-xs text-muted-foreground">
+          {companiesToLoad.length === 1 
+            ? `CNPJ ${companiesToLoad[0]}`
+            : `${companiesToLoad.length} empresas consolidadas`
+          }
+        </div>
       </Card>
     </Grid>
   )

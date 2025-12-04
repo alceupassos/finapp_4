@@ -108,7 +108,7 @@ export function ReportsPage({
       />
 
       {/* Main Content - ajusta margem baseado no estado da sidebar */}
-      <div className="flex-1 p-8 transition-all duration-300" style={{ marginLeft: '320px' }}>
+      <div className="flex-1 p-8 transition-all duration-300 ml-64 lg:ml-80">
         {/* Filtros horizontais no topo */}
         <HorizontalFilters
           selectedPeriod={selectedPeriod}

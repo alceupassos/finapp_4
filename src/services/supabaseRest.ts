@@ -474,11 +474,25 @@ export const SupabaseRest = {
   getBankAccounts: async (cnpjs: string[]) => {
     if (!cnpjs || cnpjs.length === 0) return []
     try {
-      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      const cnpjList = cnpjs.map(c => c.replace(/^0+/, '').replace(/\D/g, '')).filter(Boolean)
       if (cnpjList.length === 0) return []
       
-      const query = cnpjList.map(c => `company_cnpj.eq.${c}`).join(',')
-      const rows = await restGet('bank_accounts', { query: { or: query, select: '*', limit: '1000' } })
+      // Construir query correta para múltiplos CNPJs
+      const queryParts = cnpjList.map(c => `company_cnpj.eq.${c}`)
+      const query: Record<string, string> = {
+        select: '*',
+        limit: '1000',
+      }
+      
+      // Se apenas uma empresa, usar filtro direto
+      if (queryParts.length === 1) {
+        query.company_cnpj = `eq.${cnpjList[0]}`
+      } else {
+        // Múltiplas empresas: usar or
+        query.or = queryParts.join(',')
+      }
+      
+      const rows = await restGet('bank_accounts', { query })
       
       if (!Array.isArray(rows)) {
         console.warn('⚠️ getBankAccounts: resposta não é array', rows)
@@ -507,18 +521,30 @@ export const SupabaseRest = {
   getBankTransactions: async (cnpjs: string[], dateFrom?: string, dateTo?: string) => {
     if (!cnpjs || cnpjs.length === 0) return []
     try {
-      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      const cnpjList = cnpjs.map(c => c.replace(/^0+/, '').replace(/\D/g, '')).filter(Boolean)
       if (cnpjList.length === 0) return []
       
-      const query: any = {
-        or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
+      const query: Record<string, string> = {
         select: '*',
         limit: '5000',
         order: 'date.desc',
       }
       
-      if (dateFrom) query.date = `gte.${dateFrom}`
-      if (dateTo) query.date = `${query.date ? '&' : ''}lte.${dateTo}`
+      // Construir filtro de CNPJ
+      if (cnpjList.length === 1) {
+        query.company_cnpj = `eq.${cnpjList[0]}`
+      } else {
+        query.or = cnpjList.map(c => `company_cnpj.eq.${c}`).join(',')
+      }
+      
+      // Adicionar filtros de data
+      if (dateFrom && dateTo) {
+        query.date = `gte.${dateFrom},lte.${dateTo}`
+      } else if (dateFrom) {
+        query.date = `gte.${dateFrom}`
+      } else if (dateTo) {
+        query.date = `lte.${dateTo}`
+      }
       
       const rows = await restGet('bank_transactions', { query })
       
@@ -547,14 +573,20 @@ export const SupabaseRest = {
   getReconciliationItems: async (cnpjs: string[], status?: 'conciliado' | 'pendente' | 'divergente') => {
     if (!cnpjs || cnpjs.length === 0) return []
     try {
-      const cnpjList = cnpjs.map(c => c.replace(/\D/g, '')).filter(Boolean)
+      const cnpjList = cnpjs.map(c => c.replace(/^0+/, '').replace(/\D/g, '')).filter(Boolean)
       if (cnpjList.length === 0) return []
       
-      const query: any = {
-        or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
+      const query: Record<string, string> = {
         select: '*,bank_transactions(*),accounting_entries(*)',
         limit: '1000',
         order: 'date.desc',
+      }
+      
+      // Construir filtro de CNPJ
+      if (cnpjList.length === 1) {
+        query.company_cnpj = `eq.${cnpjList[0]}`
+      } else {
+        query.or = cnpjList.map(c => `company_cnpj.eq.${c}`).join(',')
       }
       
       if (status) query.status = `eq.${status}`

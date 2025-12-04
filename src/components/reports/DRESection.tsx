@@ -6,6 +6,7 @@ import { LucroBrutoBarChart } from '../LucroBrutoBarChart'
 import { DREExportButton } from '../DREExportButton'
 import { AnimatedReportCard } from './AnimatedReportCard'
 import { DREWaterfallChart } from '../charts/DREWaterfallChart'
+import { DREFullModal } from './DREFullModal'
 
 interface DRESectionProps {
   selectedCompanies: string[]
@@ -22,6 +23,7 @@ export function DRESection({
 }: DRESectionProps) {
   const [dreData, setDreData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     if (selectedCompanies.length === 0) return
@@ -219,8 +221,14 @@ export function DRESection({
         />
       </div>
 
-      {/* Export Button */}
-      <div className="flex justify-end">
+      {/* Export Button e Modal */}
+      <div className="flex justify-end gap-2">
+        <button
+          onClick={() => setModalOpen(true)}
+          className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-colors flex items-center gap-2"
+        >
+          Ver Completo
+        </button>
         <DREExportButton
           selectedCompanies={selectedCompanies}
           selectedMonth={selectedMonth || ''}
@@ -266,6 +274,16 @@ export function DRESection({
           <p className="text-sm text-muted-foreground">Carregando dados DRE...</p>
         </div>
       )}
+
+      {/* Modal Completo */}
+      <DREFullModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        dreData={dreData}
+        selectedCompanies={selectedCompanies}
+        selectedYear={selectedYear}
+        selectedMonth={selectedMonth}
+      />
     </div>
   )
 }

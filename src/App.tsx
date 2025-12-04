@@ -290,7 +290,12 @@ Sempre que relevante, fornecer:
 
           {/* Tremor Overview */}
           <section className="mb-6">
-            <DashboardOverview period={period} session={session} key={`overview-${session? 'auth':'anon'}`} />
+            <DashboardOverview 
+              period={period} 
+              session={session} 
+              selectedCompanies={selectedCompanies}
+              key={`overview-${session? 'auth':'anon'}-${selectedCompanies.join(',')}`} 
+            />
           </section>
 
           {/* Cashflow + Saldo Bancário */}
@@ -306,7 +311,7 @@ Sempre que relevante, fornecer:
           {/* Transactions + Revenue Distribution */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
             <div className="xl:col-span-2">
-              <ModernTransactionsTable />
+              <ModernTransactionsTable selectedCompanies={selectedCompanies} />
             </div>
             <div>
               <RevenueDistributionGauge cnpj={selectedCompanies.length > 0 ? selectedCompanies[0] : '26888098000159'} selectedMonth={selectedMonth} />

@@ -12,9 +12,7 @@ const statusConfig = {
   failed: { label: 'Falhou', color: 'red', bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/20' },
 };
 
-export function ModernTransactionsTable() {
-  const [companies, setCompanies] = useState<Company[]>([])
-  const [cnpj, setCnpj] = useState<string>(MATRIZ_CNPJ)
+export function ModernTransactionsTable({ selectedCompanies = [] }: { selectedCompanies?: string[] }) {
   const [rows, setRows] = useState<Tx[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string>('')
@@ -24,39 +22,54 @@ export function ModernTransactionsTable() {
   const [endDate, setEndDate] = useState<string>('')
   const [searchTerm, setSearchTerm] = useState<string>('')
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const cs = await SupabaseRest.getCompanies() as Company[]
-        setCompanies(cs || [])
-        setCnpj(MATRIZ_CNPJ)
-      } catch (e: any) {
-        setError('Falha ao carregar empresas')
-      }
-    })()
-  }, [])
+  // Usar empresas selecionadas ou fallback para MATRIZ_CNPJ
+  const companiesToLoad = selectedCompanies.length > 0 
+    ? selectedCompanies 
+    : [MATRIZ_CNPJ]
 
   useEffect(() => {
-    if (!cnpj) return
+    if (companiesToLoad.length === 0) return
     setLoading(true)
     setError('')
     ;(async () => {
       try {
-        const data = await SupabaseRest.getDFC(cnpj) as Tx[]
-        const cleaned = (Array.isArray(data) ? data : []).filter(tx => {
-          const s = String(tx.status || '').toLowerCase()
-          if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
-          if (!s.includes('conciliado')) return false
-          return true
+        // Carregar dados de todas as empresas selecionadas
+        const allDfcPromises = companiesToLoad.map(cnpj => SupabaseRest.getDFC(cnpj))
+        const allDfcResults = await Promise.all(allDfcPromises)
+        
+        // Consolidar transações de todas as empresas
+        const consolidatedRows: Tx[] = []
+        allDfcResults.forEach((data: Tx[], index) => {
+          if (Array.isArray(data)) {
+            const cleaned = data.filter(tx => {
+              const s = String(tx.status || '').toLowerCase()
+              if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
+              if (!s.includes('conciliado')) return false
+              return true
+            })
+            // Adicionar CNPJ para rastreamento
+            cleaned.forEach(tx => {
+              consolidatedRows.push({ ...tx, cnpj: companiesToLoad[index] })
+            })
+          }
         })
-        setRows(cleaned)
+        
+        // Ordenar por data (mais recente primeiro)
+        consolidatedRows.sort((a, b) => {
+          const dateA = new Date(a.data || '1900-01-01').getTime()
+          const dateB = new Date(b.data || '1900-01-01').getTime()
+          return dateB - dateA
+        })
+        
+        setRows(consolidatedRows)
       } catch (e: any) {
         setError('Falha ao carregar extrato')
+        console.error('Erro ao carregar transações:', e)
       } finally {
         setLoading(false)
       }
     })()
-  }, [cnpj])
+  }, [companiesToLoad.join(',')])
 
   // Ordenar por data decrescente (mais recente primeiro) e filtrar
   const filteredRows = useMemo(() => {
@@ -276,7 +289,9 @@ export function ModernTransactionsTable() {
             })}
             {(!loading && rows.length === 0) && (
               <tr>
-                <td colSpan={5} className="px-6 py-8 text-center text-sm text-graphite-400">Nenhum lançamento encontrado para {cnpj || 'empresa'}</td>
+                <td colSpan={5} className="px-6 py-8 text-center text-sm text-graphite-400">
+                  Nenhum lançamento encontrado {companiesToLoad.length === 1 ? `para ${companiesToLoad[0]}` : `para ${companiesToLoad.length} empresas`}
+                </td>
               </tr>
             )}
           </tbody>
@@ -286,10 +301,21 @@ export function ModernTransactionsTable() {
       {/* Footer */}
       <div className="p-6 border-t border-graphite-800 flex items-center justify-between">
         <p className="text-sm text-graphite-400">
-          {loading ? 'Carregando...' : `Mostrando ${rows.length} lançamentos`} {cnpj && <span className="text-white font-semibold">• {cnpj}</span>}
+          {loading 
+            ? 'Carregando...' 
+            : `Mostrando ${filteredRows.length} de ${rows.length} lançamentos`
+          }
+          {companiesToLoad.length === 1 && (
+            <span className="text-white font-semibold"> • {companiesToLoad[0]}</span>
+          )}
+          {companiesToLoad.length > 1 && (
+            <span className="text-white font-semibold"> • {companiesToLoad.length} empresas (Consolidado)</span>
+          )}
         </p>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-graphite-400">CNPJ {cnpj}</span>
+          {companiesToLoad.length === 1 && (
+            <span className="text-xs text-graphite-400">CNPJ {companiesToLoad[0]}</span>
+          )}
         </div>
       </div>
   </motion.div>

@@ -6,6 +6,7 @@ import { DFCExportButton } from '../DFCExportButton'
 import { AnimatedReportCard } from './AnimatedReportCard'
 import { CashflowSankeyChart } from '../charts/CashflowSankeyChart'
 import { FluxoCaixaBarChart, FluxoCaixaLineChart, WaterfallChart } from '../charts'
+import { DFCFullModal } from './DFCFullModal'
 
 interface DFCSectionProps {
   selectedCompanies: string[]
@@ -22,6 +23,7 @@ export function DFCSection({
 }: DFCSectionProps) {
   const [dfcData, setDfcData] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     if (selectedCompanies.length === 0) {
@@ -128,8 +130,14 @@ export function DFCSection({
         />
       </div>
 
-      {/* Export Button */}
-      <div className="flex justify-end">
+      {/* Export Button e Modal */}
+      <div className="flex justify-end gap-2">
+        <button
+          onClick={() => setModalOpen(true)}
+          className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-colors flex items-center gap-2"
+        >
+          Ver Completo
+        </button>
         <DFCExportButton
           selectedCompanies={selectedCompanies}
           selectedMonth={selectedMonth || ''}
@@ -220,6 +228,16 @@ export function DFCSection({
           <p className="text-graphite-400">Selecione pelo menos uma empresa para visualizar os dados DFC</p>
         </motion.div>
       )}
+
+      {/* Modal Completo */}
+      <DFCFullModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        dfcData={dfcData}
+        selectedCompanies={selectedCompanies}
+        selectedYear={selectedYear}
+        selectedMonth={selectedMonth}
+      />
     </div>
   )
 }
