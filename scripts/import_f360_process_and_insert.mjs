@@ -93,16 +93,88 @@ function normalizeCnpj(cnpj) {
   return String(cnpj || '').replace(/\D/g, '')
 }
 
+/**
+ * Determinar natureza (receita/despesa) usando múltiplas estratégias
+ * Melhorado para capturar corretamente receitas e despesas
+ */
 function determinarNatureza(entry) {
+  // Estratégia 1: Tipo do Plano de Contas
   const tipoPlano = String(entry.TipoPlanoDeContas || '').toLowerCase()
-  if (tipoPlano.includes('receber') || tipoPlano.includes('receita')) return 'receita'
-  if (tipoPlano.includes('pagar') || tipoPlano.includes('despesa')) return 'despesa'
-  if (entry.Tipo === true) return 'receita'
-  if (entry.Tipo === false) return 'despesa'
-  if (entry.ContaACredito && !entry.ContaADebito) return 'receita'
-  if (entry.ContaADebito && !entry.ContaACredito) return 'despesa'
+  if (tipoPlano.includes('receber') || tipoPlano.includes('receita') || tipoPlano.includes('a receber')) {
+    return 'receita'
+  }
+  if (tipoPlano.includes('pagar') || tipoPlano.includes('despesa') || tipoPlano.includes('a pagar')) {
+    return 'despesa'
+  }
+  
+  // Estratégia 2: Campo Tipo (pode ser boolean ou string)
+  if (entry.Tipo === true || entry.Tipo === 'true' || String(entry.Tipo || '').toLowerCase() === 'receita') {
+    return 'receita'
+  }
+  if (entry.Tipo === false || entry.Tipo === 'false' || String(entry.Tipo || '').toLowerCase() === 'despesa') {
+    return 'despesa'
+  }
+  
+  // Estratégia 3: Sinal do valor (ValorLcto positivo = receita, negativo = despesa)
+  const valor = parseFloat(String(entry.ValorLcto || 0))
+  if (valor > 0 && entry.ValorLctoOriginal === undefined) {
+    // Se não temos indicadores claros e o valor é positivo, pode ser receita
+    // Mas vamos usar outras estratégias primeiro
+  }
+  
+  // Estratégia 4: Conta a Crédito vs Débito
+  if (entry.ContaACredito && !entry.ContaADebito) {
+    return 'receita'
+  }
+  if (entry.ContaADebito && !entry.ContaACredito) {
+    return 'despesa'
+  }
+  
+  // Estratégia 5: Nome da Conta (mais confiável - busca palavras-chave)
   const nomeConta = String(entry.NomePlanoDeContas || '').toLowerCase()
-  if (nomeConta.includes('receita') || nomeConta.includes('venda')) return 'receita'
+  const palavrasReceita = ['receita', 'venda', 'faturamento', 'vendas', 'vender', 'recebimento', 'receber', 'rendimento']
+  const palavrasDespesa = ['despesa', 'custo', 'pagamento', 'pagar', 'gasto', 'compra', 'fornecedor']
+  
+  if (palavrasReceita.some(palavra => nomeConta.includes(palavra))) {
+    return 'receita'
+  }
+  if (palavrasDespesa.some(palavra => nomeConta.includes(palavra))) {
+    return 'despesa'
+  }
+  
+  // Estratégia 6: Código da conta (contas 1xx-3xx geralmente são receitas, 4xx-6xx são despesas)
+  const codigoConta = String(entry.ContaADebito || entry.ContaACredito || '').trim()
+  if (codigoConta.match(/^[1-3]/)) {
+    return 'receita'
+  }
+  if (codigoConta.match(/^[4-6]/)) {
+    return 'despesa'
+  }
+  
+  // Estratégia 7: Tipo de Título (se disponível)
+  const tipoTitulo = String(entry.TipoTitulo || entry.Tipo || '').toLowerCase()
+  if (tipoTitulo.includes('receber') || tipoTitulo.includes('receita')) {
+    return 'receita'
+  }
+  if (tipoTitulo.includes('pagar') || tipoTitulo.includes('despesa')) {
+    return 'despesa'
+  }
+  
+  // Por padrão, usar sinal do valor como última instância
+  // Valor positivo sem outros indicadores = assumir receita
+  // Valor negativo ou zero = assumir despesa
+  if (valor > 0) {
+    // Log de warning para debug
+    console.warn(`⚠️  Natureza não determinada claramente, assumindo receita (valor positivo):`, {
+      conta: nomeConta,
+      tipo: entry.Tipo,
+      tipoPlano: tipoPlano,
+      valor: valor
+    })
+    return 'receita'
+  }
+  
+  // Default: despesa (mais comum em sistemas contábeis)
   return 'despesa'
 }
 
@@ -203,7 +275,16 @@ async function importarEmpresa(company, dataInicio, dataFim) {
 
     const receitasCount = dreEntries.filter(e => e.natureza === 'receita').length
     const despesasCount = dreEntries.filter(e => e.natureza === 'despesa').length
-    console.log(`   📊 ${receitasCount} receitas, ${despesasCount} despesas`)
+    const totalReceitas = dreEntries.filter(e => e.natureza === 'receita').reduce((sum, e) => sum + e.valor, 0)
+    const totalDespesas = dreEntries.filter(e => e.natureza === 'despesa').reduce((sum, e) => sum + e.valor, 0)
+    
+    const entradasCount = dfcEntries.filter(e => e.kind === 'in').length
+    const saidasCount = dfcEntries.filter(e => e.kind === 'out').length
+    const totalEntradas = dfcEntries.filter(e => e.kind === 'in').reduce((sum, e) => sum + e.amount, 0)
+    const totalSaidas = dfcEntries.filter(e => e.kind === 'out').reduce((sum, e) => sum + e.amount, 0)
+    
+    console.log(`   📊 DRE: ${receitasCount} receitas (R$ ${totalReceitas.toLocaleString('pt-BR', {minimumFractionDigits: 2})}), ${despesasCount} despesas (R$ ${totalDespesas.toLocaleString('pt-BR', {minimumFractionDigits: 2})})`)
+    console.log(`   💰 DFC: ${entradasCount} entradas (R$ ${totalEntradas.toLocaleString('pt-BR', {minimumFractionDigits: 2})}), ${saidasCount} saídas (R$ ${totalSaidas.toLocaleString('pt-BR', {minimumFractionDigits: 2})})`)
 
     return { dre: dreEntries, dfc: dfcEntries }
   } catch (error) {

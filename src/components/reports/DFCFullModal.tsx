@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, ChevronRight, ChevronDown, Search, Filter } from 'lucide-react'
 import { formatCurrency } from '../../lib/formatters'
 import * as XLSX from 'xlsx'
+import * as Tooltip from '@radix-ui/react-tooltip'
 
 interface DFCFullModalProps {
   open: boolean
@@ -281,8 +282,8 @@ export function DFCFullModal({
           onClick={(e) => e.stopPropagation()}
           className="bg-graphite-950 border border-graphite-800 rounded-2xl shadow-2xl w-[95vw] h-[90vh] flex flex-col"
         >
-          {/* Header */}
-          <div className="p-4 border-b border-graphite-800 flex items-center justify-between flex-shrink-0">
+          {/* Header - Sticky with blur backdrop */}
+          <div className="p-4 border-b border-graphite-800 flex items-center justify-between flex-shrink-0 bg-graphite-950/95 backdrop-blur-sm sticky top-0 z-20 shadow-lg">
             <div>
               <h2 className="text-lg font-bold text-white">DFC Completo</h2>
               <p className="text-xs text-graphite-400">
@@ -296,14 +297,14 @@ export function DFCFullModal({
             <div className="flex items-center gap-2">
               <button
                 onClick={exportToExcel}
-                className="px-3 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-xs font-medium flex items-center gap-1.5 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-xs font-medium flex items-center gap-1.5 transition-all hover:scale-105 shadow-lg shadow-gold-500/20"
               >
                 <Download className="w-3.5 h-3.5" />
                 Exportar Excel
               </button>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg bg-graphite-800 hover:bg-graphite-700 text-white transition-colors"
+                className="p-2 rounded-lg bg-graphite-800 hover:bg-graphite-700 text-white transition-all hover:scale-110"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -337,24 +338,25 @@ export function DFCFullModal({
           </div>
 
           {/* Tabela */}
-          <div className="flex-1 overflow-auto p-4">
-            <table className="w-full text-[10px] border-collapse">
-              <thead className="sticky top-0 bg-graphite-900 z-10">
+          <Tooltip.Provider>
+            <div className="flex-1 overflow-auto p-4">
+              <table className="w-full text-[10px] border-collapse">
+                <thead className="sticky top-0 bg-graphite-900/95 backdrop-blur-sm z-10 shadow-md">
                 <tr>
-                  <th className="p-2 text-left font-semibold text-graphite-300 border-b border-graphite-700">Categoria / Descrição</th>
+                  <th className="p-2 text-left font-semibold text-graphite-300 border-b border-graphite-700 bg-graphite-900/95">Categoria / Descrição</th>
                   {MONTHS.map(month => (
                     <React.Fragment key={month}>
-                      <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-green-400">
+                      <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-green-400 bg-graphite-900/95">
                         {month} E
                       </th>
-                      <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-red-400">
+                      <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-red-400 bg-graphite-900/95">
                         {month} S
                       </th>
                     </React.Fragment>
                   ))}
-                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-green-400">Total E</th>
-                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-red-400">Total S</th>
-                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[80px]">Saldo</th>
+                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-green-400 bg-graphite-900/95">Total E</th>
+                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] text-red-400 bg-graphite-900/95">Total S</th>
+                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[80px] bg-graphite-900/95">Saldo</th>
                 </tr>
               </thead>
               <tbody>
@@ -364,17 +366,22 @@ export function DFCFullModal({
                   return (
                     <React.Fragment key={category.category}>
                       {/* Linha de Categoria */}
-                      <tr className="bg-graphite-900/50 hover:bg-graphite-900/70">
+                      <tr className="bg-graphite-900/50 hover:bg-graphite-900/80 transition-colors group/row">
                         <td className="p-2 font-bold text-white border-b border-graphite-700">
                           <button
                             onClick={() => toggleGroup(category.category)}
-                            className="flex items-center gap-1 hover:text-gold-400 transition-colors"
+                            className="flex items-center gap-1 hover:text-gold-400 transition-colors group/button"
                           >
-                            {isCategoryExpanded ? (
-                              <ChevronDown className="w-3 h-3" />
-                            ) : (
-                              <ChevronRight className="w-3 h-3" />
-                            )}
+                            <motion.div
+                              animate={{ rotate: isCategoryExpanded ? 90 : 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {isCategoryExpanded ? (
+                                <ChevronDown className="w-3 h-3 group-hover/button:text-gold-400" />
+                              ) : (
+                                <ChevronRight className="w-3 h-3 group-hover/button:text-gold-400" />
+                              )}
+                            </motion.div>
                             {category.category}
                           </button>
                         </td>
@@ -389,26 +396,95 @@ export function DFCFullModal({
                           )
                           return (
                             <React.Fragment key={monthIdx}>
-                              <td className="p-2 text-right font-semibold text-green-400 border-b border-graphite-700">
-                                {isCategoryExpanded ? formatCurrency(monthEntrada) : '—'}
-                              </td>
-                              <td className="p-2 text-right font-semibold text-red-400 border-b border-graphite-700">
-                                {isCategoryExpanded ? formatCurrency(monthSaida) : '—'}
-                              </td>
+                              <Tooltip.Root>
+                                <Tooltip.Trigger asChild>
+                                  <td className="p-2 text-right font-semibold text-green-400 border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors">
+                                    {isCategoryExpanded ? formatCurrency(monthEntrada) : '—'}
+                                  </td>
+                                </Tooltip.Trigger>
+                                {isCategoryExpanded && monthEntrada !== 0 && (
+                                  <Tooltip.Portal>
+                                    <Tooltip.Content
+                                      className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                      sideOffset={5}
+                                    >
+                                      {MONTHS[monthIdx]} {selectedYear} - Entradas: {formatCurrency(monthEntrada)}
+                                      <Tooltip.Arrow className="fill-graphite-900" />
+                                    </Tooltip.Content>
+                                  </Tooltip.Portal>
+                                )}
+                              </Tooltip.Root>
+                              <Tooltip.Root>
+                                <Tooltip.Trigger asChild>
+                                  <td className="p-2 text-right font-semibold text-red-400 border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors">
+                                    {isCategoryExpanded ? formatCurrency(monthSaida) : '—'}
+                                  </td>
+                                </Tooltip.Trigger>
+                                {isCategoryExpanded && monthSaida !== 0 && (
+                                  <Tooltip.Portal>
+                                    <Tooltip.Content
+                                      className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                      sideOffset={5}
+                                    >
+                                      {MONTHS[monthIdx]} {selectedYear} - Saídas: {formatCurrency(monthSaida)}
+                                      <Tooltip.Arrow className="fill-graphite-900" />
+                                    </Tooltip.Content>
+                                  </Tooltip.Portal>
+                                )}
+                              </Tooltip.Root>
                             </React.Fragment>
                           )
                         })}
-                        <td className="p-2 text-right font-bold text-green-400 border-b border-graphite-700">
-                          {formatCurrency(category.totalEntrada)}
-                        </td>
-                        <td className="p-2 text-right font-bold text-red-400 border-b border-graphite-700">
-                          {formatCurrency(category.totalSaida)}
-                        </td>
-                        <td className={`p-2 text-right font-bold border-b border-graphite-700 ${
-                          category.saldo >= 0 ? 'text-emerald-400' : 'text-red-400'
-                        }`}>
-                          {formatCurrency(category.saldo)}
-                        </td>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>
+                            <td className="p-2 text-right font-bold text-green-400 border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors">
+                              {formatCurrency(category.totalEntrada)}
+                            </td>
+                          </Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                              sideOffset={5}
+                            >
+                              Total Entradas {category.category}: {formatCurrency(category.totalEntrada)}
+                              <Tooltip.Arrow className="fill-graphite-900" />
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>
+                            <td className="p-2 text-right font-bold text-red-400 border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors">
+                              {formatCurrency(category.totalSaida)}
+                            </td>
+                          </Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                              sideOffset={5}
+                            >
+                              Total Saídas {category.category}: {formatCurrency(category.totalSaida)}
+                              <Tooltip.Arrow className="fill-graphite-900" />
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>
+                            <td className={`p-2 text-right font-bold border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors ${
+                              category.saldo >= 0 ? 'text-emerald-400' : 'text-red-400'
+                            }`}>
+                              {formatCurrency(category.saldo)}
+                            </td>
+                          </Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                              sideOffset={5}
+                            >
+                              Saldo {category.category}: {formatCurrency(category.saldo)}
+                              <Tooltip.Arrow className="fill-graphite-900" />
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
                       </tr>
 
                       {/* Subcategorias e Itens */}
@@ -418,18 +494,23 @@ export function DFCFullModal({
                         
                         return (
                           <React.Fragment key={subKey}>
-                            {/* Linha de Subcategoria */}
-                            <tr className="bg-graphite-800/30 hover:bg-graphite-800/50">
+                            {/* Linha de Subcategoria - Zebra row */}
+                            <tr className={`${subIdx % 2 === 0 ? 'bg-graphite-800/20' : 'bg-graphite-800/10'} hover:bg-graphite-800/60 transition-colors`}>
                               <td className="p-2 pl-6 font-semibold text-graphite-200 border-b border-graphite-700/50">
                                 <button
                                   onClick={() => toggleSubgroup(subKey)}
-                                  className="flex items-center gap-1 hover:text-gold-400 transition-colors"
+                                  className="flex items-center gap-1 hover:text-gold-400 transition-colors group/subbutton"
                                 >
-                                  {isSubExpanded ? (
-                                    <ChevronDown className="w-3 h-3" />
-                                  ) : (
-                                    <ChevronRight className="w-3 h-3" />
-                                  )}
+                                  <motion.div
+                                    animate={{ rotate: isSubExpanded ? 90 : 0 }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    {isSubExpanded ? (
+                                      <ChevronDown className="w-3 h-3 group-hover/subbutton:text-gold-400" />
+                                    ) : (
+                                      <ChevronRight className="w-3 h-3 group-hover/subbutton:text-gold-400" />
+                                    )}
+                                  </motion.div>
                                   {subcategory.subcategory}
                                 </button>
                               </td>
@@ -444,58 +525,200 @@ export function DFCFullModal({
                                 )
                                 return (
                                   <React.Fragment key={monthIdx}>
-                                    <td className="p-2 text-right text-green-300 border-b border-graphite-700/50">
-                                      {isSubExpanded ? formatCurrency(monthEntrada) : '—'}
-                                    </td>
-                                    <td className="p-2 text-right text-red-300 border-b border-graphite-700/50">
-                                      {isSubExpanded ? formatCurrency(monthSaida) : '—'}
-                                    </td>
+                                    <Tooltip.Root>
+                                      <Tooltip.Trigger asChild>
+                                        <td className="p-2 text-right text-green-300 border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors">
+                                          {isSubExpanded ? formatCurrency(monthEntrada) : '—'}
+                                        </td>
+                                      </Tooltip.Trigger>
+                                      {isSubExpanded && monthEntrada !== 0 && (
+                                        <Tooltip.Portal>
+                                          <Tooltip.Content
+                                            className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                            sideOffset={5}
+                                          >
+                                            {subcategory.subcategory} - {MONTHS[monthIdx]}: {formatCurrency(monthEntrada)}
+                                            <Tooltip.Arrow className="fill-graphite-900" />
+                                          </Tooltip.Content>
+                                        </Tooltip.Portal>
+                                      )}
+                                    </Tooltip.Root>
+                                    <Tooltip.Root>
+                                      <Tooltip.Trigger asChild>
+                                        <td className="p-2 text-right text-red-300 border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors">
+                                          {isSubExpanded ? formatCurrency(monthSaida) : '—'}
+                                        </td>
+                                      </Tooltip.Trigger>
+                                      {isSubExpanded && monthSaida !== 0 && (
+                                        <Tooltip.Portal>
+                                          <Tooltip.Content
+                                            className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                            sideOffset={5}
+                                          >
+                                            {subcategory.subcategory} - {MONTHS[monthIdx]}: {formatCurrency(monthSaida)}
+                                            <Tooltip.Arrow className="fill-graphite-900" />
+                                          </Tooltip.Content>
+                                        </Tooltip.Portal>
+                                      )}
+                                    </Tooltip.Root>
                                   </React.Fragment>
                                 )
                               })}
-                              <td className="p-2 text-right font-semibold text-green-300 border-b border-graphite-700/50">
-                                {formatCurrency(subcategory.totalEntrada)}
-                              </td>
-                              <td className="p-2 text-right font-semibold text-red-300 border-b border-graphite-700/50">
-                                {formatCurrency(subcategory.totalSaida)}
-                              </td>
-                              <td className={`p-2 text-right font-semibold border-b border-graphite-700/50 ${
-                                subcategory.saldo >= 0 ? 'text-emerald-300' : 'text-red-300'
-                              }`}>
-                                {formatCurrency(subcategory.saldo)}
-                              </td>
+                              <Tooltip.Root>
+                                <Tooltip.Trigger asChild>
+                                  <td className="p-2 text-right font-semibold text-green-300 border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors">
+                                    {formatCurrency(subcategory.totalEntrada)}
+                                  </td>
+                                </Tooltip.Trigger>
+                                <Tooltip.Portal>
+                                  <Tooltip.Content
+                                    className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                    sideOffset={5}
+                                  >
+                                    Total Entradas {subcategory.subcategory}: {formatCurrency(subcategory.totalEntrada)}
+                                    <Tooltip.Arrow className="fill-graphite-900" />
+                                  </Tooltip.Content>
+                                </Tooltip.Portal>
+                              </Tooltip.Root>
+                              <Tooltip.Root>
+                                <Tooltip.Trigger asChild>
+                                  <td className="p-2 text-right font-semibold text-red-300 border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors">
+                                    {formatCurrency(subcategory.totalSaida)}
+                                  </td>
+                                </Tooltip.Trigger>
+                                <Tooltip.Portal>
+                                  <Tooltip.Content
+                                    className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                    sideOffset={5}
+                                  >
+                                    Total Saídas {subcategory.subcategory}: {formatCurrency(subcategory.totalSaida)}
+                                    <Tooltip.Arrow className="fill-graphite-900" />
+                                  </Tooltip.Content>
+                                </Tooltip.Portal>
+                              </Tooltip.Root>
+                              <Tooltip.Root>
+                                <Tooltip.Trigger asChild>
+                                  <td className={`p-2 text-right font-semibold border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors ${
+                                    subcategory.saldo >= 0 ? 'text-emerald-300' : 'text-red-300'
+                                  }`}>
+                                    {formatCurrency(subcategory.saldo)}
+                                  </td>
+                                </Tooltip.Trigger>
+                                <Tooltip.Portal>
+                                  <Tooltip.Content
+                                    className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                    sideOffset={5}
+                                  >
+                                    Saldo {subcategory.subcategory}: {formatCurrency(subcategory.saldo)}
+                                    <Tooltip.Arrow className="fill-graphite-900" />
+                                  </Tooltip.Content>
+                                </Tooltip.Portal>
+                              </Tooltip.Root>
                             </tr>
 
-                            {/* Itens individuais */}
+                            {/* Itens individuais - Zebra rows */}
                             {isSubExpanded && subcategory.items.map((item, itemIdx) => (
                               <tr
                                 key={`${subKey}_${item.descricao}_${itemIdx}`}
-                                className="hover:bg-graphite-800/20"
+                                className={`${itemIdx % 2 === 0 ? 'bg-graphite-900/10' : 'bg-transparent'} hover:bg-graphite-800/40 transition-colors`}
                               >
                                 <td className="p-2 pl-10 text-graphite-400 border-b border-graphite-700/30">
                                   {item.descricao}
                                 </td>
                                 {item.months.map((month, monthIdx) => (
                                   <React.Fragment key={monthIdx}>
-                                    <td className="p-2 text-right text-green-400/70 border-b border-graphite-700/30">
-                                      {month.entrada !== 0 ? formatCurrency(month.entrada) : '—'}
-                                    </td>
-                                    <td className="p-2 text-right text-red-400/70 border-b border-graphite-700/30">
-                                      {month.saida !== 0 ? formatCurrency(month.saida) : '—'}
-                                    </td>
+                                    <Tooltip.Root>
+                                      <Tooltip.Trigger asChild>
+                                        <td className="p-2 text-right text-green-400/70 border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors">
+                                          {month.entrada !== 0 ? formatCurrency(month.entrada) : '—'}
+                                        </td>
+                                      </Tooltip.Trigger>
+                                      {month.entrada !== 0 && (
+                                        <Tooltip.Portal>
+                                          <Tooltip.Content
+                                            className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                            sideOffset={5}
+                                          >
+                                            {item.descricao} - {MONTHS[monthIdx]}: {formatCurrency(month.entrada)}
+                                            <Tooltip.Arrow className="fill-graphite-900" />
+                                          </Tooltip.Content>
+                                        </Tooltip.Portal>
+                                      )}
+                                    </Tooltip.Root>
+                                    <Tooltip.Root>
+                                      <Tooltip.Trigger asChild>
+                                        <td className="p-2 text-right text-red-400/70 border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors">
+                                          {month.saida !== 0 ? formatCurrency(month.saida) : '—'}
+                                        </td>
+                                      </Tooltip.Trigger>
+                                      {month.saida !== 0 && (
+                                        <Tooltip.Portal>
+                                          <Tooltip.Content
+                                            className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                            sideOffset={5}
+                                          >
+                                            {item.descricao} - {MONTHS[monthIdx]}: {formatCurrency(month.saida)}
+                                            <Tooltip.Arrow className="fill-graphite-900" />
+                                          </Tooltip.Content>
+                                        </Tooltip.Portal>
+                                      )}
+                                    </Tooltip.Root>
                                   </React.Fragment>
                                 ))}
-                                <td className="p-2 text-right font-medium text-green-400/70 border-b border-graphite-700/30">
-                                  {item.totalEntrada !== 0 ? formatCurrency(item.totalEntrada) : '—'}
-                                </td>
-                                <td className="p-2 text-right font-medium text-red-400/70 border-b border-graphite-700/30">
-                                  {item.totalSaida !== 0 ? formatCurrency(item.totalSaida) : '—'}
-                                </td>
-                                <td className={`p-2 text-right font-medium border-b border-graphite-700/30 ${
-                                  item.saldo >= 0 ? 'text-emerald-400' : 'text-red-400'
-                                }`}>
-                                  {formatCurrency(item.saldo)}
-                                </td>
+                                <Tooltip.Root>
+                                  <Tooltip.Trigger asChild>
+                                    <td className="p-2 text-right font-medium text-green-400/70 border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors">
+                                      {item.totalEntrada !== 0 ? formatCurrency(item.totalEntrada) : '—'}
+                                    </td>
+                                  </Tooltip.Trigger>
+                                  {item.totalEntrada !== 0 && (
+                                    <Tooltip.Portal>
+                                      <Tooltip.Content
+                                        className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                        sideOffset={5}
+                                      >
+                                        Total Entradas {item.descricao}: {formatCurrency(item.totalEntrada)}
+                                        <Tooltip.Arrow className="fill-graphite-900" />
+                                      </Tooltip.Content>
+                                    </Tooltip.Portal>
+                                  )}
+                                </Tooltip.Root>
+                                <Tooltip.Root>
+                                  <Tooltip.Trigger asChild>
+                                    <td className="p-2 text-right font-medium text-red-400/70 border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors">
+                                      {item.totalSaida !== 0 ? formatCurrency(item.totalSaida) : '—'}
+                                    </td>
+                                  </Tooltip.Trigger>
+                                  {item.totalSaida !== 0 && (
+                                    <Tooltip.Portal>
+                                      <Tooltip.Content
+                                        className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                        sideOffset={5}
+                                      >
+                                        Total Saídas {item.descricao}: {formatCurrency(item.totalSaida)}
+                                        <Tooltip.Arrow className="fill-graphite-900" />
+                                      </Tooltip.Content>
+                                    </Tooltip.Portal>
+                                  )}
+                                </Tooltip.Root>
+                                <Tooltip.Root>
+                                  <Tooltip.Trigger asChild>
+                                    <td className={`p-2 text-right font-medium border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors ${
+                                      item.saldo >= 0 ? 'text-emerald-400' : 'text-red-400'
+                                    }`}>
+                                      {formatCurrency(item.saldo)}
+                                    </td>
+                                  </Tooltip.Trigger>
+                                  <Tooltip.Portal>
+                                    <Tooltip.Content
+                                      className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                      sideOffset={5}
+                                    >
+                                      Saldo {item.descricao}: {formatCurrency(item.saldo)}
+                                      <Tooltip.Arrow className="fill-graphite-900" />
+                                    </Tooltip.Content>
+                                  </Tooltip.Portal>
+                                </Tooltip.Root>
                               </tr>
                             ))}
                           </React.Fragment>
@@ -507,6 +730,7 @@ export function DFCFullModal({
               </tbody>
             </table>
           </div>
+          </Tooltip.Provider>
         </motion.div>
       </motion.div>
     </AnimatePresence>

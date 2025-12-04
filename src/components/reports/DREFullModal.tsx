@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, ChevronRight, ChevronDown, Search, Filter } from 'lucide-react'
 import { formatCurrency } from '../../lib/formatters'
 import * as XLSX from 'xlsx'
+import * as Tooltip from '@radix-ui/react-tooltip'
 
 interface DREFullModalProps {
   open: boolean
@@ -234,8 +235,8 @@ export function DREFullModal({
           onClick={(e) => e.stopPropagation()}
           className="bg-graphite-950 border border-graphite-800 rounded-2xl shadow-2xl w-[95vw] h-[90vh] flex flex-col"
         >
-          {/* Header */}
-          <div className="p-4 border-b border-graphite-800 flex items-center justify-between flex-shrink-0">
+          {/* Header - Sticky with blur backdrop */}
+          <div className="p-4 border-b border-graphite-800 flex items-center justify-between flex-shrink-0 bg-graphite-950/95 backdrop-blur-sm sticky top-0 z-20 shadow-lg">
             <div>
               <h2 className="text-lg font-bold text-white">DRE Completo</h2>
               <p className="text-xs text-graphite-400">
@@ -249,14 +250,14 @@ export function DREFullModal({
             <div className="flex items-center gap-2">
               <button
                 onClick={exportToExcel}
-                className="px-3 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-xs font-medium flex items-center gap-1.5 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-xs font-medium flex items-center gap-1.5 transition-all hover:scale-105 shadow-lg shadow-gold-500/20"
               >
                 <Download className="w-3.5 h-3.5" />
                 Exportar Excel
               </button>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg bg-graphite-800 hover:bg-graphite-700 text-white transition-colors"
+                className="p-2 rounded-lg bg-graphite-800 hover:bg-graphite-700 text-white transition-all hover:scale-110"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -290,19 +291,20 @@ export function DREFullModal({
           </div>
 
           {/* Tabela */}
-          <div className="flex-1 overflow-auto p-4">
-            <table className="w-full text-[10px] border-collapse">
-              <thead className="sticky top-0 bg-graphite-900 z-10">
-                <tr>
-                  <th className="p-2 text-left font-semibold text-graphite-300 border-b border-graphite-700">Categoria / Conta</th>
-                  {MONTHS.map(month => (
-                    <th key={month} className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px]">
-                      {month}
-                    </th>
-                  ))}
-                  <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[80px]">Total</th>
-                </tr>
-              </thead>
+          <Tooltip.Provider>
+            <div className="flex-1 overflow-auto p-4">
+              <table className="w-full text-[10px] border-collapse">
+                <thead className="sticky top-0 bg-graphite-900/95 backdrop-blur-sm z-10 shadow-md">
+                  <tr>
+                    <th className="p-2 text-left font-semibold text-graphite-300 border-b border-graphite-700 bg-graphite-900/95">Categoria / Conta</th>
+                    {MONTHS.map(month => (
+                      <th key={month} className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[70px] bg-graphite-900/95">
+                        {month}
+                      </th>
+                    ))}
+                    <th className="p-2 text-right font-semibold text-graphite-300 border-b border-graphite-700 min-w-[80px] bg-graphite-900/95">Total</th>
+                  </tr>
+                </thead>
               <tbody>
                 {processedData.map((category, catIdx) => {
                   const isCategoryExpanded = expandedGroups.has(category.category)
@@ -310,17 +312,22 @@ export function DREFullModal({
                   return (
                     <React.Fragment key={category.category}>
                       {/* Linha de Categoria */}
-                      <tr className="bg-graphite-900/50 hover:bg-graphite-900/70">
+                      <tr className="bg-graphite-900/50 hover:bg-graphite-900/80 transition-colors group/row">
                         <td className="p-2 font-bold text-white border-b border-graphite-700">
                           <button
                             onClick={() => toggleGroup(category.category)}
-                            className="flex items-center gap-1 hover:text-gold-400 transition-colors"
+                            className="flex items-center gap-1 hover:text-gold-400 transition-colors group/button"
                           >
-                            {isCategoryExpanded ? (
-                              <ChevronDown className="w-3 h-3" />
-                            ) : (
-                              <ChevronRight className="w-3 h-3" />
-                            )}
+                            <motion.div
+                              animate={{ rotate: isCategoryExpanded ? 90 : 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {isCategoryExpanded ? (
+                                <ChevronDown className="w-3 h-3 group-hover/button:text-gold-400" />
+                              ) : (
+                                <ChevronRight className="w-3 h-3 group-hover/button:text-gold-400" />
+                              )}
+                            </motion.div>
                             {category.category}
                           </button>
                         </td>
@@ -330,14 +337,42 @@ export function DREFullModal({
                             0
                           )
                           return (
-                            <td key={monthIdx} className="p-2 text-right font-semibold text-white border-b border-graphite-700">
-                              {isCategoryExpanded ? formatCurrency(monthTotal) : '—'}
-                            </td>
+                            <Tooltip.Root key={monthIdx}>
+                              <Tooltip.Trigger asChild>
+                                <td className="p-2 text-right font-semibold text-white border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors">
+                                  {isCategoryExpanded ? formatCurrency(monthTotal) : '—'}
+                                </td>
+                              </Tooltip.Trigger>
+                              {isCategoryExpanded && monthTotal !== 0 && (
+                                <Tooltip.Portal>
+                                  <Tooltip.Content
+                                    className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                    sideOffset={5}
+                                  >
+                                    {MONTHS[monthIdx]} {selectedYear}: {formatCurrency(monthTotal)}
+                                    <Tooltip.Arrow className="fill-graphite-900" />
+                                  </Tooltip.Content>
+                                </Tooltip.Portal>
+                              )}
+                            </Tooltip.Root>
                           )
                         })}
-                        <td className="p-2 text-right font-bold text-gold-400 border-b border-graphite-700">
-                          {formatCurrency(category.total)}
-                        </td>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>
+                            <td className="p-2 text-right font-bold text-gold-400 border-b border-graphite-700 cursor-help hover:bg-graphite-800/50 transition-colors">
+                              {formatCurrency(category.total)}
+                            </td>
+                          </Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                              sideOffset={5}
+                            >
+                              Total {category.category}: {formatCurrency(category.total)}
+                              <Tooltip.Arrow className="fill-graphite-900" />
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
                       </tr>
 
                       {/* Subcategorias e Contas */}
@@ -347,18 +382,23 @@ export function DREFullModal({
                         
                         return (
                           <React.Fragment key={subKey}>
-                            {/* Linha de Subcategoria */}
-                            <tr className="bg-graphite-800/30 hover:bg-graphite-800/50">
+                            {/* Linha de Subcategoria - Zebra row */}
+                            <tr className={`${subIdx % 2 === 0 ? 'bg-graphite-800/20' : 'bg-graphite-800/10'} hover:bg-graphite-800/60 transition-colors`}>
                               <td className="p-2 pl-6 font-semibold text-graphite-200 border-b border-graphite-700/50">
                                 <button
                                   onClick={() => toggleSubgroup(subKey)}
-                                  className="flex items-center gap-1 hover:text-gold-400 transition-colors"
+                                  className="flex items-center gap-1 hover:text-gold-400 transition-colors group/subbutton"
                                 >
-                                  {isSubExpanded ? (
-                                    <ChevronDown className="w-3 h-3" />
-                                  ) : (
-                                    <ChevronRight className="w-3 h-3" />
-                                  )}
+                                  <motion.div
+                                    animate={{ rotate: isSubExpanded ? 90 : 0 }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    {isSubExpanded ? (
+                                      <ChevronDown className="w-3 h-3 group-hover/subbutton:text-gold-400" />
+                                    ) : (
+                                      <ChevronRight className="w-3 h-3 group-hover/subbutton:text-gold-400" />
+                                    )}
+                                  </motion.div>
                                   {subcategory.subcategory}
                                 </button>
                               </td>
@@ -368,42 +408,97 @@ export function DREFullModal({
                                   0
                                 )
                                 return (
-                                  <td key={monthIdx} className="p-2 text-right text-graphite-300 border-b border-graphite-700/50">
-                                    {isSubExpanded ? formatCurrency(monthTotal) : '—'}
-                                  </td>
+                                  <Tooltip.Root key={monthIdx}>
+                                    <Tooltip.Trigger asChild>
+                                      <td className="p-2 text-right text-graphite-300 border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors">
+                                        {isSubExpanded ? formatCurrency(monthTotal) : '—'}
+                                      </td>
+                                    </Tooltip.Trigger>
+                                    {isSubExpanded && monthTotal !== 0 && (
+                                      <Tooltip.Portal>
+                                        <Tooltip.Content
+                                          className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                          sideOffset={5}
+                                        >
+                                          {subcategory.subcategory} - {MONTHS[monthIdx]}: {formatCurrency(monthTotal)}
+                                          <Tooltip.Arrow className="fill-graphite-900" />
+                                        </Tooltip.Content>
+                                      </Tooltip.Portal>
+                                    )}
+                                  </Tooltip.Root>
                                 )
                               })}
-                              <td className="p-2 text-right font-semibold text-gold-300 border-b border-graphite-700/50">
-                                {formatCurrency(subcategory.total)}
-                              </td>
+                              <Tooltip.Root>
+                                <Tooltip.Trigger asChild>
+                                  <td className="p-2 text-right font-semibold text-gold-300 border-b border-graphite-700/50 cursor-help hover:bg-graphite-700/30 transition-colors">
+                                    {formatCurrency(subcategory.total)}
+                                  </td>
+                                </Tooltip.Trigger>
+                                <Tooltip.Portal>
+                                  <Tooltip.Content
+                                    className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                    sideOffset={5}
+                                  >
+                                    Total {subcategory.subcategory}: {formatCurrency(subcategory.total)}
+                                    <Tooltip.Arrow className="fill-graphite-900" />
+                                  </Tooltip.Content>
+                                </Tooltip.Portal>
+                              </Tooltip.Root>
                             </tr>
 
-                            {/* Contas individuais */}
+                            {/* Contas individuais - Zebra rows */}
                             {isSubExpanded && subcategory.accounts.map((account, accIdx) => (
                               <tr
                                 key={`${subKey}_${account.conta}`}
-                                className="hover:bg-graphite-800/20"
+                                className={`${accIdx % 2 === 0 ? 'bg-graphite-900/10' : 'bg-transparent'} hover:bg-graphite-800/40 transition-colors`}
                               >
                                 <td className="p-2 pl-10 text-graphite-400 border-b border-graphite-700/30">
                                   {account.conta}
                                 </td>
                                 {account.months.map((value, monthIdx) => (
-                                  <td
-                                    key={monthIdx}
-                                    className={`p-2 text-right border-b border-graphite-700/30 ${
-                                      value < 0 ? 'text-red-400' : value > 0 ? 'text-emerald-400' : 'text-graphite-500'
-                                    }`}
-                                  >
-                                    {value !== 0 ? formatCurrency(value) : '—'}
-                                  </td>
+                                  <Tooltip.Root key={monthIdx}>
+                                    <Tooltip.Trigger asChild>
+                                      <td
+                                        className={`p-2 text-right border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors ${
+                                          value < 0 ? 'text-red-400' : value > 0 ? 'text-emerald-400' : 'text-graphite-500'
+                                        }`}
+                                      >
+                                        {value !== 0 ? formatCurrency(value) : '—'}
+                                      </td>
+                                    </Tooltip.Trigger>
+                                    {value !== 0 && (
+                                      <Tooltip.Portal>
+                                        <Tooltip.Content
+                                          className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                          sideOffset={5}
+                                        >
+                                          {account.conta} - {MONTHS[monthIdx]}: {formatCurrency(value)}
+                                          <Tooltip.Arrow className="fill-graphite-900" />
+                                        </Tooltip.Content>
+                                      </Tooltip.Portal>
+                                    )}
+                                  </Tooltip.Root>
                                 ))}
-                                <td
-                                  className={`p-2 text-right font-medium border-b border-graphite-700/30 ${
-                                    account.total < 0 ? 'text-red-400' : account.total > 0 ? 'text-emerald-400' : 'text-graphite-500'
-                                  }`}
-                                >
-                                  {formatCurrency(account.total)}
-                                </td>
+                                <Tooltip.Root>
+                                  <Tooltip.Trigger asChild>
+                                    <td
+                                      className={`p-2 text-right font-medium border-b border-graphite-700/30 cursor-help hover:bg-graphite-700/20 transition-colors ${
+                                        account.total < 0 ? 'text-red-400' : account.total > 0 ? 'text-emerald-400' : 'text-graphite-500'
+                                      }`}
+                                    >
+                                      {formatCurrency(account.total)}
+                                    </td>
+                                  </Tooltip.Trigger>
+                                  <Tooltip.Portal>
+                                    <Tooltip.Content
+                                      className="bg-graphite-900 border border-graphite-700 rounded px-2 py-1 text-xs text-white shadow-xl z-50"
+                                      sideOffset={5}
+                                    >
+                                      Total {account.conta}: {formatCurrency(account.total)}
+                                      <Tooltip.Arrow className="fill-graphite-900" />
+                                    </Tooltip.Content>
+                                  </Tooltip.Portal>
+                                </Tooltip.Root>
                               </tr>
                             ))}
                           </React.Fragment>
@@ -415,6 +510,7 @@ export function DREFullModal({
               </tbody>
             </table>
           </div>
+          </Tooltip.Provider>
         </motion.div>
       </motion.div>
     </AnimatePresence>
