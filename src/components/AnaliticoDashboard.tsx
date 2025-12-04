@@ -74,28 +74,76 @@ export function AnaliticoDashboard({
     }
   }, [selectedCompanies, selectedMonth, period]);
 
+  // Calcular datas baseadas no período
+  const getPeriodDates = (period: 'Dia' | 'Semana' | 'Mês' | 'Ano') => {
+    const now = new Date()
+    const year = now.getFullYear()
+    const month = now.getMonth()
+    const day = now.getDate()
+    
+    let startDate: Date
+    let endDate: Date = new Date(year, month, day)
+    
+    switch (period) {
+      case 'Dia':
+        startDate = new Date(year, month, day)
+        break
+      case 'Semana':
+        const dayOfWeek = now.getDay()
+        startDate = new Date(year, month, day - dayOfWeek)
+        break
+      case 'Mês':
+        startDate = new Date(year, month, 1)
+        break
+      case 'Ano':
+        startDate = new Date(year, 0, 1)
+        break
+      default:
+        startDate = new Date(year, 0, 1)
+    }
+    
+    return { startDate, endDate }
+  }
+
   const loadCompanyData = async (cnpj: string) => {
     setLoading(true);
     try {
-      console.log('🔍 Buscando dados para CNPJ:', cnpj);
+      const { startDate, endDate } = getPeriodDates(period)
+      const year = startDate.getFullYear()
+      const month = period === 'Mês' || period === 'Dia' || period === 'Semana' ? startDate.getMonth() + 1 : undefined
+      
+      console.log('🔍 Buscando dados para CNPJ:', cnpj, 'Período:', period, 'Ano:', year, 'Mês:', month);
       const [dre, dfc] = await Promise.all([
-        SupabaseRest.getDRE(cnpj),
-        SupabaseRest.getDFC(cnpj)
+        SupabaseRest.getDRE(cnpj, year, month),
+        SupabaseRest.getDFC(cnpj, year, month)
       ]);
       
-      console.log('✅ DRE recebido:', dre?.length || 0, 'registros');
-      console.log('✅ DFC recebido:', dfc?.length || 0, 'registros');
+      // Filtrar por período real
+      const dreFiltered = (dre || []).filter((item: any) => {
+        if (!item.data) return false
+        const itemDate = new Date(item.data)
+        return itemDate >= startDate && itemDate <= endDate
+      })
       
-      if (dre && dre.length > 0) {
-        console.log('📝 Amostra DRE:', dre[0]);
+      const dfcFiltered = (dfc || []).filter((item: any) => {
+        if (!item.data) return false
+        const itemDate = new Date(item.data)
+        return itemDate >= startDate && itemDate <= endDate
+      })
+      
+      console.log('✅ DRE recebido:', dreFiltered?.length || 0, 'registros (filtrados:', dreFiltered.length, ')');
+      console.log('✅ DFC recebido:', dfcFiltered?.length || 0, 'registros (filtrados:', dfcFiltered.length, ')');
+      
+      if (dreFiltered && dreFiltered.length > 0) {
+        console.log('📝 Amostra DRE:', dreFiltered[0]);
       }
-      if (dfc && dfc.length > 0) {
-        console.log('📝 Amostra DFC:', dfc[0]);
+      if (dfcFiltered && dfcFiltered.length > 0) {
+        console.log('📝 Amostra DFC:', dfcFiltered[0]);
       }
       
       // Se não houver dados do Supabase, usar dados de exemplo
-      const dreDataToUse = (dre && dre.length > 0) ? dre : generateSampleDREData();
-      const dfcDataToUse = (dfc && dfc.length > 0) ? dfc : generateSampleDFCData();
+      const dreDataToUse = (dreFiltered && dreFiltered.length > 0) ? dreFiltered : generateSampleDREData();
+      const dfcDataToUse = (dfcFiltered && dfcFiltered.length > 0) ? dfcFiltered : generateSampleDFCData();
       
       setDreData(dreDataToUse);
       setDfcData(dfcDataToUse);
@@ -112,20 +160,30 @@ export function AnaliticoDashboard({
   const loadConsolidatedData = async (cnpjs: string[]) => {
     setLoading(true);
     try {
-      console.log('🔍 Buscando dados consolidados para', cnpjs.length, 'empresas');
+      const { startDate, endDate } = getPeriodDates(period)
+      const year = startDate.getFullYear()
+      const month = period === 'Mês' || period === 'Dia' || period === 'Semana' ? startDate.getMonth() + 1 : undefined
       
-      // Carregar dados de todas as empresas
-      const allDrePromises = cnpjs.map(cnpj => SupabaseRest.getDRE(cnpj));
-      const allDfcPromises = cnpjs.map(cnpj => SupabaseRest.getDFC(cnpj));
+      console.log('🔍 Buscando dados consolidados para', cnpjs.length, 'empresas', 'Período:', period, 'Ano:', year, 'Mês:', month);
+      
+      // Carregar dados de todas as empresas com filtro de período
+      const allDrePromises = cnpjs.map(cnpj => SupabaseRest.getDRE(cnpj, year, month));
+      const allDfcPromises = cnpjs.map(cnpj => SupabaseRest.getDFC(cnpj, year, month));
       
       const allDreResults = await Promise.all(allDrePromises);
       const allDfcResults = await Promise.all(allDfcPromises);
       
-      // Consolidar DRE: agrupar por data/conta e somar valores
+      // Consolidar DRE: agrupar por data/conta e somar valores, filtrando por período
       const dreMap = new Map<string, { data: string; conta: string; natureza: string; valor: number }>();
       allDreResults.forEach((dreArray: any[]) => {
         if (Array.isArray(dreArray)) {
           dreArray.forEach((item: any) => {
+            // Filtrar por período real
+            if (item.data) {
+              const itemDate = new Date(item.data)
+              if (itemDate < startDate || itemDate > endDate) return
+            }
+            
             const key = `${item.data || ''}_${item.conta || ''}_${item.natureza || ''}`;
             const existing = dreMap.get(key);
             if (existing) {
@@ -142,11 +200,17 @@ export function AnaliticoDashboard({
         }
       });
       
-      // Consolidar DFC: agrupar por data/descrição e somar valores
+      // Consolidar DFC: agrupar por data/descrição e somar valores, filtrando por período
       const dfcMap = new Map<string, { data: string; descricao: string; entrada: number; saida: number; saldo: number }>();
       allDfcResults.forEach((dfcArray: any[]) => {
         if (Array.isArray(dfcArray)) {
           dfcArray.forEach((item: any) => {
+            // Filtrar por período real
+            if (item.data) {
+              const itemDate = new Date(item.data)
+              if (itemDate < startDate || itemDate > endDate) return
+            }
+            
             const key = `${item.data || ''}_${item.descricao || ''}`;
             const existing = dfcMap.get(key);
             if (existing) {

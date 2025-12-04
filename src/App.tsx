@@ -4,7 +4,7 @@ import { ModernSidebar } from './components/ModernSidebar';
 import { ModernTopbar } from './components/ModernTopbar';
 import { AnimatedKPICard } from './components/AnimatedKPICard';
 import { ModernCashflowChart } from './components/ModernCashflowChart';
-import { VirtualCard3D } from './components/VirtualCard3D';
+import { SaldoBancarioChart } from './components/charts/SaldoBancarioChart';
 import { ModernTransactionsTable } from './components/ModernTransactionsTable';
 import { RevenueDistributionGauge } from './components/RevenueDistributionGauge';
 import { DashboardOverview } from './components/DashboardOverview';
@@ -293,13 +293,13 @@ Sempre que relevante, fornecer:
             <DashboardOverview period={period} session={session} key={`overview-${session? 'auth':'anon'}`} />
           </section>
 
-          {/* Cashflow + Virtual Card */}
+          {/* Cashflow + Saldo Bancário */}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
             <div className="xl:col-span-2">
               <ModernCashflowChart period={period} selectedCompanies={selectedCompanies} selectedMonth={selectedMonth} />
             </div>
             <div>
-              <VirtualCard3D />
+              <SaldoBancarioChart cnpj={selectedCompanies.length > 0 ? selectedCompanies : '26888098000159'} />
             </div>
           </div>
 

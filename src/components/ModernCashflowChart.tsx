@@ -84,17 +84,58 @@ export function ModernCashflowChart({
     loadCashflowData();
   }, [period, selectedMonth, companiesToLoad.join(',')]);
 
+  // Calcular datas baseadas no período
+  const getPeriodDates = (period: 'Dia'|'Semana'|'Mês'|'Ano') => {
+    const now = new Date()
+    const year = now.getFullYear()
+    const month = now.getMonth()
+    const day = now.getDate()
+    
+    let startDate: Date
+    let endDate: Date = new Date(year, month, day)
+    
+    switch (period) {
+      case 'Dia':
+        startDate = new Date(year, month, day)
+        break
+      case 'Semana':
+        const dayOfWeek = now.getDay()
+        startDate = new Date(year, month, day - dayOfWeek)
+        break
+      case 'Mês':
+        startDate = new Date(year, month, 1)
+        break
+      case 'Ano':
+        startDate = new Date(year, 0, 1)
+        break
+      default:
+        startDate = new Date(year, 0, 1)
+    }
+    
+    return { startDate, endDate }
+  }
+
   const loadCashflowData = async () => {
     try {
-      // Carregar dados de todas as empresas selecionadas
-      const allDrePromises = companiesToLoad.map(cnpj => SupabaseRest.getDRE(cnpj));
+      const { startDate, endDate } = getPeriodDates(period)
+      const year = startDate.getFullYear()
+      const month = period === 'Mês' || period === 'Dia' || period === 'Semana' ? startDate.getMonth() + 1 : undefined
+      
+      // Carregar dados de todas as empresas selecionadas com filtro de período
+      const allDrePromises = companiesToLoad.map(cnpj => SupabaseRest.getDRE(cnpj, year, month));
       const allDreResults = await Promise.all(allDrePromises);
 
       // Consolidar dados de todas as empresas
       const consolidatedDre: any[] = [];
       allDreResults.forEach((dreData: any[]) => {
         if (Array.isArray(dreData)) {
-          consolidatedDre.push(...dreData);
+          // Filtrar por período real
+          const filtered = dreData.filter((item: any) => {
+            if (!item.data) return false
+            const itemDate = new Date(item.data)
+            return itemDate >= startDate && itemDate <= endDate
+          })
+          consolidatedDre.push(...filtered);
         }
       });
 
@@ -103,25 +144,39 @@ export function ModernCashflowChart({
       const monthNames = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
       const monthlyData: any = {};
       
-      // Parse do ano selecionado
-      const [selectedYear] = selectedMonth 
-        ? selectedMonth.split('-').map(Number)
-        : [new Date().getFullYear()];
-      
-      const currentYear = selectedYear;
+      // Inicializar meses baseado no período
+      if (period === 'Ano') {
+        monthNames.forEach(month => {
+          monthlyData[month] = { month, receita: 0, despesa: 0, saldo: 0 };
+        });
+      } else if (period === 'Mês') {
+        const currentMonth = monthNames[startDate.getMonth()]
+        monthlyData[currentMonth] = { month: currentMonth, receita: 0, despesa: 0, saldo: 0 };
+      } else if (period === 'Semana') {
+        monthlyData['Semana'] = { month: 'Semana', receita: 0, despesa: 0, saldo: 0 };
+      } else {
+        monthlyData['Hoje'] = { month: 'Hoje', receita: 0, despesa: 0, saldo: 0 };
+      }
 
-      // Inicializar todos os meses
-      monthNames.forEach(month => {
-        monthlyData[month] = { month, receita: 0, despesa: 0, saldo: 0 };
-      });
-
-      // Agregar dados por mês (consolidado de todas as empresas)
+      // Agregar dados por período (consolidado de todas as empresas)
       consolidatedDre.forEach((item: any) => {
         const itemDate = new Date(item.data);
-        if (itemDate.getFullYear() !== currentYear) return;
+        let month: string
         
-        const monthIdx = itemDate.getMonth();
-        const month = monthNames[monthIdx];
+        if (period === 'Ano') {
+          const monthIdx = itemDate.getMonth()
+          month = monthNames[monthIdx]
+        } else if (period === 'Mês') {
+          month = monthNames[startDate.getMonth()]
+        } else if (period === 'Semana') {
+          month = 'Semana'
+        } else {
+          month = 'Hoje'
+        }
+        
+        if (!monthlyData[month]) {
+          monthlyData[month] = { month, receita: 0, despesa: 0, saldo: 0 }
+        }
         
         if (item.natureza === 'receita') {
           monthlyData[month].receita += Number(item.valor || 0);
@@ -135,7 +190,13 @@ export function ModernCashflowChart({
         data.saldo = data.receita - data.despesa;
       });
 
-      const finalData = monthNames.map(month => monthlyData[month]);
+      // Converter para array baseado no período
+      let finalData: any[]
+      if (period === 'Ano') {
+        finalData = monthNames.map(month => monthlyData[month])
+      } else {
+        finalData = Object.values(monthlyData)
+      }
       setChartData(finalData);
     } catch (error) {
       console.error('Erro ao carregar dados de fluxo de caixa:', error);

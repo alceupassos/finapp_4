@@ -7,6 +7,7 @@ import { DRESection } from './reports/DRESection'
 import { DFCSection } from './reports/DFCSection'
 import { BanksSection } from './reports/BanksSection'
 import { ReconciliationSection } from './reports/ReconciliationSection'
+import { ChartOfAccountsSection } from './reports/ChartOfAccountsSection'
 
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
 type DRERow = { data?: string; conta?: string; natureza?: string; valor?: number }
@@ -87,14 +88,9 @@ export function ReportsPage({
         )
       case 'chart-of-accounts':
         return (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="card-premium p-6"
-          >
-            <h2 className="text-2xl font-bold mb-4">Plano de Contas</h2>
-            <p className="text-graphite-400">Visualização hierárquica do plano de contas.</p>
-          </motion.div>
+          <ChartOfAccountsSection
+            selectedCompanies={selectedCompanies}
+          />
         )
       default:
         return null

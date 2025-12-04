@@ -31,13 +31,54 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
     })()
   }, [])
 
+  // Calcular datas baseadas no período
+  const getPeriodDates = (period: Period) => {
+    const now = new Date()
+    const year = now.getFullYear()
+    const month = now.getMonth()
+    const day = now.getDate()
+    
+    let startDate: Date
+    let endDate: Date = new Date(year, month, day)
+    
+    switch (period) {
+      case 'Dia':
+        startDate = new Date(year, month, day)
+        break
+      case 'Semana':
+        const dayOfWeek = now.getDay()
+        startDate = new Date(year, month, day - dayOfWeek)
+        break
+      case 'Mês':
+        startDate = new Date(year, month, 1)
+        break
+      case 'Ano':
+        startDate = new Date(year, 0, 1)
+        break
+      default:
+        startDate = new Date(year, 0, 1)
+    }
+    
+    return { startDate, endDate }
+  }
+
   useEffect(() => {
     if (!cnpj) return
     setLoading(true)
     ;(async () => {
       try {
-        const data = await SupabaseRest.getDFC(cnpj) as Tx[]
+        const { startDate, endDate } = getPeriodDates(period)
+        const year = startDate.getFullYear()
+        const month = period === 'Mês' || period === 'Dia' || period === 'Semana' ? startDate.getMonth() + 1 : undefined
+        
+        const data = await SupabaseRest.getDFC(cnpj, year, month) as Tx[]
+        
+        // Filtrar por período real
         const filtered = (Array.isArray(data) ? data : []).filter(tx => {
+          if (!tx.data) return false
+          const txDate = new Date(tx.data)
+          if (txDate < startDate || txDate > endDate) return false
+          
           const s = String(tx.status || '').toLowerCase()
           if (s.includes('baixado') || s.includes('baixados') || s.includes('renegociado') || s.includes('renegociados')) return false
           if (!s.includes('conciliado')) return false
@@ -48,7 +89,7 @@ export function DashboardOverview({ period = 'Ano', session }: { period?: Period
         setLoading(false)
       }
     })()
-  }, [cnpj])
+  }, [cnpj, period])
 
   const { receitaTotal, despesasTotal, lucro } = useMemo(() => {
     const r = rows.reduce((acc, tx) => {

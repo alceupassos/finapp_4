@@ -665,6 +665,36 @@ export const SupabaseRest = {
     }
   },
 
+  getChartOfAccounts: async (companyCnpj?: string) => {
+    try {
+      const query: Record<string, string> = {
+        select: '*',
+        limit: '10000',
+        order: 'code.asc',
+      }
+      
+      const rows = await restGet('chart_of_accounts', { query })
+      if (!Array.isArray(rows)) {
+        console.warn('⚠️ getChartOfAccounts: resposta não é array', rows)
+        return []
+      }
+      
+      console.log(`✅ getChartOfAccounts: ${rows.length} contas encontradas`)
+      return rows.map((r: any) => ({
+        id: r.id,
+        code: r.code,
+        name: r.name,
+        account_type: r.account_type || r.type || 'outro',
+        parent_code: r.parent_code,
+        level: r.level || 1,
+        is_analytical: r.is_analytical !== false,
+      }))
+    } catch (err: any) {
+      console.error('❌ getChartOfAccounts falhou:', err?.message || err)
+      return []
+    }
+  },
+
   log: (item: { level: 'info'|'warn'|'error'; service: 'UI'|'API'|'Edge'; endpoint?: string; companyCnpj?: string; userId?: string; message: string; latencyMs?: number }) => {
     // ✅ FIX: Não falhar se log falhar
     return restPost('app_logs', { ...item, ts: new Date().toISOString() }).catch(err => {
