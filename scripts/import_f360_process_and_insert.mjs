@@ -98,83 +98,106 @@ function normalizeCnpj(cnpj) {
  * Melhorado para capturar corretamente receitas e despesas
  */
 function determinarNatureza(entry) {
-  // Estratégia 1: Tipo do Plano de Contas
-  const tipoPlano = String(entry.TipoPlanoDeContas || '').toLowerCase()
-  if (tipoPlano.includes('receber') || tipoPlano.includes('receita') || tipoPlano.includes('a receber')) {
-    return 'receita'
-  }
-  if (tipoPlano.includes('pagar') || tipoPlano.includes('despesa') || tipoPlano.includes('a pagar')) {
-    return 'despesa'
-  }
-  
-  // Estratégia 2: Campo Tipo (pode ser boolean ou string)
-  if (entry.Tipo === true || entry.Tipo === 'true' || String(entry.Tipo || '').toLowerCase() === 'receita') {
-    return 'receita'
-  }
-  if (entry.Tipo === false || entry.Tipo === 'false' || String(entry.Tipo || '').toLowerCase() === 'despesa') {
-    return 'despesa'
-  }
-  
-  // Estratégia 3: Sinal do valor (ValorLcto positivo = receita, negativo = despesa)
   const valor = parseFloat(String(entry.ValorLcto || 0))
-  if (valor > 0 && entry.ValorLctoOriginal === undefined) {
-    // Se não temos indicadores claros e o valor é positivo, pode ser receita
-    // Mas vamos usar outras estratégias primeiro
-  }
   
-  // Estratégia 4: Conta a Crédito vs Débito
-  if (entry.ContaACredito && !entry.ContaADebito) {
+  // Estratégia 0: Campo Tipo (MAIS CONFIÁVEL na API F360)
+  // true = A Receber (receita), false = A Pagar (despesa)
+  if (entry.Tipo === true || entry.Tipo === 'true' || entry.Tipo === 1) {
     return 'receita'
   }
-  if (entry.ContaADebito && !entry.ContaACredito) {
+  if (entry.Tipo === false || entry.Tipo === 'false' || entry.Tipo === 0) {
     return 'despesa'
   }
   
-  // Estratégia 5: Nome da Conta (mais confiável - busca palavras-chave)
-  const nomeConta = String(entry.NomePlanoDeContas || '').toLowerCase()
-  const palavrasReceita = ['receita', 'venda', 'faturamento', 'vendas', 'vender', 'recebimento', 'receber', 'rendimento']
-  const palavrasDespesa = ['despesa', 'custo', 'pagamento', 'pagar', 'gasto', 'compra', 'fornecedor']
-  
-  if (palavrasReceita.some(palavra => nomeConta.includes(palavra))) {
+  // Estratégia 1: Tipo do Plano de Contas (pode vir em diferentes campos)
+  const tipoPlano = String(entry.TipoPlanoDeContas || entry.TipoLcto || entry.TipoTitulo || '').toLowerCase()
+  if (tipoPlano.includes('a receber') || tipoPlano === 'a receber' || tipoPlano.includes('receber')) {
     return 'receita'
   }
-  if (palavrasDespesa.some(palavra => nomeConta.includes(palavra))) {
+  if (tipoPlano.includes('a pagar') || tipoPlano === 'a pagar' || tipoPlano.includes('pagar')) {
     return 'despesa'
   }
   
-  // Estratégia 6: Código da conta (contas 1xx-3xx geralmente são receitas, 4xx-6xx são despesas)
-  const codigoConta = String(entry.ContaADebito || entry.ContaACredito || '').trim()
-  if (codigoConta.match(/^[1-3]/)) {
+  // Estratégia 2: Código da conta (REGRA PRINCIPAL para F360)
+  // Extrair código do NomePlanoDeContas (formato: "XXX-X - Nome da Conta")
+  let codigoConta = ''
+  const nomeConta = String(entry.NomePlanoDeContas || '')
+  const matchCodigo = nomeConta.match(/^(\d{3}-\d)/)
+  if (matchCodigo) {
+    codigoConta = matchCodigo[1]
+  } else {
+    // Fallback: tentar ContaADebito ou ContaACredito
+    const codigoContaDebito = String(entry.ContaADebito || '').trim()
+    const codigoContaCredito = String(entry.ContaACredito || '').trim()
+    // Remover texto "Plano de contas..." e extrair código
+    const matchDeb = codigoContaDebito.match(/(\d{3}-\d)/)
+    const matchCred = codigoContaCredito.match(/(\d{3}-\d)/)
+    codigoConta = (matchDeb?.[1] || matchCred?.[1] || '').trim()
+  }
+  
+  // Receitas: códigos começando com 1, 2 (impostos), 3
+  if (codigoConta.match(/^(1|2[0-5]|3[0-2])/)) {
+    // Verificar exceções (impostos são despesas)
+    if (codigoConta.match(/^205-0/) || codigoConta.match(/^431-9/)) {
+      return 'despesa'
+    }
     return 'receita'
   }
+  
+  // Despesas: códigos começando com 4, 5, 6
   if (codigoConta.match(/^[4-6]/)) {
     return 'despesa'
   }
   
-  // Estratégia 7: Tipo de Título (se disponível)
-  const tipoTitulo = String(entry.TipoTitulo || entry.Tipo || '').toLowerCase()
-  if (tipoTitulo.includes('receber') || tipoTitulo.includes('receita')) {
+  // Estratégia 3: Nome da Conta com códigos específicos (já temos nomeConta acima)
+  const nomeContaLower = nomeConta.toLowerCase()
+  const codigoNoNome = codigoConta
+  
+  // Receitas específicas: 102-1 (vendas), 302-1 (receitas diversas), 303-4 (descontos obtidos)
+  if (codigoNoNome.match(/^(102-1|302-1|303-4)/) && !nomeContaLower.includes('cancelad')) {
     return 'receita'
   }
-  if (tipoTitulo.includes('pagar') || tipoTitulo.includes('despesa')) {
+  
+  // Despesas específicas: 400-0 (CMV), 201-6 (salários), etc
+  if (codigoNoNome.match(/^(400-0|201-|202-|203-|205-0|415-|417-|420-|421-|422-|424-|425-|431-5|431-9|432-|434-)/)) {
     return 'despesa'
   }
   
-  // Por padrão, usar sinal do valor como última instância
-  // Valor positivo sem outros indicadores = assumir receita
-  // Valor negativo ou zero = assumir despesa
+  // Estratégia 4: Palavras-chave no nome da conta
+  const palavrasReceita = ['receita', 'venda', 'faturamento', 'vendas', 'vender', 'recebimento', 'receber', 'rendimento', 'fatura']
+  const palavrasDespesa = ['despesa', 'custo', 'pagamento', 'pagar', 'gasto', 'compra', 'fornecedor', 'salário', 'salario', 'ordenado']
+  
+  if (palavrasReceita.some(palavra => nomeContaLower.includes(palavra)) && !nomeContaLower.includes('cancelad')) {
+    return 'receita'
+  }
+  if (palavrasDespesa.some(palavra => nomeContaLower.includes(palavra))) {
+    return 'despesa'
+  }
+  
+  // Por padrão: se temos código de conta, usar regra genérica
+  if (codigoConta) {
+    // Contas 1xx-3xx geralmente são receitas (exceto impostos)
+    if (codigoConta.match(/^[1-3]/) && !codigoConta.match(/^205-0|^431-9/)) {
+      return 'receita'
+    }
+    // Contas 4xx-6xx são despesas
+    if (codigoConta.match(/^[4-6]/)) {
+      return 'despesa'
+    }
+  }
+  
+  // Último recurso: valor positivo sem indicadores claros = assumir receita
   if (valor > 0) {
-    // Log de warning para debug
-    console.warn(`⚠️  Natureza não determinada claramente, assumindo receita (valor positivo):`, {
-      conta: nomeConta,
+    console.warn(`⚠️  Natureza não determinada claramente, assumindo receita:`, {
+      conta: entry.NomePlanoDeContas,
+      codigo: codigoConta,
       tipo: entry.Tipo,
-      tipoPlano: tipoPlano,
       valor: valor
     })
     return 'receita'
   }
   
-  // Default: despesa (mais comum em sistemas contábeis)
+  // Default: despesa
   return 'despesa'
 }
 
@@ -216,9 +239,38 @@ async function importarEmpresa(company, dataInicio, dataFim) {
     }
 
     console.log(`   📊 ${entries.length} entradas brutas`)
+    
+    // Debug: amostra de entradas para análise
+    if (entries.length > 0) {
+      console.log(`   🔍 Debug - Primeira entrada (amostra):`, {
+        TipoPlanoDeContas: entries[0].TipoPlanoDeContas,
+        Tipo: entries[0].Tipo,
+        NomePlanoDeContas: entries[0].NomePlanoDeContas?.substring(0, 50),
+        ContaADebito: entries[0].ContaADebito,
+        ContaACredito: entries[0].ContaACredito,
+        ValorLcto: entries[0].ValorLcto,
+      })
+      
+      // Contar tipos diferentes
+      const tiposPlano = new Set()
+      entries.slice(0, 50).forEach(e => {
+        if (e.TipoPlanoDeContas) tiposPlano.add(e.TipoPlanoDeContas)
+      })
+      console.log(`   🔍 TiposPlanoDeContas encontrados (primeiros 50):`, Array.from(tiposPlano))
+      
+      // Contar códigos de conta
+      const codigos = new Set()
+      entries.slice(0, 50).forEach(e => {
+        const cod = e.ContaADebito || e.ContaACredito
+        if (cod) codigos.add(cod.substring(0, 5))
+      })
+      console.log(`   🔍 Códigos de conta (primeiros 5 chars):`, Array.from(codigos).slice(0, 20))
+    }
 
     const dreEntries = []
     const dfcEntries = []
+    
+    let debugNaturezaCount = { receita: 0, despesa: 0, nao_determinado: 0 }
 
     for (const entry of entries) {
       const entryCnpj = normalizeCnpj(entry.CNPJEmpresa || cnpj)
@@ -239,6 +291,10 @@ async function importarEmpresa(company, dataInicio, dataFim) {
       }
 
       const natureza = determinarNatureza(entry)
+      if (natureza === 'receita') debugNaturezaCount.receita++
+      else if (natureza === 'despesa') debugNaturezaCount.despesa++
+      else debugNaturezaCount.nao_determinado++
+      
       const account = (entry.NomePlanoDeContas || entry.ContaADebito || entry.ContaACredito || 'Outros').substring(0, 500)
 
       dreEntries.push({
@@ -252,20 +308,24 @@ async function importarEmpresa(company, dataInicio, dataFim) {
         source_id: entry.NumeroTitulo || entry.IdPlanoDeContas || null,
       })
 
-      if (entry.Liquidacao) {
-        let liquidacaoDate = entry.Liquidacao.split('T')[0]
-        if (liquidacaoDate.includes('/')) {
-          const [day, month, year] = liquidacaoDate.split('/')
-          liquidacaoDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+      // DFC: usar data de liquidação (regime de caixa)
+      // Se não tiver liquidação, usar data de competência
+      if (entry.Liquidacao || competenciaDate) {
+        let dfcDate = entry.Liquidacao || competenciaDate
+        dfcDate = dfcDate.split('T')[0]
+        if (dfcDate.includes('/')) {
+          const [day, month, year] = dfcDate.split('/')
+          dfcDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
         }
         
+        // DFC: receita = entrada (in), despesa = saída (out)
         dfcEntries.push({
           company_cnpj: entryCnpj,
-          date: liquidacaoDate,
+          date: dfcDate,
           kind: natureza === 'receita' ? 'in' : 'out',
           category: account,
           amount: Math.abs(valor),
-          bank_account: '',
+          bank_account: entry.ContaBancaria || '',
           description: (entry.ComplemHistorico || entry.NumeroTitulo || '').substring(0, 500),
           source_erp: 'F360',
           source_id: entry.NumeroTitulo || entry.IdPlanoDeContas || null,
@@ -285,6 +345,7 @@ async function importarEmpresa(company, dataInicio, dataFim) {
     
     console.log(`   📊 DRE: ${receitasCount} receitas (R$ ${totalReceitas.toLocaleString('pt-BR', {minimumFractionDigits: 2})}), ${despesasCount} despesas (R$ ${totalDespesas.toLocaleString('pt-BR', {minimumFractionDigits: 2})})`)
     console.log(`   💰 DFC: ${entradasCount} entradas (R$ ${totalEntradas.toLocaleString('pt-BR', {minimumFractionDigits: 2})}), ${saidasCount} saídas (R$ ${totalSaidas.toLocaleString('pt-BR', {minimumFractionDigits: 2})})`)
+    console.log(`   🔍 Debug Natureza: receita=${debugNaturezaCount.receita}, despesa=${debugNaturezaCount.despesa}, nao_determinado=${debugNaturezaCount.nao_determinado}`)
 
     return { dre: dreEntries, dfc: dfcEntries }
   } catch (error) {
@@ -363,4 +424,6 @@ async function main() {
 }
 
 main().catch(console.error)
+
+
 
