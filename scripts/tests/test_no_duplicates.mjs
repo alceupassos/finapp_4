@@ -4,6 +4,8 @@
  * Verifica ausência de registros duplicados nas tabelas principais
  */
 
+import { mcp_supabase_execute_sql } from './supabase_helper.mjs'
+
 async function testDuplicates(table, columns) {
   const columnList = columns.join(', ')
   const query = `

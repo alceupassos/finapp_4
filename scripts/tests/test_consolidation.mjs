@@ -4,6 +4,8 @@
  * Verifica se a soma de múltiplas empresas está correta
  */
 
+import { mcp_supabase_execute_sql } from './supabase_helper.mjs'
+
 async function testConsolidation() {
   console.log('\n📊 Testando Consolidação de Múltiplas Empresas...')
   

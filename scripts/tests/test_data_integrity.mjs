@@ -7,7 +7,7 @@
  * - Bancos: saldo_anterior + movimentacoes = saldo_atual
  */
 
-import { mcp_supabase_execute_sql } from '../mcp_supabase.js'
+import { mcp_supabase_execute_sql } from './supabase_helper.mjs'
 
 async function testDREIntegrity() {
   console.log('\n📊 Testando Integridade DRE...')
@@ -24,7 +24,7 @@ async function testDREIntegrity() {
     ORDER BY company_cnpj
   `
   
-  const results = await mcp_supabase_execute_sql({ query })
+  const results = await executeSQL(query)
   
   console.log(`✅ ${results.length} empresas com dados DRE`)
   
@@ -63,7 +63,7 @@ async function testDFCIntegrity() {
     ORDER BY company_cnpj
   `
   
-  const results = await mcp_supabase_execute_sql({ query })
+  const results = await executeSQL(query)
   
   console.log(`✅ ${results.length} empresas com dados DFC`)
   
@@ -101,7 +101,7 @@ async function testBankIntegrity() {
     ORDER BY ba.company_cnpj, ba.nome
   `
   
-  const results = await mcp_supabase_execute_sql({ query })
+  const results = await executeSQL(query)
   
   if (results.length === 0) {
     console.log('  ℹ️  Nenhuma conta bancária com transações encontrada')

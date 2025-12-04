@@ -4,6 +4,8 @@
  * Verifica se os filtros por empresa estão funcionando corretamente
  */
 
+import { mcp_supabase_execute_sql } from './supabase_helper.mjs'
+
 async function testFilterByCompany() {
   console.log('\n🔍 Testando Filtros por Empresa...')
   

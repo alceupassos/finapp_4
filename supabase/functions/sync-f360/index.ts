@@ -75,16 +75,43 @@ Deno.serve(async (req: Request) => {
         )
       }
 
-      // Login F360
-      const loginResponse = await fetch(`${F360_BASE_URL}/PublicLoginAPI/DoLogin`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: company.token_f360 }),
-      })
+      // Login F360 com retry
+      let jwt: string | null = null
+      for (let retry = 0; retry < 3; retry++) {
+        try {
+          const loginResponse = await fetch(`${F360_BASE_URL}/PublicLoginAPI/DoLogin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: company.token_f360 }),
+          })
 
-      if (!loginResponse.ok) {
+          if (loginResponse.ok) {
+            const data = await loginResponse.json() as F360LoginResponse
+            jwt = data.Token
+            break
+          }
+          
+          if (retry === 2) {
+            return new Response(
+              JSON.stringify({ error: 'Falha no login F360 após 3 tentativas' }),
+              { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            )
+          }
+          
+          await new Promise(resolve => setTimeout(resolve, 1000 * (retry + 1)))
+        } catch (error) {
+          if (retry === 2) {
+            return new Response(
+              JSON.stringify({ error: `Erro no login F360: ${error.message}` }),
+              { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            )
+          }
+        }
+      }
+
+      if (!jwt) {
         return new Response(
-          JSON.stringify({ error: 'Falha no login F360' }),
+          JSON.stringify({ error: 'Token JWT não obtido' }),
           { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         )
       }
@@ -216,39 +243,80 @@ Deno.serve(async (req: Request) => {
         })
       }
 
-      // Salvar no banco
-      if (dreEntries.length > 0) {
-        await supabase.from('dre_entries').upsert(dreEntries, {
-          onConflict: 'company_cnpj,date,account,natureza',
-        })
-      }
+      // Validar dados antes de salvar
+      const validDreEntries = dreEntries.filter(e => 
+        e.company_cnpj && e.date && e.account && e.natureza && e.valor !== 0
+      )
+      const validDfcEntries = dfcEntries.filter(e => 
+        e.company_cnpj && e.date && e.kind && e.category && e.amount !== 0
+      )
+      const validAccountingEntries = accountingEntries.filter(e => 
+        e.company_id && e.entry_date && e.account_code
+      )
 
-      if (dfcEntries.length > 0) {
-        await supabase.from('dfc_entries').upsert(dfcEntries, {
-          onConflict: 'company_cnpj,date,kind,category,bank_account',
-        })
-      }
-
-      if (accountingEntries.length > 0) {
-        await supabase.from('accounting_entries').insert(accountingEntries)
-      }
-
-      // Registrar log
+      // Registrar início do log
+      const logId = crypto.randomUUID()
       await supabase.from('import_logs').insert({
+        id: logId,
         company_id: company.id,
         import_type: 'MANUAL',
-        status: 'SUCESSO',
+        status: 'PROCESSANDO',
         records_processed: relatorioData.length,
-        records_imported: dreEntries.length + dfcEntries.length + accountingEntries.length,
+        started_at: new Date().toISOString(),
       })
+
+      let dreError = null
+      let dfcError = null
+      let accountingError = null
+
+      // Salvar no banco com tratamento de erros
+      if (validDreEntries.length > 0) {
+        const { error } = await supabase.from('dre_entries').upsert(validDreEntries, {
+          onConflict: 'company_cnpj,date,account,natureza',
+        })
+        if (error) dreError = error.message
+      }
+
+      if (validDfcEntries.length > 0) {
+        // Para dfc_entries, garantir que bank_account seja string vazia quando null para constraint
+        const dfcWithNullHandling = validDfcEntries.map(e => ({
+          ...e,
+          bank_account: e.bank_account || '',
+        }))
+        const { error } = await supabase.from('dfc_entries').upsert(dfcWithNullHandling, {
+          onConflict: 'company_cnpj,date,kind,category,bank_account',
+        })
+        if (error) dfcError = error.message
+      }
+
+      if (validAccountingEntries.length > 0) {
+        const { error } = await supabase.from('accounting_entries').insert(validAccountingEntries)
+        if (accountingError) accountingError = error?.message
+      }
+
+      // Atualizar log com resultado
+      const hasErrors = dreError || dfcError || accountingError
+      await supabase.from('import_logs').update({
+        status: hasErrors ? 'ERRO' : 'SUCESSO',
+        records_imported: validDreEntries.length + validDfcEntries.length + validAccountingEntries.length,
+        records_error: (validDreEntries.length - (dreError ? 0 : validDreEntries.length)) +
+                       (validDfcEntries.length - (dfcError ? 0 : validDfcEntries.length)) +
+                       (validAccountingEntries.length - (accountingError ? 0 : validAccountingEntries.length)),
+        error_message: hasErrors ? `${dreError || ''} ${dfcError || ''} ${accountingError || ''}`.trim() : null,
+        error_details: hasErrors ? { dreError, dfcError, accountingError } : null,
+        finished_at: new Date().toISOString(),
+      }).eq('id', logId)
+
+      const hasErrors = dreError || dfcError || accountingError
 
       return new Response(
         JSON.stringify({
-          success: true,
+          success: !hasErrors,
           cnpj,
-          dreEntries: dreEntries.length,
-          dfcEntries: dfcEntries.length,
-          accountingEntries: accountingEntries.length,
+          dreEntries: validDreEntries.length,
+          dfcEntries: validDfcEntries.length,
+          accountingEntries: validAccountingEntries.length,
+          errors: hasErrors ? { dreError, dfcError, accountingError } : null,
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )
@@ -265,21 +333,46 @@ Deno.serve(async (req: Request) => {
         )
       }
 
-      // Login F360
-      const loginResponse = await fetch(`${F360_BASE_URL}/PublicLoginAPI/DoLogin`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token }),
-      })
+      // Login F360 com retry
+      let jwt: string | null = null
+      for (let retry = 0; retry < 3; retry++) {
+        try {
+          const loginResponse = await fetch(`${F360_BASE_URL}/PublicLoginAPI/DoLogin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token }),
+          })
 
-      if (!loginResponse.ok) {
+          if (loginResponse.ok) {
+            const data = await loginResponse.json() as F360LoginResponse
+            jwt = data.Token
+            break
+          }
+          
+          if (retry === 2) {
+            return new Response(
+              JSON.stringify({ error: 'Falha no login F360 após 3 tentativas' }),
+              { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            )
+          }
+          
+          await new Promise(resolve => setTimeout(resolve, 1000 * (retry + 1)))
+        } catch (error) {
+          if (retry === 2) {
+            return new Response(
+              JSON.stringify({ error: `Erro no login F360: ${error.message}` }),
+              { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+            )
+          }
+        }
+      }
+
+      if (!jwt) {
         return new Response(
-          JSON.stringify({ error: 'Falha no login F360' }),
+          JSON.stringify({ error: 'Token JWT não obtido' }),
           { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         )
       }
-
-      const { Token: jwt } = await loginResponse.json() as F360LoginResponse
 
       // Gerar relatório para todas empresas (CNPJEmpresas vazio)
       const relatorioBody = {
@@ -429,31 +522,57 @@ Deno.serve(async (req: Request) => {
         })
       }
 
-      // Salvar no banco
-      if (dreEntries.length > 0) {
-        await supabase.from('dre_entries').upsert(dreEntries, {
+      // Validar dados antes de salvar
+      const validDreEntries = dreEntries.filter(e => 
+        e.company_cnpj && e.date && e.account && e.natureza && e.valor !== 0
+      )
+      const validDfcEntries = dfcEntries.filter(e => 
+        e.company_cnpj && e.date && e.kind && e.category && e.amount !== 0
+      )
+      const validAccountingEntries = accountingEntries.filter(e => 
+        e.company_id && e.entry_date && e.account_code
+      )
+
+      let dreError = null
+      let dfcError = null
+      let accountingError = null
+
+      // Salvar no banco com tratamento de erros
+      if (validDreEntries.length > 0) {
+        const { error } = await supabase.from('dre_entries').upsert(validDreEntries, {
           onConflict: 'company_cnpj,date,account,natureza',
         })
+        if (error) dreError = error.message
       }
 
-      if (dfcEntries.length > 0) {
-        await supabase.from('dfc_entries').upsert(dfcEntries, {
+      if (validDfcEntries.length > 0) {
+        // Para dfc_entries, garantir que bank_account seja string vazia quando null para constraint
+        const dfcWithNullHandling = validDfcEntries.map(e => ({
+          ...e,
+          bank_account: e.bank_account || '',
+        }))
+        const { error } = await supabase.from('dfc_entries').upsert(dfcWithNullHandling, {
           onConflict: 'company_cnpj,date,kind,category,bank_account',
         })
+        if (error) dfcError = error.message
       }
 
-      if (accountingEntries.length > 0) {
-        await supabase.from('accounting_entries').insert(accountingEntries)
+      if (validAccountingEntries.length > 0) {
+        const { error } = await supabase.from('accounting_entries').insert(validAccountingEntries)
+        if (error) accountingError = error.message
       }
+
+      const hasErrors = dreError || dfcError || accountingError
 
       return new Response(
         JSON.stringify({
-          success: true,
+          success: !hasErrors,
           mode: 'GROUP',
           companiesFound: cnpjToCompanyId.size,
-          dreEntries: dreEntries.length,
-          dfcEntries: dfcEntries.length,
-          accountingEntries: accountingEntries.length,
+          dreEntries: validDreEntries.length,
+          dfcEntries: validDfcEntries.length,
+          accountingEntries: validAccountingEntries.length,
+          errors: hasErrors ? { dreError, dfcError, accountingError } : null,
         }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       )

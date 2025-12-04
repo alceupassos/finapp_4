@@ -478,5 +478,129 @@ for (let i = 0; i < tokens.length; i += BATCH_SIZE) {
 
 ---
 
+## 🏛️ ARQUITETURA: Edge Functions vs MCP vs Scripts Locais
+
+### Decisões de Arquitetura (2025-01)
+
+#### Edge Functions (Produção)
+**Quando usar**: Operações que precisam ser chamadas do frontend ou via CRON
+
+**Edge Functions existentes:**
+- `sync-f360`: Sincronização F360 (SINGLE/GROUP) - chamada via frontend ou CRON
+- `f360-discover`: Descoberta de empresas F360 via ListarContasBancarias
+
+**Características:**
+- Acesso direto ao banco via Service Role Key
+- Retry logic implementado para requisições F360
+- Logging detalhado em `import_logs`
+- Validação de dados antes de insert
+- Tratamento de erros com detalhes
+
+**Padrão de uso:**
+```typescript
+// Chamada do frontend
+const response = await fetch(`${supabaseUrl}/functions/v1/sync-f360`, {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${anonKey}`,
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ cnpj, dataInicio, dataFim }),
+})
+```
+
+#### MCP Supabase (Operações Administrativas)
+**Quando usar**: Queries de leitura, limpeza de dados, migrações, validações
+
+**Casos de uso:**
+- Verificar status de dados no banco
+- Limpar duplicatas e dados lixo
+- Criar/alterar constraints e índices
+- Executar testes de integridade
+- Aplicar migrações SQL
+
+**Padrão de uso:**
+- Via MCP tools: `mcp_supabase_execute_sql`, `mcp_supabase_apply_migration`
+- Não usar para operações que precisam ser chamadas do frontend
+
+#### Scripts Locais (Development Only)
+**Quando usar**: Importação em massa inicial, debug, troubleshooting, geração de SQL para revisão
+
+**Características:**
+- Executados localmente via Node.js
+- Acesso via Service Role Key do `.env.local`
+- Não devem ser chamados em produção
+- Úteis para preparar dados antes de aplicar via Edge Functions
+
+**Exemplos:**
+- `scripts/import_f360_2025_mcp.mjs` - Gera SQL para revisão antes de aplicar
+- `scripts/tests/*.mjs` - Testes de integridade e validação
+
+---
+
+## 🔒 CONSTRAINTS OBRIGATÓRIAS
+
+### Tabelas Financeiras
+
+**dre_entries:**
+```sql
+CREATE UNIQUE INDEX unique_dre_entry 
+ON dre_entries (company_cnpj, date, account, natureza);
+```
+- Garante unicidade por empresa, data, conta e natureza
+- Permite upsert via Edge Function
+
+**dfc_entries:**
+```sql
+CREATE UNIQUE INDEX unique_dfc_entry 
+ON dfc_entries (company_cnpj, date, kind, category, bank_account);
+```
+- Garante unicidade por empresa, data, tipo, categoria e conta bancária
+- **IMPORTANTE**: `bank_account` deve ser string vazia (`''`) quando NULL para constraint funcionar
+- Permite upsert via Edge Function
+
+**accounting_entries:**
+- Não possui constraint única (permite múltiplos lançamentos com mesmos dados)
+- Usar `INSERT` direto (não upsert)
+
+---
+
+## 📋 FLUXO DE IMPORTAÇÃO VALIDADO
+
+### Fluxo Completo F360
+
+1. **Descoberta de Empresas** (Edge Function `f360-discover`)
+   - Recebe token F360
+   - Lista contas bancárias via `ListarContasBancarias`
+   - Extrai CNPJs únicos
+   - Retorna modo (SINGLE/GROUP) e lista de CNPJs
+
+2. **Sincronização de Dados** (Edge Function `sync-f360`)
+   - **SINGLE**: `POST /sync-f360` com `{ cnpj, dataInicio, dataFim }`
+   - **GROUP**: `POST /sync-f360/group` com `{ token, expectedCnpjs, dataInicio, dataFim }`
+   - Login F360 com retry (3 tentativas)
+   - Gera relatório contábil
+   - Aguarda processamento (até 30 tentativas, 5s cada)
+   - Processa e valida dados
+   - Salva via upsert (DRE/DFC) ou insert (Accounting)
+   - Registra log em `import_logs`
+
+3. **Validação Pós-Importação** (Scripts de teste)
+   - `test_data_integrity.mjs` - Valida totais DRE/DFC
+   - `test_no_duplicates.mjs` - Verifica ausência de duplicatas
+   - `test_consolidation.mjs` - Valida consolidação de múltiplas empresas
+   - `test_filter_consistency.mjs` - Verifica filtros por empresa/período
+
+### Checklist de Validação Pós-Importação
+
+Após cada importação, executar:
+- [ ] `test_data_integrity.mjs` - Integridade de totais
+- [ ] `test_no_duplicates.mjs` - Ausência de duplicatas
+- [ ] Verificar `import_logs` para status e erros
+- [ ] Validar contagem de registros por empresa
+- [ ] Verificar se todas empresas esperadas têm dados
+
+---
+
 > **Nota**: Este índice deve ser atualizado após mudanças significativas no projeto. Manter formato compacto para economizar tokens.
 

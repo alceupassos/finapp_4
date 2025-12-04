@@ -203,7 +203,7 @@ async function importCompanyMonth(cnpj, companyId, month) {
         kind: natureza === 'receita' ? 'in' : 'out',
         category: account,
         amount: valor,
-        bank_account: null,
+        bank_account: '', // String vazia em vez de null para constraint
         description: entry.ComplemHistorico || entry.NumeroTitulo || '',
         source_erp: 'F360',
         source_id: entry.NumeroTitulo || entry.IdPlanoDeContas || null,

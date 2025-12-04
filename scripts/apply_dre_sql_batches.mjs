@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -30,7 +30,7 @@ const conflictClause = lines.slice(onConflictLine).join('\n');
 const batchSize = 20;
 const batches = [];
 for (let i = 0; i < valuesLines.length; i += batchSize) {
-  const batch = valuesLines.slice(i, i + batchSize);
+  const batch = valuesLines.slice(i, i + batchSize).map(line => line.trim().replace(/,\s*$/, ''));
   if (batch.length > 0) {
     batches.push(batch);
   }
@@ -48,7 +48,7 @@ ${batch.join(',\n')}
 ${conflictClause}`;
   
   const outputFile = join(__dirname, '..', `tmp/dre_batch_${i + 1}.sql`);
-  require('fs').writeFileSync(outputFile, batchSql);
+  writeFileSync(outputFile, batchSql);
   console.log(`Batch ${i + 1}/${batches.length} gerado: ${outputFile}`);
 }
 
