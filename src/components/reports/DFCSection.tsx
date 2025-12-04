@@ -36,8 +36,40 @@ export function DFCSection({
         const year = parseInt(selectedYear) || new Date().getFullYear()
         const month = selectedMonth ? parseInt(selectedMonth.split('-')[1]) : undefined
         
-        const data = await SupabaseRest.getDfcSummaries(selectedCompanies, year, month)
-        setDfcData(data || [])
+        // Buscar DFC de cada empresa e consolidar
+        if (selectedCompanies.length > 1) {
+          const allDfcPromises = selectedCompanies.map((cnpj) =>
+            SupabaseRest.getDFC(cnpj, year, month)
+          )
+          const allDfcResults = await Promise.all(allDfcPromises)
+          
+          // Consolidar dados
+          const dfcMap = new Map<string, any>()
+          allDfcResults.forEach((dfcArray: any[]) => {
+            if (Array.isArray(dfcArray)) {
+              dfcArray.forEach((item: any) => {
+                const key = `${item.data || ''}_${item.descricao || ''}_${item.kind || ''}`
+                const existing = dfcMap.get(key)
+                if (existing) {
+                  existing.entrada = (existing.entrada || 0) + Number(item.entrada || 0)
+                  existing.saida = (existing.saida || 0) + Number(item.saida || 0)
+                } else {
+                  dfcMap.set(key, {
+                    data: item.data,
+                    entrada: Number(item.entrada || 0),
+                    saida: Number(item.saida || 0),
+                    descricao: item.descricao,
+                    kind: item.kind || (item.entrada > 0 ? 'in' : 'out'),
+                  })
+                }
+              })
+            }
+          })
+          setDfcData(Array.from(dfcMap.values()))
+        } else {
+          const dfc = await SupabaseRest.getDFC(selectedCompanies[0], year, month)
+          setDfcData(Array.isArray(dfc) ? dfc : [])
+        }
       } catch (error) {
         console.error('Erro ao carregar DFC:', error)
         setDfcData([])

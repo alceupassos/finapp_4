@@ -29,10 +29,13 @@ export function DRESection({
     setLoading(true)
     ;(async () => {
       try {
+        const year = parseInt(selectedYear) || new Date().getFullYear()
+        const month = selectedMonth ? parseInt(selectedMonth.split('-')[1]) : undefined
+        
         if (selectedCompanies.length > 1) {
           // Consolidar múltiplas empresas
           const allDrePromises = selectedCompanies.map((cnpj) =>
-            SupabaseRest.getDRE(cnpj)
+            SupabaseRest.getDRE(cnpj, year, month)
           )
           const allDreResults = await Promise.all(allDrePromises)
 
@@ -57,7 +60,7 @@ export function DRESection({
           })
           setDreData(Array.from(dreMap.values()))
         } else {
-          const dre = await SupabaseRest.getDRE(selectedCompanies[0])
+          const dre = await SupabaseRest.getDRE(selectedCompanies[0], year, month)
           const norm = (Array.isArray(dre) ? dre : []).map((r) => ({
             data: r.data,
             conta: r.conta,
@@ -72,7 +75,7 @@ export function DRESection({
         setLoading(false)
       }
     })()
-  }, [selectedCompanies, selectedYear, selectedMonth])
+  }, [selectedCompanies, selectedYear, selectedMonth, period])
 
   // Calcular KPIs
   const kpis = useMemo(() => {

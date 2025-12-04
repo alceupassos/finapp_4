@@ -211,7 +211,7 @@ export const SupabaseRest = {
     return [{ grupo_empresarial: '', cliente_nome: 'Empresa Matriz', cnpj: cnpj14 }]
   },
   
-  getDRE: async (cnpj: string) => {
+  getDRE: async (cnpj: string, year?: number, month?: number) => {
     // Ignorar se for string 'CONSOLIDADO' ou inválida
     if (!cnpj || cnpj === 'CONSOLIDADO' || typeof cnpj !== 'string') {
       console.warn('⚠️ getDRE: CNPJ inválido ou consolidado, usando matriz')
@@ -219,7 +219,25 @@ export const SupabaseRest = {
     }
     const cnpj14 = cnpj.replace(/^0+/, '')
     try {
-      const rows = await restGet('dre_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
+      const query: Record<string, string> = {
+        company_cnpj: `eq.${cnpj14}`,
+        select: '*',
+        limit: '5000',
+      }
+      
+      // Filtrar por período se fornecido
+      if (year) {
+        query.date = `gte.${year}-01-01`
+        query.date = `${query.date}&date.lte.${year}-12-31`
+      }
+      if (month && year) {
+        const monthStr = String(month).padStart(2, '0')
+        query.date = `gte.${year}-${monthStr}-01`
+        const lastDay = new Date(year, month, 0).getDate()
+        query.date = `${query.date}&date.lte.${year}-${monthStr}-${lastDay}`
+      }
+      
+      const rows = await restGet('dre_entries', { query })
       if (!Array.isArray(rows)) {
         console.warn('⚠️ getDRE: resposta não é array', rows)
         return []
@@ -280,7 +298,7 @@ export const SupabaseRest = {
     }
   },
   
-  getDFC: async (cnpj: string) => {
+  getDFC: async (cnpj: string, year?: number, month?: number) => {
     // Ignorar se for string 'CONSOLIDADO' ou inválida
     if (!cnpj || cnpj === 'CONSOLIDADO' || typeof cnpj !== 'string') {
       console.warn('⚠️ getDFC: CNPJ inválido ou consolidado, usando matriz')
@@ -288,7 +306,26 @@ export const SupabaseRest = {
     }
     const cnpj14 = cnpj.replace(/^0+/, '')
     try {
-      const rows = await restGet('cashflow_entries', { query: { company_cnpj: `eq.${cnpj14}`, select: '*', limit: '5000' } })
+      const query: Record<string, string> = {
+        company_cnpj: `eq.${cnpj14}`,
+        select: '*',
+        limit: '5000',
+      }
+      
+      // Filtrar por período se fornecido
+      if (year) {
+        query.date = `gte.${year}-01-01`
+        query.date = `${query.date}&date.lte.${year}-12-31`
+      }
+      if (month && year) {
+        const monthStr = String(month).padStart(2, '0')
+        query.date = `gte.${year}-${monthStr}-01`
+        const lastDay = new Date(year, month, 0).getDate()
+        query.date = `${query.date}&date.lte.${year}-${monthStr}-${lastDay}`
+      }
+      
+      // Usar dfc_entries em vez de cashflow_entries
+      const rows = await restGet('dfc_entries', { query })
       if (!Array.isArray(rows)) {
         console.warn('⚠️ getDFC: resposta não é array', rows)
         return []
@@ -302,8 +339,8 @@ export const SupabaseRest = {
         console.log('🔄 getDFC: Gerando fluxo de caixa a partir do DRE...')
         
         try {
-          // Buscar dados DRE
-          const dreData = await SupabaseRest.getDRE(cnpj14)
+          // Buscar dados DRE (sem filtro de período para gerar DFC completo)
+          const dreData = await SupabaseRest.getDRE(cnpj14, year, month)
           if (dreData.length === 0) {
             console.warn('⚠️ getDFC: DRE também está vazio, não é possível gerar DFC')
             return []
@@ -591,12 +628,21 @@ export const SupabaseRest = {
       
       const query: any = {
         or: cnpjList.map(c => `company_cnpj.eq.${c}`).join(','),
-        period_year: `eq.${year}`,
         select: '*',
         limit: '10000',
       }
       
-      if (month) query.period_month = `eq.${month}`
+      // Filtrar por data em vez de period_year/period_month
+      if (year) {
+        query.date = `gte.${year}-01-01`
+        query.date = `${query.date}&date.lte.${year}-12-31`
+      }
+      if (month && year) {
+        const monthStr = String(month).padStart(2, '0')
+        query.date = `gte.${year}-${monthStr}-01`
+        const lastDay = new Date(year, month, 0).getDate()
+        query.date = `${query.date}&date.lte.${year}-${monthStr}-${lastDay}`
+      }
       
       const rows = await restGet('dfc_entries', { query })
       

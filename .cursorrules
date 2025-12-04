@@ -60,6 +60,9 @@
 - Não retornar dados fora do período selecionado
 - Não retornar dados de empresas não selecionadas
 - Consolidar dados apenas das empresas selecionadas
+- **CRÍTICO**: `getDRE()` e `getDFC()` devem aceitar parâmetros `year` e `month` para filtrar por período
+- **CRÍTICO**: Usar tabela `dfc_entries` (NÃO `cashflow_entries`) para dados de fluxo de caixa
+- **CRÍTICO**: Filtros de período devem ser aplicados na query, não apenas no frontend
 
 ### 6. Componentes de Gráficos
 - Todos os gráficos devem aceitar props de filtros (cnpj, year, month, etc)
@@ -71,6 +74,19 @@
 - Cachear dados apenas quando filtros são os mesmos
 - Invalidar cache quando filtros mudam
 - Não fazer queries desnecessárias com filtros diferentes
+
+### 8. Consolidação de Múltiplas Empresas
+- **CRÍTICO**: Quando múltiplas empresas são selecionadas, SOMAR valores, não concatenar registros
+- Usar Map/Reduce para consolidar dados por chave única (data + conta + natureza)
+- Validar que soma individual = total consolidado
+- Não duplicar registros na consolidação
+
+### 9. Validação de Dados Importados
+- **SEMPRE**: Executar testes de integridade após importação
+- Verificar ausência de duplicatas (usar constraints únicas)
+- Validar totais: receitas - despesas = resultado (DRE)
+- Validar totais: entradas - saídas = variação caixa (DFC)
+- Scripts de teste: `scripts/tests/test_*.mjs`
 
 ## Exemplos de Implementação
 
@@ -255,6 +271,16 @@ npm run supabase:secrets
 
 ## 📝 CHANGELOG
 
+### 2025-01-XX - Integração Completa F360 com Dados Reais 2025
+- ✅ Criado `docs/F360_API_INDEX.md` - Índice completo da API F360
+- ✅ Criado `scripts/import_f360_2025_complete.mjs` - Script de importação 2025
+- ✅ Criada suite de testes: `test_data_integrity.mjs`, `test_no_duplicates.mjs`, `test_filter_consistency.mjs`, `test_consolidation.mjs`
+- ✅ Atualizado `getDRE()` e `getDFC()` para aceitar filtros de período (year, month)
+- ✅ Corrigido uso de `dfc_entries` em vez de `cashflow_entries`
+- ✅ Implementada consolidação correta de múltiplas empresas (soma de valores)
+- ✅ Criado `docs/TESTE_FILTROS_CHECKLIST.md` - Checklist de testes
+- ✅ Atualizado cursor rules com regras de validação e consolidação
+
 ### 2025-01-XX - Sistema Completo Importação F360 (SINGLE/GROUP)
 - ✅ Criado `f360ImportService.ts` - serviço unificado com suporte SINGLE e GROUP
 - ✅ Criadas Edge Functions: `sync-f360` e `f360-discover`
@@ -305,7 +331,10 @@ npm run supabase:secrets
 
 ## 🔑 KEYWORDS PARA BUSCA RÁPIDA
 
-**F360**: `f360Service.ts`, `f360ImportService.ts`, `import_volpe_complete.mjs`, `F360Service`, `F360ImportService`, `F360SingleImporter`, `F360GroupImporter`
+**F360**: `f360Service.ts`, `f360ImportService.ts`, `import_volpe_complete.mjs`, `import_f360_2025_complete.mjs`, `F360Service`, `F360ImportService`, `F360SingleImporter`, `F360GroupImporter`
+**API F360**: `docs/F360_API_INDEX.md` - Índice completo da API F360
+**Testes**: `scripts/tests/test_data_integrity.mjs`, `test_no_duplicates.mjs`, `test_filter_consistency.mjs`, `test_consolidation.mjs`
+**Filtros**: `TESTE_FILTROS_CHECKLIST.md` - Checklist de testes de filtros
 **DRE**: `DRESection.tsx`, `dre_entries`, `DREPivotTable.tsx`
 **DFC**: `DFCSection.tsx`, `dfc_entries`, `DFCPivotTable.tsx`
 **Bancos**: `BanksSection.tsx`, `bank_accounts`, `bank_transactions`
