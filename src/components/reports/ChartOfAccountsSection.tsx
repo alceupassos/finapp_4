@@ -78,7 +78,7 @@ export function ChartOfAccountsSection({
       const matchesType = !filterType || node.account_type === filterType
 
       const filteredChildren = node.children
-        .map(child => filterNode(child))
+        .map((child: ChartAccount & { children: ChartAccount[] }) => filterNode(child))
         .filter((child): child is ChartAccount & { children: ChartAccount[] } => child !== null)
 
       if (matchesSearch && matchesType) {
@@ -161,7 +161,7 @@ export function ChartOfAccountsSection({
 
         {hasChildren && isExpanded && (
           <div className="ml-4">
-            {account.children.map(child => renderAccount(child, depth + 1))}
+            {account.children.map((child: ChartAccount & { children: ChartAccount[] }) => renderAccount(child, depth + 1))}
           </div>
         )}
       </div>
@@ -247,7 +247,7 @@ export function ChartOfAccountsSection({
           <span className="text-sm text-graphite-500">
             ({filteredTree.reduce((sum, node) => {
               const countNode = (n: ChartAccount & { children: ChartAccount[] }): number => {
-                return 1 + n.children.reduce((acc, child) => acc + countNode(child), 0)
+                return 1 + n.children.reduce((acc, child: ChartAccount & { children: ChartAccount[] }) => acc + countNode(child), 0)
               }
               return sum + countNode(node)
             }, 0)} contas)
