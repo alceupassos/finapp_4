@@ -30,6 +30,21 @@ export function DRESection({
   const [compareWithPreviousYear, setCompareWithPreviousYear] = useState(false)
   const [periodMode, setPeriodMode] = useState<PeriodMode>('Y')
 
+  // Debug: Log quando modalOpen muda
+  useEffect(() => {
+    console.log('🔍 DRESection - modalOpen mudou para:', modalOpen)
+  }, [modalOpen])
+
+  const handleOpenModal = () => {
+    console.log('🔍 DRESection - handleOpenModal chamado')
+    setModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    console.log('🔍 DRESection - handleCloseModal chamado')
+    setModalOpen(false)
+  }
+
   useEffect(() => {
     if (selectedCompanies.length === 0) return
 
@@ -349,7 +364,7 @@ export function DRESection({
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           sparklineData={getSparklineData('receitaBruta')}
           delay={0}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
         <PremiumKPICard
           title="Receita Líquida"
@@ -363,7 +378,7 @@ export function DRESection({
           trendValue={kpisPreviousYear ? calculateVariation(kpis.receitaLiquida, kpisPreviousYear.receitaLiquida) : undefined}
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           delay={0.1}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
         <PremiumKPICard
           title="EBITDA"
@@ -378,7 +393,7 @@ export function DRESection({
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           sparklineData={getSparklineData('ebitda')}
           delay={0.2}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
         <PremiumKPICard
           title="Lucro Líquido"
@@ -392,14 +407,14 @@ export function DRESection({
           trendValue={kpisPreviousYear ? calculateVariation(kpis.lucroLiquido, kpisPreviousYear.lucroLiquido) : undefined}
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           delay={0.3}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
       </div>
 
       {/* Export Button e Modal */}
       <div className="flex justify-end gap-2">
         <button
-          onClick={() => setModalOpen(true)}
+          onClick={handleOpenModal}
           className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-all hover:scale-105 shadow-lg shadow-gold-500/20 flex items-center gap-2"
         >
           Ver Completo
@@ -453,7 +468,7 @@ export function DRESection({
       {/* Modal Completo */}
       <DREFullModal
         open={modalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={handleCloseModal}
         dreData={dreData}
         selectedCompanies={selectedCompanies}
         selectedYear={selectedYear}

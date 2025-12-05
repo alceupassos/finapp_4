@@ -30,6 +30,21 @@ export function DFCSection({
   const [compareWithPreviousYear, setCompareWithPreviousYear] = useState(false)
   const [periodMode, setPeriodMode] = useState<PeriodMode>('Y')
 
+  // Debug: Log quando modalOpen muda
+  useEffect(() => {
+    console.log('🔍 DFCSection - modalOpen mudou para:', modalOpen)
+  }, [modalOpen])
+
+  const handleOpenModal = () => {
+    console.log('🔍 DFCSection - handleOpenModal chamado')
+    setModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    console.log('🔍 DFCSection - handleCloseModal chamado')
+    setModalOpen(false)
+  }
+
   useEffect(() => {
     if (selectedCompanies.length === 0) {
       setDfcData([])
@@ -236,7 +251,7 @@ export function DFCSection({
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           sparklineData={getSparklineData('entradas')}
           delay={0}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
         <PremiumKPICard
           title="Saídas"
@@ -251,7 +266,7 @@ export function DFCSection({
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           sparklineData={getSparklineData('saidas')}
           delay={0.1}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
         <PremiumKPICard
           title="Saldo Líquido"
@@ -266,14 +281,14 @@ export function DFCSection({
           trendPeriod={compareWithPreviousYear ? `vs ${parseInt(selectedYear) - 1}` : undefined}
           sparklineData={getSparklineData('saldo')}
           delay={0.2}
-          onShowMore={() => setModalOpen(true)}
+          onShowMore={handleOpenModal}
         />
       </div>
 
       {/* Export Button e Modal */}
       <div className="flex justify-end gap-2">
         <button
-          onClick={() => setModalOpen(true)}
+          onClick={handleOpenModal}
           className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-all hover:scale-105 shadow-lg shadow-gold-500/20 flex items-center gap-2"
         >
           Ver Completo
@@ -372,7 +387,7 @@ export function DFCSection({
       {/* Modal Completo */}
       <DFCFullModal
         open={modalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={handleCloseModal}
         dfcData={dfcData}
         selectedCompanies={selectedCompanies}
         selectedYear={selectedYear}

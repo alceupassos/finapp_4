@@ -76,7 +76,11 @@ export function PremiumKPICard({
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.3, delay }}
       whileHover={{ scale: 1.02, y: -2 }}
-      className="card-premium p-6 relative overflow-hidden group cursor-pointer"
+      className="card-premium p-6 relative overflow-hidden group"
+      onClick={(e) => {
+        // Não fazer nada no click do card inteiro - apenas o botão "Ver mais" deve abrir o modal
+        e.stopPropagation()
+      }}
     >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -162,10 +166,13 @@ export function PremiumKPICard({
           {onShowMore && (
             <button
               onClick={(e) => {
+                e.preventDefault()
                 e.stopPropagation()
+                console.log('🔍 PremiumKPICard - Botão "Ver mais" clicado')
                 onShowMore()
               }}
-              className="text-xs text-gold-400 hover:text-gold-300 flex items-center gap-1 group/showmore transition-colors"
+              className="text-xs text-gold-400 hover:text-gold-300 flex items-center gap-1 group/showmore transition-colors cursor-pointer"
+              type="button"
             >
               Ver mais
               <ArrowRight className="w-3 h-3 group-hover/showmore:translate-x-1 transition-transform" />

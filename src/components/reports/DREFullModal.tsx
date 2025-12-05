@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, ChevronRight, ChevronDown, Search, Filter } from 'lucide-react'
 import { formatCurrency } from '../../lib/formatters'
@@ -217,17 +217,22 @@ export function DREFullModal({
     XLSX.writeFile(wb, `DRE_${selectedYear}${selectedMonth ? '_' + selectedMonth : ''}.xlsx`)
   }
 
-  if (!open) return null
+  // Debug: Log quando open muda
+  useEffect(() => {
+    console.log('🔍 DREFullModal - open mudou para:', open)
+  }, [open])
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-        onClick={onClose}
-      >
+    <AnimatePresence mode="wait">
+      {open && (
+        <motion.div
+          key="dre-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={onClose}
+        >
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -513,6 +518,7 @@ export function DREFullModal({
           </Tooltip.Provider>
         </motion.div>
       </motion.div>
+      )}
     </AnimatePresence>
   )
 }
