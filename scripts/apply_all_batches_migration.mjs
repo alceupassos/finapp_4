@@ -19,13 +19,11 @@ const batches = [
     type: 'DFC',
     number: i + 1,
     migrationName: `apply_dfc_batch_${i + 1}`
-  }))
+  })),
 ]
 
 console.log('🚀 Preparando aplicação de 28 batches SQL via migration\n')
 console.log('='.repeat(70))
-
-const results = []
 
 for (const batch of batches) {
   if (fs.existsSync(batch.filename)) {
@@ -33,28 +31,20 @@ for (const batch of batches) {
     const size = (content.length / 1024).toFixed(2)
     const lines = content.split('\n').length
     
-    results.push({
-      ...batch,
-      content,
-      size,
-      lines
-    })
-    
-    console.log(`✅ ${batch.type.padEnd(3)} Batch ${batch.number.toString().padStart(2)}: ${batch.filename.padEnd(25)} - ${size.padStart(7)} KB, ${lines.toString().padStart(5)} linhas`)
+    console.log(`✅ ${batch.type.padEnd(3)} Batch ${batch.number.toString().padStart(2)}: ${batch.filename.padEnd(25)} - ${size.padStart(8)} KB, ${lines.toString().padStart(4)} linhas`)
+    console.log(`   Migration: ${batch.migrationName}`)
   } else {
-    console.log(`❌ ${batch.type.padEnd(3)} Batch ${batch.number.toString().padStart(2)}: ${batch.filename.padEnd(25)} - ARQUIVO NÃO ENCONTRADO`)
+    console.log(`❌ ${batch.type.padEnd(3)} Batch ${batch.number.toString().padStart(2)}: ${batch.filename.padEnd(25)} - Arquivo não encontrado`)
   }
 }
 
-console.log('\n' + '='.repeat(70))
-console.log(`\n✅ Total: ${results.length} batches prontos para aplicação`)
-console.log('\n💡 Para aplicar cada batch, use:')
-console.log('   mcp_supabase_apply_migration com:')
-console.log('   - name: apply_dre_batch_X ou apply_dfc_batch_X')
-console.log('   - query: conteúdo completo do arquivo correspondente')
-console.log('\n📋 Exemplo para batch DRE 1:')
-if (results.length > 0) {
-  const first = results[0]
-  console.log(`   name: ${first.migrationName}`)
-  console.log(`   query: (conteúdo completo de ${first.filename})`)
-}
+console.log('='.repeat(70))
+console.log(`\n✅ Todos os 28 batches estão prontos para aplicação via migration`)
+console.log(`\n💡 Para aplicar cada batch, use:`)
+console.log(`   mcp_supabase_apply_migration com:`)
+console.log(`   - name: apply_dre_batch_X ou apply_dfc_batch_X`)
+console.log(`   - query: conteúdo completo do arquivo import_dre_batch_X.sql ou import_dfc_batch_X.sql`)
+console.log(`\n📝 Ordem de aplicação:`)
+console.log(`   1-14:  Batches DRE (import_dre_batch_1.sql até import_dre_batch_14.sql)`)
+console.log(`   15-28: Batches DFC (import_dfc_batch_1.sql até import_dfc_batch_14.sql)\n`)
+

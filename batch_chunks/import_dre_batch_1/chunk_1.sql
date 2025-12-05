@@ -1,6 +1,6 @@
 INSERT INTO dre_entries (company_cnpj, date, account, natureza, valor, description, source_erp, source_id)
 VALUES
-(('26888098000159', '2025-08-31', '400-0 - Custo de Mercadorias Vendidas', 'despesa', 83290, 'OSAMU YABUTA E OUTROS - 400-0 - Custo de Mercadorias Vendidas - Nota Fiscal - COMPRA DE MERCADORIAS', 'F360', '54058'),
+('26888098000159', '2025-08-31', '400-0 - Custo de Mercadorias Vendidas', 'despesa', 83290, 'OSAMU YABUTA E OUTROS - 400-0 - Custo de Mercadorias Vendidas - Nota Fiscal - COMPRA DE MERCADORIAS', 'F360', '54058'),
 ('26888098000159', '2025-09-30', '303-4 - Descontos Obtidos', 'receita', 1249.35, 'OSAMU YABUTA E OUTROS - 303-4 - Descontos Obtidos - Nota Fiscal - COMPRA DE MERCADORIAS', 'F360', '54058'),
 ('26888098000159', '2025-09-30', '421-8 - OP Correios e fretes', 'despesa', 15506, 'DDI TRANSPORTES  LTDA - 421-8 - OP Correios e fretes - Outros - FRETEIRO DDI TRANSPORTES ', 'F360', '66970f69f71e862cce11afd8'),
 ('26888098000159', '2025-09-30', '201-6 - OP Salarios', 'despesa', 1040, 'EVERTON APARECIDO SABINO - 201-6 - OP Salarios - Nota Fiscal de Servico - VALOR ALUGUEL MOTO (06 MESES) | RECORRENCIA MENSAL (2/6)', 'F360', '(2/6)'),

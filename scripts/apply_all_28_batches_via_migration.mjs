@@ -1,6 +1,6 @@
 /**
  * Script para aplicar todos os 28 batches SQL via mcp_supabase_apply_migration
- * Lê cada arquivo completo e aplica via migration
+ * Lê cada arquivo completo e prepara para aplicação via migration
  * 
  * NOTA: Este script prepara os batches. A aplicação real deve ser feita
  * via mcp_supabase_apply_migration com o conteúdo completo de cada arquivo.
@@ -52,9 +52,4 @@ console.log('\n💡 Para aplicar cada batch, use:')
 console.log('   mcp_supabase_apply_migration com:')
 console.log('   - name: apply_dre_batch_X ou apply_dfc_batch_X')
 console.log('   - query: conteúdo completo do arquivo correspondente')
-console.log('\n📋 Exemplo para batch DRE 1:')
-if (results.length > 0) {
-  const first = results[0]
-  console.log(`   name: ${first.migrationName}`)
-  console.log(`   query: (conteúdo completo de ${first.filename})`)
-}
+
