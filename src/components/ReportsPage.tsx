@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { HorizontalFilters } from './HorizontalFilters'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ReportsSidebar, type ReportSection } from './reports/ReportsSidebar'
@@ -7,6 +7,9 @@ import { DFCSection } from './reports/DFCSection'
 import { BanksSection } from './reports/BanksSection'
 import { ReconciliationSection } from './reports/ReconciliationSection'
 import { ChartOfAccountsSection } from './reports/ChartOfAccountsSection'
+import { ClientesSection } from './reports/ClientesSection'
+import { IndicadoresSection } from './reports/IndicadoresSection'
+import { DashboardsSection } from './reports/DashboardsSection'
 
 type Company = { cliente_nome?: string; cnpj?: string; grupo_empresarial?: string }
 type DRERow = { data?: string; conta?: string; natureza?: string; valor?: number }
@@ -33,6 +36,14 @@ export function ReportsPage({
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [selectedBankAccount, setSelectedBankAccount] = useState<string>('')
   const [activeSection, setActiveSection] = useState<ReportSection>('dashboard')
+
+  // Debug: Log selectedCompanies e companies
+  useEffect(() => {
+    console.log('🔍 ReportsPage - propSelectedCompanies:', propSelectedCompanies)
+    console.log('🔍 ReportsPage - selectedCompanies (processado):', selectedCompanies)
+    console.log('🔍 ReportsPage - companies:', companies)
+    console.log('🔍 ReportsPage - activeSection:', activeSection)
+  }, [propSelectedCompanies, selectedCompanies, companies, activeSection])
 
   const renderSection = () => {
     switch (activeSection) {
@@ -89,6 +100,30 @@ export function ReportsPage({
         return (
           <ChartOfAccountsSection
             selectedCompanies={selectedCompanies}
+          />
+        )
+      case 'clientes':
+        return (
+          <ClientesSection
+            selectedCompanies={selectedCompanies}
+            selectedYear={selectedYear}
+            selectedMonth={selectedMonth}
+          />
+        )
+      case 'indicadores':
+        return (
+          <IndicadoresSection
+            selectedCompanies={selectedCompanies}
+            selectedYear={selectedYear}
+            selectedMonth={selectedMonth}
+          />
+        )
+      case 'dashboards':
+        return (
+          <DashboardsSection
+            selectedCompanies={selectedCompanies}
+            selectedYear={selectedYear}
+            selectedMonth={selectedMonth}
           />
         )
       default:

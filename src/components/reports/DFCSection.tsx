@@ -9,6 +9,8 @@ import { PeriodFilter, type PeriodMode } from './PeriodFilter'
 import { CashflowSankeyChart } from '../charts/CashflowSankeyChart'
 import { FluxoCaixaBarChart, FluxoCaixaLineChart, WaterfallChart } from '../charts'
 import { DFCFullModal } from './DFCFullModal'
+import { FaturamentoLineChart } from '../charts/FaturamentoLineChart'
+import { DonutStatusChart } from '../charts/DonutStatusChart'
 
 interface DFCSectionProps {
   selectedCompanies: string[]
@@ -29,6 +31,14 @@ export function DFCSection({
   const [modalOpen, setModalOpen] = useState(false)
   const [compareWithPreviousYear, setCompareWithPreviousYear] = useState(false)
   const [periodMode, setPeriodMode] = useState<PeriodMode>('Y')
+
+  // Debug: Log selectedCompanies e outros props
+  useEffect(() => {
+    console.log('🔍 DFCSection - selectedCompanies:', selectedCompanies)
+    console.log('🔍 DFCSection - selectedYear:', selectedYear)
+    console.log('🔍 DFCSection - selectedMonth:', selectedMonth)
+    console.log('🔍 DFCSection - period:', period)
+  }, [selectedCompanies, selectedYear, selectedMonth, period])
 
   // Debug: Log quando modalOpen muda
   useEffect(() => {
@@ -147,6 +157,15 @@ export function DFCSection({
 
   // Calcular KPIs DFC
   const kpis = useMemo(() => {
+    // Garantir valores padrão mesmo sem dados
+    if (!dfcData || dfcData.length === 0) {
+      return {
+        entradas: 0,
+        saidas: 0,
+        saldo: 0,
+      }
+    }
+
     const entradas = dfcData
       .filter((d) => d.kind === 'in')
       .reduce((sum, d) => sum + Number(d.amount || d.entrada || 0), 0)
@@ -213,6 +232,36 @@ export function DFCSection({
 
   const cnpjForCharts =
     selectedCompanies.length > 1 ? selectedCompanies : selectedCompanies[0] || ''
+
+  // Se não há empresas selecionadas, mostrar mensagem mas ainda renderizar botões
+  if (selectedCompanies.length === 0) {
+    return (
+      <div className="space-y-6">
+        <div className="card-premium p-6">
+          <p className="text-graphite-400 text-center">
+            Selecione ao menos uma empresa para visualizar o relatório DFC.
+          </p>
+        </div>
+        {/* Ainda renderizar botões para teste */}
+        <div className="flex justify-end gap-2">
+          <button
+            onClick={handleOpenModal}
+            className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-all hover:scale-105 shadow-lg shadow-gold-500/20 flex items-center gap-2"
+          >
+            Ver Completo
+          </button>
+        </div>
+        {/* Modal ainda disponível para teste */}
+        <DFCFullModal
+          open={modalOpen}
+          onClose={handleCloseModal}
+          dfcData={[]}
+          selectedCompanies={[]}
+          selectedYear={selectedYear}
+        />
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-6">
@@ -353,6 +402,28 @@ export function DFCSection({
       >
         <h3 className="text-lg font-semibold mb-4">DFC Detalhada</h3>
         <DFCPivotTable cnpj={cnpjForCharts} period={period} />
+      </motion.div>
+
+      {/* Faturamento Line Chart */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="card-premium p-6"
+      >
+        <h3 className="text-lg font-semibold mb-4">Faturamento</h3>
+        <FaturamentoLineChart companyCnpj={Array.isArray(cnpjForCharts) ? cnpjForCharts[0] : cnpjForCharts} />
+      </motion.div>
+
+      {/* Donut Status Chart */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="card-premium p-6"
+      >
+        <h3 className="text-lg font-semibold mb-4">Status de Pagamentos</h3>
+        <DonutStatusChart companyCnpj={Array.isArray(cnpjForCharts) ? cnpjForCharts[0] : cnpjForCharts} />
       </motion.div>
 
       {loading && (

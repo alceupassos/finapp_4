@@ -70,9 +70,10 @@ interface TableRow {
 interface DREPivotTableProps {
   cnpj: string | string[]
   period?: 'Ano' | 'Mês'
+  onRowClick?: (row: any) => void
 }
 
-export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
+export function DREPivotTable({ cnpj, period = 'Ano', onRowClick }: DREPivotTableProps) {
   const [rows, setRows] = useState<DRERow[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -571,9 +572,14 @@ export function DREPivotTable({ cnpj, period = 'Ano' }: DREPivotTableProps) {
                       key={row.id}
                       className={`border-b border-graphite-800/50 hover:bg-graphite-800/30 transition-colors ${
                         row.original.isTotal ? 'bg-graphite-900/50' : ''
-                      }`}
+                      } ${onRowClick && !row.original.isTotal && !row.original.isGroup ? 'cursor-pointer' : ''}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
+                      onClick={() => {
+                        if (onRowClick && !row.original.isTotal && !row.original.isGroup && row.original.conta) {
+                          onRowClick(row.original)
+                        }
+                      }}
                     >
                       {row.getVisibleCells().map(cell => (
                         <td key={cell.id} className="p-3">

@@ -1,0 +1,160 @@
+🔍 RELATÓRIO DE COMPONENTES ÓRFÃOS
+Gerado em: sex  5 dez 2025 21:22:13 -03
+========================================
+
+1️⃣ MODAIS ÓRFÃOS
+---
+❌ AnaliticosModal
+   Arquivo: src/components/AnaliticosModal.tsx
+
+❌ DREDetailModal
+   Arquivo: src/components/DREDetailModal.tsx
+
+❌ F360ImportModal
+   Arquivo: src/components/F360ImportModal.tsx
+
+❌ LoginModal
+   Arquivo: src/components/LoginModal.tsx
+
+❌ LogsModal
+   Arquivo: src/components/LogsModal.tsx
+
+❌ ModernSettingsModal
+   Arquivo: src/components/ModernSettingsModal.tsx
+
+❌ SettingsModal
+   Arquivo: src/components/ModernSettingsModal.tsx
+
+❌ VolpeLoginModal
+   Arquivo: src/components/VolpeLoginModal.tsx
+
+
+2️⃣ COMPONENTES DE UI ÓRFÃOS (Button, Card, Input, etc.)
+---
+❌ APagarReceberCards
+   Arquivo: src/components/charts/APagarReceberCards.tsx
+
+❌ DRETable
+   Arquivo: src/components/DRETable.tsx
+
+❌ KpiCard
+   Arquivo: src/components/KpiCard.tsx
+
+❌ KPICardsRow
+   Arquivo: src/components/KPICardsRow.tsx
+
+❌ UltraCard
+   Arquivo: src/components/ultra/UltraCard.tsx
+
+❌ VirtualCard3D
+   Arquivo: src/components/VirtualCard3D.tsx
+
+❌ VisaCard
+   Arquivo: src/components/VisaCard.tsx
+
+
+3️⃣ GRÁFICOS/CHARTS ÓRFÃOS
+---
+❌ ABCParetoChart
+   Arquivo: src/components/charts/ABCParetoChart.tsx
+
+❌ ChartNavigationTabs
+   Arquivo: src/components/ChartNavigationTabs.tsx
+
+❌ ClientesAnaliseChart
+   Arquivo: src/components/charts/ClientesAnaliseChart.tsx
+
+❌ DonutStatusChart
+   Arquivo: src/components/charts/DonutStatusChart.tsx
+
+❌ export
+   Arquivo: 
+
+❌ default
+   Arquivo: src/App.tsx
+
+❌ LucroBrutoChart;
+   Arquivo: src/components/LucroBrutoChart.tsx
+
+❌ export
+   Arquivo: 
+
+❌ ChartTabId
+   Arquivo: src/components/ChartNavigationTabs.tsx
+
+❌ FaturamentoLineChart
+   Arquivo: src/components/charts/FaturamentoLineChart.tsx
+
+❌ HorizontalBarChart
+   Arquivo: src/components/charts/HorizontalBarChart.tsx
+
+❌ IndicadoresBarChart
+   Arquivo: src/components/charts/IndicadoresBarChart.tsx
+
+❌ LucroBrutoChart:
+   Arquivo: src/components/LucroBrutoChart.tsx
+
+❌ React.FC<LucroBrutoChartProps>
+   Arquivo: src/components/LucroBrutoChart.tsx
+
+❌ MonthlyBarChart
+   Arquivo: src/components/MonthlyBarChart.tsx
+
+
+4️⃣ PÁGINAS ÓRFÃS (src/pages)
+---
+(Diretório src/pages não existe)
+
+5️⃣ HOOKS CUSTOMIZADOS ÓRFÃOS (use*)
+---
+
+6️⃣ UTILITÁRIOS/HELPERS ÓRFÃOS
+---
+❌ transitionFast:
+   Arquivo: src/lib/motion.ts
+
+❌ Transition
+   Arquivo: src/lib/motion.ts
+
+❌ transitionMedium:
+   Arquivo: src/lib/motion.ts
+
+❌ Transition
+   Arquivo: src/lib/motion.ts
+
+❌ fadeIn:
+   Arquivo: src/lib/motion.ts
+
+❌ Variants
+   Arquivo: src/lib/motion.ts
+
+❌ slideUp:
+   Arquivo: src/lib/motion.ts
+
+❌ Variants
+   Arquivo: src/lib/motion.ts
+
+❌ staggerContainer:
+   Arquivo: src/lib/motion.ts
+
+❌ Variants
+   Arquivo: src/lib/motion.ts
+
+❌ item:
+   Arquivo: src/lib/motion.ts
+
+❌ Variants
+   Arquivo: src/lib/motion.ts
+
+❌ formatCurrencyCompact
+   Arquivo: src/lib/formatters.ts
+
+❌ formatDateTime
+   Arquivo: src/lib/formatters.ts
+
+❌ formatCNPJ
+   Arquivo: src/lib/formatters.ts
+
+
+========================================
+✅ Relatório completo gerado em: orphan-report.txt

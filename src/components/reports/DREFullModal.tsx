@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, ChevronRight, ChevronDown, Search, Filter } from 'lucide-react'
 import { formatCurrency } from '../../lib/formatters'
@@ -222,17 +223,21 @@ export function DREFullModal({
     console.log('🔍 DREFullModal - open mudou para:', open)
   }, [open])
 
-  return (
-    <AnimatePresence mode="wait">
-      {open && (
-        <motion.div
-          key="dre-modal"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={onClose}
-        >
+  // Não renderizar se não estiver aberto
+  if (!open) return null
+
+  // Renderizar modal usando Portal para garantir que apareça acima de tudo
+  return createPortal(
+    <AnimatePresence>
+      <motion.div
+        key="dre-modal"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+        onClick={onClose}
+        style={{ position: 'fixed', zIndex: 9999 }}
+      >
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -518,8 +523,8 @@ export function DREFullModal({
           </Tooltip.Provider>
         </motion.div>
       </motion.div>
-      )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
 

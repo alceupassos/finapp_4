@@ -116,8 +116,6 @@ Deno.serve(async (req: Request) => {
         )
       }
 
-      const { Token: jwt } = await loginResponse.json() as F360LoginResponse
-
       // Gerar relatório
       const relatorioBody = {
         Data: dataInicio || new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString().split('T')[0],

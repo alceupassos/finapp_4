@@ -9,9 +9,12 @@ import {
   BookOpen,
   ChevronRight,
   ChevronDown,
+  Users,
+  BarChart3,
+  Grid3x3,
 } from 'lucide-react'
 
-export type ReportSection = 'dashboard' | 'dre' | 'dfc' | 'banks' | 'reconciliation' | 'chart-of-accounts'
+export type ReportSection = 'dashboard' | 'dre' | 'dfc' | 'banks' | 'reconciliation' | 'chart-of-accounts' | 'clientes' | 'indicadores' | 'dashboards'
 
 interface ReportsSidebarProps {
   activeSection: ReportSection
@@ -43,6 +46,24 @@ const menuItems: MenuItem[] = [
     label: 'DFC',
     icon: TrendingUp,
     description: 'Fluxo de Caixa',
+  },
+  {
+    id: 'clientes',
+    label: 'Clientes',
+    icon: Users,
+    description: 'Análise de clientes',
+  },
+  {
+    id: 'indicadores',
+    label: 'Indicadores',
+    icon: BarChart3,
+    description: 'KPIs e métricas',
+  },
+  {
+    id: 'dashboards',
+    label: 'Dashboards',
+    icon: Grid3x3,
+    description: 'Visões consolidadas',
   },
   {
     id: 'banks',

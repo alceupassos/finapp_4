@@ -9,6 +9,10 @@ import { PremiumKPICard } from './PremiumKPICard'
 import { PeriodFilter, type PeriodMode } from './PeriodFilter'
 import { DREWaterfallChart } from '../charts/DREWaterfallChart'
 import { DREFullModal } from './DREFullModal'
+import { LucroBrutoChart } from '../LucroBrutoChart'
+import { MonthlyBarChart } from '../MonthlyBarChart'
+import { AnaliticosModal } from '../AnaliticosModal'
+import { DREDetailModal } from '../DREDetailModal'
 
 interface DRESectionProps {
   selectedCompanies: string[]
@@ -27,8 +31,19 @@ export function DRESection({
   const [dreDataPreviousYear, setDreDataPreviousYear] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
+  const [analiticosModalOpen, setAnaliticosModalOpen] = useState(false)
+  const [dreDetailModalOpen, setDreDetailModalOpen] = useState(false)
+  const [selectedDreRow, setSelectedDreRow] = useState<any>(null)
   const [compareWithPreviousYear, setCompareWithPreviousYear] = useState(false)
   const [periodMode, setPeriodMode] = useState<PeriodMode>('Y')
+
+  // Debug: Log selectedCompanies e outros props
+  useEffect(() => {
+    console.log('🔍 DRESection - selectedCompanies:', selectedCompanies)
+    console.log('🔍 DRESection - selectedYear:', selectedYear)
+    console.log('🔍 DRESection - selectedMonth:', selectedMonth)
+    console.log('🔍 DRESection - period:', period)
+  }, [selectedCompanies, selectedYear, selectedMonth, period])
 
   // Debug: Log quando modalOpen muda
   useEffect(() => {
@@ -43,6 +58,26 @@ export function DRESection({
   const handleCloseModal = () => {
     console.log('🔍 DRESection - handleCloseModal chamado')
     setModalOpen(false)
+  }
+
+  const handleOpenAnaliticosModal = () => {
+    console.log('🔍 DRESection - handleOpenAnaliticosModal chamado')
+    setAnaliticosModalOpen(true)
+  }
+
+  const handleCloseAnaliticosModal = () => {
+    setAnaliticosModalOpen(false)
+  }
+
+  const handleOpenDreDetailModal = (row: any) => {
+    console.log('🔍 DRESection - handleOpenDreDetailModal chamado com row:', row)
+    setSelectedDreRow(row)
+    setDreDetailModalOpen(true)
+  }
+
+  const handleCloseDreDetailModal = () => {
+    setDreDetailModalOpen(false)
+    setSelectedDreRow(null)
   }
 
   useEffect(() => {
@@ -146,6 +181,16 @@ export function DRESection({
 
   // Calcular KPIs (ano atual)
   const kpis = useMemo(() => {
+    // Garantir valores padrão mesmo sem dados
+    if (!dreData || dreData.length === 0) {
+      return {
+        receitaBruta: 0,
+        receitaLiquida: 0,
+        ebitda: 0,
+        lucroLiquido: 0,
+      }
+    }
+
     const grouped = dreData.reduce(
       (acc, item) => {
         const key = item.natureza || 'outros'
@@ -327,6 +372,37 @@ export function DRESection({
   const cnpjForCharts =
     selectedCompanies.length > 1 ? selectedCompanies : selectedCompanies[0] || ''
 
+  // Se não há empresas selecionadas, mostrar mensagem mas ainda renderizar botões
+  if (selectedCompanies.length === 0) {
+    return (
+      <div className="space-y-6">
+        <div className="card-premium p-6">
+          <p className="text-graphite-400 text-center">
+            Selecione ao menos uma empresa para visualizar o relatório DRE.
+          </p>
+        </div>
+        {/* Ainda renderizar botões para teste */}
+        <div className="flex justify-end gap-2">
+          <button
+            onClick={handleOpenModal}
+            className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-all hover:scale-105 shadow-lg shadow-gold-500/20 flex items-center gap-2"
+          >
+            Ver Completo
+          </button>
+        </div>
+        {/* Modal ainda disponível para teste */}
+        <DREFullModal
+          open={modalOpen}
+          onClose={handleCloseModal}
+          dreData={[]}
+          selectedCompanies={[]}
+          selectedYear={selectedYear}
+          selectedMonth={selectedMonth}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-6">
       {/* Filtros e Controles */}
@@ -414,6 +490,12 @@ export function DRESection({
       {/* Export Button e Modal */}
       <div className="flex justify-end gap-2">
         <button
+          onClick={handleOpenAnaliticosModal}
+          className="px-4 py-2 rounded-lg bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium transition-all hover:scale-105 shadow-lg shadow-purple-500/20 flex items-center gap-2"
+        >
+          Ver Analíticos
+        </button>
+        <button
           onClick={handleOpenModal}
           className="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium transition-all hover:scale-105 shadow-lg shadow-gold-500/20 flex items-center gap-2"
         >
@@ -445,7 +527,11 @@ export function DRESection({
         className="card-premium p-6"
       >
         <h3 className="text-lg font-semibold mb-4">DRE Detalhada</h3>
-        <DREPivotTable cnpj={cnpjForCharts} period={period} />
+        <DREPivotTable 
+          cnpj={cnpjForCharts} 
+          period={period}
+          onRowClick={handleOpenDreDetailModal}
+        />
       </motion.div>
 
       {/* Lucro Bruto Chart */}
@@ -459,13 +545,35 @@ export function DRESection({
         <LucroBrutoBarChart dreData={dreData} />
       </motion.div>
 
+      {/* Lucro Bruto Chart (LucroBrutoChart) */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="card-premium p-6"
+      >
+        <h3 className="text-lg font-semibold mb-4">Lucro Bruto Mensal</h3>
+        <LucroBrutoChart companyCnpj={Array.isArray(selectedCompanies) ? selectedCompanies[0] : selectedCompanies} />
+      </motion.div>
+
+      {/* Monthly Bar Chart */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="card-premium p-6"
+      >
+        <h3 className="text-lg font-semibold mb-4">Evolução Mensal</h3>
+        <MonthlyBarChart companyCnpj={Array.isArray(selectedCompanies) ? selectedCompanies[0] : selectedCompanies} />
+      </motion.div>
+
       {loading && (
         <div className="card-premium p-4 text-center">
           <p className="text-sm text-muted-foreground">Carregando dados DRE...</p>
         </div>
       )}
 
-      {/* Modal Completo */}
+      {/* Modais */}
       <DREFullModal
         open={modalOpen}
         onClose={handleCloseModal}
@@ -474,6 +582,31 @@ export function DRESection({
         selectedYear={selectedYear}
         selectedMonth={selectedMonth}
       />
+      <AnaliticosModal
+        open={analiticosModalOpen}
+        onClose={handleCloseAnaliticosModal}
+      />
+      {selectedDreRow && (
+        <DREDetailModal
+          open={dreDetailModalOpen}
+          onClose={handleCloseDreDetailModal}
+          dreData={dreData.filter((item: any) => {
+            // Filtrar dados relacionados à linha selecionada
+            if (selectedDreRow.conta) {
+              return item.conta === selectedDreRow.conta
+            }
+            return false
+          })}
+          selectedMonth={selectedMonth || ''}
+          dreMonths={Array.from(new Set(dreData.map((item: any) => {
+            if (item.data) {
+              const date = new Date(item.data)
+              return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
+            }
+            return ''
+          }))).filter(Boolean)}
+        />
+      )}
     </div>
   )
 }
