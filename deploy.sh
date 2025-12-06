@@ -10,11 +10,11 @@ set -e  # Sair em caso de erro
 # ========================================
 # Edite estas variáveis com os dados do seu VPS
 VPS_USER="root"                          # Usuário SSH
-VPS_HOST="SEU_IP_OU_DOMINIO"             # IP ou domínio do VPS
+VPS_HOST="147.93.183.55"                 # IP ou domínio do VPS
 VPS_PORT="22"                             # Porta SSH (padrão: 22)
 VPS_PATH="/var/www/finapp"                # Caminho no VPS onde ficará o app
 NGINX_CONF="/etc/nginx/sites-available/finapp"  # Arquivo de config do Nginx
-APP_DOMAIN="finapp.seudominio.com"        # Domínio (opcional)
+APP_DOMAIN="www.ifin.app.br"              # Domínio
 
 # ========================================
 # CORES PARA OUTPUT
@@ -135,17 +135,50 @@ rm /tmp/rsync-exclude.txt
 print_success "Arquivos enviados com sucesso!"
 
 # ========================================
-# CONFIGURAR NGINX
+# CONFIGURAR NGINX (SEGURAMENTE)
 # ========================================
-print_step "5/7 - Configurando Nginx..."
+print_step "5/7 - Configurando Nginx (modo seguro)..."
 
-# Criar configuração do Nginx
-ssh -p $VPS_PORT $VPS_USER@$VPS_HOST << 'ENDSSH'
+# Verificar se configuração já existe
+CONFIG_EXISTS=$(ssh -p $VPS_PORT $VPS_USER@$VPS_HOST "test -f $NGINX_CONF && echo 'yes' || echo 'no'")
+
+if [ "$CONFIG_EXISTS" = "yes" ]; then
+    print_warning "Configuração Nginx já existe. Criando backup..."
+    ssh -p $VPS_PORT $VPS_USER@$VPS_HOST "sudo cp $NGINX_CONF ${NGINX_CONF}.backup.\$(date +%Y%m%d_%H%M%S)"
+fi
+
+# Criar configuração do Nginx com SSL
+ssh -p $VPS_PORT $VPS_USER@$VPS_HOST << ENDSSH
 cat > /tmp/finapp-nginx.conf << 'EOF'
+# Configuração para www.ifin.app.br
+# Gerado automaticamente pelo deploy.sh
+
+# Redirecionar HTTP para HTTPS
 server {
     listen 80;
     listen [::]:80;
-    server_name APP_DOMAIN;
+    server_name www.ifin.app.br ifin.app.br;
+    
+    # Redirecionar para HTTPS
+    return 301 https://\$host\$request_uri;
+}
+
+# Configuração HTTPS
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name www.ifin.app.br ifin.app.br;
+
+    # Certificados SSL (usando certificado existente do www.ifin.app.br)
+    ssl_certificate /etc/letsencrypt/live/www.ifin.app.br/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.ifin.app.br/privkey.pem;
+    
+    # SSL Configuration (recomendado)
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
 
     root VPS_PATH/current;
     index index.html;
@@ -160,6 +193,7 @@ server {
     add_header X-Frame-Options "SAMEORIGIN" always;
     add_header X-Content-Type-Options "nosniff" always;
     add_header X-XSS-Protection "1; mode=block" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 
     # Cache static assets
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
@@ -169,18 +203,8 @@ server {
 
     # SPA routing - sempre retornar index.html
     location / {
-        try_files $uri $uri/ /index.html;
+        try_files \$uri \$uri/ /index.html;
     }
-
-    # Proxy para API (se necessário)
-    # location /api {
-    #     proxy_pass http://localhost:3000;
-    #     proxy_http_version 1.1;
-    #     proxy_set_header Upgrade $http_upgrade;
-    #     proxy_set_header Connection 'upgrade';
-    #     proxy_set_header Host $host;
-    #     proxy_cache_bypass $http_upgrade;
-    # }
 
     # Logs
     access_log /var/log/nginx/finapp-access.log;
@@ -189,33 +213,74 @@ server {
 EOF
 
 # Substituir placeholders
-sed -i "s|APP_DOMAIN|$APP_DOMAIN|g" /tmp/finapp-nginx.conf
 sed -i "s|VPS_PATH|$VPS_PATH|g" /tmp/finapp-nginx.conf
 
 # Mover para sites-available
 sudo mv /tmp/finapp-nginx.conf $NGINX_CONF
 
-# Criar symlink em sites-enabled
-sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/finapp
+# Criar symlink em sites-enabled (se não existir)
+if [ ! -L /etc/nginx/sites-enabled/finapp ]; then
+    sudo ln -sf $NGINX_CONF /etc/nginx/sites-enabled/finapp
+fi
 
-# Testar configuração
-sudo nginx -t
+# Testar configuração ANTES de reiniciar
+echo "Testando configuração Nginx..."
+if sudo nginx -t; then
+    echo "✅ Configuração válida!"
+else
+    echo "❌ ERRO na configuração! Restaurando backup..."
+    if [ -f ${NGINX_CONF}.backup.* ]; then
+        sudo cp ${NGINX_CONF}.backup.* $NGINX_CONF
+        echo "Backup restaurado."
+    fi
+    exit 1
+fi
 
 ENDSSH
 
-print_success "Nginx configurado!"
+if [ $? -eq 0 ]; then
+    print_success "Nginx configurado e testado!"
+else
+    print_error "Erro ao configurar Nginx. Abortando deploy."
+    exit 1
+fi
 
 # ========================================
-# REINICIAR NGINX
+# REINICIAR NGINX (COM CUIDADO)
 # ========================================
-print_step "6/7 - Reiniciando Nginx..."
+print_step "6/7 - Reiniciando Nginx (modo seguro)..."
 
-ssh -p $VPS_PORT $VPS_USER@$VPS_HOST << EOF
-    sudo systemctl reload nginx
-    echo "Nginx reiniciado!"
-EOF
+print_warning "Reiniciando Nginx com reload (não interrompe conexões ativas)..."
 
-print_success "Nginx reiniciado com sucesso!"
+# Usar reload em vez de restart para não interromper conexões
+RELOAD_SUCCESS=$(ssh -p $VPS_PORT $VPS_USER@$VPS_HOST << 'ENDSSH'
+    # Verificar se Nginx está rodando
+    if sudo systemctl is-active --quiet nginx; then
+        echo "Nginx está rodando. Fazendo reload seguro..."
+        if sudo systemctl reload nginx; then
+            echo "SUCCESS"
+        else
+            echo "FAILED"
+        fi
+    else
+        echo "Nginx não está rodando. Iniciando..."
+        if sudo systemctl start nginx; then
+            echo "SUCCESS"
+        else
+            echo "FAILED"
+        fi
+    fi
+ENDSSH
+)
+
+if echo "$RELOAD_SUCCESS" | grep -q "SUCCESS"; then
+    print_success "Nginx reiniciado com sucesso (reload seguro)!"
+else
+    print_error "Erro ao reiniciar Nginx!"
+    print_warning "Verificando status do Nginx..."
+    ssh -p $VPS_PORT $VPS_USER@$VPS_HOST "sudo systemctl status nginx --no-pager -l"
+    exit 1
+fi
 
 # ========================================
 # VERIFICAÇÃO FINAL
